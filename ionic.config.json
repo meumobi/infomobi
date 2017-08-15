@@ -1,5 +1,8 @@
 {
   "name": "ion-employee",
-  "app_id": "",
-  "type": "ionic-angular"
+  "app_id": "9ff75c4c",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
