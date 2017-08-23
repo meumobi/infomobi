@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -13,6 +14,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import { ContactsProvider } from '../providers/contacts/';
+import { PostsProvider } from '../providers/posts/posts';
 
 
 @NgModule({
@@ -26,6 +29,7 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     SuperTabsModule.forRoot()
   ],
@@ -41,7 +45,9 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ContactsProvider,
+    PostsProvider
   ]
 })
 export class AppModule {}
