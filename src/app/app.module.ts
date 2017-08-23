@@ -16,6 +16,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { ContactsProvider } from '../providers/contacts/';
 import { PostsProvider } from '../providers/posts/posts';
+import { SharedModule } from '../shared/shared.module';
+
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import { PostsProvider } from '../providers/posts/posts';
   imports: [
     BrowserModule,
     HttpModule,
+    SharedModule,
     IonicModule.forRoot(MyApp),
     SuperTabsModule.forRoot()
   ],
