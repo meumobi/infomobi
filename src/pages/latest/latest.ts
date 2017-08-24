@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the LatestPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { Article } from './../../models/article.interface';
+import { ArticlesProvider } from './../../providers/articles/';
 
 @Component({
   selector: 'page-latest',
@@ -14,11 +10,31 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LatestPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  articles: Array<Article>;
+  rootNavCtrl: NavController;
+
+  constructor(
+    private data: ArticlesProvider,
+    public navCtrl: NavController, 
+    public navParams: NavParams
+  ) {
+    this.rootNavCtrl = navParams.get('rootNavCtrl');
+    this.findAll();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LatestPage');
+  findAll() {
+      this.data.findAll()
+        .then(data => {
+          this.articles = data;
+          console.log(data);
+        })
+        .catch(error => alert(error));
+  }
+
+  pushDetailsPage(page: string, id: string) {
+    this.rootNavCtrl.push(page, {
+      id: id
+    });
   }
 
 }

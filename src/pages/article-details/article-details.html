@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>article-details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img [src]="article.thumbnails[3].url" />
+  <h2>{{article.title}}</h2>
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="https://avatars.io/facebook/joshua.morony" />
+    </ion-avatar>
+    <h2>Josh Morony</h2>
+    <p>November 5, 1955</p>
+  </ion-item>
+  <p [innerHtml]="article.description"></p>
+</ion-content>
