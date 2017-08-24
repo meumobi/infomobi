@@ -1,7 +1,6 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{contact.firstName}} {{contact.lastName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,19 +16,19 @@
     </ion-card-content>
 
     <ion-list>
-      <a href="tel:{{contact.phone}}" ion-item>
+      <a href="tel:{{contact.landlinePhone}}" ion-item>
         <ion-icon name="call" item-left></ion-icon>
-        <p>Call Office</p>
-        <h2>{{contact.phone}}</h2>
+        <p>{{'Call Office' | translate}}</p>
+        <h2>{{contact.landlinePhone}}</h2>
       </a>
       <a href="tel:{{contact.mobilePhone}}" ion-item>
         <ion-icon name="call" item-left></ion-icon>
-        <p>Call Mobile</p>
+        <p>{{'Call Mobile' |translate}}</p>
         <h2>{{contact.mobilePhone}}</h2>
       </a>
       <a [href]="'sms:' + contact.mobilePhone | safeUrl" ion-item>
         <ion-icon name="text" item-left></ion-icon>
-        <p>Text</p>
+        <p>{{'Text' | translate}}</p>
         <h2>{{contact.mobilePhone}}</h2>
       </a>
       <a href="mailto:{{contact.email}}" ion-item>

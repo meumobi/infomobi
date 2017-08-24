@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>videos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let video of videos" (click)="playVideo(video.id)">
+      <div class="video-wrapper">
+        <div class="video-container">
+          <iframe width="800" height="450" [src]="video.url | safeUrl" frameborder="0" webkitallowfullscreen mozallowfullscreen
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
