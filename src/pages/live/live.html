@@ -1,18 +1,22 @@
-<!--
-  Generated template for the LivePage page.
+<ion-content>
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="addPost()"><ion-icon name="create"></ion-icon></button>
+  </ion-fab>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>live</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
+  <ion-list>
+    <button ion-item *ngFor="let post of posts">
+      <ion-avatar item-start *ngIf="post.author.picture; else anonymous">
+        <img [src]="post.author.picture"/>
+      </ion-avatar>
+      <ng-template #anonymous>
+          <ion-avatar item-left>
+            <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+          </ion-avatar>
+      </ng-template>
+      
+      <h2>{{post.author.displayName}}</h2>
+      <p [innerHtml]="post.description"></p>
+      <img [src]="post.picture" *ngIf="post.picture"/>
+    </button>
+  </ion-list>
 </ion-content>
