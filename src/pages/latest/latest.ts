@@ -23,12 +23,11 @@ export class LatestPage {
   }
 
   findAll() {
-      this.data.findAll()
-        .then(data => {
-          this.articles = data;
-          console.log(data);
-        })
-        .catch(error => alert(error));
+    this.data.findAll()
+      .then(data => {
+        this.articles = data;
+      })
+      .catch(error => alert(error));
   }
 
   pushDetailsPage(page: string, id: string) {

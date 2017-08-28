@@ -25,9 +25,9 @@ export class VideosPage {
   }
 
   findAll() {
-      this.data.findAll()
-        .then(data => this.videos = data)
-        .catch(error => alert(error));
+    this.data.findAll()
+      .then(data => this.videos = data)
+      .catch(error => alert(error));
   }
 
   ionViewDidLoad() {
