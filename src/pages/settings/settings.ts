@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the SettingsPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -15,7 +10,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  settingsFormGroup: FormGroup;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private fb: FormBuilder
+  ) {
+    this.settingsFormGroup = this.fb.group({
+      notification: '',
+      language: ''
+    });
   }
 
   ionViewDidLoad() {

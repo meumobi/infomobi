@@ -1,13 +1,30 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>List</ion-title>
-  </ion-navbar>
-</ion-header>
+  
+    <ion-navbar>
+      <ion-title>Settings</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content>
+  
+    <form [formGroup]="settingsFormGroup">
+      <ion-list>
+        <ion-item>
+          <ion-label>{{ 'SETTINGS_NOTIFICATION' | translate }}</ion-label>
+          <ion-toggle formControlName="notification"></ion-toggle>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>{{ 'SETTINGS_LANGUAGE' | translate }}</ion-label>
+          <ion-select formControlName="language">
+            <ion-option value="en-us" checked="true">English</ion-option>
+            <ion-option value="pt-br">Portuguese</ion-option>
+            <ion-option value="fr-fr">French</ion-option>
+          </ion-select>
+        </ion-item>
 
-
-<ion-content padding>
-
-</ion-content>
+      </ion-list>
+    </form>
+  
+  </ion-content>
