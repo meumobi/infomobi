@@ -32,7 +32,7 @@ export class PostsProvider {
 
   create(post: Post) {
     post.createdAt = firebase.database.ServerValue.TIMESTAMP;
-    console.log(firebase.database.ServerValue.TIMESTAMP);
+    post.priority = 0 - Date.now();
 
     return this.items$.push(post);
   }

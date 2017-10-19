@@ -5,5 +5,6 @@ export interface Post {
   author: any,
   description: string,
   picture?: string,
-  createdAt?: Object
+  createdAt?: Object,
+  priority?: number
 }

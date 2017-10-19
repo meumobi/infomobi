@@ -24,7 +24,7 @@ export class LivePage {
   findAll() {
     this.data.findAll().subscribe(
       data => {
-        this.posts = data.reverse();
+        this.posts = data;//.reverse();
       },
       err => {
         console.log(err);
