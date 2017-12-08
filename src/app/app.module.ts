@@ -24,6 +24,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ContactsProvider } from '../providers/contacts/';
 import { ArticlesProvider } from '../providers/articles/';
 import { PostsProvider } from '../providers/posts/';
+import { MediaProvider } from '../providers/media/';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -69,7 +70,8 @@ export function createTranslateLoader(http: Http) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ContactsProvider,
     ArticlesProvider,
-    PostsProvider
+    PostsProvider,
+    MediaProvider
   ]
 })
 export class AppModule {}

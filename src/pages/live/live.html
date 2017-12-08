@@ -16,7 +16,7 @@
       
       <h2>{{post.author.displayName}}</h2>
       <p [innerHtml]="post.description"></p>
-      <img [src]="post.picture" *ngIf="post.picture"/>
+      <img *ngFor="let medium of post.media"[src]="medium.url"/>
       <span>{{post.priority}}</span>
     </button>
   </ion-list>

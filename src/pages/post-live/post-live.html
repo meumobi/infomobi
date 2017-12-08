@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'New Post' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<form (ngSubmit)="onSubmit()">
+	  <ion-item>
+	    <ion-textarea name="description" [(ngModel)]="description" placeholder="{{'Write your text' | translate}}"></ion-textarea>
+	  </ion-item>
+	  <ion-item>
+	  	<input type="file" accept="image/*" (change)="detectFiles($event)"/>
+	  </ion-item>
+	  <button ion-button type="submit">Post</button>
+  </form>
+</ion-content>

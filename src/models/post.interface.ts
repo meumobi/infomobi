@@ -1,10 +1,9 @@
-export interface Post {
-  
+export interface Post {  
   _id?: string,
   $key?: string;
   author: any,
   description: string,
-  picture?: string,
+  media?: any,
   createdAt?: Object,
   priority?: number
 }

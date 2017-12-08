@@ -8,6 +8,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+
+///
+import firebase, { Unsubscribe } from 'firebase';
+import { FIREBASE_CONFIG } from './app.firebase.config';
+///
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -24,6 +30,9 @@ export class MyApp {
     public splashScreen: SplashScreen, 
     private translate: TranslateService
   ) {
+    ///
+    firebase.initializeApp(FIREBASE_CONFIG);
+    ///
     this.initializeApp();
 
     // used for an example of ngFor and navigation
