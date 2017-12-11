@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Content } from 'ionic-angular';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Post } from './../../models/post.interface';
 import { PostsProvider } from './../../providers/posts/';
@@ -8,7 +9,7 @@ import { PostsProvider } from './../../providers/posts/';
   templateUrl: 'live.html',
 })
 export class LivePage {
-
+  @ViewChild(Content) content: Content;
   posts: Post[];
   rootNavCtrl: NavController;
 
@@ -24,7 +25,8 @@ export class LivePage {
   findAll() {
     this.data.findAll().subscribe(
       data => {
-        this.posts = data.reverse();
+        this.posts = data;
+        this.content.scrollToTop(500);
       },
       err => {
         console.log(err);

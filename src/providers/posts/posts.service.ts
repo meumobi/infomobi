@@ -21,7 +21,7 @@ export class PostsProvider {
       query: {
         //orderByKey: true,
         limitToLast: 20,
-        orderByChild: 'createdAt',
+        orderByChild: 'priority',
       }      
     });
   }
@@ -33,7 +33,6 @@ export class PostsProvider {
   create(post: Post) {
     post.createdAt = firebase.database.ServerValue.TIMESTAMP;
     post.priority = 0 - Date.now();
-
     return this.items$.push(post);
   }
 
