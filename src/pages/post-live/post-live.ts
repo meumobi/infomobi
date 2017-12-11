@@ -13,9 +13,10 @@ import { PostsProvider } from './../../providers/posts/';
   templateUrl: 'post-live.html',
 })
 
-export class PostLivePage {
-	files: FileList;
+export class PostLivePage {	
+  files:Array<any>;
   description: string;
+  images = [];
 
   constructor(
     private media: MediaProvider,
@@ -26,14 +27,25 @@ export class PostLivePage {
   }
 
   detectFiles(event){
-  	this.files = event.target.files;
+    let fileList: FileList = event.target.files;
+  	this.files = Array.from(event.target.files)
+    let reader = new FileReader();
+    reader.onloadend= (e) => {
+      this.images = [reader.result];
+    }
+    reader.readAsDataURL(fileList.item(0));   
+  }
+
+  removeFile(){
+    this.images.pop();
+    this.files.pop();
   }
 
   onSubmit() {    
-    if (this.files){
+    if (this.images.length > 0){
       let loader = this.loadingCtrl.create({});
       loader.present(); 
-      let file = this.files.item(0);
+      let file = this.files[0];
       this.media.create({
         file: file,
         path: "/live",
