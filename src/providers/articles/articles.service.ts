@@ -2,17 +2,36 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the ArticlesProvider provider.
+import * as firebase from 'firebase/app';
+import { 
+  AngularFireDatabase, 
+  FirebaseListObservable, 
+  FirebaseObjectObservable 
+} from 'angularfire2/database';
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
+import { Article } from './../../models/article.interface';
+
 @Injectable()
 export class ArticlesProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello ArticlesProvider Provider');
+  items$: FirebaseListObservable<Article[]>;
+
+  constructor(public af: AngularFireDatabase) {
+    this.items$ = af.list('/articles', {
+      // query: {
+      //   limitToLast: 20,
+      //   orderByChild: 'priority',
+      // }      
+    });
+  }
+
+
+  findAll(): FirebaseListObservable<Article[]> {
+    return this.items$;
+  }
+
+  findById(id: string): FirebaseObjectObservable<Article> {
+  	return this.af.object(`articles/${id}`);
   }
 
 }

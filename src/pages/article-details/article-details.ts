@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Article } from './../../models/article.interface';
 import { ArticlesProvider } from './../../providers/articles/';
+import * as moment from 'moment';
+import { Moment } from 'moment';
 
 @IonicPage({
   name: 'article-details',
@@ -14,8 +16,8 @@ import { ArticlesProvider } from './../../providers/articles/';
 })
 export class ArticleDetailsPage {
 
-  article: Article;
-
+  article: any;
+  date:Moment;
   constructor(
     private data: ArticlesProvider,
     public navCtrl: NavController,
@@ -31,8 +33,11 @@ export class ArticleDetailsPage {
 
   findById(id) {
     this.data.findById(id)
-      .then(data => this.article = data)
-      .catch(error => alert(error));
+      .subscribe(data => {
+        this.article = data;
+        moment.locale('pt');
+        this.date = moment.unix(this.article.created.sec);
+      })
   }
 
 }

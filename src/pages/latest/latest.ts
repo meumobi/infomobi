@@ -23,14 +23,16 @@ export class LatestPage {
   }
 
   findAll() {
-    this.data.findAll()
-      .then(data => {
+    this.data.findAll().subscribe(
+      data => {
         this.articles = data;
-      })
-      .catch(error => alert(error));
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
-
-  pushDetailsPage(page: string, id: string) {
+    pushDetailsPage(page: string, id: string) {
     this.rootNavCtrl.push(page, {
       id: id
     });

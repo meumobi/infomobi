@@ -9,11 +9,11 @@
   <img [src]="article.thumbnails[3].url" />
   <h2>{{article.title}}</h2>
   <ion-item>
-    <ion-avatar item-left>
+  <!--   <ion-avatar item-left>
       <img src="https://avatars.io/facebook/joshua.morony" />
-    </ion-avatar>
-    <h2>Josh Morony</h2>
-    <p>November 5, 1955</p>
+    </ion-avatar> -->
+    <h2>{{article.author}}</h2>
+    <p>{{date | amDateFormat:'LL'}}</p>
   </ion-item>
   <p [innerHtml]="article.description"></p>
 </ion-content>

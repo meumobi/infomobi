@@ -26,7 +26,9 @@
         "@ionic/storage": "2.0.1",
         "@ngx-translate/core": "^7.2.0",
         "@ngx-translate/http-loader": "^0.1.0",
-        "angularfire2": "^4.0.0-rc.2",
+        "angular-moment": "^1.2.0",
+        "angular2-moment": "^1.7.0",
+        "angularfire2": "^4.0.0-rc0",
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
@@ -38,6 +40,7 @@
         "ionic-plugin-keyboard": "^2.2.1",
         "ionic2-super-tabs": "^4.0.1",
         "ionicons": "3.0.0",
+        "moment": "^2.19.4",
         "rxjs": "5.4.0",
         "sw-toolbox": "3.6.0",
         "zone.js": "0.8.12"

@@ -1,10 +1,8 @@
 <ion-content>
   <ion-row wrap>
     <ion-col *ngFor="let article of articles" col-12 col-md-4>
-      <ion-card (click)="pushDetailsPage('article-details', article._id)">
-
-        <img [src]="article.thumbnails[3].url" />
-
+      <ion-card (click)="pushDetailsPage('article-details', article._id.id)">
+        <img *ngIf="article.thumbnails" [src]="article.thumbnails[3].url"  />          
         <ion-card-content>
           <h1>{{article.title}}</h1>
         </ion-card-content>

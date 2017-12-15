@@ -1,13 +1,13 @@
 export interface Article {
 
-  _id: string,
+  _id: Array<any>,
   title: string,
   description: string,
-  pubdate: number,
+  // pubdate: number,
   link: string,
   parent_id: number,
-  images: Array<any>,
-  thumbnails: Array<any>,
+  images?: Array<any>,
+  thumbnails?: Array<any>,
   medias: Array<any>,
   type: string,
   author: string,
@@ -16,12 +16,12 @@ export interface Article {
     TODO: check if following fields could be removed
   */
   order: number,
-  created: number,
-  modified: number,
-  published: number,
-  is_published: boolean,
+  created: Array<any>,
+  modified: Array<any>,
+  published: Array<any>,
+  is_published?: boolean,
   notification_id: string,
   guid: string,
-  format: string,
+  format?: string,
   site_id: number
 }
