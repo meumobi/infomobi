@@ -28,6 +28,18 @@ export class PostsProvider {
     return this.items$;
   }
 
+  promote(id: string) {
+    return this.items$.update(id,{
+      published:true
+    });
+  }
+
+  remove(id: string) {
+    return this.items$.remove(id);
+  }
+
+
+
   findByArticle(id): FirebaseListObservable<Post[]> {
     this.items$ = this.af.list('/posts', {
       query: {

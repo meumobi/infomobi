@@ -17,7 +17,7 @@
       <h2>{{post.author.displayName}}</h2>
       <p [innerHtml]="post.description"></p>
       <img *ngFor="let medium of post.media"[src]="medium.url"/>
-      <span>{{post.priority}}</span>
+      <!-- <span>{{post.priority}}</span> -->
     </button>
   </ion-list>
 </ion-content>

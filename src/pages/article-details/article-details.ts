@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { Article } from './../../models/article.interface';
 import { Post } from './../../models/post.interface';
@@ -25,6 +25,7 @@ export class ArticleDetailsPage {
   constructor(
     private articlesProvider: ArticlesProvider,
     private postsProvider: PostsProvider,
+    public toastCtrl: ToastController,
     public navCtrl: NavController,
     public navParams: NavParams
   ) {      
@@ -49,6 +50,22 @@ export class ArticleDetailsPage {
     );
   }
 
+  removePost(id){
+    this.postsProvider.remove(id).then(
+      data => {
+        this.presentToast('Comment Removed!');
+      }
+    );
+  }
+
+  promotePost(id){
+    this.postsProvider.promote(id).then(
+      data => {
+        this.presentToast('Comment Promoted!');
+      }
+    );
+  }
+
   addPost() {
     this.rootNavCtrl.push(
       'post-live', {
@@ -64,6 +81,20 @@ export class ArticleDetailsPage {
         moment.locale('pt');
         this.date = moment.unix(this.article.created.sec);
       })
+  }
+
+  presentToast(msg: string) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
 }
