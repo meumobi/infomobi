@@ -17,21 +17,25 @@ export class PostLivePage {
   files:Array<any>;
   description: string;
   images = [];
-
+  articleId: string;
+  published: boolean;
   constructor(
     private media: MediaProvider,
     private posts: PostsProvider,
     public loadingCtrl: LoadingController,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public navParams: NavParams
   ) {  	
+    this.articleId = ((this.navParams.data.articleId) ? this.navParams.data.articleId : null);
+    this.published = ((this.articleId) ? false : true);
   }
 
   detectFiles(event){
     let fileList: FileList = event.target.files;
-  	this.files = Array.from(event.target.files)
     let reader = new FileReader();
     reader.onloadend= (e) => {
       this.images = [reader.result];
+      this.files = Array.from(event.target.files);
     }
     reader.readAsDataURL(fileList.item(0));   
   }
@@ -53,6 +57,8 @@ export class PostLivePage {
         (medium) => { 
           loader.dismiss(); 
           this.posts.create({
+            published: this.published,
+            articleId: this.articleId, 
             author: {
               displayName: "Luiza Bittencourt",
               picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
@@ -65,6 +71,8 @@ export class PostLivePage {
       );
     } else {
       this.posts.create({
+        published : this.published,
+        articleId: this.articleId, 
         author: {
           displayName: "Luiza Bittencourt",
           picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"

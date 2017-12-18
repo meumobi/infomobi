@@ -34,7 +34,8 @@ export class LatestPage {
   }
     pushDetailsPage(page: string, id: string) {
     this.rootNavCtrl.push(page, {
-      id: id
+      id: id,
+      rootNavCtrl: this.rootNavCtrl
     });
   }
 

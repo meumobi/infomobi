@@ -1,19 +1,37 @@
 <ion-header>
-
   <ion-navbar>
   </ion-navbar>
-
 </ion-header>
-
+  
 <ion-content padding>
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="addPost()"><ion-icon name="create"></ion-icon></button>
+  </ion-fab>
   <img [src]="article.thumbnails[3].url" />
   <h2>{{article.title}}</h2>
   <ion-item>
-  <!--   <ion-avatar item-left>
-      <img src="https://avatars.io/facebook/joshua.morony" />
-    </ion-avatar> -->
     <h2>{{article.author}}</h2>
     <p>{{date | amDateFormat:'LL'}}</p>
   </ion-item>
   <p [innerHtml]="article.description"></p>
+  <ion-list>
+    <div ion-item *ngFor="let post of posts">
+      <ion-avatar item-start *ngIf="post.author.picture; else anonymous">
+        <img [src]="post.author.picture"/>
+      </ion-avatar>
+      <ng-template #anonymous>
+          <ion-avatar item-left>
+            <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+          </ion-avatar>
+      </ng-template>
+      
+      <h2>{{post.author.displayName}}</h2>
+      <p [innerHtml]="post.description"></p>
+      <ion-thumbnail *ngFor="let medium of post.media" item-end>
+          <div class="img-wrap">
+            <img class="image-fit" [src]="medium.url"/>           
+          </div>
+      </ion-thumbnail>
+    </div>
+  </ion-list>
 </ion-content>

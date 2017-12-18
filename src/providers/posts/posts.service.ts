@@ -13,26 +13,34 @@ import { Post } from './../../models/post.interface';
 
 @Injectable()
 export class PostsProvider {
-
   items$: FirebaseListObservable<Post[]>;
-
-  constructor(af: AngularFireDatabase) {
-    this.items$ = af.list('/posts', {
-      query: {
-        //orderByKey: true,
-        limitToLast: 20,
-        orderByChild: 'priority',
-      }      
-    });
+  constructor(private af: AngularFireDatabase) {    
   }
 
   findAll(): FirebaseListObservable<Post[]> {
+    this.items$ = this.af.list('/posts', {
+      query: {
+        limitToLast: 20,
+        orderByChild: 'published',
+        equalTo: true,
+      }      
+    });
     return this.items$;
+  }
+
+  findByArticle(id): FirebaseListObservable<Post[]> {
+    this.items$ = this.af.list('/posts', {
+      query: {
+        orderByChild: 'articleId',
+        equalTo: id,
+      }      
+    });
+    return this.items$;    
   }
 
   create(post: Post) {
     post.createdAt = firebase.database.ServerValue.TIMESTAMP;
-    post.priority = 0 - Date.now();
+    post.priority = 0 - Date.now();    
     return this.items$.push(post);
   }
 

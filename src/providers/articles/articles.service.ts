@@ -16,7 +16,7 @@ export class ArticlesProvider {
 
   items$: FirebaseListObservable<Article[]>;
 
-  constructor(public af: AngularFireDatabase) {
+  constructor(private af: AngularFireDatabase) {
     this.items$ = af.list('/articles', {
       // query: {
       //   limitToLast: 20,

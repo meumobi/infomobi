@@ -2,4 +2,7 @@ page-article-details {
   .item-inner{
     border-top: 1px solid #dedede;
   }
+	.image-fit{
+		object-fit: cover;
+	}
 }

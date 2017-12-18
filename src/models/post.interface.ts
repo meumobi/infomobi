@@ -1,9 +1,10 @@
 export interface Post {  
   _id?: string,
-  $key?: string;
   author: any,
   description: string,
   media?: any,
+  published: boolean, 
+  articleId?: string, 
   createdAt?: Object,
   priority?: number
 }
