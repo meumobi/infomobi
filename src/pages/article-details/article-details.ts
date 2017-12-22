@@ -69,7 +69,8 @@ export class ArticleDetailsPage {
   addPost() {
     this.rootNavCtrl.push(
       'post-live', {
-        articleId: this.id
+        articleId: this.id,
+        articleTitle: this.article.title,
       }
     );
   }

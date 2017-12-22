@@ -18,6 +18,7 @@ export class PostLivePage {
   description: string;
   images = [];
   articleId: string;
+  articleTitle: string;
   published: boolean;
   constructor(
     private media: MediaProvider,
@@ -27,6 +28,7 @@ export class PostLivePage {
     public navParams: NavParams
   ) {  	
     this.articleId = ((this.navParams.data.articleId) ? this.navParams.data.articleId : null);
+    this.articleTitle = ((this.articleId) ? this.navParams.data.articleTitle : null);    
     this.published = ((this.articleId) ? false : true);
   }
 
@@ -59,6 +61,7 @@ export class PostLivePage {
           this.posts.create({
             published: this.published,
             articleId: this.articleId, 
+            articleTitle: this.articleTitle, 
             author: {
               displayName: "Luiza Bittencourt",
               picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
@@ -73,6 +76,7 @@ export class PostLivePage {
       this.posts.create({
         published : this.published,
         articleId: this.articleId, 
+        articleTitle: this.articleTitle, 
         author: {
           displayName: "Luiza Bittencourt",
           picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"

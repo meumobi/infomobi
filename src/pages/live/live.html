@@ -4,7 +4,7 @@
   </ion-fab>
 
   <ion-list>
-    <button ion-item *ngFor="let post of posts">
+    <div ion-item *ngFor="let post of posts">
       <ion-avatar item-start *ngIf="post.author.picture; else anonymous">
         <img [src]="post.author.picture"/>
       </ion-avatar>
@@ -12,12 +12,11 @@
           <ion-avatar item-left>
             <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
           </ion-avatar>
-      </ng-template>
-      
+      </ng-template>      
       <h2>{{post.author.displayName}}</h2>
       <p [innerHtml]="post.description"></p>
+      <h3 *ngIf="post.articleTitle"><a (click)="viewArticle(post.articleId)" href="#">{{post.articleTitle}}</a></h3>
       <img *ngFor="let medium of post.media"[src]="medium.url"/>
-      <!-- <span>{{post.priority}}</span> -->
-    </button>
+    </div>
   </ion-list>
 </ion-content>

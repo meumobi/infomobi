@@ -34,6 +34,13 @@ export class LivePage {
     );
   }
 
+  viewArticle(id: string){
+    this.rootNavCtrl.push('article-details', {
+      id: id,
+      rootNavCtrl: this.rootNavCtrl
+    });
+  }
+
   addPost() {
     this.rootNavCtrl.push(
       'post-live', {}

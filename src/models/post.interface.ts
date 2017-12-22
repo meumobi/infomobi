@@ -5,6 +5,7 @@ export interface Post {
   media?: any,
   published: boolean, 
   articleId?: string, 
+  articleTitle?: string, 
   createdAt?: Object,
   priority?: number
 }
