@@ -17,12 +17,18 @@ export class ArticlesProvider {
   items$: FirebaseListObservable<Article[]>;
 
   constructor(private af: AngularFireDatabase) {
-    this.items$ = af.list('/articles', {
-      // query: {
-      //   limitToLast: 20,
-      //   orderByChild: 'priority',
-      // }      
-    });
+    this.items$ = af
+      .list('/articles')
+      .map(items => items.sort( function(a,b) {
+        if (a.order < b.order) {
+          return 1;
+        }
+        if (a.order > b.order) {
+          return -1;
+        }
+        return 0;   
+      })
+    ) as FirebaseListObservable<Article[]>;
   }
 
 

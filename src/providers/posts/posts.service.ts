@@ -24,7 +24,17 @@ export class PostsProvider {
         orderByChild: 'published',
         equalTo: true,
       }      
-    });
+    }).map(
+      items => items.sort( function(a,b) {
+        if (a.priority > b.priority) {
+          return 1;
+        }
+        if (a.priority < b.priority) {
+          return -1;
+        }
+        return 0;   
+      })
+    ) as FirebaseListObservable<Post[]>;
     return this.items$;
   }
 
@@ -38,15 +48,23 @@ export class PostsProvider {
     return this.items$.remove(id);
   }
 
-
-
   findByArticle(id): FirebaseListObservable<Post[]> {
     this.items$ = this.af.list('/posts', {
       query: {
         orderByChild: 'articleId',
         equalTo: id,
       }      
-    });
+    }).map(
+      items => items.sort( function(a,b) {
+        if (a.priority > b.priority) {
+          return 1;
+        }
+        if (a.priority < b.priority) {
+          return -1;
+        }
+        return 0;   
+      })
+    ) as FirebaseListObservable<Post[]>;
     return this.items$;    
   }
 
