@@ -25,6 +25,7 @@ import { ContactsProvider } from '../providers/contacts/';
 import { ArticlesProvider } from '../providers/articles/';
 import { PostsProvider } from '../providers/posts/';
 import { MediaProvider } from '../providers/media/';
+import { CategoriesProvider } from '../providers/categories/';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -71,7 +72,8 @@ export function createTranslateLoader(http: Http) {
     ContactsProvider,
     ArticlesProvider,
     PostsProvider,
-    MediaProvider
+    MediaProvider,
+    CategoriesProvider
   ]
 })
 export class AppModule {}

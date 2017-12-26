@@ -7,9 +7,15 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { LatestPage } from '../pages/latest/latest';
+/// some questions...
+import { CategoriesProvider } from '../providers/categories/';
+import { Category } from '../models/category.interface';
+import 'rxjs/add/operator/map';
+import { 
+  FirebaseListObservable, 
+} from 'angularfire2/database';
 
-
-///
 import firebase, { Unsubscribe } from 'firebase';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 ///
@@ -21,29 +27,27 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-
   pages: Array<{title: string, component: any}>;
+  categories: FirebaseListObservable<Category>;
 
   constructor(
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen, 
-    private translate: TranslateService
+    private translate: TranslateService,
+    private categoriesProvider: CategoriesProvider,
   ) {
     ///
-    firebase.initializeApp(FIREBASE_CONFIG);
+    //firebase.initializeApp(FIREBASE_CONFIG);
     ///
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Comunicados', component: HomePage },
-      { title: 'Recursos humanos', component: HomePage },
-      { title: 'Segurança do trabalho', component: HomePage },
-      { title: 'Treinamentos', component: HomePage },
       { title: 'Settings', component: 'SettingsPage' }
     ];
+
+    this.categories = this.categoriesProvider.findAll();
+
 
   }
 
@@ -54,6 +58,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+    });
+  }
+
+  openCategory(id){
+    this.nav.push(LatestPage, {
+      id: id,
+      rootNavCtrl: this.nav
     });
   }
 

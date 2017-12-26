@@ -10,29 +10,43 @@ import { ArticlesProvider } from './../../providers/articles/';
 })
 export class LatestPage {
 
+  categoryId;
   articles: Array<Article>;
   rootNavCtrl: NavController;
 
   constructor(
-    private data: ArticlesProvider,
+    private articlesProvider: ArticlesProvider,
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
-    this.findAll();
+    this.categoryId = navParams.data.id;
+    this.listArticles();
   }
 
-  findAll() {
-    this.data.findAll().subscribe(
-      data => {
-        this.articles = data;
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  listArticles() {
+    if (this.categoryId){
+      this.articlesProvider.findByCategory(this.categoryId).subscribe(
+        data => {
+          this.articles = data;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    } else {
+      this.articlesProvider.findAll().subscribe(
+        data => {
+          this.articles = data;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
   }
-    pushDetailsPage(page: string, id: string) {
+  
+  pushDetailsPage(page: string, id: string) {
     this.rootNavCtrl.push(page, {
       id: id,
       rootNavCtrl: this.rootNavCtrl

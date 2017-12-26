@@ -11,6 +11,11 @@
         {{p.title}}
       </button>
     </ion-list>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let category of categories |async" (click)="openCategory(category.$key)">
+        #{{category.title}}
+      </button>
+    </ion-list>
   </ion-content>
 
 </ion-menu>
