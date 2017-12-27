@@ -16,7 +16,7 @@ import {
   FirebaseListObservable, 
 } from 'angularfire2/database';
 
-import firebase, { Unsubscribe } from 'firebase';
+import firebase from 'firebase';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 ///
 
