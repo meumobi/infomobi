@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../models/User.interface';
-
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthProvider {

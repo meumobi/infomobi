@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import * as firebase from 'firebase/app';
 import { 
   AngularFireDatabase, 
-  FirebaseListObservable, 
-  FirebaseObjectObservable 
+  FirebaseListObservable
 } from 'angularfire2/database';
 
 import { Category } from './../../models/category.interface';
@@ -16,15 +13,15 @@ export class CategoriesProvider {
 
   items$: FirebaseListObservable<Category[]>;
 
-  constructor(private af: AngularFireDatabase) {
-    this.items$ = af.list('/categories',{
+  constructor(private af: AngularFireDatabase) {}
+
+  findAll(): FirebaseListObservable<Category[]> {
+    this.items$ = this.af.list('/categories',{
       query: {
         orderByChild: 'title',
       }      
-    });
-  }
+    }) as FirebaseListObservable<Category[]>;
 
-  findAll(): FirebaseListObservable<Category[]> {
     return this.items$;
   }
 

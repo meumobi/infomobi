@@ -18,7 +18,7 @@ import { Moment } from 'moment';
 })
 export class ArticleDetailsPage {
   rootNavCtrl: NavController;
-  article: any;
+  article: Article;
   posts:Post[];
   date:Moment;
   id: string;
@@ -80,7 +80,7 @@ export class ArticleDetailsPage {
       .subscribe(data => {
         this.article = data;
         moment.locale('pt');
-        this.date = moment.unix(this.article.created.sec);
+        this.date = moment.unix(this.article.created['sec']);
       })
   }
 
