@@ -4,7 +4,6 @@ import { NavController } from 'ionic-angular';
 import { LivePage } from './../live/live';
 import { LatestPage } from './../latest/latest';
 import { ContactsPage } from './../contacts/contacts';
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

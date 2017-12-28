@@ -12,6 +12,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LivePage } from '../pages/live/live';
+import { LoginPage } from '../pages/login/login';
 import { LatestPage } from '../pages/latest/latest';
 import { ContactsPage } from '../pages/contacts/contacts';
 
@@ -26,6 +27,7 @@ import { ArticlesProvider } from '../providers/articles/';
 import { PostsProvider } from '../providers/posts/';
 import { MediaProvider } from '../providers/media/';
 import { CategoriesProvider } from '../providers/categories/';
+import { AuthProvider } from '../providers/auth/';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -37,6 +39,7 @@ export function createTranslateLoader(http: Http) {
     HomePage,
     ListPage,
     LivePage,
+    LoginPage,
     LatestPage,
     ContactsPage
   ],
@@ -63,7 +66,8 @@ export function createTranslateLoader(http: Http) {
     ListPage,
     LivePage,
     LatestPage,
-    ContactsPage
+    ContactsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -73,7 +77,8 @@ export function createTranslateLoader(http: Http) {
     ArticlesProvider,
     PostsProvider,
     MediaProvider,
-    CategoriesProvider
+    CategoriesProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

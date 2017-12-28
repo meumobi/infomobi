@@ -6,11 +6,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { LoginPage } from '../pages/login/login';
 import { LatestPage } from '../pages/latest/latest';
-/// some questions...
+
 import { CategoriesProvider } from '../providers/categories/';
 import { Category } from '../models/category.interface';
+import { User } from '../models/User.interface';
+
+
 import 'rxjs/add/operator/map';
 import { 
   FirebaseListObservable, 
@@ -18,15 +21,14 @@ import {
 
 import firebase from 'firebase';
 import { FIREBASE_CONFIG } from './app.firebase.config';
-///
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
-  rootPage: any = HomePage;
+  user: User;
+  rootPage: any;
   pages: Array<{title: string, component: any}>;
   categories: FirebaseListObservable<Category>;
 
@@ -44,6 +46,12 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage }
     ];
+
+    if (this.user) {
+      this.rootPage = HomePage;
+    } else {
+      this.rootPage = LoginPage;
+    }
 
     this.categories = this.categoriesProvider.findAll();
 
