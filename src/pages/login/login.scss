@@ -1,3 +1,92 @@
 page-login {
+	.logo {
+	    background-color: rgba(255, 255, 255, 0.8);
+	    img {
+	        max-width: 150px;
+	        margin: auto;
+	        padding: 20px 0;
+	    }
+	}
+
+	.background { 
+	  background: url('/assets/images/bg.jpg') no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+
+	.scroll-content {
+	    align-content: center;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    text-align: center;
+	}
+
+	#login-card {
+	    box-shadow: none;
+	    background: rgba(0, 0, 0, 0.5);
+	    border-radius: 5px;
+	    width: 85%;
+	    margin: auto;
+	    padding: 16px;
+	}
+
+	@media(min-width: 769px) {
+	    #login-card {
+	        width: 33%;
+	        margin: auto;
+	    }
+	}
+
+	a, p,
+	ion-card-header.card-header {
+	    color: #fff!important;
+	}
+
+	.list > .item-block:first-child {
+	    border: medium none;
+	}
+
+	.item {
+	    margin-bottom: 10px;
+	    background: rgba(255, 255, 255, 0.5);
+	    border: medium none;
+
+	    .text-input, {
+	        color: #fff;
+	    }
+
+	    
+	    input::-moz-placeholder{
+	        color: #fff!important;
+	    }
+	    input:-moz-placeholder {
+	        color: #fff!important;
+	    }
+	    *:-moz-placeholder{
+	        color: #fff!important;
+	    }
+	    *:-ms-input-placeholder{
+	        color: #fff!important;
+	    }
+	    *::-webkit-input-placeholder{
+	        color: #fff!important;
+	    }
+
+	}
+
+	.icon {
+	    padding-right: 10px;
+	}
+
+	.bottom {
+	    bottom: 0;
+	}
+
+	.input-cover {
+	position: static;
+	}
 
 }
