@@ -69,6 +69,11 @@ export class MyApp {
     });
   }
 
+ logout() {
+    this.nav.setRoot(LoginPage);
+    
+  }
+
   openCategory(id){
     this.nav.push(LatestPage, {
       id: id,
