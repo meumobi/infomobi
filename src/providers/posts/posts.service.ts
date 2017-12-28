@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import * as firebase from 'firebase/app';
 import { 
   AngularFireDatabase, 
-  FirebaseListObservable, 
-  FirebaseObjectObservable 
+  FirebaseListObservable
 } from 'angularfire2/database';
 
 import { Post } from './../../models/post.interface';
 
 @Injectable()
 export class PostsProvider {
+  
   items$: FirebaseListObservable<Post[]>;
-  constructor(private af: AngularFireDatabase) {    
+  
+  constructor(private af: AngularFireDatabase) {
+
   }
 
   findAll(): FirebaseListObservable<Post[]> {

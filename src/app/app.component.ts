@@ -19,9 +19,6 @@ import {
   FirebaseListObservable, 
 } from 'angularfire2/database';
 
-import firebase from 'firebase';
-import { FIREBASE_CONFIG } from './app.firebase.config';
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -39,9 +36,6 @@ export class MyApp {
     private translate: TranslateService,
     private categoriesProvider: CategoriesProvider,
   ) {
-    ///
-    //firebase.initializeApp(FIREBASE_CONFIG);
-    ///
     this.initializeApp();
     this.pages = [
       { title: 'Home', component: HomePage }

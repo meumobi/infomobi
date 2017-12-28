@@ -1,8 +1,6 @@
 import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { Medium } from './../../models/Medium.interface';
 import { MediaProvider } from './../../providers/media/';
-import { Post } from './../../models/post.interface';
 import { PostsProvider } from './../../providers/posts/';
 
 @IonicPage({
@@ -32,7 +30,7 @@ export class PostLivePage {
     this.published = ((this.articleId) ? false : true);
   }
 
-  detectFiles(event){
+  detectFiles(event) {
     let fileList: FileList = event.target.files;
     let reader = new FileReader();
     reader.onloadend= (e) => {
@@ -42,7 +40,7 @@ export class PostLivePage {
     reader.readAsDataURL(fileList.item(0));   
   }
 
-  removeFile(){
+  removeFile() {
     this.images.pop();
     this.files.pop();
   }

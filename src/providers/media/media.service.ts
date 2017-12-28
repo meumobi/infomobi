@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-//firebase
 import { guid } from '../../helpers/helpers';
 
 import * as firebase from 'firebase/app';
