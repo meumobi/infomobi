@@ -1,25 +1,27 @@
 <ion-header>
   
     <ion-navbar>
-      <ion-title>Settings</ion-title>
+      <ion-title>{{"Settings" | translate}}</ion-title>
     </ion-navbar>
   
   </ion-header>
   
   <ion-content>
   
-    <form [formGroup]="settingsFormGroup">
+    <form>
       <ion-list>
         <ion-item>
           <ion-label>{{ 'SETTINGS_NOTIFICATION' | translate }}</ion-label>
-          <ion-toggle formControlName="notification"></ion-toggle>
+          <ion-toggle></ion-toggle>
         </ion-item>
   
         <ion-item>
           <ion-label>{{ 'SETTINGS_LANGUAGE' | translate }}</ion-label>
-          <ion-select formControlName="language">
-            <ion-option value="en-us" checked="true">English</ion-option>
-            <ion-option value="pt-br">Portuguese</ion-option>
+          <ion-select [(ngModel)]="language" name="language" (ionChange)="selectLanguage($event)">
+            <ion-option value="en" [selected]="language == 'en'">English</ion-option>
+            <ion-option value="pt"[selected]="language == 'pt'">Portuguese</ion-option>
+            <ion-option value="en-us">English US</ion-option>
+            <ion-option value="pt-br">Portuguese BR</ion-option>
             <ion-option value="fr-fr">French</ion-option>
           </ion-select>
         </ion-item>

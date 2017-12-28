@@ -42,8 +42,7 @@ export class MyApp {
     ///
     this.initializeApp();
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Settings', component: 'SettingsPage' }
+      { title: 'Home', component: HomePage }
     ];
 
     this.categories = this.categoriesProvider.findAll();
@@ -52,7 +51,8 @@ export class MyApp {
   }
 
   initializeApp() {
-    this.translate.setDefaultLang('pt');
+    this.translate.setDefaultLang('en');
+    this.translate.use(this.translate.getBrowserLang());
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -68,6 +68,9 @@ export class MyApp {
     });
   }
 
+  openSettings() {
+    this.nav.push('SettingsPage');
+  }
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
