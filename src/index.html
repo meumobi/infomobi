@@ -14,13 +14,19 @@
   
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#656565">
+  <meta name="theme-color" content="#fec503">
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script>
     var OneSignal = window.OneSignal || [];
     OneSignal.push(function() {
+        //appId: "81e986f8-8b29-4855-b0d9-7fc1c0393352",
+
       OneSignal.init({
-        appId: "81e986f8-8b29-4855-b0d9-7fc1c0393352",
+        appId: "e83fce5e-ebc8-475b-b615-fa5f1e11a129",
+        autoRegister: false,
+        notifyButton: {
+          enable: true,
+        },
       });
     });
   </script>
@@ -32,7 +38,8 @@
   <!-- un-comment this code to enable service worker -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
+      navigator.serviceWorker.register('/OneSignalSDKWorker.js')
+      //navigator.serviceWorker.register('service-worker.js')
         .then(() => console.log('service worker installed'))
         .catch(err => console.error('Error', err));
     }
