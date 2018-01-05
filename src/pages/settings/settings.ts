@@ -2,7 +2,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-@IonicPage()
+@IonicPage({
+  defaultHistory: ['HomePage'],
+})
 @Component({
   selector: 'page-settings',
   templateUrl: 'settings.html',

@@ -10,7 +10,8 @@ import { Moment } from 'moment';
 
 @IonicPage({
   name: 'article-details',
-  segment: 'article/details/:id'
+  segment: 'article/details/:id',
+  defaultHistory: ['HomePage'],
 })
 @Component({
   selector: 'page-article-details',
@@ -29,10 +30,10 @@ export class ArticleDetailsPage {
     public navCtrl: NavController,
     public navParams: NavParams
   ) {      
-      this.rootNavCtrl = navParams.get('rootNavCtrl');
-      this.id = this.navParams.data.id;
-      this.findById(this.id);
-      this.fetchPosts(this.id);
+    this.rootNavCtrl = navParams.get('rootNavCtrl');
+    this.id = this.navParams.data.id;
+    this.findById(this.id);
+    this.fetchPosts(this.id);
   }
 
   ionViewDidLoad() {

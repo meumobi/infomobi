@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TranslateService } from '@ngx-translate/core';
 
-import { HomePage } from '../pages/home/home';
+//import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { LatestPage } from '../pages/latest/latest';
 
@@ -38,11 +38,11 @@ export class MyApp {
   ) {
     this.initializeApp();
     this.pages = [
-      { title: 'Home', component: HomePage }
+      { title: 'Home', component: 'HomePage' }
     ];
 
     if (this.user) {
-      this.rootPage = HomePage;
+      this.rootPage = 'HomePage';
     } else {
       this.rootPage = LoginPage;
     }
