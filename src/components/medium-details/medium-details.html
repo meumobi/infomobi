@@ -1,0 +1,15 @@
+<ion-item>
+
+  <ion-thumbnail item-start>
+    <img [src]="medium.thumbnails[0].url">
+  </ion-thumbnail>
+  <h2>{{medium.title}}</h2>
+  <p>
+    {{'Size' | translate}}:{{medium.length}}
+    <br/>
+    {{'Type' | translate}}:{{medium.type}}
+  </p>
+    <button ion-button item-end (click)="open(medium.url)" >
+      <ion-icon name="link"></ion-icon>
+    </button>
+</ion-item>

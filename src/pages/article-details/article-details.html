@@ -1,9 +1,8 @@
 <ion-header>
   <ion-navbar>
-  </ion-navbar>
-</ion-header>
-  
-<ion-content padding>
+  </ion-navbar>  
+</ion-header>  
+<ion-content padding *ngIf="article">
   <ion-fab bottom right>
     <button ion-fab mini (click)="addPost()"><ion-icon name="create"></ion-icon></button>
   </ion-fab>
@@ -14,6 +13,7 @@
     <p>{{date | amDateFormat:'LL'}}</p>
   </ion-item>
   <p [innerHtml]="article.description"></p>
+  <media-list [media]="article.medias"></media-list>
   <ion-list>
     <ion-item-sliding *ngFor="let post of posts">
       <ion-item >

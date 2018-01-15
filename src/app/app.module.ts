@@ -9,6 +9,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { MyApp } from './app.component';
+//import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LivePage } from '../pages/live/live';
 import { LoginPage } from '../pages/login/login';
@@ -33,6 +34,7 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
+    //HomePage,
     ListPage,
     LivePage,
     LoginPage,
