@@ -27,6 +27,8 @@ import { MediaProvider } from '../providers/media/';
 import { CategoriesProvider } from '../providers/categories/';
 import { AuthProvider } from '../providers/auth/';
 
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -46,7 +48,7 @@ export function createTranslateLoader(http: Http) {
     HttpModule,
     SharedModule,
     IonicModule.forRoot(MyApp),
-    
+    IonicImageViewerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

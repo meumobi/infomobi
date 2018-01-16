@@ -6,8 +6,13 @@
   <ion-fab bottom right>
     <button ion-fab mini (click)="addPost()"><ion-icon name="create"></ion-icon></button>
   </ion-fab>
-  <img [src]="article.thumbnails[3].url" />
   <h2>{{article.title}}</h2>
+  <ion-slides *ngIf="article.images" [pager]="true" paginationType="fraction">
+    <ion-slide *ngFor="let image of article.images" >
+      <img [src]="cdnUrl + image.data.path" imageViewer/>
+      <div class="img-title">{{image.data.title}}</div>
+    </ion-slide>
+  </ion-slides>  
   <ion-item>
     <h2>{{article.author}}</h2>
     <p>{{date | amDateFormat:'LL'}}</p>
