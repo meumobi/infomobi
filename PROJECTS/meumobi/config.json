@@ -1,0 +1,8 @@
+{
+  "name": "Meumobi Employee",
+  "id": "com.meumobi.employee",
+  "description": "Meumobi Comunicação Interna",
+  "PUSH": {
+    "appId": "3d4c3ead-d7a0-4ee0-aedb-6dd370f965df"
+  }
+}
