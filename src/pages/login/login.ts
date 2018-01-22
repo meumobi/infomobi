@@ -8,7 +8,6 @@ import {
   AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from './../../providers/auth/';
-import { HomePage } from './../home/home';
 
 import { EmailValidator } from '../../validators/email';
 
@@ -53,7 +52,7 @@ export class LoginPage {
       } else {
         this.authProvider.loginUser(this.user.value.email, this.user.value.password)
         .then( authProvider => {
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot('HomePage');
         }, error => {
           this.loading.dismiss().then( () => {
             let alert = this.alertCtrl.create({

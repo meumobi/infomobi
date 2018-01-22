@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title>Meumobi Employee</title>
+  <title>@@name</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
@@ -16,8 +16,33 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#fec503">
 
+  <!-- @if MODE='pwa' -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+
+        OneSignal.init({
+          appId: "@@appId",
+          autoRegister: false,
+          notifyButton: {
+            enable: true,
+          },
+        });
+      });
+    </script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/OneSignalSDKWorker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.error('Error', err));
+      }
+    </script>
+  <!-- @endif -->
+  <!-- @if MODE='native' -->
     <!-- cordova.js required for cordova/native apps -->
     <script src="cordova.js"></script>
+  <!-- @endif -->
 
   <link href="build/main.css" rel="stylesheet">
 
