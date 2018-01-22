@@ -9,7 +9,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { MyApp } from './app.component';
-//import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LivePage } from '../pages/live/live';
 import { LoginPage } from '../pages/login/login';
@@ -18,6 +18,7 @@ import { ContactsPage } from '../pages/contacts/contacts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { OneSignal } from '@ionic-native/onesignal';
 import { SharedModule } from '../shared/shared.module';
 
 import { ContactsProvider } from '../providers/contacts/';
@@ -36,7 +37,7 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    //HomePage,
+    // HomePage,
     ListPage,
     LivePage,
     LoginPage,
@@ -71,6 +72,7 @@ export function createTranslateLoader(http: Http) {
   providers: [
     StatusBar,
     SplashScreen,
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ContactsProvider,
     ArticlesProvider,
