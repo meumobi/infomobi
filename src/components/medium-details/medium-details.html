@@ -1,7 +1,6 @@
 <ion-item>
-
   <ion-thumbnail item-start>
-    <img [src]="medium.thumbnails[0].url">
+    <img *ngIf="medium.thumbnails" [src]="medium.thumbnails[0].url">
   </ion-thumbnail>
   <h2>{{medium.title}}</h2>
   <p>
@@ -9,7 +8,5 @@
     <br/>
     {{'Type' | translate}}:{{medium.type}}
   </p>
-    <button ion-button item-end (click)="open(medium.url)" >
-      <ion-icon name="link"></ion-icon>
-    </button>
+  <medium-controls [medium]="medium" item-end></medium-controls>
 </ion-item>

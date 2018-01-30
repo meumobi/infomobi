@@ -7,13 +7,15 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 import { MediaListComponent } from './../../components/media-list/media-list';
 import { MediumDetailsComponent } from './../../components/medium-details/medium-details';
+import { MediumControlsComponent } from './../../components/medium-controls/medium-controls';
 import { NgMathPipesModule } from 'angular-pipes';
 
 @NgModule({
   declarations: [
     ArticleDetailsPage,
     MediaListComponent,
-    MediumDetailsComponent
+    MediumDetailsComponent,
+    MediumControlsComponent
   ],
   imports: [
   	MomentModule,	

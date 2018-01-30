@@ -46,6 +46,7 @@ export class MyApp {
       this.rootPage = 'HomePage';
     } else {
       this.rootPage = LoginPage;
+      // this.rootPage = 'HomePage';
     }
 
     this.categories = this.categoriesProvider.findAll();

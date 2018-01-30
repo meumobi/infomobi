@@ -12,8 +12,4 @@ export class MediumDetailsComponent {
 
   }
 
-  open(url){
-  	window.open(url);
-  }
-
 }
