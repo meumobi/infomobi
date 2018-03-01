@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>@@name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="apple-touch-icon" href="assets/icons/ios/Icon-App-40x40@3x.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/ios/Icon-App-60x60@3x.png">  
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/ios/Icon-App-76x76@2x.png">  
+  <link rel="apple-touch-icon" sizes="167x167" href="assets/icons/ios/Icon-App-83.5x83.5@2x.png"> 
+  
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#fec503">
+
+  <!-- @if MODE='pwa' -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+
+        OneSignal.init({
+          appId: "@@appId",
+          autoRegister: false,
+          notifyButton: {
+            enable: true,
+          },
+        });
+      });
+    </script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/OneSignalSDKWorker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.error('Error', err));
+      }
+    </script>
+  <!-- @endif -->
+  <!-- @if MODE='native' -->
+    <!-- cordova.js required for cordova/native apps -->
+    <script src="cordova.js"></script>
+  <!-- @endif -->
+
+  <link href="build/main.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Ionic's root component and where the app will load -->
+  <ion-app></ion-app>
+
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
+
+  <!-- The vendor js is generated during the build process
+       It contains all of the dependencies in node_modules -->
+  <script src="build/vendor.js"></script>
+
+  <!-- The main bundle js is generated during the build process -->
+  <script src="build/main.js"></script>
+
+</body>
+</html>

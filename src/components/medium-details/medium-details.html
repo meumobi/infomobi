@@ -1,0 +1,12 @@
+<ion-item>
+  <ion-thumbnail item-start>
+    <img *ngIf="medium.thumbnails" [src]="medium.thumbnails[0].url">
+  </ion-thumbnail>
+  <h2>{{medium.title}}</h2>
+  <p>
+    {{'Size' | translate}}:{{medium.length}}
+    <br/>
+    {{'Type' | translate}}:{{medium.type}}
+  </p>
+  <medium-controls [medium]="medium" item-end></medium-controls>
+</ion-item>

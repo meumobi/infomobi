@@ -2,10 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { OneSignal } from '@ionic-native/onesignal';
 
 import { TranslateService } from '@ngx-translate/core';
 
-//import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { LatestPage } from '../pages/latest/latest';
 
@@ -35,6 +35,7 @@ export class MyApp {
     public splashScreen: SplashScreen, 
     private translate: TranslateService,
     private categoriesProvider: CategoriesProvider,
+    private oneSignal: OneSignal,
   ) {
     this.initializeApp();
     this.pages = [
@@ -45,6 +46,7 @@ export class MyApp {
       this.rootPage = 'HomePage';
     } else {
       this.rootPage = LoginPage;
+      // this.rootPage = 'HomePage';
     }
 
     this.categories = this.categoriesProvider.findAll();
@@ -60,7 +62,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.oneSignal.startInit("@@appId", '@@googleProjectNumber');
+  
+      this.oneSignal.endInit();
     });
+
   }
 
  logout() {

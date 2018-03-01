@@ -23,6 +23,7 @@ export class ArticleDetailsPage {
   posts:Post[];
   date:Moment;
   id: string;
+  cdnUrl: string = "https://ns325644.ip-37-187-106.eu/";
   constructor(
     private articlesProvider: ArticlesProvider,
     private postsProvider: PostsProvider,

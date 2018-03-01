@@ -1,19 +1,24 @@
 <ion-header>
   <ion-navbar>
-  </ion-navbar>
-</ion-header>
-  
-<ion-content padding>
+  </ion-navbar>  
+</ion-header>  
+<ion-content padding *ngIf="article">
   <ion-fab bottom right>
     <button ion-fab mini (click)="addPost()"><ion-icon name="create"></ion-icon></button>
   </ion-fab>
-  <img [src]="article.thumbnails[3].url" />
   <h2>{{article.title}}</h2>
+  <ion-slides *ngIf="article.images" [pager]="true" paginationType="fraction">
+    <ion-slide *ngFor="let image of article.images" >
+      <img [src]="cdnUrl + image.data.path" imageViewer/>
+      <div class="img-title">{{image.data.title}}</div>
+    </ion-slide>
+  </ion-slides>  
   <ion-item>
     <h2>{{article.author}}</h2>
     <p>{{date | amDateFormat:'LL'}}</p>
   </ion-item>
   <p [innerHtml]="article.description"></p>
+  <media-list [media]="article.medias"></media-list>
   <ion-list>
     <ion-item-sliding *ngFor="let post of posts">
       <ion-item >

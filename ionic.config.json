@@ -3,6 +3,11 @@
   "app_id": "9ff75c4c",
   "type": "ionic-angular",
   "integrations": {
-    "cordova": {}
+    "cordova": {
+      "enabled": false
+    },
+    "gulp": {
+      "enabled": false
+    }
   }
 }

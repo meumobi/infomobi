@@ -9,6 +9,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { MyApp } from './app.component';
+// import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LivePage } from '../pages/live/live';
 import { LoginPage } from '../pages/login/login';
@@ -17,6 +18,12 @@ import { ContactsPage } from '../pages/contacts/contacts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileOpener } from '@ionic-native/file-opener';
+import { File } from '@ionic-native/file';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
+import { OneSignal } from '@ionic-native/onesignal';
 import { SharedModule } from '../shared/shared.module';
 
 import { ContactsProvider } from '../providers/contacts/';
@@ -26,6 +33,11 @@ import { MediaProvider } from '../providers/media/';
 import { CategoriesProvider } from '../providers/categories/';
 import { AuthProvider } from '../providers/auth/';
 
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { IonicStorageModule } from '@ionic/storage';
+import { FilesProvider } from '../providers/files/';
+
+
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -33,6 +45,7 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
+    // HomePage,
     ListPage,
     LivePage,
     LoginPage,
@@ -44,7 +57,10 @@ export function createTranslateLoader(http: Http) {
     HttpModule,
     SharedModule,
     IonicModule.forRoot(MyApp),
-    
+    IonicStorageModule.forRoot({
+      name: 'storage_db',
+    }),
+    IonicImageViewerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -67,13 +83,20 @@ export function createTranslateLoader(http: Http) {
   providers: [
     StatusBar,
     SplashScreen,
+    FileTransfer,
+    FileTransferObject,
+    FileOpener,
+    InAppBrowser,
+    File,
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ContactsProvider,
     ArticlesProvider,
     PostsProvider,
     MediaProvider,
     CategoriesProvider,
-    AuthProvider
+    AuthProvider,
+    FilesProvider
   ]
 })
 export class AppModule {}
