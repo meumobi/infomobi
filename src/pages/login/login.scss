@@ -21,7 +21,8 @@ page-login {
 	    display: flex;
 	    flex-direction: column;
 	    justify-content: center;
-	    text-align: center;
+		text-align: center;
+		padding-bottom: 0 !important;
 	}
 
 	#login-card {
