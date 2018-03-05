@@ -2,7 +2,7 @@ export interface Post {
   _id?: string,
   author: any,
   description: string,
-  media?: any,
+  media?: string,
   published: boolean, 
   articleId?: string, 
   articleTitle?: string, 

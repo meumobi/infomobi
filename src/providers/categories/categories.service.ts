@@ -3,7 +3,7 @@ import 'rxjs/add/operator/map';
 
 import { 
   AngularFireDatabase, 
-  FirebaseListObservable
+  // FirebaseListObservable
 } from 'angularfire2/database';
 
 import { Category } from './../../models/category.interface';
@@ -11,18 +11,18 @@ import { Category } from './../../models/category.interface';
 @Injectable()
 export class CategoriesProvider {
 
-  items$: FirebaseListObservable<Category[]>;
+  // items$: FirebaseListObservable<Category[]>;
 
   constructor(private af: AngularFireDatabase) {}
 
-  findAll(): FirebaseListObservable<Category[]> {
-    this.items$ = this.af.list('/categories',{
-      query: {
-        orderByChild: 'title',
-      }      
-    }) as FirebaseListObservable<Category[]>;
+  // findAll(): FirebaseListObservable<Category[]> {
+  //   this.items$ = this.af.list('/categories',{
+  //     query: {
+  //       orderByChild: 'title',
+  //     }      
+  //   }) as FirebaseListObservable<Category[]>;
 
-    return this.items$;
-  }
+  //   return this.items$;
+  // }
 
 }

@@ -41,7 +41,7 @@ export class ArticleDetailsPage {
     console.log('ionViewDidLoad ArticleDetailsPage');
   }
 
-  fetchPosts(id){
+  fetchPosts(id) {
     this.postsProvider.findByArticle(id).subscribe(
       data => {
         this.posts = data;
@@ -52,7 +52,7 @@ export class ArticleDetailsPage {
     );
   }
 
-  removePost(id){
+  removePost(id) {
     this.postsProvider.remove(id).then(
       data => {
         this.presentToast('Comment Removed!');
@@ -60,7 +60,7 @@ export class ArticleDetailsPage {
     );
   }
 
-  promotePost(id){
+  promotePost(id) {
     this.postsProvider.promote(id).then(
       data => {
         this.presentToast('Comment Promoted!');
@@ -81,8 +81,8 @@ export class ArticleDetailsPage {
     this.articlesProvider.findById(id)
       .subscribe(data => {
         this.article = data;
-        moment.locale('pt');
-        this.date = moment.unix(this.article.created['sec']);
+        // moment.locale('pt');
+        // this.date = moment.unix(this.article.created['sec']);
       })
   }
 

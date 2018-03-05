@@ -16,7 +16,7 @@
       <h2>{{post.author.displayName}}</h2>
       <p [innerHtml]="post.description"></p>
       <h3 *ngIf="post.articleTitle"><a (click)="viewArticle(post.articleId)" href="#">{{post.articleTitle}}</a></h3>
-      <img *ngFor="let medium of post.media"[src]="medium.url"/>
+      <img *ngIf="post.media"[src]="post.media"/>
     </div>
   </ion-list>
 </ion-content>

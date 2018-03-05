@@ -16,7 +16,7 @@ import { User } from '../models/User.interface';
 
 import 'rxjs/add/operator/map';
 import { 
-  FirebaseListObservable, 
+  //FirebaseListObservable, 
 } from 'angularfire2/database';
 
 @Component({
@@ -27,7 +27,7 @@ export class MyApp {
   user: User;
   rootPage: any;
   pages: Array<{title: string, component: any}>;
-  categories: FirebaseListObservable<Category>;
+  //categories: FirebaseListObservable<Category>;
 
   constructor(
     public platform: Platform, 
@@ -49,7 +49,7 @@ export class MyApp {
       // this.rootPage = 'HomePage';
     }
 
-    this.categories = this.categoriesProvider.findAll();
+    //this.categories = this.categoriesProvider.findAll();
 
 
   }

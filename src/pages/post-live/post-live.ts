@@ -27,7 +27,7 @@ export class PostLivePage {
   ) {  	
     this.articleId = ((this.navParams.data.articleId) ? this.navParams.data.articleId : null);
     this.articleTitle = ((this.articleId) ? this.navParams.data.articleTitle : null);    
-    this.published = ((this.articleId) ? false : true);
+    this.published = ((this.articleId) ? false : true);    
   }
 
   detectFiles(event) {
@@ -45,7 +45,7 @@ export class PostLivePage {
     this.files.pop();
   }
 
-  onSubmit() {    
+  onSubmit() {  
     if (this.images.length > 0){
       let loader = this.loadingCtrl.create({});
       loader.present(); 
@@ -65,12 +65,13 @@ export class PostLivePage {
               picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
             },
             description: this.description,
-            media: [medium]
+            media: medium.url
           });
           this.navCtrl.pop();                  
         }
       );
     } else {
+      
       this.posts.create({
         published : this.published,
         articleId: this.articleId, 

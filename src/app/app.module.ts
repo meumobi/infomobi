@@ -12,8 +12,6 @@ import { MyApp } from './app.component';
 // import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LivePage } from '../pages/live/live';
-import { LoginPage } from '../pages/login/login';
-import { LatestPage } from '../pages/latest/latest';
 import { ContactsPage } from '../pages/contacts/contacts';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -36,6 +34,9 @@ import { AuthProvider } from '../providers/auth/';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { IonicStorageModule } from '@ionic/storage';
 import { FilesProvider } from '../providers/files/';
+import { LoginPageModule } from '../pages/login/login.module';
+import { LatestPageModule } from '../pages/latest/latest.module';
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 export function createTranslateLoader(http: Http) {
@@ -48,14 +49,16 @@ export function createTranslateLoader(http: Http) {
     // HomePage,
     ListPage,
     LivePage,
-    LoginPage,
-    LatestPage,
     ContactsPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     SharedModule,
+    LoginPageModule,
+    LatestPageModule,
+    AngularFireModule,
+    AngularFirestoreModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
       name: 'storage_db',
@@ -76,9 +79,7 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     ListPage,
     LivePage,
-    LatestPage,
     ContactsPage,
-    LoginPage
   ],
   providers: [
     StatusBar,

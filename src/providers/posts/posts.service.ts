@@ -1,78 +1,62 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 import * as firebase from 'firebase/app';
-import { 
-  AngularFireDatabase, 
-  FirebaseListObservable
-} from 'angularfire2/database';
+
 
 import { Post } from './../../models/post.interface';
 
 @Injectable()
 export class PostsProvider {
   
-  items$: FirebaseListObservable<Post[]>;
+ private itemsCollection: AngularFirestoreCollection<Post>;
+  items: Observable<Post[]>;
   
-  constructor(private af: AngularFireDatabase) {
+  constructor(private af: AngularFirestore) {
 
   }
 
-  findAll(): FirebaseListObservable<Post[]> {
-    this.items$ = this.af.list('/posts', {
-      query: {
-        limitToLast: 20,
-        orderByChild: 'published',
-        equalTo: true,
-      }      
-    }).map(
-      items => items.sort( function(a,b) {
-        if (a.priority > b.priority) {
-          return 1;
-        }
-        if (a.priority < b.priority) {
-          return -1;
-        }
-        return 0;   
-      })
-    ) as FirebaseListObservable<Post[]>;
-    return this.items$;
+  findAll(): Observable<Post[]> {
+    this.itemsCollection = this.af.collection<Post>('posts',
+      ref => ref.where('published', '==', true).orderBy('priority')
+    );
+    this.items = this.itemsCollection.valueChanges();
+    return this.items;
   }
 
   promote(id: string) {
-    return this.items$.update(id,{
+    return this.itemsCollection.doc(id).update({
       published:true
     });
   }
 
-  remove(id: string) {
-    return this.items$.remove(id);
+  remove(id) {
+    return this.itemsCollection.doc(id).delete();
   }
 
-  findByArticle(id): FirebaseListObservable<Post[]> {
-    this.items$ = this.af.list('/posts', {
-      query: {
-        orderByChild: 'articleId',
-        equalTo: id,
-      }      
-    }).map(
-      items => items.sort( function(a,b) {
-        if (a.priority > b.priority) {
-          return 1;
-        }
-        if (a.priority < b.priority) {
-          return -1;
-        }
-        return 0;   
-      })
-    ) as FirebaseListObservable<Post[]>;
-    return this.items$;    
+  findByArticle(id): Observable<Post[]> {
+    this.itemsCollection = this.af.collection<Post>('posts', 
+      ref => ref.where('articleId', '==', id)
+    );
+    this.items = this.itemsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Post;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.items; 
+
   }
 
   create(post: Post) {
     post.createdAt = firebase.database.ServerValue.TIMESTAMP;
-    post.priority = 0 - Date.now();    
-    return this.items$.push(post);
+    post.priority = 0 - Date.now();  
+    console.log("aaa"); 
+    console.log(post); 
+    return this.itemsCollection.add(post);
   }
 
 }

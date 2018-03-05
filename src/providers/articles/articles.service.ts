@@ -1,62 +1,49 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
-import { 
-  AngularFireDatabase, 
-  FirebaseListObservable, 
-  FirebaseObjectObservable 
-} from 'angularfire2/database';
 
 import { Article } from './../../models/article.interface';
 
 @Injectable()
 export class ArticlesProvider {
 
-  items$: FirebaseListObservable<Article[]>;
+  itemsCollection: AngularFirestoreCollection<Article>;
+  items: Observable<Article[]>;
 
-  constructor(private af: AngularFireDatabase) {    
+  constructor(private af: AngularFirestore) {  
+    this.itemsCollection = this.af.collection<Article>('articles');      
   }
 
-
-  findAll(): FirebaseListObservable<Article[]> {
-    this.items$ = this.af
-      .list('/articles')
-      .map(items => items.sort( function(a,b) {
-        if (a.order < b.order) {
-          return 1;
-        }
-        if (a.order > b.order) {
-          return -1;
-        }
-        return 0;   
-      })
-    ) as FirebaseListObservable<Article[]>;
-    return this.items$;
+  findAll(): Observable<Article[]> {
+    this.itemsCollection = this.af.collection<Article>('articles');
+    this.items = this.itemsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Article;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.items;
   }
 
-  findByCategory(id):FirebaseListObservable<Article[]> {
-    this.items$ = this.af
-        .list('/articles',{
-          query: {
-            orderByChild: 'parent_id',
-            equalTo: +id,
-          }           
-        })
-        .map(items => items.sort( function(a,b) {
-          if (a.order < b.order) {
-            return 1;
-          }
-          if (a.order > b.order) {
-            return -1;
-          }
-          return 0;   
-        })
-      ) as FirebaseListObservable<Article[]>;
-      return this.items$;
+  findByCategory(id):Observable<Article[]> {
+    this.itemsCollection = this.af.collection<Article>('articles');
+    this.items = this.itemsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Article;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.items;
   }
 
-  findById(id: string): FirebaseObjectObservable<Article> {
-  	return this.af.object(`articles/${id}`);
+  findById(id: string): Observable<Article> {
+    var itemDoc = this.af.doc<Article>(`articles/${id}`);
+    console.log(itemDoc);
+    return itemDoc.valueChanges();
   }
 
 }

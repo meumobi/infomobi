@@ -15,7 +15,7 @@
   </ion-slides>  
   <ion-item>
     <h2>{{article.author}}</h2>
-    <p>{{date | amDateFormat:'LL'}}</p>
+    <p>{{article.created | amDateFormat:'LL'}}</p>
   </ion-item>
   <p [innerHtml]="article.description"></p>
   <media-list [media]="article.medias"></media-list>
@@ -33,19 +33,19 @@
         
         <h2>{{post.author.displayName}}</h2>
         <p [innerHtml]="post.description"></p>
-        <ion-thumbnail *ngFor="let medium of post.media" item-end>
+        <ion-thumbnail *ngIf="post.media" item-end>
             <div class="img-wrap">
-              <img class="image-fit" [src]="medium.url"/>           
+              <img class="image-fit" [src]="post.media"/>           
             </div>
         </ion-thumbnail>        
       </ion-item>
-      <ion-item-options side="right" (click)="promotePost(post.$key)">
+      <ion-item-options side="right" (click)="promotePost(post.id)">
         <button ion-button>
           <ion-icon name="checkmark"></ion-icon>
           Promote
         </button>
       </ion-item-options>
-      <ion-item-options side="left" (click)="removePost(post.$key)">
+      <ion-item-options side="left" (click)="removePost(post.id)">
         <button ion-button>
           <ion-icon name="trash"></ion-icon>
           Remove

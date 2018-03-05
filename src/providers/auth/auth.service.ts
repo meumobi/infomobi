@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthProvider {
@@ -8,19 +7,19 @@ export class AuthProvider {
     console.log('Hello AuthProvider Provider');
   }
 
-  signupUser(newEmail: string, newPassword: string): firebase.Promise<any> {
+  signupUser(newEmail: string, newPassword: string): Promise<any> {
     return Promise.resolve();
   }
 
-  loginUser(newEmail: string, newPassword: string): firebase.Promise<any> {
+  loginUser(newEmail: string, newPassword: string): Promise<any> {
     return Promise.resolve();
   }
 
-  resetPassword(email: string): firebase.Promise<any> {
+  resetPassword(email: string): Promise<any> {
     return Promise.resolve();
   }
 
-  logoutUser(): firebase.Promise<any> {
+  logoutUser(): Promise<any> {
     return Promise.resolve();
   }
 
