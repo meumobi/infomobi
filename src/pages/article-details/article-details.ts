@@ -68,6 +68,14 @@ export class ArticleDetailsPage {
     );
   }
 
+  demotePost(id) {
+    this.postsProvider.demote(id).then(
+      data => {
+        this.presentToast('Comment Demoted!');
+      }
+    );
+  }
+
   addPost() {
     this.rootNavCtrl.push(
       'post-live', {

@@ -32,6 +32,12 @@ export class PostsProvider {
     });
   }
 
+  demote(id: string) {
+    return this.itemsCollection.doc(id).update({
+      published:false
+    });
+  }
+
   remove(id) {
     return this.itemsCollection.doc(id).delete();
   }

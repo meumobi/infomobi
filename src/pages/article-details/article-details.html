@@ -39,16 +39,22 @@
             </div>
         </ion-thumbnail>        
       </ion-item>
-      <ion-item-options side="right" (click)="promotePost(post.id)">
+      <ion-item-options *ngIf="!post.published" side="right" (click)="promotePost(post.id)">
         <button ion-button>
           <ion-icon name="checkmark"></ion-icon>
-          Promote
+          {{'Promote' | translate }}
+        </button>
+      </ion-item-options>
+      <ion-item-options *ngIf="post.published" side="right" (click)="demotePost(post.id)">
+        <button ion-button>
+          <ion-icon name="close"></ion-icon>
+          {{'Demote' | translate }}
         </button>
       </ion-item-options>
       <ion-item-options side="left" (click)="removePost(post.id)">
         <button ion-button>
           <ion-icon name="trash"></ion-icon>
-          Remove
+          {{'Remove' | translate }}
         </button>
       </ion-item-options>
     </ion-item-sliding>
