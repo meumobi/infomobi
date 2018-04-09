@@ -30,6 +30,8 @@ import { PostsProvider } from '../providers/posts/';
 import { MediaProvider } from '../providers/media/';
 import { CategoriesProvider } from '../providers/categories/';
 import { AuthProvider } from '../providers/auth/';
+import { AnalyticsProvider } from '../providers/analytics/';
+
 
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { IonicStorageModule } from '@ionic/storage';
@@ -37,6 +39,7 @@ import { FilesProvider } from '../providers/files/';
 import { LoginPageModule } from '../pages/login/login.module';
 import { LatestPageModule } from '../pages/latest/latest.module';
 import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 
 export function createTranslateLoader(http: Http) {
@@ -97,7 +100,9 @@ export function createTranslateLoader(http: Http) {
     MediaProvider,
     CategoriesProvider,
     AuthProvider,
-    FilesProvider
+    FilesProvider,
+    AnalyticsProvider,
+    GoogleAnalytics
   ]
 })
 export class AppModule {}

@@ -10,9 +10,9 @@ import { LoginPage } from '../pages/login/login';
 import { LatestPage } from '../pages/latest/latest';
 
 import { CategoriesProvider } from '../providers/categories/';
+import { AnalyticsProvider } from '../providers/analytics/';
 import { Category } from '../models/category.interface';
 import { User } from '../models/User.interface';
-
 
 import 'rxjs/add/operator/map';
 import { 
@@ -36,6 +36,7 @@ export class MyApp {
     private translate: TranslateService,
     private categoriesProvider: CategoriesProvider,
     private oneSignal: OneSignal,
+    public analyticsProvider: AnalyticsProvider
   ) {
     this.initializeApp();
     this.pages = [
@@ -58,20 +59,25 @@ export class MyApp {
     this.translate.setDefaultLang('en');
     this.translate.use(this.translate.getBrowserLang());
     this.platform.ready().then(() => {
+      console.log(this.platform.platforms());
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.oneSignal.startInit("@@appId", '@@googleProjectNumber');
-  
       this.oneSignal.endInit();
+      this.analyticsProvider.startTrackerWithId('UA-117079338-1');  
+      this.nav.viewDidEnter.subscribe(
+        (view) => {
+          this.analyticsProvider.trackView(view.instance.constructor.name);
+        }
+      );
     });
 
   }
 
  logout() {
-    this.nav.setRoot(LoginPage);
-    
+    this.nav.setRoot(LoginPage);    
   }
 
   openCategory(id){

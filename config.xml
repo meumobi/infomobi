@@ -107,4 +107,5 @@
     <plugin name="cordova-plugin-file-opener2" spec="^2.0.19" />
     <plugin name="onesignal-cordova-plugin" spec="~2.0.11" />
     <plugin name="cordova-plugin-file" spec="4.3.1" />
+    <plugin name="cordova-plugin-google-analytics" spec="^1.8.3" />
 </widget>
