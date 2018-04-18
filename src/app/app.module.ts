@@ -39,7 +39,6 @@ import { FilesProvider } from '../providers/files/';
 import { LoginPageModule } from '../pages/login/login.module';
 import { LatestPageModule } from '../pages/latest/latest.module';
 import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 
 export function createTranslateLoader(http: Http) {
@@ -101,8 +100,7 @@ export function createTranslateLoader(http: Http) {
     CategoriesProvider,
     AuthProvider,
     FilesProvider,
-    AnalyticsProvider,
-    GoogleAnalytics
+    AnalyticsProvider
   ]
 })
 export class AppModule {}

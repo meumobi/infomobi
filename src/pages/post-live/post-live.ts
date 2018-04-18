@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { MediaProvider } from './../../providers/media/';
 import { PostsProvider } from './../../providers/posts/';
+import { AnalyticsProvider } from '../../providers/analytics';
 
 @IonicPage({
 	name: 'post-live'
@@ -23,7 +24,8 @@ export class PostLivePage {
     private posts: PostsProvider,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public analytics: AnalyticsProvider,
   ) {  	
     this.articleId = ((this.navParams.data.articleId) ? this.navParams.data.articleId : null);
     this.articleTitle = ((this.articleId) ? this.navParams.data.articleTitle : null);    
@@ -46,6 +48,7 @@ export class PostLivePage {
   }
 
   onSubmit() {  
+    this.analytics.trackEvent('Live', 'Create Post', this.articleTitle);
     if (this.images.length > 0){
       let loader = this.loadingCtrl.create({});
       loader.present(); 
