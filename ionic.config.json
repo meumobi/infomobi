@@ -1,0 +1,8 @@
+{
+  "name": "meu-starter.ionic-v3",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "pro_id": "920555f6"
+}
