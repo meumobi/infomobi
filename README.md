@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A starter template for PWA and Native Ionic v3 projects. The aim of this starter is to provide best pratices out-of-box.
+A starter template for PWA and Native Ionic v3 projects, providing best pratices out-of-box: unit testing, environment variables, automatic documentation, automatic deployment, shared module, etc.
 
 ### Technical features
 
@@ -13,48 +13,53 @@ A starter template for PWA and Native Ionic v3 projects. The aim of this starter
     - load images only when they appear in the browser’s viewport
     - Use thumbs
 - Firebase hosting for PWA
+- Theming App
+  - [meumobi: Theming your Ionic App](http://meumobi.github.io/ionic/2017/08/17/theming-ionic-app.html)
+- Shared module
+  - [meumobi: Creating a shared module for Ionic App](http://meumobi.github.io/ionic/2017/08/23/creating-shared-module-ionic.html)
 - Master/Detail pattern
-  - [Implementing the Master-Detail Pattern in Ionic](http://meumobi.github.io/ionic/2017/08/23/implementing-master-detail-ionic.html)
+  - [meumobi: Implementing the Master-Detail Pattern in Ionic](http://meumobi.github.io/ionic/2017/08/23/implementing-master-detail-ionic.html)
 - Multi-language
   - [ngx-translate]()
 - OneSignal integration
   - Email messages
-    - [Sending Email Messages](https://documentation.onesignal.com/docs/email-quickstart)
+    - [OneSignal:Sending Email Messages](https://documentation.onesignal.com/docs/email-quickstart)
   - Push notification
-    - [Ionic SDK Setup](https://documentation.onesignal.com/docs/ionic-sdk-setup)
-    - [Web Push: Typical setup](https://documentation.onesignal.com/docs/web-push-typical-setup)
+    - [OneSignal: Ionic SDK Setup](https://documentation.onesignal.com/docs/ionic-sdk-setup)
+    - [OneSignal: Web Push: Typical setup](https://documentation.onesignal.com/docs/web-push-typical-setup)
   - User targeting by tags filtering
-    - [Using Data Tags](https://documentation.onesignal.com/docs/data-tags)
+    - [OneSignal: Using Data Tags](https://documentation.onesignal.com/docs/data-tags)
 - Restricted access
-  - [Ionic Auth Guards](https://devdactic.com/ionic-auth-guards/)
+  - [Devdactic: Ionic Auth Guards](https://devdactic.com/ionic-auth-guards/)
 - Forms and validations
   - [Angular 5 Forms and Validations](https://medium.com/learn-angular/angular-5-forms-and-validations-343a585ecf50)
 - Animations
   - [Angular.io: Animations](https://angular.io/guide/animations)
-  - [How to Add Ionic Animations Using Angular (2 Different Ways!)](https://devdactic.com/animations-ionic-app/)
+  - [Devdactic: How to Add Ionic Animations Using Angular (2 Different Ways!)](https://devdactic.com/animations-ionic-app/)
 - REST API integration
-  - [10 Minutes with Ionic 2: Calling an API](https://blog.ionicframework.com/10-minutes-with-ionic-2-calling-an-api/)
+  - [Ionic blog: 10 Minutes with Ionic 2: Calling an API](https://blog.ionicframework.com/10-minutes-with-ionic-2-calling-an-api/)
 - CRUD with Firestore
-  - [Building a CRUD Ionic application with Firestore](https://javebratt.com/crud-ionic-firestore/)
+  - [Jave Bratt: Building a CRUD Ionic application with Firestore](https://javebratt.com/crud-ionic-firestore/)
 - Environment specific variable support
+  - [meumobi: Managing environment variables in Ionic](http://meumobi.github.io/ionic/2017/08/09/managing-environment-ionic.html)
 - Unit testing and end-to-end (e2e)
   - Setup app for [unit testing and end-to-end (e2e) testing](https://blog.ionicframework.com/basic-unit-testing-in-ionic/)
-  - [Testing your Ionic 3 App](https://robferguson.org/blog/2017/11/28/testing-your-ionic-3-app/)
-  - [Setting Up Unit and E2E Tests in Ionic](https://www.youtube.com/watch?v=8ApX7EhkBDs)
+  - [Rob Ferguson: Testing your Ionic 3 App](https://robferguson.org/blog/2017/11/28/testing-your-ionic-3-app/)
+  - [josh Morony: Setting Up Unit and E2E Tests in Ionic](https://www.youtube.com/watch?v=8ApX7EhkBDs)
 - Simple Logging Service
-- Documentation generation using Compodoc
+- Documentation generation using [Compodoc](https://compodoc.github.io/website/)
 - Deep-linking
-  - [Ionic and Lazy Loading Pt 1](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-1/)
-  - [Ionic and Lazy Loading Pt 2](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-2/)
+  - [Ionic blog: Ionic and Lazy Loading Pt 1](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-1/)
+  - [Ionic blog: Ionic and Lazy Loading Pt 2](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-2/)
 - Google Analytics integration
-  - [How to use Google Analytics on Ionic PWA and Native app without plugin](http://meumobi.github.io/ionic/pwa/2018/04/12/using-analytics-ionic-app-pwa-native.html)
+  - [meumobi: How to use Google Analytics on Ionic PWA and Native app without plugin](http://meumobi.github.io/ionic/pwa/2018/04/12/using-analytics-ionic-app-pwa-native.html)
 
 ### Functional features
 
 - Responsive Grid Layout
-  - [Customizing Ionic Apps for Web & Mobile](https://blog.ionicframework.com/customizing-ionic-apps-for-web-mobile/)
-  - [Tips & Tricks for Ionic on Desktop](https://blog.ionicframework.com/tips-tricks-for-ionic-on-desktop/)
-  - [Image Gallery With Zoom](https://devdactic.com/ionic-image-gallery-zoom/)
+  - [Ionic blog: Customizing Ionic Apps for Web & Mobile](https://blog.ionicframework.com/customizing-ionic-apps-for-web-mobile/)
+  - [Ionic blog: Tips & Tricks for Ionic on Desktop](https://blog.ionicframework.com/tips-tricks-for-ionic-on-desktop/)
+  - [Devdactic: Image Gallery With Zoom](https://devdactic.com/ionic-image-gallery-zoom/)
 - PWA
   - Show toast when new version available
   - Add to homescreen
@@ -62,6 +67,8 @@ A starter template for PWA and Native Ionic v3 projects. The aim of this starter
 - Google Analytics integration
 - UX/UI
   - Pull to refresh
+  - Skeleton screens
+    - [Ionic blog: Improved Perceived Performance with Skeleton Screens](https://blog.ionicframework.com/improved-perceived-performance-with-skeleton-screens/)
 - Settings page
   - Select language
   - Toggle push notification
