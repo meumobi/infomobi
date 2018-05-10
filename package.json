@@ -9,7 +9,9 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "docs:build": "./node_modules/.bin/compodoc -d ./docs/ -p ./tsconfig.json",
+    "docs:serve": "./node_modules/.bin/compodoc -s -d ./docs"
   },
   "config": {
     "ionic_webpack": "./config/webpack.config.js"
@@ -36,6 +38,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.2",
     "@ionic/app-scripts": "3.1.9",
     "typescript": "~2.6.2"
   },

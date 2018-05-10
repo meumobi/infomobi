@@ -7,7 +7,7 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
 ## Worflow & Build Management
 
 - [x] [Aliases and environment variables support](#aliases-and-environment-variables-support)
-- [] Documentation generation using [Compodoc](https://compodoc.github.io/website/)
+- [x] [Documentation generation using Compodoc](#documentation-generation-using-compodoc)
 - [] Continuous integration
   - [Continuous Deployment & Live Updates with Ionic Deploy](https://www.youtube.com/watch?v=I7PC3O4q1ug)
   - [Ionic project: Continuous Integration with Travis for gh-pages](https://medium.com/@hamidihamza/ionic-project-continuous-integration-with-travis-for-gh-pages-3275edaac6a0)
@@ -143,7 +143,51 @@ Compodoc](https://compodoc.github.io/compodoc/)
   - [] Deploy live updates w/ Ionic Pro
 
 # Worflow & Build Management
-[Managing Aliases and environment variables in Ionic v3... preparing Ionic v4](http://meumobi.github.io/ionic/2018/05/10/managing-aliases-environment-variables-ionc.html)
+## Aliases and environment variables support
+- [Managing Aliases and environment variables in Ionic v3... preparing Ionic v4](http://meumobi.github.io/ionic/2018/05/10/managing-aliases-environment-variables-ionc.html)
+
+## Documentation generation using Compodoc
+- [Compodoc: Getting Started](https://compodoc.github.io/website/guides/installation.html)
+
+### Local installation
+```
+npm install --save-dev @compodoc/compodoc
+```
+
+### Build and serve docs
+Define script tasks for it in your package.json :
+```
+"scripts": {
+  "docs:build": "./node_modules/.bin/compodoc -d ./docs/ -p ./tsconfig.json",
+  "docs:serve": "./node_modules/.bin/compodoc -s -d ./docs"
+}
+```
+
+and run it like a normal npm script, to generate documentation :
+
+```
+$ npm run docs:build
+```
+
+To serve the generated documentation:
+
+```
+$ npm run docs:serve
+```
+
+Open your browser and navigate to: `http://localhost:8080`
+
+You can exclude files from the generated documentation by using 'exclude' in tsconfig.json:
+
+```
+  "exclude": [
+    "./node_modules",
+    "./temp/**/*.ts",
+    "./src/environments/*.ts",
+    "./src/services/**/*.ts",
+    "**/*.spec.ts"
+  ]
+```
 
 # Inspiration
 
