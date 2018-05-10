@@ -4,15 +4,33 @@
 
 A starter template for PWA and Native Ionic v3 projects, providing best pratices out-of-box: unit testing, environment variables, automatic documentation, automatic deployment, shared module, etc.
 
-### Technical features
+## Worflow & Build Management
+
+- [x] [Aliases and environment variables support](#aliases-and-environment-variables-support)
+- [] Documentation generation using [Compodoc](https://compodoc.github.io/website/)
+- [] Continuous integration
+  - [Continuous Deployment & Live Updates with Ionic Deploy](https://www.youtube.com/watch?v=I7PC3O4q1ug)
+  - [Ionic project: Continuous Integration with Travis for gh-pages](https://medium.com/@hamidihamza/ionic-project-continuous-integration-with-travis-for-gh-pages-3275edaac6a0)
+  - [continuous integration | angular cli + firebase + travis ci](https://houssein.me/continuous-integration-angular-firebase-travisci)
+  - [Continuous everything with Angular, Travis CI, Firebase and Greenkeeper](https://medium.com/@jamzi/continuous-everything-with-angular-travis-ci-firebase-and-greenkeeper-6656543bd826)
+  - [Continuous Deployment for Ionic 2 to Firebase Hosting](https://guillaumeroy.xyz/2017/02/23/continous-deployment-ionic2-firebase-hosting/)
+- [] Unit testing and end-to-end (e2e)
+  - Setup app for [unit testing and end-to-end (e2e) testing](https://blog.ionicframework.com/basic-unit-testing-in-ionic/)
+  - [Rob Ferguson: Testing your Ionic 3 App](https://robferguson.org/blog/2017/11/28/testing-your-ionic-3-app/)
+  - [josh Morony: Setting Up Unit and E2E Tests in Ionic](https://www.youtube.com/watch?v=8ApX7EhkBDs)
+
+
+## Technical features
 
 - Ionic 3 / Angular 5
+- Firebase hosting for PWA
+- Custom SplashScreen and Icon
+  - [Custom Ionic Splash + Animation](https://www.youtube.com/watch?v=dPUmskG_-y0)
 - Optimize image handling
   - Cache images for offline use
   - Lazy load images
     - load images only when they appear in the browser’s viewport
     - Use thumbs
-- Firebase hosting for PWA
 - Theming App
   - [meumobi: Theming your Ionic App](http://meumobi.github.io/ionic/2017/08/17/theming-ionic-app.html)
 - Shared module
@@ -40,21 +58,14 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
   - [Ionic blog: 10 Minutes with Ionic 2: Calling an API](https://blog.ionicframework.com/10-minutes-with-ionic-2-calling-an-api/)
 - CRUD with Firestore
   - [Jave Bratt: Building a CRUD Ionic application with Firestore](https://javebratt.com/crud-ionic-firestore/)
-- Environment specific variable support
-  - [meumobi: Managing environment variables in Ionic](http://meumobi.github.io/ionic/2017/08/09/managing-environment-ionic.html)
-- Unit testing and end-to-end (e2e)
-  - Setup app for [unit testing and end-to-end (e2e) testing](https://blog.ionicframework.com/basic-unit-testing-in-ionic/)
-  - [Rob Ferguson: Testing your Ionic 3 App](https://robferguson.org/blog/2017/11/28/testing-your-ionic-3-app/)
-  - [josh Morony: Setting Up Unit and E2E Tests in Ionic](https://www.youtube.com/watch?v=8ApX7EhkBDs)
 - Simple Logging Service
-- Documentation generation using [Compodoc](https://compodoc.github.io/website/)
 - Deep-linking
   - [Ionic blog: Ionic and Lazy Loading Pt 1](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-1/)
   - [Ionic blog: Ionic and Lazy Loading Pt 2](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-2/)
 - Google Analytics integration
   - [meumobi: How to use Google Analytics on Ionic PWA and Native app without plugin](http://meumobi.github.io/ionic/pwa/2018/04/12/using-analytics-ionic-app-pwa-native.html)
 
-### Functional features
+## Functional features
 
 - Responsive Grid Layout
   - [Ionic blog: Customizing Ionic Apps for Web & Mobile](https://blog.ionicframework.com/customizing-ionic-apps-for-web-mobile/)
@@ -130,3 +141,11 @@ Compodoc](https://compodoc.github.io/compodoc/)
   - [] Submit app infobox to Google Play
   - [] Submit app infobox to Apple store
   - [] Deploy live updates w/ Ionic Pro
+
+# Worflow & Build Management
+[Managing Aliases and environment variables in Ionic v3... preparing Ionic v4](http://meumobi.github.io/ionic/2018/05/10/managing-aliases-environment-variables-ionc.html)
+
+# Inspiration
+
+- [RomainFallet/ionic-workflow-guide](https://github.com/RomainFallet/ionic-workflow-guide)
+- [Robinyo/big-top](https://github.com/Robinyo/big-top)
