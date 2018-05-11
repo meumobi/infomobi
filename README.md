@@ -8,17 +8,13 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
 
 - [x] [Aliases and environment variables support](#aliases-and-environment-variables-support)
 - [x] [Documentation generation using Compodoc](#documentation-generation-using-compodoc)
+- [x] [Unit testing and end-to-end (e2e)](#unit-testing-and-end-to-end-e2e)
 - [] Continuous integration
   - [Continuous Deployment & Live Updates with Ionic Deploy](https://www.youtube.com/watch?v=I7PC3O4q1ug)
   - [Ionic project: Continuous Integration with Travis for gh-pages](https://medium.com/@hamidihamza/ionic-project-continuous-integration-with-travis-for-gh-pages-3275edaac6a0)
   - [continuous integration | angular cli + firebase + travis ci](https://houssein.me/continuous-integration-angular-firebase-travisci)
   - [Continuous everything with Angular, Travis CI, Firebase and Greenkeeper](https://medium.com/@jamzi/continuous-everything-with-angular-travis-ci-firebase-and-greenkeeper-6656543bd826)
   - [Continuous Deployment for Ionic 2 to Firebase Hosting](https://guillaumeroy.xyz/2017/02/23/continous-deployment-ionic2-firebase-hosting/)
-- [] Unit testing and end-to-end (e2e)
-  - Setup app for [unit testing and end-to-end (e2e) testing](https://blog.ionicframework.com/basic-unit-testing-in-ionic/)
-  - [Rob Ferguson: Testing your Ionic 3 App](https://robferguson.org/blog/2017/11/28/testing-your-ionic-3-app/)
-  - [josh Morony: Setting Up Unit and E2E Tests in Ionic](https://www.youtube.com/watch?v=8ApX7EhkBDs)
-
 
 ## Technical features
 
@@ -188,6 +184,15 @@ You can exclude files from the generated documentation by using 'exclude' in tsc
     "**/*.spec.ts"
   ]
 ```
+## Unit testing and end-to-end (e2e)
+- [Leif Wells's blog: Configure Existing Ionic Projects for Testing](https://leifwells.github.io/2017/08/27/testing-in-ionic-configure-existing-projects-for-testing/)
+
+The important modules are `karma`, `jasmine` and `protractor`:
+- `karma` is our testing environment for unit testing. 
+- `jasmine` is the unit testing framework. 
+- `protractor` is our testing environment for our end-to-end tests. 
+
+The rest of the modules are utilities that allow this configuration to work.
 
 # Inspiration
 
