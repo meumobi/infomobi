@@ -32,8 +32,7 @@
   "exclude": [
     "node_modules",
     "src/**/*.spec.ts",
-    "src/**/__tests__/*.ts",
-    "./src/environments/*.ts",
+    "src/**/__tests__/*.ts"
   ],
   "compileOnSave": false,
   "atom": {
