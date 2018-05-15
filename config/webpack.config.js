@@ -15,14 +15,14 @@ console.log(chalk.yellow.bgBlack('\nUsing ' + env + ' environment variables.\n')
 useDefaultConfig[env].resolve.alias = {
   "@app": path.resolve('./src/app/'),
   "@assets": path.resolve('./src/assets/'),
-  "@env": path.resolve(environmentPath()),
+  "@env": path.resolve(environmentPath(env)),
   "@pages": path.resolve('./src/pages/'),
   "@services": path.resolve('./src/services/'),
   "@tests": path.resolve('./src/'),    
   "@theme": path.resolve('./src/theme/')
 };
 
-function environmentPath() {
+function environmentPath(env) {
 
   let filePath = './src/environments/environment.' + env + '.ts';
 
