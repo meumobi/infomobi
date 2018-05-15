@@ -11,6 +11,10 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome'
   },
+  'browserName': 'chrome',
+  chromeOptions: {
+    args: ['--no-sandbox']
+  },
   directConnect: true,
   baseUrl: 'http://localhost:8100/',
   framework: 'jasmine',
