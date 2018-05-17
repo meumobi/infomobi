@@ -8,7 +8,11 @@ const useDefaultConfig = require('@ionic/app-scripts/config/webpack.config.js');
   const env = require('minimist')(process.argv.slice(2)).env || process.env.IONIC_ENV || 'dev';
 */
 
-const env = process.env.IONIC_ENV || 'dev';
+const env = require('minimist')(process.argv.slice(2)).env || 'default';
+
+if (env !== ('dev' || 'prod')) {
+  useDefaultConfig[env] = useDefaultConfig['dev'];
+}
 
 console.log(chalk.yellow.bgBlack('\nUsing ' + env + ' environment variables.\n'));
 
@@ -23,7 +27,7 @@ useDefaultConfig[env].resolve.alias = {
 };
 
 function environmentPath(env) {
-  envFileName = 'environment' + (!env ? '' : '.' + env) + '.ts';
+  envFileName = 'environment' + (!env || env == 'default' ? '' : '.' + env) + '.ts';
 
   let filePath = './src/environments/' + envFileName;
 
