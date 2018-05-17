@@ -5,7 +5,7 @@ sudo: required
 branches:
   only:
     - master
-
+dist: trusty
 cache:
   directories:
     - "node_modules"
