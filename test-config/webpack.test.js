@@ -10,7 +10,7 @@ module.exports = {
     alias: {
       "@app": path.resolve('./src/app/'),
       "@assets": path.resolve('./src/assets/'),
-      "@env": path.resolve(environmentPath('dev')),
+      "@env": path.resolve(environmentPath()),
       "@pages": path.resolve('./src/pages/'),
       "@services": path.resolve('./src/services/'),
       "@tests": path.resolve('./src/'),    
@@ -57,7 +57,9 @@ module.exports = {
 };
 
 function environmentPath(env) {
-  let filePath = './src/environments/environment.' + env + '.ts';
+  envFileName = 'environment' + (!env ? '' : '.' + env) + '.ts';
+
+  let filePath = './src/environments/' + envFileName;
 
   if (!fs.existsSync(filePath)) {
     console.log(chalk.red('\n' + filePath + ' does not exist!'));

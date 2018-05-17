@@ -23,8 +23,9 @@ useDefaultConfig[env].resolve.alias = {
 };
 
 function environmentPath(env) {
+  envFileName = 'environment' + (!env ? '' : '.' + env) + '.ts';
 
-  let filePath = './src/environments/environment.' + env + '.ts';
+  let filePath = './src/environments/' + envFileName;
 
   if (!fs.existsSync(filePath)) {
     console.log(chalk.red('\n' + filePath + ' does not exist!'));
