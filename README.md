@@ -9,12 +9,7 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
 - [x] [Aliases and environment variables support](#aliases-and-environment-variables-support)
 - [x] [Documentation generation using Compodoc](#documentation-generation-using-compodoc)
 - [x] [Unit testing and end-to-end (e2e)](#unit-testing-and-end-to-end-e2e)
-- [] Continuous integration with Travis CI(#continuous-integration-with-travis-ci)
-  - [Ionic project: Continuous Integration with Travis for gh-pages](https://medium.com/@hamidihamza/ionic-project-continuous-integration-with-travis-for-gh-pages-3275edaac6a0)
-  - [continuous integration | angular cli + firebase + travis ci](https://houssein.me/continuous-integration-angular-firebase-travisci)
-  - [Continuous everything with Angular, Travis CI, Firebase and Greenkeeper](https://medium.com/@jamzi/continuous-everything-with-angular-travis-ci-firebase-and-greenkeeper-6656543bd826)
-  - [Continuous Integration for Angular Projects with TravisCI](https://moduscreate.com/blog/continuous-integration-angular-projects-travisci/)
-  - [Continuous Deployment for Ionic 2 to Firebase Hosting](https://guillaumeroy.xyz/2017/02/23/continous-deployment-ionic2-firebase-hosting/)
+- [x] [Continuous integration with Travis CI](#continuous-integration-with-travis-ci)
 - [] Automated dependency updates
   - [Dependabot](https://dependabot.com/)
   - [Greenkeeper](https://greenkeeper.io/)
@@ -197,9 +192,9 @@ You can exclude files from the generated documentation by using 'exclude' in tsc
 - [Unit Testing an Ionic2 project](https://lathonez.com/2018/ionic-2-unit-testing/)
 
 The important modules are `karma`, `jasmine` and `protractor`:
-- `karma` is our testing environment for unit testing. 
-- `jasmine` is the unit testing framework. 
-- `protractor` is our testing environment for our end-to-end tests. 
+- [karma](https://karma-runner.github.io/2.0/index.html) is our testing environment for unit testing. 
+- [jasmine](https://jasmine.github.io/) is the unit testing framework. 
+- [protractor](https://www.protractortest.org/#/) is our testing environment for our end-to-end tests. 
 
 The rest of the modules are utilities that allow this configuration to work.
 
@@ -236,18 +231,28 @@ $ python -m SimpleHTTPServer 8000
 ```
 ![test-coverage](https://www.evernote.com/l/APVZPlnTsIpHiI8tQcEN5r8pPLKHhjeZmwUB/image.png)
 
+- [Automated testing with Headless Chrome](https://developers.google.com/web/updates/2017/06/headless-karma-mocha-chai)
+
 ## Continuous integration with Travis CI
+
+Using Travis, with each push we want to:
+
+- run unit tests: `npm run lint`
+- lint code: `npm run test`
+- generate build: `npm run build`
+- run e2e tests: `xvfb-run npm run e2e`
 
 [Travis CI](travis-ci.org) connects to GitHub repositories out of the box. Navigate to (travis-ci.org) and sign in with your GitHub account. Navigate to your profile and you should see a list of your public repos from GitHub. Enable CI on targeted repo.
 
 It was that simple, the last step for CI is to add a Travis CI configuration file to our project to tell Travis CI how to prepare environment for our app, on which branches to run CI build and which scripts to run on build.
 
-On the root of your app add .travis.yml file and paste snippet below:
+On the root of your app add .travis.yml file and paste snippet below.
 
 ### Travis config
-### Default build script
 
-The default build script for projects using nodejs is `npm test` (which is the same as npm run test ).
+```yaml
+
+```
 
 #### Caching with npm
 [Caching with npm](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/#Caching-with-npm)
@@ -268,6 +273,12 @@ Thanks to [julie-ng/angular-starter: Setup Travis CI](https://github.com/julie-n
 
 - [Testing Angular 2+ Apps with Jasmine and Karma](https://www.youtube.com/watch?v=yG4FH60fhUE)
 - [Unit Testing with Angular](https://www.youtube.com/watch?v=Yod3tBt0beM)
+- [Ionic project: Continuous Integration with Travis for gh-pages](https://medium.com/@hamidihamza/ionic-project-continuous-integration-with-travis-for-gh-pages-3275edaac6a0)
+- [continuous integration | angular cli + firebase + travis ci](https://houssein.me/continuous-integration-angular-firebase-travisci)
+- [Continuous everything with Angular, Travis CI, Firebase and Greenkeeper](https://medium.com/@jamzi/continuous-everything-with-angular-travis-ci-firebase-and-greenkeeper-6656543bd826)
+- [Continuous Integration for Angular Projects with TravisCI](https://moduscreate.com/blog/continuous-integration-angular-projects-travisci/)
+- [Continuous Deployment for Ionic 2 to Firebase Hosting](https://guillaumeroy.xyz/2017/02/23/continous-deployment-ionic2-firebase-hosting/)
+- [E2E (End-to-End) Testing in Ionic 2: An Introduction](https://www.joshmorony.com/e2e-end-to-end-testing-in-ionic-2-an-introduction/)
 
 ## Continuous integration
 

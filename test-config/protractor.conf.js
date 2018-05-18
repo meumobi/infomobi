@@ -9,11 +9,10 @@ exports.config = {
     '../e2e/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
-  },
-  'browserName': 'chrome',
-  chromeOptions: {
-    args: ['--no-sandbox']
+    'browserName': 'chrome',
+    chromeOptions: {
+      args: ['--no-sandbox']
+    },
   },
   directConnect: true,
   baseUrl: 'http://localhost:8100/',
@@ -21,7 +20,13 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function () { }
+  },
+  beforeLaunch: function () {
+    require('ts-node').register({
+      project: 'e2e/tsconfig.e2e.json'
+    });
+    require('connect')().use(require('serve-static')('www')).listen(8100);
   },
   onPrepare() {
     require('ts-node').register({
