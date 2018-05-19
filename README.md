@@ -2,6 +2,8 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/meumobi/meu-starter.ionic-v3.svg)](https://greenkeeper.io/)
 [![Travis CI badge](https://travis-ci.org/meumobi/meu-starter.ionic-v3.svg?branch=master)](https://travis-ci.org/)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/meumobi/meu-starter.ionic-v3.svg)](https://greenkeeper.io/)
+
 ## Introduction
 
 A starter template for PWA and Native Ionic v3 projects, providing best pratices out-of-box: unit testing, environment variables, automatic documentation, automatic deployment, shared module, etc.
