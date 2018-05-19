@@ -3,20 +3,12 @@ const fs = require('fs');
 const path = require('path');
 const useDefaultConfig = require('@ionic/app-scripts/config/webpack.config.js');
 
-/*
-  If needed could get env from cli argument
-  const env = require('minimist')(process.argv.slice(2)).env || process.env.IONIC_ENV || 'dev';
-*/
+const webpackConfig = process.env.IONIC_ENV || 'dev';
+const env = require('minimist')(process.argv.slice(2)).env;
 
-const env = require('minimist')(process.argv.slice(2)).env || 'default';
+console.log(chalk.yellow.bgBlack('\nUsing ' + (!env ? 'DEFAULT' : env.toUpperCase()) + ' environment variables for ' + webpackConfig.toUpperCase() + ' build.\n'));
 
-if (env !== ('dev' || 'prod')) {
-  useDefaultConfig[env] = useDefaultConfig['dev'];
-}
-
-console.log(chalk.yellow.bgBlack('\nUsing ' + env + ' environment variables.\n'));
-
-useDefaultConfig[env].resolve.alias = {
+useDefaultConfig[webpackConfig].resolve.alias = {
   "@app": path.resolve('./src/app/'),
   "@assets": path.resolve('./src/assets/'),
   "@env": path.resolve(environmentPath(env)),
@@ -27,9 +19,11 @@ useDefaultConfig[env].resolve.alias = {
 };
 
 function environmentPath(env) {
-  envFileName = 'environment' + (!env || env == 'default' ? '' : '.' + env) + '.ts';
+  envFileName = 'environment' + (!env ? '' : '.' + env) + '.ts';
 
   let filePath = './src/environments/' + envFileName;
+
+  console.log(chalk.yellow.bgBlack('Loading ' + filePath + '\n'));
 
   if (!fs.existsSync(filePath)) {
     console.log(chalk.red('\n' + filePath + ' does not exist!'));

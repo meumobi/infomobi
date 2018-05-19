@@ -1,4 +1,6 @@
 # meu.starter.ionic-v3
+[![Greenkeeper badge](https://badges.greenkeeper.io/meumobi/meu-starter.ionic-v3.svg)](https://greenkeeper.io/)
+[![Travis CI badge](https://travis-ci.org/meumobi/meu-starter.ionic-v3.svg?branch=master)](https://travis-ci.org/)
 
 ## Introduction
 
@@ -10,11 +12,7 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
 - [x] [Documentation generation using Compodoc](#documentation-generation-using-compodoc)
 - [x] [Unit testing and end-to-end (e2e)](#unit-testing-and-end-to-end-e2e)
 - [x] [Continuous integration with Travis CI](#continuous-integration-with-travis-ci)
-- [] Automated dependency updates
-  - [Dependabot](https://dependabot.com/)
-  - [Greenkeeper](https://greenkeeper.io/)
-- [Style CI]
-  - `npm run lint` [Using Travis-CI to Run Your Ionic Unit Tests](http://kensodemann.github.io/angular/tdd/testing/ionic/2017/05/22/ionic-travis-ci.html)
+- [x] [Automated dependency updates](automated-dependency-updates)
 
 ## Coding best practices
 
@@ -26,10 +24,10 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
 - [] Lazy loading / Deep-linking
   - [Ionic blog: Ionic and Lazy Loading Pt 1](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-1/)
   - [Ionic blog: Ionic and Lazy Loading Pt 2](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-2/)
-- [] Generate data provider and mockup
-  - [Implementing the Master-Detail Pattern in Ionic]()
 
 ## Technical features
+- PWA
+  - [Optimising the performance of an Ionic PWA - Part 1](https://robferguson.org/blog/2018/04/16/0ptimising-the-performance-of-an-ionic-pwa-part-1/)
 - Live Updates
   - [Continuous Deployment & Live Updates with Ionic Deploy](https://www.youtube.com/watch?v=I7PC3O4q1ug)
 - Firebase hosting for PWA
@@ -46,6 +44,8 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
   - [meumobi: Implementing the Master-Detail Pattern in Ionic](http://meumobi.github.io/ionic/2017/08/23/implementing-master-detail-ionic.html)
 - REST API integration
   - [Ionic blog: 10 Minutes with Ionic 2: Calling an API](https://blog.ionicframework.com/10-minutes-with-ionic-2-calling-an-api/)
+  - Generate data provider and mockup
+    - [Implementing the Master-Detail Pattern in Ionic]()
 - CRUD with Firestore
   - [Jave Bratt: Building a CRUD Ionic application with Firestore](https://javebratt.com/crud-ionic-firestore/)
 
@@ -68,6 +68,7 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
 - Animations
   - [Angular.io: Animations](https://angular.io/guide/animations)
   - [Devdactic: How to Add Ionic Animations Using Angular (2 Different Ways!)](https://devdactic.com/animations-ionic-app/)
+  - [ng4-animations](http://slides.yearofmoo.com/ng4-animations-preview/demo/)
 - Responsive Grid Layout
   - [Ionic blog: Customizing Ionic Apps for Web & Mobile](https://blog.ionicframework.com/customizing-ionic-apps-for-web-mobile/)
   - [Ionic blog: Tips & Tricks for Ionic on Desktop](https://blog.ionicframework.com/tips-tricks-for-ionic-on-desktop/)
@@ -211,9 +212,6 @@ In e2e testing, one process runs the real application and a second process runs 
 behavior and assert that the application respond in the browser as expected.
 
 ```
-$ ionic serve
-
-// In a second terminal session
 $ npm run e2e
 ```
 
@@ -235,10 +233,15 @@ $ python -m SimpleHTTPServer 8000
 
 ## Continuous integration with Travis CI
 
+- **Continuous Build**: a tool that checks periodically if the repository changed since the last build, and build/test if it did.
+- **Continuous Integration**: a tool that takes Pull Requests and validate them against the latest head prior to making them visible.
+
+If using feature branches, you should have the CI running automatically on those, and if the builds fail, don't merge them into master.
+
 Using Travis, with each push we want to:
 
 - run unit tests: `npm run lint`
-- lint code: `npm run test`
+- lint code: `npm run test:headless`
 - generate build: `npm run build`
 - run e2e tests: `xvfb-run npm run e2e`
 
@@ -275,20 +278,16 @@ Thanks to [julie-ng/angular-starter: Setup Travis CI](https://github.com/julie-n
 - [Unit Testing with Angular](https://www.youtube.com/watch?v=Yod3tBt0beM)
 - [Ionic project: Continuous Integration with Travis for gh-pages](https://medium.com/@hamidihamza/ionic-project-continuous-integration-with-travis-for-gh-pages-3275edaac6a0)
 - [continuous integration | angular cli + firebase + travis ci](https://houssein.me/continuous-integration-angular-firebase-travisci)
-- [Continuous everything with Angular, Travis CI, Firebase and Greenkeeper](https://medium.com/@jamzi/continuous-everything-with-angular-travis-ci-firebase-and-greenkeeper-6656543bd826)
 - [Continuous Integration for Angular Projects with TravisCI](https://moduscreate.com/blog/continuous-integration-angular-projects-travisci/)
 - [Continuous Deployment for Ionic 2 to Firebase Hosting](https://guillaumeroy.xyz/2017/02/23/continous-deployment-ionic2-firebase-hosting/)
 - [E2E (End-to-End) Testing in Ionic 2: An Introduction](https://www.joshmorony.com/e2e-end-to-end-testing-in-ionic-2-an-introduction/)
 
-## Continuous integration
+## Automated dependency updates
 
-- **Continuous Build**: a tool that checks periodically if the repository changed since the last build, and build/test if it did.
-- **Continuous Integration**: a tool that takes Pull Requests and validate them against the latest head prior to making them visible.
+We've selected [Greenkeeper](https://greenkeeper.io/), against [Dependabot](https://dependabot.com/), because it's free for github public project, **inclusive for organization**.
+The integration is pretty straight-forward, only need to signup on [Greenkeeper](https://greenkeeper.io/), give autorization to connect to your github repository and follow instructions.
 
-No commits to be added to master branch if they haven't been tested and verified.
-If using feature branches, you should have the CI running automatically on those, and if the builds fail, don't merge them into master.
-
-[Git Hooks – Automatic Code Quality Checks](https://sigmoidal.io/automatic-code-quality-checks-with-git-hooks/)
+- [Continuous everything with Angular, Travis CI, Firebase and Greenkeeper](https://medium.com/@jamzi/continuous-everything-with-angular-travis-ci-firebase-and-greenkeeper-6656543bd826)
 
 # Inspiration
 

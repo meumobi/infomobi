@@ -12,7 +12,7 @@
     "ionic:serve": "ionic-app-scripts serve",
     "docs:build": "./node_modules/.bin/compodoc -d ./docs/ -p ./tsconfig.json",
     "docs:serve": "./node_modules/.bin/compodoc -s -d ./docs",
-    "test": "karma start ./test-config/karma.conf.js",
+    "test": "karma start ./test-config/karma.conf.js  --single-run --progress false --browsers Chrome",
     "test:headless": "karma start ./test-config/karma.conf.js --single-run --progress false --browsers ChromeHeadless",
     "test-ci": "karma start ./test-config/karma.conf.js --single-run",
     "test-coverage": "karma start ./test-config/karma.conf.js --coverage",
