@@ -8,6 +8,7 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
+    "release": "standard-version",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "docs:build": "./node_modules/.bin/compodoc -d ./docs/ -p ./tsconfig.json",
@@ -64,6 +65,7 @@
     "karma-webpack": "^2.0.13",
     "null-loader": "^0.1.1",
     "protractor": "^5.3.1",
+    "standard-version": "^4.3.0",
     "ts-loader": "^3.5.0",
     "ts-node": "^5.0.0",
     "typescript": "~2.6.2"

@@ -1,5 +1,5 @@
 # meu.starter.ionic-v3
-[![Greenkeeper badge](https://badges.greenkeeper.io/meumobi/meu-starter.ionic-v3.svg)](https://greenkeeper.io/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Travis CI badge](https://travis-ci.org/meumobi/meu-starter.ionic-v3.svg?branch=master)](https://travis-ci.org/)
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/meumobi/meu-starter.ionic-v3.svg)](https://greenkeeper.io/)
@@ -14,7 +14,8 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
 - [x] [Documentation generation using Compodoc](#documentation-generation-using-compodoc)
 - [x] [Unit testing and end-to-end (e2e)](#unit-testing-and-end-to-end-e2e)
 - [x] [Continuous integration with Travis CI](#continuous-integration-with-travis-ci)
-- [x] [Automated dependency updates](automated-dependency-updates)
+- [x] [Automated dependency updates](#automated-dependency-updates)
+- [x] [Standardized commit messages and automatic changelog generator](#standardized-commit-messages-and-automatic-changelog-generator)
 
 ## Coding best practices
 
@@ -253,11 +254,11 @@ It was that simple, the last step for CI is to add a Travis CI configuration fil
 
 On the root of your app add .travis.yml file and paste snippet below.
 
-### Travis config
+### Headless Chrome
 
-```yaml
+As the [official documentation](https://developers.google.com/web/updates/2017/04/headless-chrome) says…
 
-```
+> [Headless Chrome](https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md) is shipping in Chrome 59. It’s a way to run the Chrome browser in a headless environment. Essentially, running Chrome without chrome! It brings **all modern web platform features** provided by Chromium and the Blink rendering engine to the command line.
 
 #### Caching with npm
 [Caching with npm](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/#Caching-with-npm)
@@ -290,6 +291,16 @@ We've selected [Greenkeeper](https://greenkeeper.io/), against [Dependabot](http
 The integration is pretty straight-forward, only need to signup on [Greenkeeper](https://greenkeeper.io/), give autorization to connect to your github repository and follow instructions.
 
 - [Continuous everything with Angular, Travis CI, Firebase and Greenkeeper](https://medium.com/@jamzi/continuous-everything-with-angular-travis-ci-firebase-and-greenkeeper-6656543bd826)
+
+## Standardized commit messages and automatic changelog generator
+[standard-version](https://github.com/conventional-changelog/standard-version) automatically generates and updates `CHANGELOG.md` file with all the commits following [Conventional Commits specification](https://conventionalcommits.org/) and correctly determines new version of our project.
+
+The commit contains the following structural elements, to communicate intent to the consumers of your library:
+
+- **fix**: a commit of the `type fix` patches a bug in your codebase (this correlates with [PATCH](https://semver.org/#summary) in semantic versioning).
+- **feat**: a commit of the `type feat` introduces a new feature to the codebase (this correlates with [MINOR](https://semver.org/#summary) in semantic versioning).
+- **BREAKING CHANGE**: a commit that has the text `BREAKING CHANGE`: at the beginning of its optional body or footer section introduces a breaking API change (correlating with [MAJOR](https://semver.org/#summary) in semantic versioning). A breaking change can be part of commits of any type. e.g., a fix:, feat: & chore: types would all be valid, in addition to any other type.
+- Others: commit types other than fix: and feat: are allowed, for example commitlint-config-conventional (based on the the Angular convention) recommends chore:, docs:, style:, refactor:, perf:, test:, and others. We also recommend improvement for commits that improve a current implementation without adding a new feature or fixing a bug. Notice these types are not mandated by the conventional commits specification, and have no implicit effect in semantic versioning (unless they include a BREAKING CHANGE, which is NOT recommended). 
 
 # Inspiration
 
