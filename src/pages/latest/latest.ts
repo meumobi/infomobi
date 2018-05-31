@@ -24,23 +24,26 @@ export class LatestPage {
     this.listArticles();
   }
 
-  listArticles() {
+  listArticles(refresher = null){
     if (this.categoryId){
-      this.articlesProvider.findByCategory(this.categoryId).subscribe(
+      this.articlesProvider.findByCategory(this.categoryId).then(
         data => {
           this.articles = data;
+          if (refresher) {
+            refresher.complete();
+          }
         },
         err => {
           console.log(err);
         }
       );
     } else {
-      this.articlesProvider.findAll().subscribe(
+      this.articlesProvider.findAll().then(
         data => {
           this.articles = data;
-        },
-        err => {
-          console.log(err);
+          if (refresher) {
+            refresher.complete();
+          }
         }
       );
     }

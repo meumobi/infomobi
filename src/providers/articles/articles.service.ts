@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/first';
 
 
 import { Article } from './../../models/article.interface';
@@ -10,13 +11,13 @@ import { Article } from './../../models/article.interface';
 export class ArticlesProvider {
 
   itemsCollection: AngularFirestoreCollection<Article>;
-  items: Observable<Article[]>;
+  items: Promise<Article[]>;
 
   constructor(private af: AngularFirestore) {  
     this.itemsCollection = this.af.collection<Article>('articles');      
   }
 
-  findAll(): Observable<Article[]> {
+  findAll(): Promise<Article[]> {
     this.itemsCollection = this.af.collection<Article>('articles');
     this.items = this.itemsCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -24,11 +25,11 @@ export class ArticlesProvider {
         const id = a.payload.doc.id;
         return { id, ...data };
       });
-    });
+    }).first().toPromise();
     return this.items;
   }
 
-  findByCategory(id):Observable<Article[]> {
+  findByCategory(id):Promise<Article[]> {
     this.itemsCollection = this.af.collection<Article>('articles');
     this.items = this.itemsCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -36,7 +37,7 @@ export class ArticlesProvider {
         const id = a.payload.doc.id;
         return { id, ...data };
       });
-    });
+    }).first().toPromise();
     return this.items;
   }
 
