@@ -9,9 +9,11 @@ import { PostsProvider } from './../../providers/posts/';
   templateUrl: 'live.html',
 })
 export class LivePage {
+  
   @ViewChild(Content) content: Content;
   posts: Post[];
   rootNavCtrl: NavController;
+  fakePosts: Array<any> = new Array(5);
 
   constructor(
     private data: PostsProvider,

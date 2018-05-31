@@ -3,20 +3,32 @@
     <button ion-fab mini (click)="addPost()"><ion-icon name="create"></ion-icon></button>
   </ion-fab>
 
-  <ion-list>
+  <ion-list *ngIf="!posts">
+    <div ion-item *ngFor="let post of fakePosts" class="fakePost">
+      <ion-avatar item-start>
+        <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+      </ion-avatar>    
+      <h2></h2>
+      <p></p>
+      <div class=img-post>&nbsp;</div>
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="posts">
     <div ion-item *ngFor="let post of posts">
       <ion-avatar item-start *ngIf="post.author.picture; else anonymous">
         <img [src]="post.author.picture"/>
       </ion-avatar>
       <ng-template #anonymous>
-          <ion-avatar item-left>
+          <ion-avatar item-start>
             <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
           </ion-avatar>
       </ng-template>      
       <h2>{{post.author.displayName}}</h2>
       <p [innerHtml]="post.description"></p>
       <h3 *ngIf="post.articleTitle"><a (click)="viewArticle(post.articleId)" href="#">{{post.articleTitle}}</a></h3>
-      <img *ngIf="post.media"[src]="post.media"/>
+      <img *ngIf="post.media"[src]="post.media" class="img-post"/>
     </div>
   </ion-list>
+
 </ion-content>
