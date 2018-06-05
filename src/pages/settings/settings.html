@@ -1,0 +1,32 @@
+<ion-header>
+  
+    <ion-navbar>
+      <ion-title>Settings</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content>
+  
+    <form>
+      <ion-list>
+        <ion-item>
+          <ion-label>Settings</ion-label>
+          <ion-toggle></ion-toggle>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>languages</ion-label>
+          <ion-select [(ngModel)]="language" name="language" (ionChange)="selectLanguage($event)">
+            <ion-option value="en" [selected]="language == 'en'">English</ion-option>
+            <ion-option value="pt" [selected]="language == 'pt'">Portuguese</ion-option>
+            <ion-option value="en-us">English US</ion-option>
+            <ion-option value="pt-br">Portuguese BR</ion-option>
+            <ion-option value="fr-fr">French</ion-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-list>
+    </form>
+  
+  </ion-content>

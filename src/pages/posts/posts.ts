@@ -29,10 +29,12 @@ export class PostsPage {
   }
 
   listArticles() {
-    this.postsProvider.findAll().then(
+    this.postsProvider.findAll()
+    .then(
       data => {
         this.posts = data;
-      },
+      })
+    .catch(
       err => {
         console.log(err);
       }
