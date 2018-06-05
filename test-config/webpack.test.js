@@ -13,6 +13,9 @@ module.exports = {
       "@env": path.resolve(environmentPath()),
       "@pages": path.resolve('./src/pages/'),
       "@services": path.resolve('./src/services/'),
+      "@providers": path.resolve('./src/providers/'),
+      "@models": path.resolve('./src/models/'),
+      "@shared": path.resolve('./src/shared/'),
       "@tests": path.resolve('./src/'),    
       "@theme": path.resolve('./src/theme/')
     },
