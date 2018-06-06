@@ -16,6 +16,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="listArticles($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-row wrap>
     <ion-col *ngFor="let post of posts" col-12 col-md-4>
       <ion-card (click)="pushDetailsPage('PostDetailsPage', post._id)">

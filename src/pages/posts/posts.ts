@@ -28,11 +28,14 @@ export class PostsPage {
       this.listArticles();
   }
 
-  listArticles() {
+  listArticles(refresher = null) {
     this.postsProvider.findAll()
     .then(
       data => {
         this.posts = data;
+        if (refresher) {
+          refresher.complete();
+        }
       })
     .catch(
       err => {
