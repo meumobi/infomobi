@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { 
+  IonicPage, 
+  NavController, 
+  NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the SettingsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { meuToast } from '@shared/toast';
 
 @IonicPage({
   segment: 'settings',
@@ -18,11 +16,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public toast: meuToast,
+  ) { }
 
   selectLanguage(language: string) {
-    console.log("Selected lang: " + language);
+    this.toast.present('Language successfully saved');
   }
 
 }
