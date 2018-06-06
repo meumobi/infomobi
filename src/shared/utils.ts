@@ -1,5 +1,4 @@
 export default class Utils {
-  static doSomething(val: string) { console.log(val) }
 
   static lookup(array) {
     var token = 'id';

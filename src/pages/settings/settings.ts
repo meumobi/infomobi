@@ -4,7 +4,7 @@ import {
   NavController, 
   NavParams } from 'ionic-angular';
 
-import { meuToast } from '@shared/toast';
+import { MeuToastProvider } from '@shared/meu-toast.service';
 
 @IonicPage({
   segment: 'settings',
@@ -19,7 +19,7 @@ export class SettingsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public toast: meuToast,
+    public toast: MeuToastProvider,
   ) { }
 
   selectLanguage(language: string) {
