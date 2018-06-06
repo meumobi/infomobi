@@ -19,6 +19,7 @@ import { PostsProvider } from '@providers/posts';
 export class PostsPage {
 
   posts: Array<Post>;
+  fakePosts: Array<any> = new Array(5);
 
   constructor(
     private postsProvider: PostsProvider,
@@ -32,8 +33,8 @@ export class PostsPage {
     this.postsProvider.findAll()
     .then(
       data => {
-        this.posts = data;
         if (refresher) {
+          this.posts = data;          
           refresher.complete();
         }
       })

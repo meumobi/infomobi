@@ -19,7 +19,7 @@
   <ion-refresher (ionRefresh)="listArticles($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-row wrap>
+  <ion-row wrap *ngIf="posts">
     <ion-col *ngFor="let post of posts" col-12 col-md-4>
       <ion-card (click)="pushDetailsPage('PostDetailsPage', post._id)">
         <img *ngIf="post.thumbnails" [src]="post.thumbnails[post.thumbnails.length-1].url"  />          
@@ -29,5 +29,14 @@
       </ion-card>
     </ion-col>
   </ion-row>
-
+  <ion-row wrap *ngIf="!posts">
+    <ion-col *ngFor="let post of fakePosts" col-12 col-md-4 class="fakePosts">
+        <ion-card>   
+          <div class="img-post"></div>    
+          <ion-card-content>
+            <h1></h1>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 </ion-content>
