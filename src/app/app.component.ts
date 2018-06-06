@@ -11,7 +11,7 @@ import { ENV } from '@env';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "PostsPage";
+  rootPage: any = "HomePage";
 
   pages: Array<{title: string, component: any}>;
 
