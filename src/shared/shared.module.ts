@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 
 import { MeuToastProvider } from './meu-toast.service';
+import { AnalyticsProvider } from './analytics.service';
+
 
 @NgModule({
   imports: [],
   declarations: [
   ],
   providers: [
-    MeuToastProvider
+    MeuToastProvider,
+    AnalyticsProvider
   ],
   exports: [
   ]

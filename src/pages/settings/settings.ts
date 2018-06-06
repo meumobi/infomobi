@@ -5,6 +5,7 @@ import {
   NavParams } from 'ionic-angular';
 
 import { MeuToastProvider } from '@shared/meu-toast.service';
+import { AnalyticsProvider } from '@shared/analytics.service';
 
 @IonicPage({
   segment: 'settings',
@@ -20,9 +21,11 @@ export class SettingsPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public toast: MeuToastProvider,
+    public analytics: AnalyticsProvider,
   ) { }
 
   selectLanguage(language: string) {
+    this.analytics.trackEvent('Settings', 'Language selected', language);
     this.toast.present('Language successfully saved');
   }
 
