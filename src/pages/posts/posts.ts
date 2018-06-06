@@ -33,8 +33,8 @@ export class PostsPage {
     this.postsProvider.findAll()
     .then(
       data => {
+        this.posts = data;
         if (refresher) {
-          this.posts = data;          
           refresher.complete();
         }
       })
