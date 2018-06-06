@@ -3,6 +3,7 @@ import { IonicModule, Platform } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AnalyticsProvider } from '@shared/analytics.service';
 
 import { MyApp } from './app.component';
 
@@ -12,6 +13,9 @@ import {
   StatusBarMock,
   SplashScreenMock
 } from '../../test-config/mocks-ionic';
+import {
+  AnalyticsMock
+} from '../../test-config/mocks-master-details';
 
 describe('MyApp Component', () => {
   let fixture;
@@ -26,7 +30,8 @@ describe('MyApp Component', () => {
       providers: [
         { provide: StatusBar, useClass: StatusBarMock },
         { provide: SplashScreen, useClass: SplashScreenMock },
-        { provide: Platform, useClass: PlatformMock }
+        { provide: Platform, useClass: PlatformMock },
+        { provide: AnalyticsProvider, useClass: AnalyticsMock }
       ]
     })
   }));
