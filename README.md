@@ -1,32 +1,53 @@
 # meu.starter.ionic-v3
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-[![Travis CI badge](https://travis-ci.org/meumobi/meu-starter.ionic-v3.svg?branch=master)](https://travis-ci.org/)
-
+[![Travis CI badge](https://travis-ci.org/meumobi/meu-starter.master-detail.ionic-v3.svg?branch=master)](https://travis-ci.org/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/meumobi/meu-starter.ionic-v3.svg)](https://greenkeeper.io/)
 
 ## Introduction
 
 A starter template for PWA and Native Ionic v3 projects, providing best pratices out-of-box: unit testing, environment variables, automatic documentation, automatic deployment, shared module, etc.
 
-## Worflow & build management
-
-- [x] [Aliases and environment variables support](#aliases-and-environment-variables-support)
-- [x] [Documentation generation using Compodoc](#documentation-generation-using-compodoc)
-- [x] [Unit testing and end-to-end (e2e)](#unit-testing-and-end-to-end-e2e)
-- [x] [Continuous integration with Travis CI](#continuous-integration-with-travis-ci)
-- [x] [Automated dependency updates](#automated-dependency-updates)
-- [x] [Standardized commit messages and automatic changelog generator](#standardized-commit-messages-and-automatic-changelog-generator)
-
 ## Coding best practices
 
-- [] Shared module
+- [x] Shared module
   - [meumobi: Creating a shared module for Ionic App](http://meumobi.github.io/ionic/2017/08/23/creating-shared-module-ionic.html)
-- [] Simple Logging Service
-  - [A simple logging service for Angular 4](https://robferguson.org/blog/2017/09/09/a-simple-logging-service-for-angular-4/)
-  - [Angular's github: Add $log like functionality to Angular 2](https://github.com/angular/angular/issues/5458)
-- [] Lazy loading / Deep-linking
+- [x] Lazy loading / Deep-linking
   - [Ionic blog: Ionic and Lazy Loading Pt 1](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-1/)
   - [Ionic blog: Ionic and Lazy Loading Pt 2](https://blog.ionicframework.com/ionic-and-lazy-loading-pt-2/)
+
+## Features
+
+- [] Image gallery
+  - [Devdactic: Image Gallery With Zoom](https://devdactic.com/ionic-image-gallery-zoom/)
+  - Pinch/Zoom image
+- [] PWA
+  - Show toast when new version available
+  - Add to homescreen
+  - Offline support
+- [] Handle dates and time w/ angular-moment
+- [] Push notification w/ OneSignal
+  - [OneSignal: Ionic SDK Setup](https://documentation.onesignal.com/docs/ionic-sdk-setup)
+  - [OneSignal: Web Push: Typical setup](https://documentation.onesignal.com/docs/web-push-typical-setup)
+  - Settings page: toggle push notification
+  - User targeting by tags filtering
+    - [OneSignal: Using Data Tags](https://documentation.onesignal.com/docs/data-tags)
+  - Email messages
+    - [OneSignal:Sending Email Messages](https://documentation.onesignal.com/docs/email-quickstart)
+- [] REST API integration
+  - [Ionic blog: 10 Minutes with Ionic 2: Calling an API](https://blog.ionicframework.com/10-minutes-with-ionic-2-calling-an-api/)
+  - Generate data provider and mockup
+    - [Implementing the Master-Detail Pattern in Ionic]()
+- [x] [Multi-language](#multi-language)
+- [x] Responsive Grid Layout
+  - [Ionic blog: Customizing Ionic Apps for Web & Mobile](https://blog.ionicframework.com/customizing-ionic-apps-for-web-mobile/)
+  - [Ionic blog: Tips & Tricks for Ionic on Desktop](https://blog.ionicframework.com/tips-tricks-for-ionic-on-desktop/)
+- [x] Master/Detail pattern
+  - [meumobi: Implementing the Master-Detail Pattern in Ionic](http://meumobi.github.io/ionic/2017/08/23/implementing-master-detail-ionic.html)
+- [x] Google Analytics integration
+  - [meumobi: How to use Google Analytics on Ionic PWA and Native app without plugin](http://meumobi.github.io/ionic/pwa/2018/04/12/using-analytics-ionic-app-pwa-native.html)
+- [x] Pull to refresh
+- [x] Skeleton screens
+  - [Ionic blog: Improved Perceived Performance with Skeleton Screens](https://blog.ionicframework.com/improved-perceived-performance-with-skeleton-screens/)
 
 ## Technical features
 - PWA
@@ -43,27 +64,10 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
     - Use thumbs
 - Theming App
   - [meumobi: Theming your Ionic App](http://meumobi.github.io/ionic/2017/08/17/theming-ionic-app.html)
-- Master/Detail pattern
-  - [meumobi: Implementing the Master-Detail Pattern in Ionic](http://meumobi.github.io/ionic/2017/08/23/implementing-master-detail-ionic.html)
-- REST API integration
-  - [Ionic blog: 10 Minutes with Ionic 2: Calling an API](https://blog.ionicframework.com/10-minutes-with-ionic-2-calling-an-api/)
-  - Generate data provider and mockup
-    - [Implementing the Master-Detail Pattern in Ionic]()
 - CRUD with Firestore
   - [Jave Bratt: Building a CRUD Ionic application with Firestore](https://javebratt.com/crud-ionic-firestore/)
 
 ## Functional features
-- Multi-language
-  - [ngx-translate]()
-  - Settings page: select language
-- Push notification w/ OneSignal
-  - [OneSignal: Ionic SDK Setup](https://documentation.onesignal.com/docs/ionic-sdk-setup)
-  - [OneSignal: Web Push: Typical setup](https://documentation.onesignal.com/docs/web-push-typical-setup)
-  - Settings page: toggle push notification
-  - User targeting by tags filtering
-    - [OneSignal: Using Data Tags](https://documentation.onesignal.com/docs/data-tags)
-  - Email messages
-    - [OneSignal:Sending Email Messages](https://documentation.onesignal.com/docs/email-quickstart)
 - Restricted access
   - [Devdactic: Ionic Auth Guards](https://devdactic.com/ionic-auth-guards/)
 - Forms and validations
@@ -72,62 +76,21 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
   - [Angular.io: Animations](https://angular.io/guide/animations)
   - [Devdactic: How to Add Ionic Animations Using Angular (2 Different Ways!)](https://devdactic.com/animations-ionic-app/)
   - [ng4-animations](http://slides.yearofmoo.com/ng4-animations-preview/demo/)
-- Responsive Grid Layout
-  - [Ionic blog: Customizing Ionic Apps for Web & Mobile](https://blog.ionicframework.com/customizing-ionic-apps-for-web-mobile/)
-  - [Ionic blog: Tips & Tricks for Ionic on Desktop](https://blog.ionicframework.com/tips-tricks-for-ionic-on-desktop/)
-  - [Devdactic: Image Gallery With Zoom](https://devdactic.com/ionic-image-gallery-zoom/)
-- PWA
-  - Show toast when new version available
-  - Add to homescreen
-  - Offline support
-- Google Analytics integration
-  - [meumobi: How to use Google Analytics on Ionic PWA and Native app without plugin](http://meumobi.github.io/ionic/pwa/2018/04/12/using-analytics-ionic-app-pwa-native.html)
-- UX/UI
-  - Pull to refresh
-  - Skeleton screens
-    - [Ionic blog: Improved Perceived Performance with Skeleton Screens](https://blog.ionicframework.com/improved-perceived-performance-with-skeleton-screens/)
 
 ## Getting started
 
 
-# Starting new app from starter sidemenu with Ionic CLI
+# Features
+## Multi-language
+  [ngx-translate](http://www.ngx-translate.com/) is an internationalization library for Angular 2+. It lets you define translations for your content in different languages and switch between them easily.
+  We've followed 
+  - [Ionic 3 | Translate and Localize Your App With ngx-translate](https://www.gajotres.net/ionic-2-internationalize-and-localize-your-app-with-angular-2/)
+  - [ionicframewokr docs: Using ngx-translate](https://ionicframework.com/docs/developer-resources/ng2-translate/)
+    - this doc is outdated, continue using `HttpModule` (deprecated) instead of `HttpClientModule`.
 
-```
-$ ionic config set -g features.project-angular true
+Ionic v3 is compatible with `@ngx-translate/http-loader@2.0.1` and `@ngx-translate/core@9.1.1`, upper versions require angular 6. Check breaking changes on changelog of these projects for more details.
 
-$ ionic start meu-starter.ionic-v3 sidemenu
-? Project type: ionic-angular
-? Starter template: sidemenu
-? Would you like to integrate your new app with Cordova to target native iOS and Android: Yes
-? Install the free Ionic Pro SDK and connect your app: Yes
-```
-
-# Create a new repository on the command line
-
-```
-echo "# meu.starter.ionic-v3" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/meumobi/meu.starter.ionic-v3.git
-git push -u origin master
-```
-
-# Connect app to Ionic Pro
-
-Push your code to [Ionic Pro](https://ionicframework.com/pro) to perform real-time updates (skip the app store queue), and more: git push ionic master.
-
-Ionic Pro uses a git-based workflow to manage app updates. If you're not familiar with on working with branches in GitHub you can read about them [here](https://guides.github.com/introduction/flow/).
-
-```
-? Install the free Ionic Pro SDK and connect your app? Yes
-? What would you like to do? Link an existing app on Ionic Pro
-? Which app would you like to link meu-starter
-? Which git host would you like to use? GitHub
-? Does the repository exist on GitHub? Yes
-? Which GitHub repository would you like to link? meumobi / meu.starter.ionic-v3
-? Which would you like to do? Link to master branch only
-```
+Should save selected language on App, and load it when launch.
 
 # ROADMAP
 
