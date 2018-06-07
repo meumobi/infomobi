@@ -6,6 +6,7 @@ import {
 
 import { MeuToastProvider } from '@shared/meu-toast.service';
 import { AnalyticsProvider } from '@shared/analytics.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage({
   segment: 'settings',
@@ -17,16 +18,37 @@ import { AnalyticsProvider } from '@shared/analytics.service';
 })
 export class SettingsPage {
 
+  language: string;
+  bar = { "test": 'bar' };
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public toast: MeuToastProvider,
     public analytics: AnalyticsProvider,
-  ) { }
+    private translateService: TranslateService
+  ) { 
+    this.language = this.translateService.currentLang;
+  }
 
-  selectLanguage(language: string) {
-    this.analytics.trackEvent('Settings', 'Language selected', language);
-    this.toast.present('Language successfully saved');
+  selectLanguage() {
+    this.analytics.trackEvent('Settings', 'Language selected', this.language);
+    
+    this.translateService.get('Language successfully saved: ').subscribe(
+      value => {
+        // value is our translated string
+        this.toast.present(value + this.language);
+      }
+    )
+    
+    this.translateService.use(this.language); 
+    /*
+    this.translateService.addLangs(["en", "fr"]);
+    this.translateService.setDefaultLang('en');
+
+    let browserLang = this.translateService.getBrowserLang();
+    this.translateService.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+    */
   }
 
 }

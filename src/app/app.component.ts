@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AnalyticsProvider } from '@shared/analytics.service';
+import { TranslateService } from '@ngx-translate/core';
 
 import { ENV } from '@env';
 
@@ -20,7 +21,8 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    public analyticsProvider: AnalyticsProvider
+    public analyticsProvider: AnalyticsProvider,
+    private translateService: TranslateService
   ) {
     this.initializeApp();
 
@@ -36,6 +38,9 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      this.translateService.setDefaultLang('en');
+      this.translateService.use('pt'); 
+
       this.analyticsProvider.startTrackerWithId(ENV.analyticsTrackingId);
       this.nav.viewDidEnter.subscribe(
         (view) => {

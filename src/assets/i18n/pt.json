@@ -1,0 +1,9 @@
+{
+    "Settings" : "Configuração",
+    "SETTINGS_SELECT" : {
+        "lang_pt" : "Português",
+        "lang_en" : "Inglês"
+    },
+    "IN_APP" : "Internal app translation",
+    "FOO": "Foo {{test}}"
+}

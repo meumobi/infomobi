@@ -1,7 +1,7 @@
 <ion-header>
   
     <ion-navbar>
-      <ion-title>Settings</ion-title>
+      <ion-title>{{ 'FOO' | translate:bar }}</ion-title>
     </ion-navbar>
   
   </ion-header>
@@ -11,15 +11,15 @@
     <form>
       <ion-list>
         <ion-item>
-          <ion-label>Settings</ion-label>
+          <ion-label>{{ 'Settings' | translate}}</ion-label>
           <ion-toggle></ion-toggle>
         </ion-item>
   
-        <ion-item>
+        <ion-item *ngIf="language">
           <ion-label>languages</ion-label>
           <ion-select [(ngModel)]="language" name="language" (ionChange)="selectLanguage($event)">
-            <ion-option value="en" [selected]="language == 'en'">English</ion-option>
-            <ion-option value="pt" [selected]="language == 'pt'">Portuguese</ion-option>
+            <ion-option value="en">{{ 'SETTINGS_SELECT.lang_en' | translate }}</ion-option>
+            <ion-option value="pt">{{ 'SETTINGS_SELECT.lang_pt' | translate }}</ion-option>
             <ion-option value="en-us">English US</ion-option>
             <ion-option value="pt-br">Portuguese BR</ion-option>
             <ion-option value="fr-fr">French</ion-option>
