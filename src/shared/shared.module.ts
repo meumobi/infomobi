@@ -2,10 +2,16 @@ import { NgModule } from '@angular/core';
 
 import { MeuToastProvider } from './meu-toast.service';
 import { AnalyticsProvider } from './analytics.service';
+import { MomentModule } from 'ngx-moment';
 
+const sharedModules = [
+  MomentModule
+];
 
 @NgModule({
-  imports: [],
+  imports: [
+    sharedModules
+  ],
   declarations: [
   ],
   providers: [
@@ -13,6 +19,7 @@ import { AnalyticsProvider } from './analytics.service';
     AnalyticsProvider
   ],
   exports: [
+    sharedModules
   ]
 })
 export class SharedModule { }

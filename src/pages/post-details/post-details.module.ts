@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 
 import { PostDetailsPage } from './post-details';
 import { PostsProvider } from '@providers/posts';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { PostsProvider } from '@providers/posts';
   ],
   imports: [
     IonicPageModule.forChild(PostDetailsPage),
+    SharedModule
   ],
   providers: [
     PostsProvider

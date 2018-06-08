@@ -15,4 +15,5 @@
 
 <ion-content padding *ngIf="post">
     <h2>{{post.title}}</h2>
+    <h3>{{post.published | amFromUnix | amDateFormat:'LL'}}</h3>
 </ion-content>
