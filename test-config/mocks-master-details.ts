@@ -1,4 +1,4 @@
-import { AnalyticsProvider } from '@shared/analytics.service';
+import { AnalyticsProvider } from '../src/shared/analytics.service';
 
 export class AnalyticsMock extends AnalyticsProvider {
   public startTrackerWithId(): any {
