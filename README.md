@@ -89,7 +89,7 @@ Ionic v3 is compatible with `@ngx-translate/http-loader@2.0.1` and `@ngx-transla
 
 Should save selected language on App, and load it when launch.
 
-For unit testing we've tried implementation based on [example providing from ngx-translate repo](https://github.com/ngx-translate/example/blob/master/src/app/app.component.spec.ts), but it was not successful.
+For unit testing we've tried implementation based on [example providing from ngx-translate repo](https://github.com/ngx-translate/example/blob/master/src/app/app.component.spec.ts), but it was not successful. An extensive [thread](https://github.com/ngx-translate/core/issues/636) about unit testing take place on github repo of the project.
 
 ## Handle dates and time with ngx-moment
 
