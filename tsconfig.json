@@ -26,6 +26,7 @@
       "@providers/*": [ "providers/*" ],
       "@models/*": [ "models/*" ],
       "@shared/*": [ "shared/*" ],
+      "@pipes/*": [ "pipes/*" ],
       "@tests/*": [ "./*" ],
       "@theme/*": [ "theme/*" ]
     },

@@ -1,19 +1,29 @@
 <!--
   Generated template for the PostDetailsPage page.
-
+  
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
-
+  
   <ion-navbar>
     <ion-title>post-details</ion-title>
   </ion-navbar>
-
+  
 </ion-header>
 
 
 <ion-content padding *ngIf="post">
-    <h2>{{post.title}}</h2>
-    <h3>{{post.published | amFromUnix | amDateFormat:'LL'}}</h3>
+  <h2>{{post.title}}</h2>
+  <h3>{{post.published | amFromUnix | amDateFormat:'LL'}}</h3>
+  <ion-row>
+    <ion-col>
+      <ion-slides *ngIf="post.images" loop="{{post.images.length > 1 ? true:false}}" autoplay="3500" pager="{{post.images.length > 1 ? true:false}}">
+        <ion-slide *ngFor="let image of post.images">
+          <img [src]="image.path.substr(8) | imgServerUrly" [srcset]="image.path.substr(8) | imgServerSrcsettify" imageViewer/>
+          <div class="img-title">{{image.title}}</div>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+  </ion-row>
 </ion-content>

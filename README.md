@@ -17,7 +17,7 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
 
 ## Features
 
-- [] Image gallery
+- [x] [Image gallery](#image-gallery)
   - [Devdactic: Image Gallery With Zoom](https://devdactic.com/ionic-image-gallery-zoom/)
   - Pinch/Zoom image
 - [] PWA
@@ -78,6 +78,11 @@ A starter template for PWA and Native Ionic v3 projects, providing best pratices
   - [ng4-animations](http://slides.yearofmoo.com/ng4-animations-preview/demo/)
 
 # Features
+
+## Image gallery
+The Ionic image gallery is a classic pattern used in many applications which need to display any kind of grid with pictures or photos. 
+For the image gallery. We can make use of the [ion-slides](https://ionicframework.com/docs/api/components/slides/Slides/) component, and the [Riron/ionic-img-viewer](https://github.com/Riron/ionic-img-viewer) component which helps us to display a selected picture in fullscreen with zooming options.
+
 ## Multi-language
   [ngx-translate](http://www.ngx-translate.com/) is an internationalization library for Angular 2+. It lets you define translations for your content in different languages and switch between them easily.
   We've followed 

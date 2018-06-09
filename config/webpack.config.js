@@ -17,6 +17,7 @@ useDefaultConfig[webpackConfig].resolve.alias = {
   "@providers": path.resolve('./src/providers/'),
   "@models": path.resolve('./src/models/'),
   "@shared": path.resolve('./src/shared/'),
+  "@pipes": path.resolve('./src/pipes/'),
   "@tests": path.resolve('./src/'),    
   "@theme": path.resolve('./src/theme/')
 };
