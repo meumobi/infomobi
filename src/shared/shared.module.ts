@@ -6,9 +6,11 @@ import { ImgServerUrlyPipe } from '@pipes/.';
 import { ImgServerSrcsettifyPipe } from '@pipes/.';
 import { SafeUrlPipe } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 const sharedModules = [
-  MomentModule
+  MomentModule,
+  SuperTabsModule
 ];
 
 @NgModule({

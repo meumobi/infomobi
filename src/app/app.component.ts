@@ -29,7 +29,6 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: 'HomePage' },
-      { title: 'List', component: 'PostsPage' },
     ];
     console.log("Env is production ? " + ENV.production);
   }
