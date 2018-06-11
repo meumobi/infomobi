@@ -5,6 +5,7 @@ import { AnalyticsProvider } from './analytics.service';
 import { ImgServerUrlyPipe } from '@pipes/.';
 import { ImgServerSrcsettifyPipe } from '@pipes/.';
 import { SafeUrlPipe } from '@pipes/.';
+import { SearchPipe } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 
@@ -20,7 +21,8 @@ const sharedModules = [
   declarations: [
     ImgServerUrlyPipe,
     ImgServerSrcsettifyPipe,
-    SafeUrlPipe
+    SafeUrlPipe,
+    SearchPipe
   ],
   providers: [
     MeuToastProvider,
@@ -30,6 +32,7 @@ const sharedModules = [
     ImgServerUrlyPipe,
     ImgServerSrcsettifyPipe,
     SafeUrlPipe,
+    SearchPipe,
     sharedModules
   ]
 })

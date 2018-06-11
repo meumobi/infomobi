@@ -1,0 +1,19 @@
+<ion-content>
+  <ion-searchbar [(ngModel)]="search" [placeholder]="'Search'">
+  </ion-searchbar>
+  <ion-list>
+    <button ion-item *ngFor="let contact of contacts | search:search:'lastName'" (click)="pushDetailsPage('contact-details', contact.id)">
+      <ion-avatar item-left *ngIf="contact.picture; else anonymous">
+          <img src="{{contact.picture}}"/>
+      </ion-avatar>
+      <ng-template #anonymous>
+          <ion-avatar item-left>
+              <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+          </ion-avatar>
+      </ng-template>
+      
+      <h2>{{contact.firstName}} {{contact.lastName}}</h2>
+      <p>{{contact.title}}</p>
+    </button>
+  </ion-list>
+</ion-content>
