@@ -42,6 +42,8 @@
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^2.0.1",
     "@types/google.analytics": "0.0.39",
+    "angularfire2": "^5.0.0-rc.3",
+    "firebase": "^5.0.4",
     "ionic-angular": "3.9.2",
     "ionic-img-viewer": "^2.9.0",
     "ionic2-super-tabs": "^4.2.2",

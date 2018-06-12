@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { PostsPage } from '@pages/posts/posts';
+import { LivePage } from '@pages/live/live';
 
 @IonicPage()
 @Component({
@@ -10,6 +11,7 @@ import { PostsPage } from '@pages/posts/posts';
 export class HomePage {
 
   posts: any = PostsPage;
+  live: any = LivePage;
 
   constructor(public navCtrl: NavController) {
 

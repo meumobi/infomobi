@@ -12,7 +12,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PostsPage } from '@pages/posts/posts';
 import { PostsProvider } from '@providers/posts';
+import { CommentsProvider } from '@providers/comments';
+
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { LivePage } from '@pages/live/live';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { ENV } from '@env';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -21,10 +27,13 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     MyApp,
-    PostsPage
+    PostsPage,
+    LivePage
   ],
   imports: [
     BrowserModule,
+    AngularFireModule,
+    AngularFirestoreModule,
     IonicModule.forRoot(MyApp),
     SharedModule,
     HttpClientModule,
@@ -35,18 +44,22 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    AngularFireModule.initializeApp(ENV.firebase)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    PostsPage
+    PostsPage,
+    LivePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     PostsProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CommentsProvider,
+    AngularFirestoreModule
   ]
 })
 export class AppModule {}
