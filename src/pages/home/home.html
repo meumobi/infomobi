@@ -1,18 +1,26 @@
-<ion-header>
+<ion-header no-shadow no-border>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>
+      <img src="./assets/images/header-clean.png" class="logo" alt="infomobi">
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button block (click)="openPage('videos')">
+        <div>
+          <ion-icon name="desktop"></ion-icon>
+          <label>TV</label>
+        </div>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content no-bounce>
+  <super-tabs [config]="{ sideMenu: 'left' }">
+    <!-- <super-tab [root]="live" [title]="'Live' | translate"></super-tab> -->
+    <super-tab [root]="posts" [title]="'Latest News' | translate"></super-tab>
+    <!-- <super-tab [root]="contacts" [title]="'Contacts' | translate"></super-tab> -->
+  </super-tabs>
 </ion-content>

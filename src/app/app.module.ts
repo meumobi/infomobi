@@ -10,6 +10,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { PostsPage } from '@pages/posts/posts';
+import { PostsProvider } from '@providers/posts';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -18,12 +21,14 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     MyApp,
+    PostsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     SharedModule,
     HttpClientModule,
+    IonicImageViewerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -35,10 +40,12 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    PostsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    PostsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

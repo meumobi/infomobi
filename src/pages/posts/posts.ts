@@ -20,6 +20,7 @@ export class PostsPage {
 
   posts: Array<Post>;
   fakePosts: Array<any> = new Array(5);
+  rootNavCtrl: NavController;
 
   constructor(
     private postsProvider: PostsProvider,
@@ -27,6 +28,8 @@ export class PostsPage {
     public navParams: NavParams
   ) {
       this.listArticles();
+      this.rootNavCtrl = navParams.get('rootNavCtrl');
+
   }
 
   listArticles(refresher = null) {
@@ -44,10 +47,11 @@ export class PostsPage {
       }
     );
   }
-  
+
   pushDetailsPage(page: string, id: string) {
-    this.navCtrl.push(page, {
-      id: id
+    this.rootNavCtrl.push(page, {
+      id: id,
+      rootNavCtrl: this.rootNavCtrl
     });
   }
 
