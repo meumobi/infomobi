@@ -16,6 +16,7 @@ import { PostsProvider } from '@providers/posts';
 export class PostDetailsPage {
 
   post: Post;
+  rootNavCtrl: NavController;
 
   constructor(
     private postsProvider: PostsProvider,
@@ -23,6 +24,7 @@ export class PostDetailsPage {
     public navParams: NavParams
   ) {
     let id = this.navParams.data.id;
+    this.rootNavCtrl = navParams.get('rootNavCtrl');
     this.findById(id);
   }
 

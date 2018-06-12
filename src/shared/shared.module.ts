@@ -13,7 +13,7 @@ const sharedModules = [
 
 @NgModule({
   imports: [
-    sharedModules
+    sharedModules,
   ],
   declarations: [
     ImgServerUrlyPipe,
