@@ -14,6 +14,7 @@ export class LivePage {
   comments: Comment[];
   rootNavCtrl: NavController;
   fakeComments: Array<any> = new Array(5);
+  subscription: any;
 
   constructor(
     private data: CommentsProvider,
@@ -30,12 +31,12 @@ export class LivePage {
 
 
   findAll() {
-    this.data.findAll().subscribe(
+    this.subscription = this.data.findAll().subscribe(
       data => {
         this.comments = data;
-        // if (this.content) {
-        //   this.content.scrollToTop(500);
-        // }
+        if (this.content) {
+          this.content.scrollToTop(500);
+        }
       },
       err => {
         console.log(err);
@@ -44,10 +45,12 @@ export class LivePage {
   }
 
   pushDetailsPage(page: string, id: string) {
+    this.subscription.unsubscribe();
     this.rootNavCtrl.push(page, {
       id: id,
       rootNavCtrl: this.rootNavCtrl
     });
+
   }
 
   addComment() {
