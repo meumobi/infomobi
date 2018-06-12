@@ -9,7 +9,8 @@
     <ion-item>
       <ion-textarea name="description" [(ngModel)]="comment.description" placeholder="{{'Write your text' | translate}}"></ion-textarea>
     </ion-item>
-    <button ion-button type="submit">Post</button>
+    <file-upload (fileUploadStarted)="fileUploadStarted($event);" (fileUploadFinished)="fileUploadFinished($event);"></file-upload>
+    <button ion-button type="submit" [disabled]="!uploadFinished">Post</button>
     
   </form>
 </ion-content>

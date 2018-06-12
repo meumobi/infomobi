@@ -16,6 +16,7 @@ export class CommentEditPage {
 
   images = [];
   files:Array<any>;
+  uploadFinished = true;
 
   constructor(
     public navCtrl: NavController, 
@@ -30,10 +31,23 @@ export class CommentEditPage {
       description: "",
       published: true
     }
+    this.comment.postId = ((this.navParams.data.postId) ? this.navParams.data.postId : null);
+    this.comment.postTitle = ((this.comment.postId) ? this.navParams.data.articleTitle : null); 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CommentEditPage');
+  }
+
+  fileUploadFinished(data) {
+    this.comment.media = data;
+    console.log(data);
+    this.uploadFinished = true;
+  }
+
+  fileUploadStarted() {
+    //TODO add spinner
+    this.uploadFinished = false;
   }
 
   onSubmit() {

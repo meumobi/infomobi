@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PostsPage } from '@pages/posts/posts';
 import { PostsProvider } from '@providers/posts';
 import { CommentsProvider } from '@providers/comments';
+import { UploadProvider } from '@providers/upload';
 
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { LivePage } from '@pages/live/live';
@@ -59,7 +60,8 @@ export function createTranslateLoader(http: HttpClient) {
     PostsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    UploadProvider
   ]
 })
 export class AppModule {}
