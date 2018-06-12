@@ -38,9 +38,9 @@ export class CommentsProvider {
   //   });
   // }
 
-  // remove(id) {
-  //   return this.itemsCollection.doc(id).delete();
-  // }
+  remove(id) {
+    return this.itemsCollection.doc(id).delete();
+  }
 
   // findByArticle(id): Observable<Comment[]> {
   //   this.itemsCollection = this.af.collection<Comment>('posts', 
@@ -57,11 +57,11 @@ export class CommentsProvider {
 
   // }
 
-  // create(post: Comment) {
-  //   post.createdAt = firebase.database.ServerValue.TIMESTAMP;
-  //   post.priority = 0 - Date.now();  
-  //   console.log(post); 
-  //   return this.itemsCollection.add(post);
-  // }
+  save(comment: Comment) {
+    // comment.createdAt = firebase.database.ServerValue.TIMESTAMP;
+    comment.priority = 0 - Date.now();  
+    console.log(comment); 
+    return this.itemsCollection.add(comment);
+  }
 
 }

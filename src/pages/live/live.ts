@@ -32,6 +32,7 @@ export class LivePage {
   findAll() {
     this.data.findAll().subscribe(
       data => {
+        console.log(data);
         this.comments = data;
         this.content.scrollToTop(500);
       },
@@ -41,16 +42,16 @@ export class LivePage {
     );
   }
 
-  viewArticle(id: string){
+  viewArticle(id: string) {
     this.rootNavCtrl.push('article-details', {
       id: id,
       rootNavCtrl: this.rootNavCtrl
     });
   }
 
-  addPost() {
+  addComment() {
     this.rootNavCtrl.push(
-      'post-live', {}
+      'comment-edit', {}
     );
   }
 

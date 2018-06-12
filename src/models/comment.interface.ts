@@ -8,4 +8,4 @@ export interface Comment {
     postTitle?: string, 
     createdAt?: Object,
     priority?: number
-  }
+}
