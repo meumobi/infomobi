@@ -32,9 +32,10 @@ export class LivePage {
   findAll() {
     this.data.findAll().subscribe(
       data => {
-        console.log(data);
         this.comments = data;
-        this.content.scrollToTop(500);
+        // if (this.content) {
+        //   this.content.scrollToTop(500);
+        // }
       },
       err => {
         console.log(err);
@@ -42,8 +43,8 @@ export class LivePage {
     );
   }
 
-  viewArticle(id: string) {
-    this.rootNavCtrl.push('article-details', {
+  pushDetailsPage(page: string, id: string) {
+    this.rootNavCtrl.push(page, {
       id: id,
       rootNavCtrl: this.rootNavCtrl
     });

@@ -29,10 +29,10 @@ export class CommentEditPage {
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
       },
       description: "",
-      published: true
+      published: ((this.navParams.data.postId) ? false : true)   
     }
     this.comment.postId = ((this.navParams.data.postId) ? this.navParams.data.postId : null);
-    this.comment.postTitle = ((this.comment.postId) ? this.navParams.data.articleTitle : null); 
+    this.comment.postTitle = ((this.comment.postId) ? this.navParams.data.postTitle : null); 
   }
 
   ionViewDidLoad() {

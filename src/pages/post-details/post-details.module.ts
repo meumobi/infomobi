@@ -5,6 +5,8 @@ import { PostDetailsPage } from './post-details';
 import { PostsProvider } from '@providers/posts';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { SharedModule } from '@shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @NgModule({
   declarations: [
@@ -14,6 +16,7 @@ import { SharedModule } from '@shared/shared.module';
     IonicPageModule.forChild(PostDetailsPage),
     SharedModule,
     IonicImageViewerModule,
+    TranslateModule.forChild()
   ],
   providers: [
     PostsProvider
