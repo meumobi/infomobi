@@ -11,13 +11,17 @@ import { PostsProvider } from '@providers/posts';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  segment: 'category/:id'
+})
 @Component({
   selector: 'page-posts',
   templateUrl: 'posts.html',
 })
 export class PostsPage {
 
+  categoryId: number;
+  rootNavCtrl: NavController;
   posts: Array<Post>;
   fakePosts: Array<any> = new Array(5);
 
@@ -27,6 +31,8 @@ export class PostsPage {
     public navParams: NavParams
   ) {
       this.listArticles();
+      this.categoryId = navParams.data.id;
+      this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
   }
 
   listArticles(refresher = null) {
@@ -46,8 +52,9 @@ export class PostsPage {
   }
   
   pushDetailsPage(page: string, id: string) {
-    this.navCtrl.push(page, {
-      id: id
+    this.rootNavCtrl.push(page, {
+      id: id,
+      rootNavCtrl: this.rootNavCtrl
     });
   }
 

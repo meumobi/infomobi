@@ -13,6 +13,9 @@ import { PostsProvider } from '@providers/posts';
   ],
   providers: [
     PostsProvider
+  ],
+  entryComponents: [
+  	PostsPage
   ]
 })
 export class PostsPageModule {}
