@@ -20,6 +20,7 @@
     "paths": {
       "@app/*": [ "app/*" ],
       "@assets/*": [ "assets/*" ],
+      "@components/*": [ "components/*" ],
       "@env": [ "environments/environment" ],
       "@pages/*": [ "pages/*" ],
       "@services/*": [ "services/*" ],
