@@ -12,7 +12,7 @@ export class HomePage {
 
   live: any = LivePage;
   posts: any = 'PostsPage';
-  contacts: any = ContactsPage;
+  contacts: any = 'ContactsPage';
 
   constructor(public navCtrl: NavController) {
 
