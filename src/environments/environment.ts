@@ -3,7 +3,7 @@ export const ENV = {
   isDebugMode: true,
   analyticsTrackingId: "UA-120447879-1" ,
   imgServer: {
-    url: "http://vps548719.ovh.net/meumobi/"
+    url: "https://imageflow.meumobi.com/meumobi/"
   } , 
   firebase: {
     apiKey: "AIzaSyBnCsnH9XAtG73lIwRuYj4dbXLyPBv0E5I",

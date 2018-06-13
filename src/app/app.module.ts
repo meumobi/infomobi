@@ -18,6 +18,7 @@ import { UploadProvider } from '@providers/upload';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ENV } from '@env';
+import { PostsProvider } from '@providers/posts';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -56,6 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
+    PostsProvider,
     AngularFirestoreModule,
     UploadProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
