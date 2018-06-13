@@ -10,7 +10,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { LivePage } from '@pages/live/live';
 import { ContactsPage } from '@pages/contacts/contacts';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 

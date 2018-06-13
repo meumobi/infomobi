@@ -6,9 +6,12 @@ import { ImgServerUrlyPipe } from '@pipes/.';
 import { ImgServerSrcsettifyPipe } from '@pipes/.';
 import { SafeUrlPipe } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+
 
 const sharedModules = [
-  MomentModule
+  MomentModule,
+  IonicImageViewerModule
 ];
 
 @NgModule({
