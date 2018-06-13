@@ -37,7 +37,7 @@ export class LivePage {
       data => {
         if (this.content && this.comments && !this.author) {
           //TODO only show when data.len > comments.len
-          this.newPosts();         
+          //this.newPosts();         
         }
         this.comments = data;      
       },
