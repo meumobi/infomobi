@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { PostsPage } from '@pages/posts/posts';
 import { LivePage } from '@pages/live/live';
 import { ContactsPage } from '@pages/contacts/contacts';
 

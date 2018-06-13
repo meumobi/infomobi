@@ -5,7 +5,6 @@ import { Content } from 'ionic-angular';
 import { CommentsProvider } from '@providers/comments';
 import { ToastController } from 'ionic-angular';
 
-
 @Component({
   selector: 'page-live',
   templateUrl: 'live.html',
@@ -48,7 +47,6 @@ export class LivePage {
     );
   }
   
-  
   newPosts() {
     let toast = this.toastCtrl.create({
       message: "New Comments",
@@ -64,19 +62,15 @@ export class LivePage {
       }
       console.log('Dismissed toast');
     });
-    toast.present();
-        
+    toast.present();        
   }
-  
-  
-  
+
   pushDetailsPage(page: string, id: string) {
     this.subscription.unsubscribe();
     this.rootNavCtrl.push(page, {
       id: id,
       rootNavCtrl: this.rootNavCtrl
-    });
-    
+    });  
   }
   
   addComment() {

@@ -12,12 +12,9 @@ import { LivePage } from '@pages/live/live';
 import { ContactsPage } from '@pages/contacts/contacts';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PostsPage } from '@pages/posts/posts';
-import { PostsProvider } from '@providers/posts';
 import { CommentsProvider } from '@providers/comments';
 import { UploadProvider } from '@providers/upload';
 
-import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ENV } from '@env';
@@ -39,7 +36,6 @@ export function createTranslateLoader(http: HttpClient) {
     IonicModule.forRoot(MyApp),
     SharedModule,
     HttpClientModule,
-    IonicImageViewerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -58,7 +54,6 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    PostsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
     AngularFirestoreModule,
