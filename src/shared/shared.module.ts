@@ -5,6 +5,7 @@ import { AnalyticsProvider } from './analytics.service';
 import { ImgServerUrlyPipe } from '@pipes/.';
 import { ImgServerSrcsettifyPipe } from '@pipes/.';
 import { SafeUrlPipe } from '@pipes/.';
+import { SearchPipe } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 
@@ -21,7 +22,8 @@ const sharedModules = [
   declarations: [
     ImgServerUrlyPipe,
     ImgServerSrcsettifyPipe,
-    SafeUrlPipe
+    SafeUrlPipe,
+    SearchPipe
   ],
   providers: [
     MeuToastProvider,
@@ -31,6 +33,7 @@ const sharedModules = [
     ImgServerUrlyPipe,
     ImgServerSrcsettifyPipe,
     SafeUrlPipe,
+    SearchPipe,
     sharedModules
   ]
 })

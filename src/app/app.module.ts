@@ -9,7 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { LivePage } from '@pages/live/live';
-import { ContactsPage } from '@pages/contacts/contacts';
+//import { ContactsPage } from '@pages/contacts/contacts';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CommentsProvider } from '@providers/comments';
@@ -28,7 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     MyApp,
     LivePage,
-    ContactsPage
+    //ContactsPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
   entryComponents: [
     MyApp,
     LivePage,
-    ContactsPage
+    //ContactsPage
   ],
   providers: [
     StatusBar,
