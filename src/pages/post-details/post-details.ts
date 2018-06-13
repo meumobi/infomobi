@@ -9,7 +9,7 @@ import { MeuToastProvider } from '@shared/meu-toast.service';
 
 @IonicPage({
   segment: 'post/details/:id',
-  defaultHistory: ['PostsPage'],
+  defaultHistory: ['HomePage'],
 })
 @Component({
   selector: 'page-post-details',

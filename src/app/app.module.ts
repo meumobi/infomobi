@@ -8,6 +8,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
+import { LivePage } from '@pages/live/live';
+import { ContactsPage } from '@pages/contacts/contacts';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PostsPage } from '@pages/posts/posts';
@@ -16,7 +18,6 @@ import { CommentsProvider } from '@providers/comments';
 import { UploadProvider } from '@providers/upload';
 
 import { IonicImageViewerModule } from 'ionic-img-viewer';
-import { LivePage } from '@pages/live/live';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ENV } from '@env';
@@ -28,8 +29,8 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     MyApp,
-    PostsPage,
-    LivePage
+    LivePage,
+    ContactsPage
   ],
   imports: [
     BrowserModule,
@@ -51,8 +52,8 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    PostsPage,
-    LivePage
+    LivePage,
+    ContactsPage
   ],
   providers: [
     StatusBar,
@@ -61,7 +62,8 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
     AngularFirestoreModule,
-    UploadProvider
+    UploadProvider,
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })
 export class AppModule {}

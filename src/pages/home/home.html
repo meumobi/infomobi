@@ -1,26 +1,26 @@
 <ion-header no-shadow no-border>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      <img src="./assets/images/header-clean.png" class="logo" alt="infomobi">
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button block (click)="openPage('videos')">
-        <div>
-          <ion-icon name="desktop"></ion-icon>
-          <label>TV</label>
-        </div>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
       </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
+      <ion-title>
+        <img src="./assets/images/header-clean.png" class="logo" alt="infomobi">
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button block>
+          <div>
+            <ion-icon name="desktop"></ion-icon>
+            <label>TV</label>
+          </div>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
 
 <ion-content no-bounce>
-  <super-tabs [config]="{ sideMenu: 'left' }">
-    <super-tab [root]="live" [title]="'Live' | translate"></super-tab>
-    <super-tab [root]="posts" [title]="'Latest News' | translate"></super-tab>
-    <!-- <super-tab [root]="contacts" [title]="'Contacts' | translate"></super-tab> -->
-  </super-tabs>
-</ion-content>
+    <super-tabs [config]="{ sideMenu: 'left' }">
+      <super-tab [root]="live" [title]="'Live' | translate"></super-tab>
+      <super-tab [root]="posts" [title]="'Latest News' | translate"></super-tab>
+      <super-tab [root]="contacts" [title]="'Contacts' | translate"></super-tab>
+    </super-tabs>
+  </ion-content>

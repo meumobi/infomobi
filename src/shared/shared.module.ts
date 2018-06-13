@@ -6,16 +6,17 @@ import { ImgServerUrlyPipe } from '@pipes/.';
 import { ImgServerSrcsettifyPipe } from '@pipes/.';
 import { SafeUrlPipe } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
-import { SuperTabsModule } from 'ionic2-super-tabs';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+
 
 const sharedModules = [
   MomentModule,
-  SuperTabsModule
+  IonicImageViewerModule
 ];
 
 @NgModule({
   imports: [
-    sharedModules
+    sharedModules,
   ],
   declarations: [
     ImgServerUrlyPipe,
