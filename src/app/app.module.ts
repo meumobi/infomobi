@@ -57,7 +57,6 @@ export function createTranslateLoader(http: HttpClient) {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
-    PostsProvider,
     AngularFirestoreModule,
     UploadProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { IonicPage } from 'ionic-angular';
+
 import { Post } from '@models/post.interface';
 import { Comment } from '@models/comment.interface';
 
 import { PostsProvider } from '@providers/posts';
 import { CommentsProvider } from '@providers/comments';
-import { IonicPage } from 'ionic-angular';
 
 @IonicPage({
   name: 'tv'
