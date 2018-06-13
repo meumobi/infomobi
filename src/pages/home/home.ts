@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-
 import { LivePage } from '@pages/live/live';
 import { ContactsPage } from '@pages/contacts/contacts';
 
@@ -17,6 +16,12 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.navCtrl.push(page);
   }
 
 }

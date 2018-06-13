@@ -12,6 +12,12 @@ import { LivePage } from '@pages/live/live';
 import { ContactsPage } from '@pages/contacts/contacts';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CommentsProvider } from '@providers/comments';
+import { UploadProvider } from '@providers/upload';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { ENV } from '@env';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -25,6 +31,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    AngularFireModule,
+    AngularFirestoreModule,
     IonicModule.forRoot(MyApp),
     SharedModule,
     HttpClientModule,
@@ -34,7 +42,8 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    AngularFireModule.initializeApp(ENV.firebase)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,6 +54,10 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CommentsProvider,
+    AngularFirestoreModule,
+    UploadProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })

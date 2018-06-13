@@ -50,7 +50,7 @@ export class PostsPage {
       }
     );
   }
-  
+
   pushDetailsPage(page: string, id: string) {
     this.rootNavCtrl.push(page, {
       id: id,
