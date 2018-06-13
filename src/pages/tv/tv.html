@@ -1,0 +1,41 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4> 
+        <div class="live">
+          <ion-list>
+            <div ion-item *ngFor="let comment of comments">
+              <ion-avatar item-start *ngIf="comment.author.picture; else anonymous">
+                <img [src]="comment.author.picture"/>
+              </ion-avatar>
+              <ng-template #anonymous>
+                <ion-avatar item-left>
+                  <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+                </ion-avatar>
+              </ng-template>      
+              <h2 class="font-caption-2">{{comment.author.displayName}}</h2>
+              <p class="font-caption-1" [innerHtml]="comment.description"></p>
+              <img *ngIf="comment.media"[src]="comment.media"/>
+            </div>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col col-8>
+        <div class="news">
+          <ion-slides pager="true" loop="true" centeredSlides="true"  autoplay="10000">
+            <ion-slide *ngFor="let post of posts">
+              <ion-card class="card-background-page">
+                <img *ngIf="post.images" class="img-fit" [src]="post.images[0].path.substr(8) | imgServerUrly" [srcset]="post.images[0].path.substr(8) | imgServerSrcsettify"/>
+                <ion-card-content>
+                  <ion-card-title class="font-headline">
+                    {{post.title}}
+                  </ion-card-title>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </div>  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
