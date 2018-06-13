@@ -7,7 +7,7 @@ import { PostsProvider } from '@providers/posts';
 @IonicPage({
   //name: 'post-details',
   segment: 'post/details/:id',
-  defaultHistory: ['PostsPage'],
+  defaultHistory: ['HomePage'],
 })
 @Component({
   selector: 'page-post-details',

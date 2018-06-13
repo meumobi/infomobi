@@ -21,6 +21,7 @@ import { PostsProvider } from '@providers/posts';
 export class PostsPage {
 
   categoryId: number;
+  rootNavCtrl: NavController;
   posts: Array<Post>;
   fakePosts: Array<any> = new Array(5);
 
