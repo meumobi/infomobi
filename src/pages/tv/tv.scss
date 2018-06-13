@@ -1,0 +1,29 @@
+page-tv {
+    ion-grid {
+        height: 100%;
+    }
+    .font-body {
+        font-size: 29px;
+    }
+    .font-caption-1 {
+        font-size: 25px;
+    }
+    .font-caption-2 {
+        font-size: 23px;
+    }
+    .font-headline {
+        font-size: 38px;
+    }
+    
+    .image-fit{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .live, .news {
+        height: 100%;
+        overflow: hidden;
+    }
+    
+}
