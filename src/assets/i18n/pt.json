@@ -5,5 +5,8 @@
         "lang_en" : "Inglês"
     },
     "IN_APP" : "Internal app translation",
-    "FOO": "Foo {{test}}"
+    "FOO": "Foo {{test}}",
+    "Live": "Ao vivo",
+    "Latest News": "Notícias",
+    "Contacts": "Contatos"
 }
