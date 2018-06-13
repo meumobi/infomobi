@@ -9,14 +9,15 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { LivePage } from '@pages/live/live';
-import { ContactsPage } from '@pages/contacts/contacts';
+//import { ContactsPage } from '@pages/contacts/contacts';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PostsPage } from '@pages/posts/posts';
-import { PostsProvider } from '@providers/posts';
-import { ContactsProvider } from '@providers/contacts';
+import { CommentsProvider } from '@providers/comments';
+import { UploadProvider } from '@providers/upload';
 
-import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { ENV } from '@env';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,34 +27,38 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     MyApp,
     LivePage,
-    ContactsPage
+    //ContactsPage
   ],
   imports: [
     BrowserModule,
+    AngularFireModule,
+    AngularFirestoreModule,
     IonicModule.forRoot(MyApp),
     SharedModule,
     HttpClientModule,
-    IonicImageViewerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    AngularFireModule.initializeApp(ENV.firebase)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     LivePage,
-    ContactsPage
+    //ContactsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    PostsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ContactsProvider
+    CommentsProvider,
+    AngularFirestoreModule,
+    UploadProvider,
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })
 export class AppModule {}

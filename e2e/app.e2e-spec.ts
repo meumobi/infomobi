@@ -12,9 +12,9 @@ describe('App', () => {
       page.navigateTo('/');
     });
 
-    it('should have a title saying Home', () => {
+    it('should have a title saying live', () => {
       page.getHomePageTitleText().then(title => {
-        expect(title).toEqual('Home');
+        expect(title).toEqual('live');
       });
     });
   })

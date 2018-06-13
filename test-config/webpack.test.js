@@ -10,6 +10,7 @@ module.exports = {
     alias: {
       "@app": path.resolve('./src/app/'),
       "@assets": path.resolve('./src/assets/'),
+      "@components": path.resolve('./src/components/'),
       "@env": path.resolve(environmentPath()),
       "@pages": path.resolve('./src/pages/'),
       "@services": path.resolve('./src/services/'),

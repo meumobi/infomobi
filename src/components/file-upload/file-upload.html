@@ -1,0 +1,14 @@
+<ion-item>
+  <input type="file" id="file" [hidden]=true accept="image/*" (change)="detectFiles($event)"/>		
+  <label for="file" ion-button large>
+    <ion-icon name="camera" icon-only></ion-icon>
+  </label>
+  <ion-thumbnail *ngFor="let image of images" item-start>
+    <div class="img-wrap">
+      <a class="close" (click)="removeFile()">
+        <ion-icon  name="close-circle"></ion-icon>
+      </a>
+      <img class="image-fit image-wrap" [src]="image"/>				    
+    </div>
+  </ion-thumbnail>
+</ion-item>
