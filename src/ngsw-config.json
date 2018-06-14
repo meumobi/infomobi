@@ -1,0 +1,17 @@
+{
+	"index": "/index.html",
+	"assetGroups": [
+		{
+			"name": "assets",
+			"installMode": "lazy",
+			"updateMode": "prefetch",
+			"resources": {
+				"files": [
+					"./www/vendor.js",
+					"./www/main.js",
+					"./www/main.css"
+				]
+			}
+		}
+	]
+}

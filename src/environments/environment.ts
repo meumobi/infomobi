@@ -1,5 +1,5 @@
 export const ENV = {
-  production: false,
+  production: true,
   isDebugMode: true,
   analyticsTrackingId: "UA-120447879-1" ,
   imgServer: {

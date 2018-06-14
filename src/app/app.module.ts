@@ -21,6 +21,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { CommentsProvider } from '@providers/comments';
 import { UploadProvider } from '@providers/upload';
 
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ENV } from '@env';
@@ -51,7 +53,8 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    AngularFireModule.initializeApp(ENV.firebase)
+    AngularFireModule.initializeApp(ENV.firebase),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: ENV.production })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
