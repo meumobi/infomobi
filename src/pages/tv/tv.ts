@@ -7,9 +7,7 @@ import { Comment } from '@models/comment.interface';
 import { PostsProvider } from '@providers/posts';
 import { CommentsProvider } from '@providers/comments';
 
-@IonicPage({
-  name: 'tv'
-})
+@IonicPage()
 @Component({
   selector: 'page-tv',
   templateUrl: 'tv.html',
