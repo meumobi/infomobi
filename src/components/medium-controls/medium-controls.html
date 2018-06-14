@@ -1,0 +1,29 @@
+<div [ngSwitch]="medium.status">
+  <div *ngSwitchCase="'download'">
+    <button ion-button icon-only (click)="download()">
+      <ion-icon name="download"></ion-icon>
+    </button>
+  </div>    
+  <div *ngSwitchCase="'downloading'">  
+    <span class="loading-span" >
+      <img icon-only class="loading" src="assets/images/loading.gif"/>  
+    </span>
+    <button class="button-close" ion-button icon-only (click)="abort()">    
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </div>
+  <div *ngSwitchCase="'downloaded'">
+    <button ion-button icon-only (click)="openLocal()">
+        <ion-icon name="{{medium.behavior.icon}}"></ion-icon>
+    </button>
+    <button ion-button icon-only (click)="delete()">
+        <ion-icon name="trash"></ion-icon>
+    </button>
+  </div>
+  <div *ngSwitchCase="'open_by_link'">
+    <button  ion-button icon-only (click)="link()">
+        <ion-icon name="{{medium.behavior.icon}}"></ion-icon>
+    </button>
+  </div>
+</div>
+

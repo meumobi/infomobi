@@ -41,7 +41,7 @@ let posts = [
         "length": 1397454,
         "thumbnails": [
           {
-            "url": "http://meumobi.com/uploads/pdf_thumbnail/c813c0bb17fa86b1941b3860be033743.png",
+            "url": "http://meumobi.com/uploads/pdf_thumbnail/b91cdbd5c40ebadc93b483bc804b1718.png",
             "type": "image/png",
             "width": 720,
             "height": 540
@@ -299,7 +299,7 @@ let posts = [
         "length": 1397454,
         "thumbnails": [
           {
-            "url": "http://meumobi.com/uploads/pdf_thumbnail/4a0ab4eede0c3a370198a53a83157db2.png",
+            "url": "http://meumobi.com/uploads/pdf_thumbnail/b91cdbd5c40ebadc93b483bc804b1718.png",
             "type": "image/png",
             "width": 720,
             "height": 540

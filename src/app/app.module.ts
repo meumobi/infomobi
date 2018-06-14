@@ -11,6 +11,13 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LivePage } from '@pages/live/live';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FilesProvider } from 'ionic-meumobi-utils';
+import { File } from '@ionic-native/file';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileOpener } from '@ionic-native/file-opener';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { IonicStorageModule } from '@ionic/storage';
+
 import { CommentsProvider } from '@providers/comments';
 import { UploadProvider } from '@providers/upload';
 
@@ -32,6 +39,9 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFireModule,
     AngularFirestoreModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: 'storage_db',
+    }),
     SharedModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -51,6 +61,12 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    FileTransfer,
+    FileTransferObject,
+    FileOpener,
+    InAppBrowser,
+    File,
+    FilesProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
     AngularFirestoreModule,

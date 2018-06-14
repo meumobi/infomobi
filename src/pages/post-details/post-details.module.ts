@@ -6,10 +6,17 @@ import { PostsProvider } from '@providers/posts';
 import { SharedModule } from '@shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { MediaListComponent } from '@components/media-list/media-list';
+import { MediumDetailsComponent } from '@components/medium-details/medium-details';
+import { MediumControlsComponent } from '@components/medium-controls/medium-controls';
+import { NgMathPipesModule } from 'angular-pipes';
 
 @NgModule({
   declarations: [
-    PostDetailsPage
+    PostDetailsPage,
+    MediaListComponent,
+    MediumDetailsComponent,
+    MediumControlsComponent
   ],
   imports: [
     IonicPageModule.forChild(PostDetailsPage),
@@ -17,7 +24,8 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule.forChild()
   ],
   providers: [
-    PostsProvider
+    PostsProvider,
+    NgMathPipesModule
   ]
 })
 export class PostDetailsPageModule {}
