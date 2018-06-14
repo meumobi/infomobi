@@ -22,7 +22,7 @@
     <ion-item-sliding *ngFor="let comment of comments">
       <ion-item >
         <ion-avatar item-start *ngIf="comment.author.picture; else anonymous">
-          <img [src]="comment.author.picture"/>
+          <img [src]="comment.author.picture" imageViewer/>
         </ion-avatar>
         <ng-template #anonymous>
           <ion-avatar item-left>
@@ -34,7 +34,7 @@
         <p [innerHtml]="comment.description"></p>
         <ion-thumbnail *ngIf="comment.media" item-end>
           <div class="img-wrap">
-            <img class="image-fit" [src]="comment.media"/>           
+            <img class="image-fit" [src]="comment.media" imageViewer/>           
           </div>
         </ion-thumbnail>        
       </ion-item>

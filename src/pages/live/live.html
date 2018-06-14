@@ -17,7 +17,7 @@
   <ion-list *ngIf="comments">
     <div ion-item *ngFor="let comment of comments">
       <ion-avatar item-start *ngIf="comment.author.picture; else anonymous">
-        <img [src]="comment.author.picture"/>
+        <img [src]="comment.author.picture" imageViewer/>
       </ion-avatar>
       <ng-template #anonymous>
           <ion-avatar item-start>
@@ -27,7 +27,7 @@
       <h2>{{comment.author.displayName}}</h2>
       <p [innerHtml]="comment.description"></p>
       <h3 *ngIf="comment.postTitle"><a (click)="pushDetailsPage('PostDetailsPage', comment.postId)" href="#">{{comment.postTitle}}</a></h3>
-      <img *ngIf="comment.media"[src]="comment.media" class="img-comment"/>
+      <img *ngIf="comment.media"[src]="comment.media" class="img-comment" imageViewer/>
     </div>
   </ion-list>
 
