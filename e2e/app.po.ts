@@ -13,4 +13,8 @@ export class Page {
   getHomePageTitleText() {
     return element(by.tagName('page-home')).element(by.tagName('ion-title')).element(by.css('.toolbar-title')).getText();
   }
+
+  getSettinsPageTitleText(){
+    return element(by.tagName('page-settings')).element(by.tagName('ion-title')).element(by.css('.toolbar-title')).getText();
+  }
 }
