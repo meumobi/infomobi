@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { LivePage } from '@pages/live/live';
 
 @IonicPage()
 @Component({
@@ -9,7 +8,7 @@ import { LivePage } from '@pages/live/live';
 })
 export class HomePage {
 
-  live: any = LivePage;
+  live: any = 'LivePage';
   posts: any = 'PostsPage';
   contacts: any = 'ContactsPage';
 

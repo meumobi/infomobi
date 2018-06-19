@@ -1,0 +1,48 @@
+<ion-item-sliding>
+  <ion-item>
+    <ion-avatar item-start *ngIf="comment.author.picture; else anonymous">
+      <img [src]="comment.author.picture" imageViewer/>
+    </ion-avatar>
+    <ng-template #anonymous>
+      <ion-avatar item-start>
+        <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+      </ion-avatar>
+    </ng-template>      
+    <h2>{{comment.author.displayName}}</h2>
+    <p [innerHtml]="comment.description"></p>
+    <h3 *ngIf="comment.postTitle"><a (click)="pushDetailsPage('PostDetailsPage', comment.postId)" href="#">{{comment.postTitle}}</a></h3>
+    <!-- <ion-thumbnail *ngIf="comment.media" item-end> -->
+      <div class="img-wrap" *ngIf="comment.media">
+        <img class="image-fit" [src]="comment.media" imageViewer/>           
+      </div>
+    <!-- </ion-thumbnail> -->
+    </ion-item>
+    <ion-item-options side="right" >
+      <button ion-button *ngIf="comment.published" (click)="hide()">
+        <ion-icon name="eye-off"></ion-icon>
+        {{'Hide' | translate }}
+      </button>
+      <button ion-button *ngIf="!comment.published" (click)="show()">
+        <ion-icon name="eye"></ion-icon>
+        {{'Show' | translate }}
+      </button>      
+    </ion-item-options>
+    <ion-item-options side="left">      
+      <button ion-button *ngIf="!comment.answered" (click)="setRead()">
+        <ion-icon name="book"></ion-icon>
+        {{'Read' | translate }}
+      </button>
+      <button ion-button *ngIf="comment.answered" (click)="setUnread()">
+        <ion-icon name="book"></ion-icon>
+        {{'Unread' | translate }}
+      </button>
+      <button ion-button *ngIf="comment.promoted" (click)="demote()">
+        <ion-icon name="close"></ion-icon>
+        {{'Demote' | translate }}
+      </button>
+      <button ion-button *ngIf="!comment.promoted" (click)="promote()">
+        <ion-icon name="checkmark"></ion-icon>
+        {{'Promote' | translate }}
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>

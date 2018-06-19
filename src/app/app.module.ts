@@ -31,8 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    MyApp,
-    LivePage,
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -55,8 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    LivePage,
+    MyApp
   ],
   providers: [
     StatusBar,

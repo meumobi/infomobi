@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Comment } from '@models/comment.interface';
 import { Content } from 'ionic-angular';
 import { CommentsProvider } from '@providers/comments';
 import { ToastController } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-live',
   templateUrl: 'live.html',
