@@ -5,10 +5,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: 'comment-list.html'
 })
 export class CommentListComponent {
-  @Output() fileUploadFinished = new EventEmitter(false);
+  @Output() update = new EventEmitter(false);
   @Input('comments') comments;
 
   constructor() {
-
+    console.log(this.comments);
   }
+   
 }

@@ -1,38 +1,33 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'comment-details',
   templateUrl: 'comment-details.html'
 })
 export class CommentDetailsComponent {
-
+  
   @Input('comment') comment;
+  @Output() update = new EventEmitter(false);
 
   constructor() {
   }
 
-  show() {
-    this.comment.published = true;
+  togglePublished() {
+    this.update.emit({
+      published: !this.comment.published
+    })
   }
 
-  hide() {
-    this.comment.published = false;
+  toggleAnswered() {
+    this.update.emit({
+      answered: !this.comment.answered
+    })
   }
 
-  setRead() {
-    this.comment.answered = true;
-  }
-
-  setUnread() {
-    this.comment.answered = false;    
-  }
-
-  promote() {
-    this.comment.promoted = true;     
-  }
-
-  demote() {
-    this.comment.promoted = false;    
+  togglePromoted() {
+    this.update.emit({
+      promoted: !this.comment.promoted
+    })
   }
 
 }

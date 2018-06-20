@@ -19,24 +19,19 @@ export class CommentsProvider {
     this.itemsCollection = this.af.collection<Comment>('posts',
       ref => ref.where('published', '==', true).orderBy('priority')
     );
-    this.items = this.itemsCollection.valueChanges();
+    this.items = this.itemsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Comment;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    console.log(this.items);
     return this.items;
   }
 
-  promote(id: string) {
-    return this.itemsCollection.doc(id).update({
-      published:true
-    });
-  }
-
-  demote(id: string) {
-    return this.itemsCollection.doc(id).update({
-      published:false
-    });
-  }
-
-  remove(id) {
-    return this.itemsCollection.doc(id).delete();
+  update(id: string, changes: any) {
+    return this.itemsCollection.doc(id).update(changes);
   }
 
   findByPost(id): Observable<Comment[]> {

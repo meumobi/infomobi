@@ -18,29 +18,29 @@
     <!-- </ion-thumbnail> -->
     </ion-item>
     <ion-item-options side="right" >
-      <button ion-button *ngIf="comment.published" (click)="hide()">
+      <button ion-button *ngIf="comment.published" (click)="togglePublished()">
         <ion-icon name="eye-off"></ion-icon>
         {{'Hide' | translate }}
       </button>
-      <button ion-button *ngIf="!comment.published" (click)="show()">
+      <button ion-button *ngIf="!comment.published" (click)="togglePublished()">
         <ion-icon name="eye"></ion-icon>
         {{'Show' | translate }}
       </button>      
     </ion-item-options>
     <ion-item-options side="left">      
-      <button ion-button *ngIf="!comment.answered" (click)="setRead()">
+      <button ion-button *ngIf="!comment.answered" (click)="toggleAnswered()">
         <ion-icon name="book"></ion-icon>
         {{'Read' | translate }}
       </button>
-      <button ion-button *ngIf="comment.answered" (click)="setUnread()">
+      <button ion-button *ngIf="comment.answered" (click)="toggleAnswered()">
         <ion-icon name="book"></ion-icon>
         {{'Unread' | translate }}
       </button>
-      <button ion-button *ngIf="comment.promoted" (click)="demote()">
+      <button ion-button *ngIf="comment.promoted" (click)="togglePromoted()">
         <ion-icon name="close"></ion-icon>
         {{'Demote' | translate }}
       </button>
-      <button ion-button *ngIf="!comment.promoted" (click)="promote()">
+      <button ion-button *ngIf="!comment.promoted" (click)="togglePromoted()">
         <ion-icon name="checkmark"></ion-icon>
         {{'Promote' | translate }}
       </button>

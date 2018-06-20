@@ -4,6 +4,8 @@ import { Comment } from '@models/comment.interface';
 import { Content } from 'ionic-angular';
 import { CommentsProvider } from '@providers/comments';
 import { ToastController } from 'ionic-angular';
+import { MeuToastProvider } from '@shared/meu-toast.service';
+
 
 @IonicPage()
 @Component({
@@ -20,10 +22,11 @@ export class LivePage {
   author = false;
   
   constructor(
-    private data: CommentsProvider,
+    private commentsProvider: CommentsProvider,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public toast: MeuToastProvider,
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
     this.findAll();
@@ -34,7 +37,7 @@ export class LivePage {
   }
   
   findAll() {
-    this.subscription = this.data.findAll().subscribe(
+    this.subscription = this.commentsProvider.findAll().subscribe(
       data => {
         if (this.content && this.comments && !this.author) {
           //TODO only show when data.len > comments.len
@@ -48,6 +51,16 @@ export class LivePage {
     );
   }
   
+  updateComment(id: string, changes: any) {
+    this.commentsProvider.update(id, changes).then(
+      data => {
+        this.toast.present("Comment Updated");
+        //alert('ce é o bixão mesmo');
+      }
+    );
+  }
+
+
   newPosts() {
     let toast = this.toastCtrl.create({
       message: "New Comments",
