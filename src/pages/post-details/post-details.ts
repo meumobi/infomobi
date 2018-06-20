@@ -53,24 +53,6 @@ export class PostDetailsPage {
     );
   }
 
-  removeComment(id) {
-    this.commentsProvider.remove(id).then(
-      data => {this.toast.present("Comment Removed");}
-    );
-  }
-
-  promoteComment(id) {
-    this.commentsProvider.promote(id).then(
-      data => {this.toast.present("Comment Promoted");}
-    );
-  }
-
-  demoteComment(id) {
-    this.commentsProvider.demote(id).then(
-      data => {this.toast.present("Comment Demoted");}
-    );
-  }
-
   addComment() {
     this.navCtrl.push(
       'comment-edit', {
