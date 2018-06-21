@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -8,7 +8,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-import { LivePage } from '@pages/live/live';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FilesProvider } from 'ionic-meumobi-utils';
@@ -24,6 +23,7 @@ import { UploadProvider } from '@providers/upload';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ENV } from '@env';
+import { CommentsModule } from '@components/comments.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,6 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
       name: 'storage_db',
     }),
     SharedModule,
+    CommentsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -70,6 +71,9 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFirestoreModule,
     UploadProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ]
 })
 export class AppModule {}

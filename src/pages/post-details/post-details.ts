@@ -4,7 +4,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Post } from '@models/post.interface';
 import { Comment } from '@models/comment.interface';
 import { PostsProvider } from '@providers/posts';
-import { CommentsProvider } from '@providers/comments';
 import { MeuToastProvider } from '@shared/meu-toast.service';
 
 @IonicPage({
@@ -23,7 +22,6 @@ export class PostDetailsPage {
 
   constructor(
     private postsProvider: PostsProvider,
-    private commentsProvider: CommentsProvider,
     public navCtrl: NavController, 
     public navParams: NavParams,
     public toast: MeuToastProvider,
@@ -32,7 +30,6 @@ export class PostDetailsPage {
     console.log(this.navParams);
     this.id = this.navParams.data.id;
     this.findById(this.id);
-    this.fetchComment(this.id);
   }
 
   findById(id) {
@@ -42,26 +39,6 @@ export class PostDetailsPage {
       })
   }
 
-  fetchComment(id) {
-    this.commentsProvider.findByPost(id).subscribe(
-      data => {
-        this.comments = data;
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
-
-  addComment() {
-    this.navCtrl.push(
-      'comment-edit', {
-        postId: this.id,
-        postTitle: this.post.title,
-      }
-    );
-  }
-
-
+  
 
 }

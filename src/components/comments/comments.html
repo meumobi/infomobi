@@ -1,0 +1,17 @@
+<ion-fab bottom right>
+  <button ion-fab mini (click)="addComment()"><ion-icon name="create"></ion-icon></button>
+</ion-fab>
+<ion-content>
+<div *ngIf="post">{{post.title}}</div>
+<comment-list *ngIf="comments" [comments]="comments" (update)="updateComment($event.id, $event.changes)"></comment-list>
+<ion-list *ngIf="!comments">
+  <div ion-item *ngFor="let comment of fakeComments" class="fakeComment">
+    <ion-avatar item-start>
+      <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+    </ion-avatar>    
+    <h2></h2>
+    <p></p>
+    <div class=img-comment>&nbsp;</div>
+  </div>
+</ion-list>
+</ion-content>
