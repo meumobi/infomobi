@@ -6,6 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class CommentListComponent {
   @Output() update = new EventEmitter(false);
+  @Output() open = new EventEmitter(false);
   @Input('comments') comments;
 
   constructor() {

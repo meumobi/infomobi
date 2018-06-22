@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Post } from '@models/post.interface';
-import { Comment } from '@models/comment.interface';
 import { PostsProvider } from '@providers/posts';
 import { MeuToastProvider } from '@shared/meu-toast.service';
 
@@ -15,18 +14,18 @@ import { MeuToastProvider } from '@shared/meu-toast.service';
   templateUrl: 'post-details.html',
 })
 export class PostDetailsPage {
+  @ViewChild('comments') comments;
 
   id: string;
   post: Post;
-  comments: Comment[];
 
   constructor(
     private postsProvider: PostsProvider,
-    public navCtrl: NavController, 
+    public rootNavCtrl: NavController, 
     public navParams: NavParams,
     public toast: MeuToastProvider,
   ) {
-    this.navCtrl = navParams.get('rootNavCtrl');
+    this.rootNavCtrl = navParams.get('rootNavCtrl');
     console.log(this.navParams);
     this.id = this.navParams.data.id;
     this.findById(this.id);
@@ -38,7 +37,5 @@ export class PostDetailsPage {
         this.post = data;
       })
   }
-
-  
 
 }

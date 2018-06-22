@@ -16,7 +16,7 @@ export class CommentEditPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-  ) {
+  ) {  
     this.post = this.navParams.data.post;
   }
 

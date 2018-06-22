@@ -21,7 +21,6 @@ export class CommentsComponent {
   @ViewChild(Content) content: Content;
   comments: Comment[];
   fakeComments: Array<any> = new Array(5);
-  subscription: any;
   author = false;
   
   constructor(
@@ -29,27 +28,20 @@ export class CommentsComponent {
     public alertCtrl: AlertController,
     public toast: MeuToastProvider,
   ) {
-
   }
  
   ngOnChanges() {
     if (this.post) {
-      return this.findById(this.post._id);
+      this.findById(this.post._id);
+    } else {
+      this.findAll();
     }
-    this.findAll();
   }
-  
-
-  
-
-  
+    
   findAll() {
-    this.subscription = this.commentsProvider.findAll().subscribe(
+    this.commentsProvider.findAll().subscribe(
       data => {
-        if (this.content && this.comments && !this.author) {
-          //TODO only show when data.len > comments.len
-          //this.newPosts();         
-        }
+        //TODO notify about new item when data.len > comments.len        
         this.comments = data;      
       },
       err => {
@@ -59,7 +51,7 @@ export class CommentsComponent {
   }
 
   findById(id) {
-    this.subscription = this.commentsProvider.findByPost(id).subscribe(
+    this.commentsProvider.findByPostId(id).subscribe(
       data => {
         this.comments = data;      
       },
@@ -77,27 +69,7 @@ export class CommentsComponent {
     );
   }
 
-
-  newPosts() {
-    // let toast = this.toastCtrl.create({
-    //   message: "New Comments",
-    //   duration: 5000,
-    //   position: 'top',
-    //   showCloseButton: true,
-    //   closeButtonText: "↑"
-    // });
-    
-    // toast.onDidDismiss((data, role) => {
-    //   if (role == 'close') {
-    //     this.content.scrollToTop(500);
-    //   }
-    //   console.log('Dismissed toast');
-    // });
-    // toast.present();        
-  }
-
   pushDetailsPage(page: string, id: string) {
-    this.subscription.unsubscribe();
     this.rootNavCtrl.push(page, {
       id: id,
       rootNavCtrl: this.rootNavCtrl
@@ -107,7 +79,9 @@ export class CommentsComponent {
   addComment() {
     this.author = true;
     this.rootNavCtrl.push(
-      'comment-edit', {}
+      'comment-edit', {
+        post: this.post
+      }
     );
   }
 

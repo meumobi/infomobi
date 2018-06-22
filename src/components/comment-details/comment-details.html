@@ -10,7 +10,7 @@
     </ng-template>      
     <h2>{{comment.author.displayName}}</h2>
     <p [innerHtml]="comment.description"></p>
-    <h3 *ngIf="comment.postTitle"><a (click)="pushDetailsPage('PostDetailsPage', comment.postId)" href="#">{{comment.postTitle}}</a></h3>
+    <h3 *ngIf="comment.postTitle"><a (click)="open.emit()" href="#">{{comment.postTitle}}</a></h3>
     <!-- <ion-thumbnail *ngIf="comment.media" item-end> -->
       <div class="img-wrap" *ngIf="comment.media">
         <img class="image-fit" [src]="comment.media" imageViewer/>           
@@ -28,19 +28,19 @@
       </button>      
     </ion-item-options>
     <ion-item-options side="left">      
-      <button ion-button *ngIf="!comment.answered" (click)="toggleAnswered()">
+      <!-- <button ion-button *ngIf="!comment.answered" (click)="toggleAnswered()">
         <ion-icon name="book"></ion-icon>
         {{'Read' | translate }}
       </button>
       <button ion-button *ngIf="comment.answered" (click)="toggleAnswered()">
         <ion-icon name="book"></ion-icon>
         {{'Unread' | translate }}
-      </button>
-      <button ion-button *ngIf="comment.promoted" (click)="togglePromoted()">
+      </button> -->
+      <button ion-button *ngIf="comment.promoted == true" (click)="togglePromoted()">
         <ion-icon name="close"></ion-icon>
         {{'Demote' | translate }}
       </button>
-      <button ion-button *ngIf="!comment.promoted" (click)="togglePromoted()">
+      <button ion-button *ngIf="comment.promoted == false" (click)="togglePromoted()">
         <ion-icon name="checkmark"></ion-icon>
         {{'Promote' | translate }}
       </button>

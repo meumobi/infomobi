@@ -26,16 +26,17 @@ export class CommentFormComponent {
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
       },
       description: "",
-      published: ((this.post) ? false : true)   
-    }
-    if (this.post) {
-      this.comment.postId = ((this.post._id) ? this.post._id : null);
-      this.comment.postTitle = ((this.comment.postId) ? this.post.title : null); 
-    }
+      published: false 
+    }    
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CommentEditPage');
+  ngOnChanges() {
+    if (this.post) {
+      this.comment.postId = this.post._id;
+      this.comment.postTitle = this.post.title; 
+      this.comment.published = false;
+      this.comment.promoted = false;
+    }    
   }
 
   fileUploadFinished(data) {

@@ -8,6 +8,7 @@ export class CommentDetailsComponent {
   
   @Input('comment') comment;
   @Output() update = new EventEmitter(false);
+  @Output() open = new EventEmitter(false);
 
   constructor() {
   }
@@ -29,5 +30,6 @@ export class CommentDetailsComponent {
       promoted: !this.comment.promoted
     })
   }
+
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 
 @IonicPage()
@@ -7,14 +7,12 @@ import { IonicPage, NavController, NavParams} from 'ionic-angular';
   templateUrl: 'live.html',
 })
 export class LivePage {
-
-  rootNavCtrl: NavController;
-
+  @ViewChild('comments') comments;
 
   constructor(
+    public rootNavCtrl: NavController, 
     public navParams: NavParams,
-  ) {
-    
+  ) {    
     this.rootNavCtrl = navParams.get('rootNavCtrl');
   }
   

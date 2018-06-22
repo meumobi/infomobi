@@ -1,1 +1,6 @@
-<comments [rootNavCtrl]="rootNavCtrl"></comments>
+<ion-fab bottom right>
+    <button ion-fab mini (click)="comments.addComment()"><ion-icon name="create"></ion-icon></button>
+</ion-fab>
+<ion-content>
+<comments #comments [rootNavCtrl]="rootNavCtrl"></comments>
+</ion-content>

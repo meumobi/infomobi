@@ -10,10 +10,7 @@ export class CommentsProvider {
   private itemsCollection: AngularFirestoreCollection<Comment>;
   items: Observable<Comment[]>;
 
-
-  constructor(private af: AngularFirestore) {
-
-  }
+  constructor(private af: AngularFirestore) {}
 
   findAll(): Observable<Comment[]> {
     this.itemsCollection = this.af.collection<Comment>('posts',
@@ -34,9 +31,9 @@ export class CommentsProvider {
     return this.itemsCollection.doc(id).update(changes);
   }
 
-  findByPost(id): Observable<Comment[]> {
+  findByPostId(id): Observable<Comment[]> {
     this.itemsCollection = this.af.collection<Comment>('posts', 
-      ref => ref.where('postId', '==', id)
+      ref => ref.where('postId', '==', id).where('published', '==', true).orderBy('priority')
     );
     this.items = this.itemsCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -46,7 +43,6 @@ export class CommentsProvider {
       });
     });
     return this.items; 
-
   }
 
   save(comment: Comment) {
