@@ -36,8 +36,6 @@ export class CommentsComponent {
       }
     }, 3000);
   }
-
-
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad LivePage');
