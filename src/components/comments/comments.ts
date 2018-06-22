@@ -29,17 +29,19 @@ export class CommentsComponent {
     public alertCtrl: AlertController,
     public toast: MeuToastProvider,
   ) {
-    this.findAll();
-    setTimeout(() => {
-      if (this.post) {
-        this.findById(this.post._id);
-      }
-    }, 3000);
+
   }
  
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LivePage');
+  ngOnChanges() {
+    if (this.post) {
+      return this.findById(this.post._id);
+    }
+    this.findAll();
   }
+  
+
+  
+
   
   findAll() {
     this.subscription = this.commentsProvider.findAll().subscribe(
