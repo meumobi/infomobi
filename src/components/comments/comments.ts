@@ -17,42 +17,40 @@ import { Post } from '@models/post.interface';
 export class CommentsComponent {
   @Input('rootNavCtrl') rootNavCtrl :NavController;
   @Input('post') post :Post;
-
+  
   @ViewChild(Content) content: Content;
   comments: Comment[];
   fakeComments: Array<any> = new Array(5);
   author = false;
+  filters = {
+    published: true,
+    postId: null
+  }
   
   constructor(
     private commentsProvider: CommentsProvider,
     public alertCtrl: AlertController,
     public toast: MeuToastProvider,
-  ) {
+  ) {}
+  
+  setFilter(data){
+    for (var p in data) {
+      this.filters[p] = data[p];
+    }
+    this.findAll();
   }
- 
+  
   ngOnChanges() {
     if (this.post) {
-      this.findById(this.post._id);
-    } else {
-      this.findAll();
-    }
+      this.filters.postId = this.post._id;
+    } 
+    this.findAll();
   }
-    
+  
   findAll() {
-    this.commentsProvider.findAll().subscribe(
+    this.commentsProvider.findAll(this.filters).subscribe(
       data => {
         //TODO notify about new item when data.len > comments.len        
-        this.comments = data;      
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
-
-  findById(id) {
-    this.commentsProvider.findByPostId(id).subscribe(
-      data => {
         this.comments = data;      
       },
       err => {
@@ -68,7 +66,7 @@ export class CommentsComponent {
       }
     );
   }
-
+  
   pushDetailsPage(page: string, id: string) {
     this.rootNavCtrl.push(page, {
       id: id,
@@ -84,5 +82,5 @@ export class CommentsComponent {
       }
     );
   }
-
+  
 }

@@ -1,3 +1,11 @@
+<ion-segment (ionChange)="filter.emit({published: $event.value == 'true'})" >
+	<ion-segment-button value="true" checked>
+		Published
+	</ion-segment-button>
+	<ion-segment-button value="false">
+		Not Published
+	</ion-segment-button>
+</ion-segment>
 <ion-list>
 	<comment-details *ngFor="let comment of comments" [comment]="comment" (open)="open.emit({id:comment.postId})" (update)="update.emit({id: comment.id, changes: $event})"></comment-details>	
 </ion-list>
