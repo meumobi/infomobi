@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Comment } from '@models/comment.interface';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class CommentsProvider {
