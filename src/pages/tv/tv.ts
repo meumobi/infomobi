@@ -42,7 +42,7 @@ export class TvPage {
   }
 
   fetchComments() {
-    this.commentsProvider.findAll().subscribe(
+    this.commentsProvider.findAll({}).subscribe(
       data => {
         this.comments = data;
       },

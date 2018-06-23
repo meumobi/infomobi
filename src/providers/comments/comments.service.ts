@@ -14,7 +14,15 @@ export class CommentsProvider {
 
   findAll(filters): Observable<Comment[]> {
     this.itemsCollection = this.af.collection<Comment>('posts',
-      ref => ref.where('published', '==', filters.published).where('postId', '==', filters.postId).orderBy('priority')
+      ref => {
+        let query : firebase.firestore.Query = ref;
+        query = query.where('published', '==', filters.published);
+        if (filters.postId) {
+          query = query.where('postId', '==', filters.postId)
+        } 
+        query = query.orderBy('priority')
+        return query;
+      }
     );
     this.items = this.itemsCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
