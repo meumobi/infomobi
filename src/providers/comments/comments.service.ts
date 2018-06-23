@@ -12,9 +12,9 @@ export class CommentsProvider {
 
   constructor(private af: AngularFirestore) {}
 
-  findAll(): Observable<Comment[]> {
+  findAll(filters): Observable<Comment[]> {
     this.itemsCollection = this.af.collection<Comment>('posts',
-      ref => ref.where('published', '==', true).orderBy('priority')
+      ref => ref.where('published', '==', filters.published).where('postId', '==', filters.postId).orderBy('priority')
     );
     this.items = this.itemsCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -29,20 +29,6 @@ export class CommentsProvider {
 
   update(id: string, changes: any) {
     return this.itemsCollection.doc(id).update(changes);
-  }
-
-  findByPostId(id): Observable<Comment[]> {
-    this.itemsCollection = this.af.collection<Comment>('posts', 
-      ref => ref.where('postId', '==', id).where('published', '==', true).orderBy('priority')
-    );
-    this.items = this.itemsCollection.snapshotChanges().map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as Comment;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      });
-    });
-    return this.items; 
   }
 
   save(comment: Comment) {
