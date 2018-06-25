@@ -14,13 +14,17 @@ export class CommentsProvider {
   constructor(private af: AngularFirestore) {}
 
   findAll(filters): Observable<Comment[]> {
-    this.itemsCollection = this.af.collection<Comment>('posts',
+    console.log(filters);
+    this.itemsCollection = this.af.collection<Comment>('comments',
       ref => {
         let query : firebase.firestore.Query = ref;
         query = query.where('published', '==', filters.published);
         if (filters.postId) {
-          query = query.where('postId', '==', filters.postId)
+          query = query.where('postId', '==', filters.postId);
         } 
+        if (filters.promoted) {
+          query = query.where('promoted', '==', filters.promoted);
+        }
         query = query.orderBy('priority')
         return query;
       }

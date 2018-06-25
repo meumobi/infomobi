@@ -26,7 +26,8 @@ export class CommentFormComponent {
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
       },
       description: "",
-      published: false 
+      published: false,
+      promoted: true
     }    
   }
 
@@ -34,7 +35,6 @@ export class CommentFormComponent {
     if (this.post) {
       this.comment.postId = this.post._id;
       this.comment.postTitle = this.post.title; 
-      this.comment.published = false;
       this.comment.promoted = false;
     }    
   }

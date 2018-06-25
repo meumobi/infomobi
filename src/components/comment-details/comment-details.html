@@ -27,7 +27,7 @@
         {{'Show' | translate }}
       </button>      
     </ion-item-options>
-    <ion-item-options side="left">      
+    <ion-item-options side="left" *ngIf="comment.postId">      
       <!-- <button ion-button *ngIf="!comment.answered" (click)="toggleAnswered()">
         <ion-icon name="book"></ion-icon>
         {{'Read' | translate }}

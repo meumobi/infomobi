@@ -24,6 +24,7 @@ export class CommentsComponent {
   author = false;
   filters = {
     published: true,
+    promoted: true,
     postId: null
   }
   
@@ -43,6 +44,7 @@ export class CommentsComponent {
   ngOnChanges() {
     if (this.post) {
       this.filters.postId = this.post._id;
+      this.filters.promoted = false;
     } 
     this.findAll();
   }
