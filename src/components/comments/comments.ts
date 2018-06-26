@@ -10,6 +10,7 @@ import {
 import { MeuToastProvider } from '@shared/meu-toast.service';
 import { AnalyticsProvider } from '@shared/analytics.service';
 import { Post } from '@models/post.interface';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'comments',
@@ -34,6 +35,7 @@ export class CommentsComponent {
     public alertCtrl: AlertController,
     public toast: MeuToastProvider,
     public analytics: AnalyticsProvider,
+    private translateService: TranslateService,
   ) {}
   
   setFilters(data){
@@ -84,7 +86,7 @@ export class CommentsComponent {
     this.analytics.trackEvent('Comments', 'Update Comment', id);
     this.commentsProvider.update(id, changes).then(
       data => {
-        this.toast.present("Comment Updated");
+        this.toast.present(this.translateService.instant("Comment updated"));
       }
     );
   }

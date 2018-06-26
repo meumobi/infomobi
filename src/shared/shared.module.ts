@@ -7,7 +7,6 @@ import { SafeUrlPipe } from '@pipes/.';
 import { SearchPipe } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
-import { TranslateModule } from '@ngx-translate/core';
 
 const sharedModules = [
   MomentModule,
@@ -16,8 +15,7 @@ const sharedModules = [
 
 @NgModule({
   imports: [
-    sharedModules,
-    TranslateModule.forChild()
+    sharedModules
   ],
   declarations: [
     ImgServerUrlyPipe,

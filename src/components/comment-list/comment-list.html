@@ -1,9 +1,9 @@
 <ion-segment (ionChange)="filter.emit({published: $event.value == 'true'})" >
 	<ion-segment-button value="true" checked>
-		Published
+		{{ 'Published' | translate }}
 	</ion-segment-button>
 	<ion-segment-button value="false">
-		Not Published
+		{{ 'Not Published' | translate }}		
 	</ion-segment-button>
 </ion-segment>
 <ion-list>
