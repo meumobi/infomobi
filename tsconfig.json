@@ -25,6 +25,7 @@
       "@pages/*": [ "pages/*" ],
       "@services/*": [ "services/*" ],
       "@providers/*": [ "providers/*" ],
+      "@validators/*": [ "validators/*" ],
       "@models/*": [ "models/*" ],
       "@shared/*": [ "shared/*" ],
       "@pipes/*": [ "pipes/*" ],

@@ -9,5 +9,10 @@
     "Language": "Idioma",
     "Live": "Ao vivo",
     "Latest News": "Notícias",
-    "Contacts": "Contatos"
+    "Contacts": "Contatos",
+    "LOGIN": {
+        "USER_WELCOME": "Olá {{displayName}}"
+    },
+    "Logout": "Sair",
+    "invalid email or password": "Email ou senha inválido"
 }

@@ -13,8 +13,7 @@ import { ENV } from '@env';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "HomePage";
-
+  rootPage: any = "LoginPage";
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -52,6 +51,10 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  logout() {
+    this.nav.setRoot('LoginPage');
   }
 
   openPage(pageComponent, push = true) {
