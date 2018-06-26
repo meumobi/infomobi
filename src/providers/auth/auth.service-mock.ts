@@ -9,7 +9,7 @@ export class AuthProvider {
     console.log('Hello AuthProvider Provider');
   }
   
-  loginUser(email: string, password: string): Promise<any> {
+  loginUser(email: string, password: string): Promise<Auth> {
     
     /* Dummy authentication for testing, uses $timeout to simulate api call
     ----------------------------------------------*/

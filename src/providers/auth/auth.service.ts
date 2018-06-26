@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Auth } from '@models/auth.interface';
-import { HttpHeaders } from '@angular/common/http';
 import { ENV } from '@env';
 
 @Injectable()
@@ -11,11 +10,10 @@ export class AuthProvider {
     console.log('Hello AuthProvider Provider');
   }
 
-  loginUser(email: string, password: string): Promise<any> {
+  loginUser(email: string, password: string): Promise<Auth> {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        //'withCredentials': 'true'
       }
     };
 
@@ -26,7 +24,9 @@ export class AuthProvider {
       password: password
     };
 
-    return this.http.post(url, data, httpOptions).toPromise();
+    console.log(data);
+
+    return this.http.post<Auth>(url, data, httpOptions).toPromise();
   }
 
 }

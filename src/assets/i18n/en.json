@@ -1,0 +1,10 @@
+{
+    "SETTINGS_SELECT" : {
+        "lang_pt" : "Portuguese",
+        "lang_en" : "English"
+    },
+    "IN_APP" : "Internal app translation",
+    "LOGIN": {
+        "USER_WELCOME": "Hello {{displayName}}"
+    }
+}

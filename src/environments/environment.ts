@@ -1,7 +1,7 @@
 export const ENV = {
   production: false,
   isDebugMode: true,
-  analyticsTrackingId: "UA-120447879-1" ,
+  analyticsTrackingId: "UA-113326323-1",
   meumobi: {
     apiUrl: 'https://meumobi.com'
   },
