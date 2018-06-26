@@ -30,7 +30,7 @@ export class CommentsProvider {
         if (this.lastItem && more) {
           query = query.startAfter(this.lastItem);
         }
-        query = query.limit(5);
+        query = query.limit(10);
         return query;
       }
     );   
