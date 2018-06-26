@@ -2,6 +2,9 @@ export const ENV = {
   production: false,
   isDebugMode: true,
   analyticsTrackingId: "UA-120447879-1" ,
+  meumobi: {
+    apiUrl: 'https://meumobi.com'
+  },
   imgServer: {
     url: "https://imageflow.meumobi.com/meumobi/"
   } , 
