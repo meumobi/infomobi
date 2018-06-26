@@ -14,7 +14,7 @@ export class CommentsProvider {
 
   constructor(private af: AngularFirestore) {}
 
-  findAll(filters, more): Observable<Comment[]> {
+  findAll(filters, loadMore = false): Observable<Comment[]> {
     console.log(filters);
     this.itemsCollection = this.af.collection<Comment>('comments',
       ref => {
@@ -27,7 +27,7 @@ export class CommentsProvider {
           query = query.where('promoted', '==', filters.promoted);
         }
         query = query.orderBy('priority');
-        if (this.lastItem && more) {
+        if (this.lastItem && loadMore) {
           query = query.startAfter(this.lastItem);
         }
         query = query.limit(10);
