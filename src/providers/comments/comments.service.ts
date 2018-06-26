@@ -10,10 +10,11 @@ export class CommentsProvider {
   
   private itemsCollection: AngularFirestoreCollection<Comment>;
   items: Observable<Comment[]>;
+  lastItem: any = null;
 
   constructor(private af: AngularFirestore) {}
 
-  findAll(filters): Observable<Comment[]> {
+  findAll(filters, more): Observable<Comment[]> {
     console.log(filters);
     this.itemsCollection = this.af.collection<Comment>('comments',
       ref => {
@@ -25,18 +26,22 @@ export class CommentsProvider {
         if (filters.promoted) {
           query = query.where('promoted', '==', filters.promoted);
         }
-        query = query.orderBy('priority')
+        query = query.orderBy('priority');
+        if (this.lastItem && more) {
+          query = query.startAfter(this.lastItem);
+        }
+        query = query.limit(5);
         return query;
       }
-    );
+    );   
     this.items = this.itemsCollection.snapshotChanges().map(actions => {
-      return actions.map(a => {
+      return actions.map(a => {       
         const data = a.payload.doc.data() as Comment;
         const id = a.payload.doc.id;
+        this.lastItem = a.payload.doc;
         return { id, ...data };
       });
-    });
-    console.log(this.items);
+    });    
     return this.items;
   }
 

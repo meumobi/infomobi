@@ -34,7 +34,7 @@ export class CommentsComponent {
     public toast: MeuToastProvider,
   ) {}
   
-  setFilter(data){
+  setFilters(data){
     for (var p in data) {
       this.filters[p] = data[p];
     }
@@ -48,12 +48,26 @@ export class CommentsComponent {
     } 
     this.findAll();
   }
+
+  loadMore(infinite = null) {
+    this.commentsProvider.findAll(this.filters, true).subscribe(
+      data => {
+        this.comments = this.comments.concat(data);
+        if (infinite) {
+          infinite.complete();
+        }  
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
   
   findAll() {
-    this.commentsProvider.findAll(this.filters).subscribe(
+    this.commentsProvider.findAll(this.filters, false).subscribe(
       data => {
-        //TODO notify about new item when data.len > comments.len        
-        this.comments = data;      
+        //TODO notify about new item when data.len > comments.len  
+        this.comments = data;   
       },
       err => {
         console.log(err);
