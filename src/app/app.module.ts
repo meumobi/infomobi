@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -69,11 +69,7 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
     AngularFirestoreModule,
-    UploadProvider,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-  ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
+    UploadProvider
   ]
 })
 export class AppModule {}
