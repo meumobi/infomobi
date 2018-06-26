@@ -19,6 +19,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { CommentsProvider } from '@providers/comments';
 import { UploadProvider } from '@providers/upload';
+import { AuthProvider } from '@providers/auth';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -69,7 +70,8 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
     AngularFirestoreModule,
-    UploadProvider
+    UploadProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

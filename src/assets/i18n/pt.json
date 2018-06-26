@@ -19,5 +19,10 @@
     "Write your text": "Escreva seu texto",
     "Save": "Gravar",
     "New Comment": "Novo Comentário",
-    "Comment updated": "Comentário atualizado"
+    "Comment updated": "Comentário atualizado",
+    "LOGIN": {
+        "USER_WELCOME": "Olá {{displayName}}"
+    },
+    "Logout": "Sair",
+    "invalid email or password": "Email ou senha inválido"
 }
