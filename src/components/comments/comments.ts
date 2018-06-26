@@ -8,6 +8,7 @@ import {
 } from 'ionic-angular';
 
 import { MeuToastProvider } from '@shared/meu-toast.service';
+import { AnalyticsProvider } from '@shared/analytics.service';
 import { Post } from '@models/post.interface';
 
 @Component({
@@ -32,9 +33,11 @@ export class CommentsComponent {
     private commentsProvider: CommentsProvider,
     public alertCtrl: AlertController,
     public toast: MeuToastProvider,
+    public analytics: AnalyticsProvider,
   ) {}
   
   setFilters(data){
+    this.analytics.trackEvent('Comments', 'Set Filters', data);
     for (var p in data) {
       this.filters[p] = data[p];
     }
@@ -50,6 +53,7 @@ export class CommentsComponent {
   }
 
   loadMore(infinite = null) {
+    this.analytics.trackEvent('Comments', 'Load More', this.filters);
     this.commentsProvider.findAll(this.filters, true).subscribe(
       data => {
         this.comments = this.comments.concat(data);
@@ -64,6 +68,7 @@ export class CommentsComponent {
   }
   
   findAll() {
+    this.analytics.trackEvent('Comments', 'Find All', this.filters);
     this.commentsProvider.findAll(this.filters, false).subscribe(
       data => {
         //TODO notify about new item when data.len > comments.len  
@@ -76,6 +81,7 @@ export class CommentsComponent {
   }
   
   updateComment(id: string, changes: any) {
+    this.analytics.trackEvent('Comments', 'Update Comment', id);
     this.commentsProvider.update(id, changes).then(
       data => {
         this.toast.present("Comment Updated");
@@ -84,6 +90,7 @@ export class CommentsComponent {
   }
   
   pushDetailsPage(page: string, id: string) {
+    this.analytics.trackEvent('Comments', 'Open Post', id);
     this.rootNavCtrl.push(page, {
       id: id,
       rootNavCtrl: this.rootNavCtrl
@@ -91,6 +98,7 @@ export class CommentsComponent {
   }
   
   addComment() {
+    this.analytics.trackEvent('Comments', 'Add Comment', this.post);
     this.author = true;
     this.rootNavCtrl.push(
       'comment-edit', {
