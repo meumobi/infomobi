@@ -24,7 +24,6 @@ import { AuthProvider } from '@providers/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ENV } from '@env';
-import { CommentsModule } from '@components/comments.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,7 +42,6 @@ export function createTranslateLoader(http: HttpClient) {
       name: 'storage_db',
     }),
     SharedModule,
-    CommentsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
