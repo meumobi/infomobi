@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Post } from '@models/post.interface';
@@ -14,7 +14,6 @@ import { MeuToastProvider } from '@shared/meu-toast.service';
   templateUrl: 'post-details.html',
 })
 export class PostDetailsPage {
-  @ViewChild('comments') comments;
 
   id: string;
   post: Post;
@@ -37,5 +36,4 @@ export class PostDetailsPage {
         this.post = data;
       })
   }
-
 }
