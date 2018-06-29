@@ -20,6 +20,8 @@
     "Save": "Gravar",
     "New Comment": "Novo Comentário",
     "Comment updated": "Comentário atualizado",
+    "Comment promoted": "Comentário promovido",
+    "Delete": "Remover",
     "LOGIN": {
         "USER_WELCOME": "Olá {{displayName}}"
     },

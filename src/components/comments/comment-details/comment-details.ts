@@ -8,9 +8,15 @@ export class CommentDetailsComponent {
   
   @Input('comment') comment;
   @Output() update = new EventEmitter(false);
+  @Output() delete = new EventEmitter(false);
   @Output() open = new EventEmitter(false);
+  @Output() promote = new EventEmitter(false);
 
   constructor() {
+  }
+
+  openPost() {
+    this.open.emit({});
   }
 
   togglePublished() {
@@ -25,11 +31,12 @@ export class CommentDetailsComponent {
     })
   }
 
-  togglePromoted() {
-    this.update.emit({
-      promoted: !this.comment.promoted
-    })
+  promoteComment() {
+    this.promote.emit({});
   }
 
+  deleteComment() {
+    this.delete.emit({});
+  }
 
 }

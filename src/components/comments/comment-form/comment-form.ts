@@ -27,7 +27,7 @@ export class CommentFormComponent {
       },
       description: "",
       published: false,
-      promoted: true
+      postId: null
     }    
   }
 
@@ -35,7 +35,6 @@ export class CommentFormComponent {
     if (this.post) {
       this.comment.postId = this.post._id;
       this.comment.postTitle = this.post.title; 
-      this.comment.promoted = false;
     }    
   }
 

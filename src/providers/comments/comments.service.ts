@@ -20,12 +20,7 @@ export class CommentsProvider {
       ref => {
         let query : firebase.firestore.Query = ref;
         query = query.where('published', '==', filters.published);
-        if (filters.postId) {
-          query = query.where('postId', '==', filters.postId);
-        } 
-        if (filters.promoted) {
-          query = query.where('promoted', '==', filters.promoted);
-        }
+        query = query.where('postId', '==', filters.postId);
         query = query.orderBy('priority');
         if (this.lastItem && loadMore) {
           query = query.startAfter(this.lastItem);
@@ -44,6 +39,10 @@ export class CommentsProvider {
     });    
     return this.items;
   }
+
+  delete(id: string) {
+    return this.itemsCollection.doc(id).delete();
+  }  
 
   update(id: string, changes: any) {
     return this.itemsCollection.doc(id).update(changes);

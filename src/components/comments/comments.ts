@@ -26,7 +26,6 @@ export class CommentsComponent {
   author = false;
   filters = {
     published: true,
-    promoted: true,
     postId: null
   }
   
@@ -49,7 +48,6 @@ export class CommentsComponent {
   ngOnChanges() {
     if (this.post) {
       this.filters.postId = this.post._id;
-      this.filters.promoted = false;
     } 
     this.findAll();
   }
@@ -90,15 +88,39 @@ export class CommentsComponent {
       }
     );
   }
+
+  deleteComment(id: string) {
+    this.commentsProvider.delete(id).then(
+      data => {
+        this.toast.present(this.translateService.instant("Comment deleted"));
+      }
+    );
+  }
   
-  pushDetailsPage(page: string, id: string) {
-    this.analytics.trackEvent('Comments', 'Open Post', id);
-    this.rootNavCtrl.push(page, {
+  promoteComment(comment: Comment) {
+    var newComment: Comment = {
+      author: comment.author,
+      link: comment.postId,
+      description: comment.description,
+      published: true,
+      postTitle: comment.postTitle,
+      media: (comment.media) ? comment.media: null,
+      postId: null
+    }
+    this.commentsProvider.save(newComment).then(
+      data => {
+        this.toast.present(this.translateService.instant("Comment promoted"));
+      }
+    );
+  }
+
+  openPost(id: string) {
+    this.rootNavCtrl.push('PostDetailsPage', {
       id: id,
       rootNavCtrl: this.rootNavCtrl
     });  
   }
-  
+
   addComment() {
     this.analytics.trackEvent('Comments', 'Add Comment', this.post);
     this.author = true;

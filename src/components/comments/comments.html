@@ -1,4 +1,4 @@
-<comment-list *ngIf="comments" [comments]="comments" (filter)="setFilters($event)" (open)="pushDetailsPage('PostDetailsPage',$event.id)" (update)="updateComment($event.id, $event.changes)"></comment-list>
+<comment-list *ngIf="comments" [comments]="comments" (filter)="setFilters($event)" (open)="openPost($event.id)" (delete)="deleteComment($event.id)" (promote)="promoteComment($event)" (update)="updateComment($event.id, $event.changes)"></comment-list>
 <ion-list *ngIf="!comments">
   <div ion-item *ngFor="let comment of fakeComments" class="fakeComment">
     <ion-avatar item-start>

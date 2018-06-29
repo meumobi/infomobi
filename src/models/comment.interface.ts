@@ -4,8 +4,8 @@ export interface Comment {
     description: string,
     media?: string,
     published: boolean, 
-    promoted?: boolean, 
     postId?: string, 
+    link?: string,
     postTitle?: string, 
     createdAt?: Object,
     priority?: number

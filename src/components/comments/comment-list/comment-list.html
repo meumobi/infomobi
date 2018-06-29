@@ -7,5 +7,5 @@
 	</ion-segment-button>
 </ion-segment>
 <ion-list>
-	<comment-details *ngFor="let comment of comments" [comment]="comment" (open)="open.emit({id:comment.postId})" (update)="update.emit({id: comment.id, changes: $event})"></comment-details>	
+	<comment-details *ngFor="let comment of comments" [comment]="comment" (open)="open.emit({id: comment.link})" (promote)="promote.emit(comment)" (delete)="delete.emit({id:comment.id})" (update)="update.emit({id: comment.id, changes: $event})"></comment-details>	
 </ion-list>
