@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { MeuToastProvider } from './meu-toast.service';
 import { AnalyticsProvider } from './analytics.service';
 import { ImgServerUrlyPipe } from '@pipes/.';
@@ -9,7 +8,6 @@ import { SearchPipe } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 
-
 const sharedModules = [
   MomentModule,
   IonicImageViewerModule
@@ -17,7 +15,7 @@ const sharedModules = [
 
 @NgModule({
   imports: [
-    sharedModules,
+    sharedModules
   ],
   declarations: [
     ImgServerUrlyPipe,

@@ -1,0 +1,15 @@
+comment-details {
+	.image-fit{
+		object-fit: cover;
+	}
+	.img-wrap {
+		position: relative;
+		margin-top: 10px;
+	}
+	.img-wrap .close {
+	    position: absolute;
+	    top: 2px;
+	    right: 2px;
+	    z-index: 100;
+	}
+}

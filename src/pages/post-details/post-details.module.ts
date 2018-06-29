@@ -10,6 +10,7 @@ import { MediaListComponent } from '@components/media-list/media-list';
 import { MediumDetailsComponent } from '@components/medium-details/medium-details';
 import { MediumControlsComponent } from '@components/medium-controls/medium-controls';
 import { NgMathPipesModule } from 'angular-pipes';
+import { CommentsModule } from '@components/comments/comments.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NgMathPipesModule } from 'angular-pipes';
   imports: [
     IonicPageModule.forChild(PostDetailsPage),
     SharedModule,
+    CommentsModule,
     TranslateModule.forChild()
   ],
   providers: [

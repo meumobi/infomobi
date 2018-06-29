@@ -1,0 +1,9 @@
+<ion-content padding>
+	<form (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-textarea name="description" [(ngModel)]="comment.description" placeholder="{{'Write your text' | translate}}"></ion-textarea>
+    </ion-item>
+    <file-upload (fileUploadStarted)="fileUploadStarted($event);" (fileUploadFinished)="fileUploadFinished($event);"></file-upload>
+    <button ion-button type="submit" [disabled]="!uploadFinished">{{"Save" | translate}}</button>    
+  </form>
+</ion-content>

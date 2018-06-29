@@ -1,0 +1,36 @@
+<ion-item-sliding>
+  <ion-item>
+    <ion-avatar item-start *ngIf="comment.author.picture; else anonymous">
+      <img [src]="comment.author.picture" imageViewer/>
+    </ion-avatar>
+    <ng-template #anonymous>
+      <ion-avatar item-start>
+        <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+      </ion-avatar>
+    </ng-template>      
+    <h2>{{comment.author.displayName}}</h2>
+    <p [innerHtml]="comment.description"></p>
+    <h3 *ngIf="comment.link"><a (click)="openPost()" href="#">{{comment.postTitle}}</a></h3>
+    <div class="img-wrap" *ngIf="comment.media">
+      <img class="image-fit" [src]="comment.media" imageViewer/>           
+    </div>
+    </ion-item>
+    <ion-item-options side="left" >
+      <!--button ion-button *ngIf="comment.published" (click)="togglePublished()">
+        <ion-icon name="eye-off"></ion-icon>
+        {{'Hide' | translate }}
+      </button>
+      <button ion-button *ngIf="!comment.published" (click)="togglePublished()">
+        <ion-icon name="eye"></ion-icon>
+        {{'Show' | translate }}
+      </button-->       
+      <button ion-button *ngIf="comment.postId" (click)="promoteComment()">
+        <ion-icon name="checkmark"></ion-icon>
+        {{'Promote' | translate }}
+      </button>
+      <button ion-button (click)="deleteComment()">
+        <ion-icon name="trash"></ion-icon>
+        {{'Delete' | translate }}
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>

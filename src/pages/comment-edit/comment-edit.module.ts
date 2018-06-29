@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { CommentEditPage } from './comment-edit';
 import { TranslateModule } from '@ngx-translate/core';
-import { FileUploadComponent } from '@components/file-upload/file-upload';
+import { CommentsModule } from '@components/comments/comments.module';
 
 @NgModule({
   declarations: [
-    CommentEditPage,
-    FileUploadComponent
+    CommentEditPage
   ],
   imports: [
     IonicPageModule.forChild(CommentEditPage),
+    CommentsModule,
     TranslateModule.forChild()
   ],
 })

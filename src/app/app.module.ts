@@ -8,7 +8,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-import { LivePage } from '@pages/live/live';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FilesProvider } from 'ionic-meumobi-utils';
@@ -32,8 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    MyApp,
-    LivePage,
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -56,8 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    LivePage,
+    MyApp
   ],
   providers: [
     StatusBar,
@@ -72,8 +69,7 @@ export function createTranslateLoader(http: HttpClient) {
     CommentsProvider,
     AngularFirestoreModule,
     UploadProvider,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

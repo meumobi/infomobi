@@ -5,6 +5,7 @@ export interface Comment {
     media?: string,
     published: boolean, 
     postId?: string, 
+    link?: string,
     postTitle?: string, 
     createdAt?: Object,
     priority?: number

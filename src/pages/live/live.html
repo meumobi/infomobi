@@ -1,34 +1,6 @@
+<ion-fab bottom right>
+    <button ion-fab mini (click)="comments.addComment()"><ion-icon name="create"></ion-icon></button>
+</ion-fab>
 <ion-content>
-  <ion-fab bottom right>
-    <button ion-fab mini (click)="addComment()"><ion-icon name="create"></ion-icon></button>
-  </ion-fab>
-
-  <ion-list *ngIf="!comments">
-    <div ion-item *ngFor="let comment of fakeComments" class="fakeComment">
-      <ion-avatar item-start>
-        <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
-      </ion-avatar>    
-      <h2></h2>
-      <p></p>
-      <div class=img-comment>&nbsp;</div>
-    </div>
-  </ion-list>
-
-  <ion-list *ngIf="comments">
-    <div ion-item *ngFor="let comment of comments">
-      <ion-avatar item-start *ngIf="comment.author.picture; else anonymous">
-        <img [src]="comment.author.picture" imageViewer/>
-      </ion-avatar>
-      <ng-template #anonymous>
-          <ion-avatar item-start>
-            <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
-          </ion-avatar>
-      </ng-template>      
-      <h2>{{comment.author.displayName}}</h2>
-      <p [innerHtml]="comment.description"></p>
-      <h3 *ngIf="comment.postTitle"><a (click)="pushDetailsPage('PostDetailsPage', comment.postId)" href="#">{{comment.postTitle}}</a></h3>
-      <img *ngIf="comment.media"[src]="comment.media" class="img-comment" imageViewer/>
-    </div>
-  </ion-list>
-
+<comments #comments [rootNavCtrl]="rootNavCtrl"></comments>
 </ion-content>

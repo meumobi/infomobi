@@ -3,55 +3,49 @@ import 'rxjs/add/operator/map';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Comment } from '@models/comment.interface';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class CommentsProvider {
   
   private itemsCollection: AngularFirestoreCollection<Comment>;
   items: Observable<Comment[]>;
+  lastItem: any = null;
 
+  constructor(private af: AngularFirestore) {}
 
-  constructor(private af: AngularFirestore) {
-
-  }
-
-  findAll(): Observable<Comment[]> {
-    this.itemsCollection = this.af.collection<Comment>('posts',
-      ref => ref.where('published', '==', true).orderBy('priority')
-    );
-    this.items = this.itemsCollection.valueChanges();
+  findAll(filters, loadMore = false): Observable<Comment[]> {
+    console.log(filters);
+    this.itemsCollection = this.af.collection<Comment>('comments',
+      ref => {
+        let query : firebase.firestore.Query = ref;
+        query = query.where('published', '==', filters.published);
+        query = query.where('postId', '==', filters.postId);
+        query = query.orderBy('priority');
+        if (this.lastItem && loadMore) {
+          query = query.startAfter(this.lastItem);
+        }
+        query = query.limit(10);
+        return query;
+      }
+    );   
+    this.items = this.itemsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {       
+        const data = a.payload.doc.data() as Comment;
+        const id = a.payload.doc.id;
+        this.lastItem = a.payload.doc;
+        return { id, ...data };
+      });
+    });    
     return this.items;
   }
 
-  promote(id: string) {
-    return this.itemsCollection.doc(id).update({
-      published:true
-    });
-  }
-
-  demote(id: string) {
-    return this.itemsCollection.doc(id).update({
-      published:false
-    });
-  }
-
-  remove(id) {
+  delete(id: string) {
     return this.itemsCollection.doc(id).delete();
-  }
+  }  
 
-  findByPost(id): Observable<Comment[]> {
-    this.itemsCollection = this.af.collection<Comment>('posts', 
-      ref => ref.where('postId', '==', id)
-    );
-    this.items = this.itemsCollection.snapshotChanges().map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as Comment;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      });
-    });
-    return this.items; 
-
+  update(id: string, changes: any) {
+    return this.itemsCollection.doc(id).update(changes);
   }
 
   save(comment: Comment) {

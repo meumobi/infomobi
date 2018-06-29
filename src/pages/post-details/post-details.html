@@ -2,10 +2,11 @@
   <ion-navbar>
   </ion-navbar>  
 </ion-header>
+
+<ion-fab bottom right>
+    <button ion-fab mini (click)="comments.addComment()"><ion-icon name="create"></ion-icon></button>
+</ion-fab>
 <ion-content padding *ngIf="post">
-  <ion-fab bottom right>
-    <button ion-fab mini (click)="addComment()"><ion-icon name="create"></ion-icon></button>
-  </ion-fab>
   <h2>{{post.title}}</h2>
   <h3>{{post.published | amFromUnix | amDateFormat:'LL'}}</h3>
   <ion-row>
@@ -18,45 +19,6 @@
       </ion-slides>
     </ion-col>
   </ion-row>
-  <ion-list>
-    <ion-item-sliding *ngFor="let comment of comments">
-      <ion-item >
-        <ion-avatar item-start *ngIf="comment.author.picture; else anonymous">
-          <img [src]="comment.author.picture" imageViewer/>
-        </ion-avatar>
-        <ng-template #anonymous>
-          <ion-avatar item-left>
-            <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
-          </ion-avatar>
-        </ng-template>
-        
-        <h2>{{post.author.displayName}}</h2>
-        <p [innerHtml]="comment.description"></p>
-        <ion-thumbnail *ngIf="comment.media" item-end>
-          <div class="img-wrap">
-            <img class="image-fit" [src]="comment.media" imageViewer/>           
-          </div>
-        </ion-thumbnail>        
-      </ion-item>
-      <ion-item-options *ngIf="!comment.published" side="right" (click)="promoteComment(comment.id)">
-        <button ion-button>
-          <ion-icon name="checkmark"></ion-icon>
-          {{'Promote' | translate }}
-        </button>
-      </ion-item-options>
-      <ion-item-options *ngIf="comment.published" side="right" (click)="demoteComment(comment.id)">
-        <button ion-button>
-          <ion-icon name="close"></ion-icon>
-          {{'Demote' | translate }}
-        </button>
-      </ion-item-options>
-      <ion-item-options side="left" (click)="removeComment(comment.id)">
-        <button ion-button>
-          <ion-icon name="trash"></ion-icon>
-          {{'Remove' | translate }}
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
   <media-list [media]="post.medias"></media-list>
+  <comments #comments [post]="post" [rootNavCtrl]="rootNavCtrl"></comments>
 </ion-content>
