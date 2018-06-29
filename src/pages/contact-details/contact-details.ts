@@ -4,8 +4,8 @@ import { Contact } from '@models/contact.interface';
 import { ContactsProvider } from '@providers/contacts/';
 
 @IonicPage({
-  name: 'contact-details',
-  segment: 'contact/details/:id'
+  segment: 'contact/details/:id',
+  defaultHistory: ['HomePage'],
 })
 @Component({
   selector: 'page-contact-details',

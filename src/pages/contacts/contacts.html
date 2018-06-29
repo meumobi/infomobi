@@ -2,7 +2,7 @@
   <ion-searchbar [(ngModel)]="search" [placeholder]="'Search'">
   </ion-searchbar>
   <ion-list>
-    <button ion-item *ngFor="let contact of contacts | search:search:'lastName'" (click)="pushDetailsPage('contact-details', contact.id)">
+    <button ion-item *ngFor="let contact of contacts | search:search:'lastName'" (click)="pushDetailsPage('ContactDetailsPage', contact.id)">
       <ion-avatar item-left *ngIf="contact.picture; else anonymous">
           <img src="{{contact.picture}}"/>
       </ion-avatar>
