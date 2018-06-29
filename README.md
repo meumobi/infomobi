@@ -90,7 +90,9 @@ Full app for commnunication within restricted access.
   - description
   - (picture|media ???)
   - (link)
-- When promoted, comment include a link (lable + url) to post source
+  - (postId) // when from post
+- When promoted, comment include a link (label + url) to post source
+  - should be improved, at the moment we add a itemId property on comment (same value of postId from original comment but rename it to not fetch the comment on post). Unique way we've find to preserve the navigationHistory and transition but not represent a generic solution for external links.
 - Each comment could be deleted by its owner and admin.
 - Each user is defined by:
   - first_name
@@ -99,10 +101,21 @@ Full app for commnunication within restricted access.
   - email
 - Admin can respond by email to a comment
 - Comments could be published = {true|false} by admin
-- By default all comments.published == true, should be customizable by app
+- By default all comments.published == true if admin
+  - default commment.published if user should be customizable by app
 - Admin can filter comments by published property
 - Admin can toggle published property
 - User can react once to comment by Like/Clap, and discard its reaction
+- User should be notified by a visual marker when new post is available since its last view.
+- When promoted the comment is copied to appear o live feed
+  - comment's post have a postId propery to identify them
+- Add actions on left side of sliding-item: promote, remove, hide/show
+  - should be improved, at the moment it's the best solution to not conflict with swipeable tabs. Another option could be a 3 dots button to show actions menu (like youtube).
+
+## Image optimization
+https://imageresizing.net/docs/basics
+
+## User authentication and
 
 ## Image gallery
 The Ionic image gallery is a classic pattern used in many applications which need to display any kind of grid with pictures or photos. 
