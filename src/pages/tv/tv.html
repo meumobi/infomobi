@@ -3,21 +3,7 @@
     <ion-row>
       <ion-col col-4> 
         <div class="live">
-          <ion-list>
-            <div ion-item *ngFor="let comment of comments">
-              <ion-avatar item-start *ngIf="comment.author.picture; else anonymous">
-                <img [src]="comment.author.picture"/>
-              </ion-avatar>
-              <ng-template #anonymous>
-                <ion-avatar item-left>
-                  <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
-                </ion-avatar>
-              </ng-template>      
-              <h2 class="font-caption-2">{{comment.author.displayName}}</h2>
-              <p class="font-caption-1" [innerHtml]="comment.description"></p>
-              <img *ngIf="comment.media"[src]="comment.media"/>
-            </div>
-          </ion-list>
+          <comments [rootNavCtrl]="rootNavCtrl"></comments>
         </div>
       </ion-col>
       <ion-col col-8>
