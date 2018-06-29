@@ -26,7 +26,7 @@ export class CommentFormComponent {
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
       },
       description: "",
-      published: false,
+      published: true,
       postId: null
     }    
   }

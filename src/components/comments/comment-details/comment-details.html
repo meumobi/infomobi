@@ -16,14 +16,14 @@
     </div>
     </ion-item>
     <ion-item-options side="left" >
-      <button ion-button *ngIf="comment.published" (click)="togglePublished()">
+      <!--button ion-button *ngIf="comment.published" (click)="togglePublished()">
         <ion-icon name="eye-off"></ion-icon>
         {{'Hide' | translate }}
       </button>
       <button ion-button *ngIf="!comment.published" (click)="togglePublished()">
         <ion-icon name="eye"></ion-icon>
         {{'Show' | translate }}
-      </button>       
+      </button-->       
       <button ion-button *ngIf="comment.postId" (click)="promoteComment()">
         <ion-icon name="checkmark"></ion-icon>
         {{'Promote' | translate }}
