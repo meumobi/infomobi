@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Contact } from '@models/contact.interface';
 import { ContactsProvider } from '@providers/contacts/';
 
-@IonicPage()
+@IonicPage({
+  segment: 'contacts'
+})
 @Component({
   selector: 'page-contacts',
   templateUrl: 'contacts.html',
