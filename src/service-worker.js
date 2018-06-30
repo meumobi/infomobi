@@ -6,6 +6,7 @@
 
 'use strict';
 importScripts('./build/sw-toolbox.js');
+importScripts('https://rawgit.com/GoogleChromeLabs/sw-toolbox/catch-quota-errors/sw-toolbox.js');
 
 self.toolbox.options.cache = {
   name: 'ionic-cache'
