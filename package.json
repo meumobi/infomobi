@@ -7,10 +7,8 @@
   "scripts": {
     "python:http": "pushd www; python -m SimpleHTTPServer 8000 ; popd",
     "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "release": "standard-version",
-    "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "docs:build": "./node_modules/.bin/compodoc -d ./docs/ -p ./tsconfig.json",
     "docs:serve": "./node_modules/.bin/compodoc -s -d ./docs",
@@ -20,7 +18,10 @@
     "test-coverage": "karma start ./test-config/karma.conf.js --coverage",
     "e2e": "npm run e2e-update && npm run e2e-test",
     "e2e-test": "protractor ./test-config/protractor.conf.js",
-    "e2e-update": "webdriver-manager update --standalone false --gecko false"
+    "e2e-update": "webdriver-manager update --standalone false --gecko false",
+    "ngsw-config": "node_modules/.bin/ngsw-config www src/ngsw-config.json",
+    "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js www/",
+    "ionic:build": "ionic-app-scripts build && npm run ngsw-config && npm run ngsw-copy"
   },
   "config": {
     "ionic_webpack": "./config/webpack.config.js"
@@ -54,10 +55,10 @@
     "moment": "^2.22.2",
     "ngx-moment": "^3.0.1",
     "rxjs": "5.5.10",
-    "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
+    "@angular/service-worker": "^5.2.11",
     "@compodoc/compodoc": "^1.1.2",
     "@ionic/app-scripts": "3.1.9",
     "@ionic/lab": "^1.0.0-rc.9",
