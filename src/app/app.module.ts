@@ -50,7 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    AngularFireModule.initializeApp(ENV.firebase)
+    AngularFireModule.initializeApp(ENV.firebase),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
