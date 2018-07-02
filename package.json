@@ -24,7 +24,8 @@
     "ionic:build": "ionic-app-scripts build && npm run ngsw-config && npm run ngsw-copy"
   },
   "config": {
-    "ionic_webpack": "./config/webpack.config.js"
+    "ionic_webpack": "./config/webpack.config.js",
+    "ionic_copy": "./config/copy.config.js"
   },
   "dependencies": {
     "@angular/animations": "5.2.10",

@@ -9,7 +9,7 @@ export function isProdMode():boolean {
 platformBrowserDynamic().bootstrapModule(AppModule).then(() => {
 
   if ('serviceWorker' in navigator && isProdMode()) {
-    navigator.serviceWorker.register('./ngsw-worker.js')
+    navigator.serviceWorker.register('/OneSignalSDKWorker.js')
       .then(() => console.log('service worker installed'))
       .catch(err => console.error('Error', err));
   }
