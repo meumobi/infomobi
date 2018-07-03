@@ -5,7 +5,6 @@ import { Post } from '@models/post.interface';
 import { Comment } from '@models/comment.interface';
 
 import { PostsProvider } from '@providers/posts';
-import { CommentsProvider } from '@providers/comments';
 
 @IonicPage()
 @Component({
@@ -17,11 +16,9 @@ export class TvPage {
   comments:Comment[];
 
   constructor(
-    private postsProvider: PostsProvider,
-    private commentsProvider: CommentsProvider
+    private postsProvider: PostsProvider
   ) {
     this.fetchPosts();
-    this.fetchComments();
   }
 
   ionViewDidLoad() {
@@ -35,17 +32,6 @@ export class TvPage {
         this.posts = data;
       })
     .catch(
-      err => {
-        console.log(err);
-      }
-    );
-  }
-
-  fetchComments() {
-    this.commentsProvider.findAll({}).subscribe(
-      data => {
-        this.comments = data;
-      },
       err => {
         console.log(err);
       }

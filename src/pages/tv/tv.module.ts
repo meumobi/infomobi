@@ -3,7 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { TvPage } from './tv';
 import { SharedModule } from '@shared/shared.module';
 import { PostsProvider } from '@providers/posts';
-import { CommentsProvider } from '@providers/comments';
+import { CommentsModule } from '@components/comments/comments.module';
 
 
 @NgModule({
@@ -13,10 +13,10 @@ import { CommentsProvider } from '@providers/comments';
   imports: [
     SharedModule,
     IonicPageModule.forChild(TvPage),
+    CommentsModule
   ],
   providers: [
-    PostsProvider,
-    CommentsProvider
+    PostsProvider
   ]
 })
 export class TvPageModule {}
