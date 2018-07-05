@@ -10,22 +10,21 @@ export class CommentsProvider {
   
   private itemsCollection: AngularFirestoreCollection<Comment>;
   items: Observable<Comment[]>;
-  lastItem: any = null;
 
   constructor(private af: AngularFirestore) {}
 
-  findAll(filters, loadMore = false): Observable<Comment[]> {
+  findAll(filters, lastItem = null): Observable<Comment[]> {
     console.log(filters);
     this.itemsCollection = this.af.collection<Comment>('comments',
       ref => {
-        let query : firebase.firestore.Query = ref;
+        let query: firebase.firestore.Query = ref;
         query = query.where('published', '==', filters.published);
         query = query.where('postId', '==', filters.postId);
         query = query.orderBy('priority');
-        if (this.lastItem && loadMore) {
-          query = query.startAfter(this.lastItem);
+        if (lastItem) {
+          query = query.startAfter(lastItem.doc);
         }
-        query = query.limit(10);
+        query = query.limit(4);
         return query;
       }
     );   
@@ -33,8 +32,8 @@ export class CommentsProvider {
       return actions.map(a => {       
         const data = a.payload.doc.data() as Comment;
         const id = a.payload.doc.id;
-        this.lastItem = a.payload.doc;
-        return { id, ...data };
+        const doc = a.payload.doc;
+        return { id, ...data, doc};
       });
     });    
     return this.items;
