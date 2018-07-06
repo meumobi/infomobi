@@ -1,11 +1,11 @@
 export interface Contact {
-  id: string,
+  id?: string,
   picture?: string,
   firstName: string,
   lastName: string,
-  displayName: string,
+  displayName?: string,
   title?: string,
   landlinePhone?: string,
   mobilePhone?: string,
-  email: string
+  email?: string
 }
