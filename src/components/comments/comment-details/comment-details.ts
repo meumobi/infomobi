@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'comment-details',
@@ -12,7 +13,13 @@ export class CommentDetailsComponent {
   @Output() open = new EventEmitter(false);
   @Output() promote = new EventEmitter(false);
 
-  constructor() {
+  rootNavCtrl: NavController;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
   }
 
   openPost() {
@@ -37,6 +44,17 @@ export class CommentDetailsComponent {
 
   deleteComment() {
     this.delete.emit({});
+  }
+
+  pushDetailsPage(page: string, id: string) {
+    if (id) {
+      this.rootNavCtrl.push(page, {
+        id: id,
+        rootNavCtrl: this.rootNavCtrl
+      });
+    } else {
+      console.log("missing id of author");
+    }
   }
 
 }

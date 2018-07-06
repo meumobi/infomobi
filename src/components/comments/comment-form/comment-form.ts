@@ -22,8 +22,12 @@ export class CommentFormComponent {
   ) {
     this.comment = {
       author : {
+        id: "1",
         displayName: "Luiza Bittencourt",
-        picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
+        picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg",
+        firstName: "Luiza",
+        lastName: "Bittencourt",
+        email: "luiza@infomobi.app"
       },
       description: "",
       published: true,

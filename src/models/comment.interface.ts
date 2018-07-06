@@ -1,6 +1,8 @@
+import { Contact } from '@models/contact.interface';
+
 export interface Comment {  
     _id?: string,
-    author: any,
+    author: Contact,
     description: string,
     media?: string,
     published: boolean, 
