@@ -1,0 +1,25 @@
+<div>
+  <h2>PARABÉNS!!!</h2>
+</div>
+
+
+<ion-list>
+
+</ion-list>
+<ion-item>
+  <ion-avatar item-start *ngIf="comment.author.picture; else anonymous">
+    <img [src]="comment.author.picture" (click)="pushDetailsPage('ContactDetailsPage', comment.author.id)"/>
+  </ion-avatar>
+  <ng-template #anonymous>
+    <ion-avatar item-start>
+      <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+    </ion-avatar>
+  </ng-template>      
+  <h2>{{comment.author.displayName}}</h2>
+  <comment-anniversaries [content]="comment.content"></comment-anniversaries>
+  <p [innerHtml]="comment.description"></p>
+  <h3 *ngIf="comment.link"><a (click)="openPost()" href="#">{{comment.postTitle}}</a></h3>
+  <div class="img-wrap" *ngIf="comment.media">
+    <img class="image-fit" [src]="comment.media" imageViewer/>           
+  </div>
+</ion-item>
