@@ -4,7 +4,7 @@ import { CommentDescription } from '@models/comment-description.interface';
 
 @Component({
   template: `
-    <p>Hello {{data.name}}</p>
+    <p>{{data}}</p>
   `
 })
 export class MessageComponent implements CommentDescription {

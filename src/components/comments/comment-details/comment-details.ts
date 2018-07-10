@@ -30,7 +30,6 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
   @ViewChild('description', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   rootNavCtrl: NavController;
-  descriptionInstance: any;
 
   constructor(
     public navCtrl: NavController,
@@ -47,20 +46,20 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
   ngOnDestroy() {
   }
 
+  getComponentName(name: string) {
+    return name.charAt(0).toUpperCase() + name.substr(1) + 'Component';
+  }
+
   loadComponent() {
-
     this.entry.clear();
-    //const className = this.comment.type.charAt(0).toUpperCase() + this.comment.type.substr(1) + 'Component';
-    //console.log(className);
-
-    //this.descriptionInstance = new description[className](); 
-    //console.log('className', this.descriptionInstance);
-    
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MessageComponent);
-
+    if (!this.comment.type) {
+      this.comment["type"] = "Message";
+    }
+    const className = this.getComponentName(this.comment.type);
+    console.log(className);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(description[className]);
     const componentRef = this.entry.createComponent(componentFactory);
-    componentRef.instance.data = this.comment.data;
-    //(<CommentDescription>componentRef.instance).data = this.comment.data;
+    (<CommentDescription>componentRef.instance).data = this.comment.data;
   }
 
   openPost() {

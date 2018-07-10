@@ -31,11 +31,11 @@ import { MessageComponent } from '..//comments/comment-description';
 		CommentDetailsComponent,
 		CommentFormComponent,
 		FileUploadComponent,
-		IonicModule,
-		AnniversariesComponent,
+		IonicModule
 	],
 	entryComponents: [
-		MessageComponent
+		MessageComponent,
+		AnniversariesComponent
 	]
 })
 export class CommentsModule {}
