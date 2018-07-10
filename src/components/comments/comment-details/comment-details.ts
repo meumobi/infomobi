@@ -54,6 +54,7 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
     this.entry.clear();
     if (!this.comment.type) {
       this.comment["type"] = "Message";
+      this.comment["data"] = this.comment.description;
     }
     const className = this.getComponentName(this.comment.type);
     console.log(className);
