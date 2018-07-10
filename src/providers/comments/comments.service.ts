@@ -15,7 +15,6 @@ export class CommentsProvider {
   constructor(private af: AngularFirestore) {}
 
   findAll(filters, loadMore = false): Observable<Comment[]> {
-    console.log(filters);
     this.itemsCollection = this.af.collection<Comment>('comments',
       ref => {
         let query : firebase.firestore.Query = ref;

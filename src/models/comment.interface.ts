@@ -1,5 +1,3 @@
-import { Contact } from '@models/contact.interface';
-
 export interface Comment {  
     _id?: string,
     author: any,

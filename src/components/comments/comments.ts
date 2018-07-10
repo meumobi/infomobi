@@ -53,7 +53,7 @@ export class CommentsComponent {
   }
 
   loadMore(infinite = null) {
-    this.analytics.trackEvent('Comments', 'Load More', this.filters);
+/*     this.analytics.trackEvent('Comments', 'Load More', this.filters);
     this.commentsProvider.findAll(this.filters, true).subscribe(
       data => {
         this.comments = this.comments.concat(data);
@@ -64,13 +64,14 @@ export class CommentsComponent {
       err => {
         console.log(err);
       }
-    );
+    ); */
   }
   
   findAll() {
     this.analytics.trackEvent('Comments', 'Find All', this.filters);
     this.commentsProvider.findAll(this.filters, false).subscribe(
       data => {
+        console.log(data);
         //TODO notify about new item when data.len > comments.len  
         this.comments = data;   
       },

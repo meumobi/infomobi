@@ -9,7 +9,7 @@
       </ion-avatar>
     </ng-template>      
     <h2>{{comment.author.displayName}}</h2>
-    <p [innerHtml]="comment.description"></p>
+    <ng-template #description></ng-template>
     <h3 *ngIf="comment.link"><a (click)="openPost()" href="#">{{comment.postTitle}}</a></h3>
     <div class="img-wrap" *ngIf="comment.media">
       <img class="image-fit" [src]="comment.media" imageViewer/>           
