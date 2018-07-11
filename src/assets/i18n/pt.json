@@ -27,5 +27,8 @@
         "USER_WELCOME": "Olá {{displayName}}"
     },
     "Logout": "Sair",
-    "invalid email or password": "Email ou senha inválido"
+    "invalid email or password": "Email ou senha inválido",
+    "LIVE_FEED": {
+        "ANNIVERSARIES_TITLE": "Aniversariantes do dia!"
+    }
 }

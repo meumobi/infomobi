@@ -1,2 +1,2 @@
-export * from './anniversaries';
-export * from './message';
+export * from './anniversaries/anniversaries';
+export * from './message/message';

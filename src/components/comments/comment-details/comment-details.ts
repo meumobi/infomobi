@@ -11,9 +11,7 @@ import {
  } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CommentDescription } from '@models/comment-description.interface';
-import { MessageComponent } from '../comment-description';
-import * as description from '../comment-description/.'
-
+import * as description from '../comment-description/.';
 
 @Component({
   selector: 'comment-details',
@@ -30,6 +28,7 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
   @ViewChild('description', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   rootNavCtrl: NavController;
+  componentRef: any;
 
   constructor(
     public navCtrl: NavController,
@@ -44,6 +43,7 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
   }
 
   ngOnDestroy() {
+    this.componentRef.destroy(); 
   }
 
   getComponentName(name: string) {
@@ -54,13 +54,14 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
     this.entry.clear();
     if (!this.comment.type) {
       this.comment["type"] = "Message";
-      this.comment["data"] = this.comment.description;
     }
+    let projectableNode = document.createElement('p');
+    projectableNode.innerHTML = this.comment.description;
+
     const className = this.getComponentName(this.comment.type);
-    console.log(className);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(description[className]);
-    const componentRef = this.entry.createComponent(componentFactory);
-    (<CommentDescription>componentRef.instance).data = this.comment.data;
+    this.componentRef = this.entry.createComponent(componentFactory, this.entry.length, null, [[projectableNode]]);
+    (<CommentDescription>this.componentRef.instance).data = this.comment.data;
   }
 
   openPost() {
@@ -97,5 +98,4 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
       console.log("missing id of author");
     }
   }
-
 }

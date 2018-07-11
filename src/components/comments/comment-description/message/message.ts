@@ -4,7 +4,7 @@ import { CommentDescription } from '@models/comment-description.interface';
 
 @Component({
   template: `
-    <p>{{data}}</p>
+    <ng-content></ng-content>
   `
 })
 export class MessageComponent implements CommentDescription {

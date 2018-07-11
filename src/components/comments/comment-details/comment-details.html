@@ -8,29 +8,31 @@
         <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
       </ion-avatar>
     </ng-template>      
-    <h2>{{comment.author.displayName}}</h2>
-    <ng-template #description></ng-template>
-    <h3 *ngIf="comment.link"><a (click)="openPost()" href="#">{{comment.postTitle}}</a></h3>
+    <h2>{{ comment.author.displayName | translate}}</h2>
+    
+    <ng-template #description>
+    </ng-template>
+    
     <div class="img-wrap" *ngIf="comment.media">
       <img class="image-fit" [src]="comment.media" imageViewer/>           
     </div>
-    </ion-item>
-    <ion-item-options side="left" >
-      <!--button ion-button *ngIf="comment.published" (click)="togglePublished()">
-        <ion-icon name="eye-off"></ion-icon>
-        {{'Hide' | translate }}
-      </button>
-      <button ion-button *ngIf="!comment.published" (click)="togglePublished()">
-        <ion-icon name="eye"></ion-icon>
-        {{'Show' | translate }}
-      </button-->       
-      <button ion-button *ngIf="comment.postId" (click)="promoteComment()">
-        <ion-icon name="checkmark"></ion-icon>
-        {{'Promote' | translate }}
-      </button>
-      <button ion-button (click)="deleteComment()">
-        <ion-icon name="trash"></ion-icon>
-        {{'Delete' | translate }}
-      </button>
-    </ion-item-options>
-  </ion-item-sliding>
+  </ion-item>
+  <ion-item-options side="left" >
+    <!--button ion-button *ngIf="comment.published" (click)="togglePublished()">
+      <ion-icon name="eye-off"></ion-icon>
+      {{'Hide' | translate }}
+    </button>
+    <button ion-button *ngIf="!comment.published" (click)="togglePublished()">
+      <ion-icon name="eye"></ion-icon>
+      {{'Show' | translate }}
+    </button-->       
+    <button ion-button *ngIf="comment.postId" (click)="promoteComment()">
+      <ion-icon name="checkmark"></ion-icon>
+      {{'Promote' | translate }}
+    </button>
+    <button ion-button (click)="deleteComment()">
+      <ion-icon name="trash"></ion-icon>
+      {{'Delete' | translate }}
+    </button>
+  </ion-item-options>
+</ion-item-sliding>
