@@ -8,6 +8,10 @@ export const ENV = {
   imgServer: {
     url: "https://imageflow.meumobi.com/meumobi/"
   } , 
+  dynamicLinks: {
+    url: "https://firebasedynamiclinks.googleapis.com/v1/shortLinks",
+    prefix: "https://infomobi.page.link"
+  },
   firebase: {
     apiKey: "AIzaSyBnCsnH9XAtG73lIwRuYj4dbXLyPBv0E5I",
     authDomain: "ion-employee.firebaseapp.com",
@@ -15,6 +19,5 @@ export const ENV = {
     projectId: "ion-employee",
     storageBucket: "ion-employee.appspot.com",
     messagingSenderId: "961286969528"
-  }
-  
+  }  
 };
