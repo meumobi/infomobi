@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { Comment } from '@models/comment.interface';
+import { Comment } from '@models/comment';
 import * as firebase from 'firebase';
 
 @Injectable()
@@ -48,7 +48,6 @@ export class CommentsProvider {
   }
 
   save(comment: Comment) {
-    comment.priority = 0 - Date.now();  
     console.log(comment); 
     return this.itemsCollection.add(comment);
   }

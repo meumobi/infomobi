@@ -1,4 +1,4 @@
-export interface PostComment {
+export interface UserComment {
   author: { 
     picture: string
     displayName: string,

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommentsProvider } from '@providers/comments';
-import { Comment } from '@models/comment.interface';
+import { Comment } from '@models/comment';
 import { Post } from '@models/post.interface';
 import { NavController } from 'ionic-angular';
 
@@ -19,31 +19,22 @@ export class CommentFormComponent {
   constructor(
     private commentsProvider: CommentsProvider,
     public navCtrl: NavController
-  ) {
-    this.comment = {
-      author : {
-        id: "1",
-        displayName: "Luiza Bittencourt",
-        picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg",
-        firstName: "Luiza",
-        lastName: "Bittencourt",
-        email: "luiza@infomobi.app"
-      },
-      description: "",
-      published: true,
-      postId: null
-    }    
-  }
+  ) {}
 
-  ngOnChanges() {
+  ngOnInit() {
+    this.comment = new Comment("UserComment");
+    this.comment.data["media"] = [];
     if (this.post) {
-      this.comment.postId = this.post._id;
-      this.comment.postTitle = this.post.title; 
+      this.comment.data["postDetails"] = {
+        title: this.post.title,
+        id: this.post._id,
+      }
+      this.comment.channel = `post_${this.post._id}`;
     }    
   }
 
   fileUploadFinished(data) {
-    this.comment.media = data;
+    this.comment.data.media.push({url:data});
     console.log(data);
     this.uploadFinished = true;
   }
@@ -54,8 +45,11 @@ export class CommentFormComponent {
   }
 
   onSubmit() {
-    this.commentsProvider.save(this.comment);
-    this.navCtrl.pop();   
+    console.log(this.comment);
+    // this.commentsProvider.save(this.comment);
+    // this.navCtrl.pop();   
   }
 
 }
+
+

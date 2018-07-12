@@ -1,6 +1,6 @@
 import { Component, ViewChild, Input } from '@angular/core';
 import { CommentsProvider } from '@providers/comments';
-import { Comment } from '@models/comment.interface';
+import { Comment } from '@models/comment';
 import { 
   Content,
   NavController, 
@@ -99,20 +99,20 @@ export class CommentsComponent {
   }
   
   promoteComment(comment: Comment) {
-    var newComment: Comment = {
-      author: comment.author,
-      link: comment.postId,
-      description: comment.description,
-      published: true,
-      postTitle: comment.postTitle,
-      media: (comment.media) ? comment.media: null,
-      postId: null
-    }
-    this.commentsProvider.save(newComment).then(
-      data => {
-        this.toast.present(this.translateService.instant("Comment promoted"));
-      }
-    );
+    // var newComment: Comment = {
+    //   author: comment.author,
+    //   link: comment.postId,
+    //   description: comment.description,
+    //   published: true,
+    //   postTitle: comment.postTitle,
+    //   media: (comment.media) ? comment.media: null,
+    //   postId: null
+    // }
+    // this.commentsProvider.save(newComment).then(
+    //   data => {
+    //     this.toast.present(this.translateService.instant("Comment promoted"));
+    //   }
+    // );
   }
 
   openPost(id: string) {
