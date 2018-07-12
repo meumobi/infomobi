@@ -1,12 +1,10 @@
 export interface Comment {  
-    _id?: string,
-    author: any,
-    description: string,
-    media?: string,
-    published: boolean, 
-    postId?: string, 
-    link?: string,
-    postTitle?: string, 
-    createdAt?: Object,
-    priority?: number
+  _id: string,
+  type: string
+  data: Object, 
+  created: number,
+  published: number,
+  modified: number,
+  isPublished: boolean
+  site_id: number
 }
