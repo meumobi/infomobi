@@ -7,6 +7,7 @@ import { CommentDescription } from '@models/comment-description.interface';
 })
 export class AnniversariesComponent implements CommentDescription {
   @Input() data: any;
+  @Input() channel: string;
   rootNavCtrl: NavController;
 
   constructor(
@@ -26,5 +27,4 @@ export class AnniversariesComponent implements CommentDescription {
       console.log("missing id of author");
     }
   }
-
 }
