@@ -62,6 +62,7 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(description[className]);
     this.componentRef = this.entry.createComponent(componentFactory, this.entry.length, null, [[projectableNode]]);
     (<CommentDescription>this.componentRef.instance).data = this.comment.data;
+    (<CommentDescription>this.componentRef.instance).channel = this.comment.channel;
   }
 
   openPost() {
