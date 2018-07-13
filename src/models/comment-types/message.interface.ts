@@ -1,9 +1,7 @@
-export interface UserComment {
-  author: { 
-    picture: string
-    displayName: string,
-    id: string
-  }
+import { Contact } from "@models/contact.interface";
+
+export interface Message {
+  author: Contact,
   description: string,
   postDetails: {
     title: string,

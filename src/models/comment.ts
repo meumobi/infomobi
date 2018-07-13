@@ -15,8 +15,9 @@ export class Comment {
     this.type = type;
     this.channel = "live";
     this.created = firebase.firestore.FieldValue.serverTimestamp();
-    this.published = this.created;
-    this.modified = this.created;
+    this.published = firebase.firestore.FieldValue.serverTimestamp();
+    this.modified = firebase.firestore.FieldValue.serverTimestamp();
+    this.isPublished = true;
     this.data = new Object();
   }
 }
