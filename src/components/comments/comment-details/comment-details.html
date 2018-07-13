@@ -3,8 +3,8 @@
     <ng-template #description>
     </ng-template>    
   </ion-item>
-  <ion-item-options side="left" >    
-    <button ion-button *ngIf="comment.channel != 'live'" (click)="promoteComment()">
+  <ion-item-options side="left" *ngIf="comment">    
+    <button ion-button *ngIf="comment.channel.startsWith('post')" (click)="promoteComment()">
       <ion-icon name="checkmark"></ion-icon>
       {{'Promote' | translate }}
     </button>
