@@ -14,13 +14,13 @@ export class CommentsProvider {
 
   constructor(private af: AngularFirestore) {}
 
-  findAll(filters, loadMore = false): Observable<Comment[]> {
+  search(filters, loadMore = false): Observable<Comment[]> {
     this.itemsCollection = this.af.collection<Comment>('comments',
       ref => {
         let query : firebase.firestore.Query = ref;
-        query = query.where('published', '==', filters.published);
-        query = query.where('postId', '==', filters.postId);
-        query = query.orderBy('priority');
+        query = query.where('isPublished', '==', filters.isPublished);
+        query = query.where('channel', '==', filters.channel);
+        query = query.orderBy('published');
         if (this.lastItem && loadMore) {
           query = query.startAfter(this.lastItem);
         }
@@ -47,9 +47,16 @@ export class CommentsProvider {
     return this.itemsCollection.doc(id).update(changes);
   }
 
+  promote(comment) {
+    let newComment = new Comment("Message");
+    newComment.data = comment.data;
+    return this.save(newComment);
+  }
+
   save(comment: Comment) {
     console.log(comment); 
-    return this.itemsCollection.add(comment);
+    var data = JSON.parse(JSON.stringify(comment));
+    return this.itemsCollection.add(data);
   }
 
 }
