@@ -1,32 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Auth } from '@models/auth.interface';
-import { ENV } from '@env';
+import { Auth, AuthError } from '@models/auth.interface';
+import { ApiProvider } from '@providers/api';
 
 @Injectable()
-export class AuthProvider {
+export class AuthService {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public ApiService: ApiProvider) {
     console.log('Hello AuthProvider Provider');
   }
 
-  loginUser(email: string, password: string): Promise<Auth> {
-    const httpOptions = {
-      headers: {
-        'Accept':  'application/json',
-      }
-    };
+  signIn(email: string, password: string): Promise<Auth | AuthError> {
 
-    const url = ENV.meumobi.apiUrl + "/api/visitors/login";
-
-    const data = {
-      email: email,
-      password: password
-    };
-
-    console.log(data);
-
-    return this.http.post<Auth>(url, data, httpOptions).toPromise();
+    return this.ApiService.login(email, password);
   }
+
+  signOut() {}
+
+  isAuthenticated() {}
 
 }
