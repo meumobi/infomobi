@@ -13,7 +13,7 @@
     <ion-col>
       <ion-slides *ngIf="post.images" loop="{{post.images.length > 1 ? true:false}}" autoplay="3500" pager="{{post.images.length > 1 ? true:false}}">
         <ion-slide *ngFor="let image of post.images">
-          <img [src]="image.path.substr(8) | imgServerUrly" [srcset]="image.path.substr(8) | imgServerSrcsettify" imageViewer/>
+          <img [src]="image.path | imgServerUrly" [srcset]="image.path | imgServerSrcsettify" imageViewer/>
           <div class="img-title">{{image.title}}</div>
         </ion-slide>
       </ion-slides>

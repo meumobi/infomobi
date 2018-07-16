@@ -12,7 +12,7 @@
     <p [innerHtml]="comment.description"></p>
     <h3 *ngIf="comment.link"><a (click)="!!openPost()" href="#">{{comment.postTitle}}</a></h3>
     <div class="img-wrap" *ngIf="comment.media">
-      <img class="image-fit" [src]="comment.media" imageViewer/>           
+      <img class="image-fit" [srcset]="comment.media | imgServerSrcsettify" imageViewer/>           
     </div>
     </ion-item>
     <ion-item-options side="left" >
