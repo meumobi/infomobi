@@ -20,7 +20,7 @@ export class CommentsProvider {
         let query : firebase.firestore.Query = ref;
         query = query.where('isPublished', '==', filters.isPublished);
         query = query.where('channel', '==', filters.channel);
-        query = query.orderBy('published');
+        query = query.orderBy('published', 'desc');
         if (this.lastItem && loadMore) {
           query = query.startAfter(this.lastItem);
         }
@@ -54,8 +54,8 @@ export class CommentsProvider {
   }
 
   save(comment: Comment) {
-    console.log(comment); 
-    var data = JSON.parse(JSON.stringify(comment));
+    const data = JSON.parse(JSON.stringify(comment));
+    console.log(data);
     return this.itemsCollection.add(data);
   }
 
