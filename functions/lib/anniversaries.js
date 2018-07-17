@@ -7,7 +7,9 @@ class Anniversaries {
         return "07/16/2018";
     }
     getAnniversaries(currentDate) {
-        const teste = admin.firestore().collection('contacts').where('birthday', '==', currentDate);
+        const teste = admin.firestore().collection('contacts').where('birthday', '==', currentDate).get().then(data => {
+            console.log(data);
+        });
         return teste;
     }
     perform() {

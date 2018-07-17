@@ -8,7 +8,11 @@ export class Anniversaries {
   }
 
   private getAnniversaries(currentDate) {
-    const teste = admin.firestore().collection('contacts').where('birthday','==',currentDate);
+    const teste = admin.firestore().collection('contacts').where('birthday','==',currentDate).get().then(
+      data => {
+        console.log(data);
+      }
+    );
     return teste;
   }
 
