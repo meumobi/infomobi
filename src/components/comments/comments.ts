@@ -19,7 +19,6 @@ import { TranslateService } from '@ngx-translate/core';
 export class CommentsComponent {
   @Input('rootNavCtrl') rootNavCtrl :NavController;
   @Input('post') post :Post;
-  
   @ViewChild(Content) content: Content;
   comments: Comment[];
   fakeComments: Array<any> = new Array(5);
@@ -52,19 +51,19 @@ export class CommentsComponent {
     this.getComments();
   }
 
-  loadMore(infinite = null) {
-    this.analytics.trackEvent('Comments', 'Load More', this.filters);
-    this.commentsProvider.search(this.filters, true).subscribe(
-      data => {
-        this.comments = this.comments.concat(data);
-        if (infinite) {
+  loadMore(infinite) {
+    setTimeout(() => {
+      this.analytics.trackEvent('Comments', 'Load More', this.filters);
+      this.commentsProvider.search(this.filters, this.comments[this.comments.length-1]).subscribe(
+        data => {
+          this.comments = this.comments.concat(data);
           infinite.complete();
-        }  
-      },
-      err => {
-        console.log(err);
-      }
-    );
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    },300);
   }
   
   getComments() {
