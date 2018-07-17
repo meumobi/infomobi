@@ -8,7 +8,7 @@
     <form (ngSubmit)="loginUser(user)" [formGroup]="user" novalidate>
       <ion-list no-lines>
         <ion-item>
-          <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+          <ion-input type="email" [placeholder]="'Email' | translate" formControlName="email"></ion-input>
         </ion-item>
         <div class="error" *ngIf="user.get('email').hasError('required') && user.get('email').touched">
           Email is required

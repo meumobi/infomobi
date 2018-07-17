@@ -27,5 +27,6 @@
         "USER_WELCOME": "Olá {{displayName}}"
     },
     "Logout": "Sair",
+    "Email": "Email",
     "invalid email or password": "Email ou senha inválido"
 }
