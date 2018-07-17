@@ -1,31 +1,31 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
+import { Auth } from '@models/auth.interface';
 
 @Injectable()
 export class AuthDataPersistenceService {
-
+  
   isLoggedSubject = new BehaviorSubject<boolean>(this.hasToken());
-
+  
   /**
-   * if we have token the user is loggedIn
-   * @returns {boolean}
-   */
-  private hasToken() : boolean {
+  * if we have token the user is loggedIn
+  * @returns {boolean}
+  */
+  private hasToken(): boolean {
     return !!localStorage.getItem('authData');
   }
-
-  get() {
-    localStorage.getItem(JSON.parse('authData'));
+  
+  get(): Auth {
+    return JSON.parse(localStorage.getItem('authData'));
   }
-
-  set(auth) {
+  
+  set(auth): void {
     console.log('set authData on localStorage');
     localStorage.setItem('authData', JSON.stringify(auth));
     this.isLoggedSubject.next(true);
   }
-
-  clear() {
+  
+  clear(): void {
     localStorage.removeItem('authData');
     this.isLoggedSubject.next(false);
   }
