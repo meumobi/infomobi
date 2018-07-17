@@ -26,6 +26,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ENV } from '@env';
 import { AuthService } from '@providers/auth';
 import { ApiService } from '@providers/api';
+import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -73,7 +74,8 @@ export function createTranslateLoader(http: HttpClient) {
     UploadProvider,
     AuthService,
     DynamicLinksProvider,
-    ApiService
+    ApiService,
+    AuthDataPersistenceService
   ]
 })
 export class AppModule {}
