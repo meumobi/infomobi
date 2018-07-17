@@ -1,5 +1,5 @@
 
-export class Anniversaries {
+export class AnniversariesService {
   admin;
   constructor(
     admin
@@ -8,8 +8,7 @@ export class Anniversaries {
   }
 
   private getCurrentDate():string {
-    // return new Date().toLocaleDateString("pt-BR");    
-    return "16/07/2018";
+    return new Date().toISOString().slice(5,10);   
   }
 
   private getAnniversaries(currentDate) {
@@ -27,8 +26,7 @@ export class Anniversaries {
     );
   }
 
-  private newAnniversaries(contacts) {
-    console.log(contacts);
+  private publishAnniversaries(contacts) {
     const anniversaries = {
       title: "Parabéns aos envolvidos",
       picture: "http://assets.kraftfoods.com/recipe_images/opendeploy/%20138280-49fdab4f7bf207b3cc31f72186c86b0a642f0802_642x428.jpg",
@@ -43,12 +41,19 @@ export class Anniversaries {
       isPublished: true,
       data: anniversaries
     }
-    return this.admin.firestore().collection('comments').add(comment)
+    console.log(comment);
+    return this.admin.firestore().collection('comments')
+    .add(comment)
+    .then(
+      data => {
+        return comment
+      }
+    );
   }
 
   public perform() {
     const currentDate = this.getCurrentDate();
     return this.getAnniversaries(currentDate)
-    .then(data => this.newAnniversaries(data));
+    .then(data => this.publishAnniversaries(data));
   }
 }

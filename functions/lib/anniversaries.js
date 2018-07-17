@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Anniversaries {
+class AnniversariesService {
     constructor(admin) {
         this.admin = admin;
     }
     getCurrentDate() {
-        // return new Date().toLocaleDateString("pt-BR");    
-        return "16/07/2018";
+        return new Date().toISOString().slice(5, 10);
     }
     getAnniversaries(currentDate) {
         const contacts = [];
@@ -20,8 +19,7 @@ class Anniversaries {
             return contacts;
         });
     }
-    newAnniversaries(contacts) {
-        console.log(contacts);
+    publishAnniversaries(contacts) {
         const anniversaries = {
             title: "Parabéns aos envolvidos",
             picture: "http://assets.kraftfoods.com/recipe_images/opendeploy/%20138280-49fdab4f7bf207b3cc31f72186c86b0a642f0802_642x428.jpg",
@@ -36,13 +34,18 @@ class Anniversaries {
             isPublished: true,
             data: anniversaries
         };
-        return this.admin.firestore().collection('comments').add(comment);
+        console.log(comment);
+        return this.admin.firestore().collection('comments')
+            .add(comment)
+            .then(data => {
+            return comment;
+        });
     }
     perform() {
         const currentDate = this.getCurrentDate();
         return this.getAnniversaries(currentDate)
-            .then(data => this.newAnniversaries(data));
+            .then(data => this.publishAnniversaries(data));
     }
 }
-exports.Anniversaries = Anniversaries;
+exports.AnniversariesService = AnniversariesService;
 //# sourceMappingURL=anniversaries.js.map
