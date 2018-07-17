@@ -1,32 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Auth } from '@models/auth.interface';
-import { ENV } from '@env';
+import { Auth, AuthError } from '@models/auth.interface';
+import { ApiService } from '@providers/api';
+import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 
 @Injectable()
-export class AuthProvider {
+export class AuthService {
 
-  constructor(public http: HttpClient) {
+  constructor(
+    public http: HttpClient, 
+    public apiService: ApiService,
+    public authDataPresistenceService: AuthDataPersistenceService
+  ) {
     console.log('Hello AuthProvider Provider');
   }
 
-  loginUser(email: string, password: string): Promise<Auth> {
-    const httpOptions = {
-      headers: {
-        'Accept':  'application/json',
-      }
-    };
+  signIn(email: string, password: string): Promise<Auth | AuthError> {
+    return this.apiService.login(email, password)
+    .then((response: Auth) => {
+      console.log('AuthService, signIn succeed');
 
-    const url = ENV.meumobi.apiUrl + "/api/visitors/login";
-
-    const data = {
-      email: email,
-      password: password
-    };
-
-    console.log(data);
-
-    return this.http.post<Auth>(url, data, httpOptions).toPromise();
+      this.authDataPresistenceService.set(response);
+      return response;
+    })
   }
+
+  signOut(): void {
+    this.authDataPresistenceService.clear();
+  }
+
+  isAuthenticated() {}
 
 }

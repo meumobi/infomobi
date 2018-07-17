@@ -8,11 +8,12 @@ import {
   AlertController
 } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthProvider } from '@providers/auth';
+import { AuthService } from '@providers/auth';
 import { MeuToastProvider } from '@shared/meu-toast.service';
 import { EmailValidator } from '@validators/email';
 import { TranslateService } from '@ngx-translate/core';
 import { AnalyticsProvider } from '@shared/analytics.service';
+import { Auth, AuthError } from '@models/auth.interface';
 
 @IonicPage({
   segment: 'login'
@@ -31,7 +32,7 @@ export class LoginPage {
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public AuthProvider: AuthProvider,
+    public authService: AuthService,
     public menu : MenuController,
     public toast: MeuToastProvider,
     private translateService: TranslateService,
@@ -57,8 +58,9 @@ export class LoginPage {
     });
     this.loading.present();
     
-    this.AuthProvider.loginUser(user.value.email, user.value.password)
-    .then( response => {
+    this.authService.signIn(user.value.email, user.value.password)
+    .then( (response: Auth) => {
+      console.log(response);
       this.analytics.trackEvent('Login', 'Submit', 'Success');
       this.translateService.get('LOGIN.USER_WELCOME', {displayName: response.visitor.first_name}).subscribe(
         value => {
@@ -67,20 +69,22 @@ export class LoginPage {
         }
       )
     })
-    .catch ( err => {
+    .catch ( (err: AuthError) => {
       console.log(err);
       this.analytics.trackEvent('Login', 'Submit', 'Failed');
       this.loading.dismiss().then( () => {
-        let alert = this.alertCtrl.create({
-          message: this.translateService.instant(err.error.error),
-          buttons: [
-            {
-              text: "Ok",
-              role: 'cancel'
-            }
-          ]
-        });
-        alert.present();
+        if (err) {
+          let alert = this.alertCtrl.create({
+            message: this.translateService.instant(err.message),
+            buttons: [
+              {
+                text: "Ok",
+                role: 'cancel'
+              }
+            ]
+          });
+          alert.present();
+        }
       });
     });  
   }
