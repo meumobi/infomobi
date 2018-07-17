@@ -6,5 +6,8 @@
     "IN_APP" : "Internal app translation",
     "LOGIN": {
         "USER_WELCOME": "Hello {{displayName}}"
+    },
+    "LIVE_FEED": {
+        "ANNIVERSARIES_TITLE": "Today's anniversaries!"
     }
 }

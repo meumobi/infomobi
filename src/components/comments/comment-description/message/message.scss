@@ -1,0 +1,13 @@
+message {
+  ion-label {
+    white-space: normal;
+  }
+  ion-avatar[item-start],
+  ion-icon[item-start] {
+    margin: 8px 8px auto 0 !important;
+    width: 40px;
+  }
+  ion-icon[item-start]+.item-inner {
+    margin-left: 0px !important;
+  }
+}

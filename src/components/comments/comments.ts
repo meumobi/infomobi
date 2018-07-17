@@ -1,6 +1,6 @@
 import { Component, ViewChild, Input } from '@angular/core';
 import { CommentsProvider } from '@providers/comments';
-import { Comment } from '@models/comment.interface';
+import { Comment } from '@models/comment';
 import { 
   Content,
   NavController, 
@@ -24,8 +24,8 @@ export class CommentsComponent {
   fakeComments: Array<any> = new Array(5);
   author = false;
   filters = {
-    published: true,
-    postId: null
+    isPublished: true,
+    channel: 'live'
   }
   
   constructor(
@@ -41,20 +41,20 @@ export class CommentsComponent {
     for (var p in data) {
       this.filters[p] = data[p];
     }
-    this.findAll();
+    this.getComments();
   }
   
-  ngOnChanges() {
+  ngOnInit() {
     if (this.post) {
-      this.filters.postId = this.post._id;
+      this.filters.channel = `post_${this.post._id}`;
     } 
-    this.findAll();
+    this.getComments();
   }
 
   loadMore(infinite) {
     setTimeout(() => {
       this.analytics.trackEvent('Comments', 'Load More', this.filters);
-      this.commentsProvider.findAll(this.filters, this.comments[this.comments.length-1]).subscribe(
+      this.commentsProvider.search(this.filters, this.comments[this.comments.length-1]).subscribe(
         data => {
           this.comments = this.comments.concat(data);
           infinite.complete();
@@ -66,10 +66,11 @@ export class CommentsComponent {
     },300);
   }
   
-  findAll() {
+  getComments() {
     this.analytics.trackEvent('Comments', 'Find All', this.filters);
-    this.commentsProvider.findAll(this.filters, null).subscribe(
+    this.commentsProvider.search(this.filters, false).subscribe(
       data => {
+        console.log(data);
         //TODO notify about new item when data.len > comments.len  
         this.comments = data;   
       },
@@ -97,16 +98,7 @@ export class CommentsComponent {
   }
   
   promoteComment(comment: Comment) {
-    var newComment: Comment = {
-      author: comment.author,
-      link: comment.postId,
-      description: comment.description,
-      published: true,
-      postTitle: comment.postTitle,
-      media: (comment.media) ? comment.media: null,
-      postId: null
-    }
-    this.commentsProvider.save(newComment).then(
+    this.commentsProvider.promote(comment).then(
       data => {
         this.toast.present(this.translateService.instant("Comment promoted"));
       }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 
 import { Post } from '@models/post.interface';
-import { Comment } from '@models/comment.interface';
+import { Comment } from '@models/comment';
 
 import { PostsProvider } from '@providers/posts';
 

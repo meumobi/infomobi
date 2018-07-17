@@ -1,0 +1,9 @@
+<ion-avatar item-start *ngIf="data.author.picture; else anonymous">
+  <img [src]="data.author.picture" (click)="pushDetailsPage('ContactDetailsPage', data.author.id)"/>
+</ion-avatar> 
+<h2>{{data.author.displayName}}</h2>
+<p>{{data.description}}</p>
+<div class="img-wrap" *ngIf="data.media">
+  <img class="image-fit" [src]="data.media[0].url" imageViewer/>           
+</div>
+<a *ngIf="data.postDetails && !channel.startsWith('post')" href="#" (click)="pushDetailsPage('PostDetailsPage', data.postDetails.id)">{{data.postDetails.title}}</a>
