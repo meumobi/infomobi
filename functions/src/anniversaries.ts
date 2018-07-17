@@ -45,7 +45,6 @@ export class AnniversariesService {
       isPublished: true,
       data: anniversaries
     }
-    console.log(comment);
     return this.admin.firestore().collection('comments')
     .add(comment)
     .then(
@@ -58,6 +57,13 @@ export class AnniversariesService {
   public perform() {
     const currentDate = this.getCurrentDate();
     return this.getAnniversaries(currentDate)
-    .then(data => this.publishAnniversaries(data));
+    .then(
+      data => {
+        if (data.length > 0) {
+          return this.publishAnniversaries(data);
+        } else {
+          return {};
+        }
+      });
   }
 }
