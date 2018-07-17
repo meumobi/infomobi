@@ -5,7 +5,7 @@ import { Auth, AuthError } from '@models/auth.interface';
 import { ENV } from '@env';
 
 @Injectable()
-export class ApiProvider {
+export class ApiService {
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiProvider Provider');
