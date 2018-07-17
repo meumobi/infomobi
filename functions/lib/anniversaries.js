@@ -14,7 +14,10 @@ class AnniversariesService {
             .get()
             .then(data => {
             data.forEach(doc => {
-                contacts.push(doc.data());
+                console.log(doc.data());
+                const contact = doc.data();
+                //contact["id"] = doc.id;
+                contacts.push(contact);
             });
             return contacts;
         });
@@ -27,7 +30,7 @@ class AnniversariesService {
         };
         const comment = {
             channel: "live",
-            type: "Anniversaries",
+            type: "anniversaries",
             created: Date.now(),
             published: Date.now(),
             modified: Date.now(),

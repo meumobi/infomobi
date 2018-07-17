@@ -1,4 +1,3 @@
-
 export class AnniversariesService {
   admin;
   constructor(
@@ -14,13 +13,18 @@ export class AnniversariesService {
   private getAnniversaries(currentDate) {
     const contacts: Array<Object> = [];
     return this.admin.firestore().collection('contacts')
-    .where('birthday','==',currentDate)
+    .where('birthday', '==', currentDate)
     .get()
     .then(
       data => {
-        data.forEach(doc => {
-          contacts.push( doc.data() )
-        });
+        data.forEach(
+          doc => {
+            console.log(doc.data());
+            const contact = doc.data();
+            //contact["id"] = doc.id;
+            contacts.push(contact);
+          }
+        );
         return contacts;
       }
     );
@@ -34,7 +38,7 @@ export class AnniversariesService {
     }
     const comment = {
       channel: "live",
-      type: "Anniversaries",
+      type: "anniversaries",
       created: Date.now(),
       published: Date.now(),
       modified: Date.now(),
