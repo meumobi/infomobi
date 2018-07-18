@@ -17,8 +17,8 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'comments.html'
 })
 export class CommentsComponent {
-  @Input('rootNavCtrl') rootNavCtrl :NavController;
-  @Input('post') post :Post;
+  @Input('rootNavCtrl') rootNavCtrl: NavController;
+  @Input('post') post: Post;
   @ViewChild(Content) content: Content;
   comments: Comment[];
   fakeComments: Array<any> = new Array(5);
@@ -27,6 +27,7 @@ export class CommentsComponent {
     published: true,
     postId: null
   }
+  finished = false;
   
   constructor(
     private commentsProvider: CommentsProvider,
@@ -52,18 +53,23 @@ export class CommentsComponent {
   }
 
   loadMore(infinite) {
-    setTimeout(() => {
-      this.analytics.trackEvent('Comments', 'Load More', this.filters);
-      this.commentsProvider.findAll(this.filters, this.comments[this.comments.length-1]).subscribe(
-        data => {
-          this.comments = this.comments.concat(data);
-          infinite.complete();
-        },
-        err => {
-          console.log(err);
+    if (this.finished) return;
+    this.analytics.trackEvent('Comments', 'Load More', this.filters);
+    const lastItem = this.comments[this.comments.length-1];
+    this.commentsProvider.findAll(this.filters, lastItem).subscribe(
+      data => {
+        this.comments = this.comments.concat(data);
+        console.log(lastItem);
+        console.log(this.comments[this.comments.length-1]);
+        if (lastItem == this.comments[this.comments.length-1]) {
+          this.finished = true;
         }
-      );
-    },300);
+        infinite.complete();
+      },
+      err => {
+        console.log(err);
+      }
+    );  
   }
   
   findAll() {
