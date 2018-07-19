@@ -11,3 +11,7 @@ export interface User {
   email: string,
   site: string
 }
+
+export class AuthError {
+  message: string
+}

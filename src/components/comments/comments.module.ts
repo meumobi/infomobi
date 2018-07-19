@@ -7,6 +7,8 @@ import { FileUploadComponent } from '@components/file-upload/file-upload';
 import { IonicModule } from 'ionic-angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared/shared.module';
+import { AnniversariesComponent } from '../comments/comment-description';
+import { MessageComponent } from '../comments/comment-description';
 
 @NgModule({
 	declarations: [
@@ -14,7 +16,9 @@ import { SharedModule } from '@shared/shared.module';
 		CommentListComponent,
 		CommentDetailsComponent,
 		CommentFormComponent,
-		FileUploadComponent
+		FileUploadComponent,
+		AnniversariesComponent,
+		MessageComponent
 	],
 	imports: [
 		IonicModule,
@@ -28,6 +32,10 @@ import { SharedModule } from '@shared/shared.module';
 		CommentFormComponent,
 		FileUploadComponent,
 		IonicModule
+	],
+	entryComponents: [
+		MessageComponent,
+		AnniversariesComponent
 	]
 })
 export class CommentsModule {}
