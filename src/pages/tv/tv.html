@@ -8,7 +8,7 @@
       </ion-col>
       <ion-col col-8>
         <div class="news">
-          <ion-slides pager="true" loop="true" centeredSlides="true"  autoplay="10000">
+          <ion-slides pager="true" loop="true" centeredSlides="true"  autoplay="10000" *ngIf="posts">
             <ion-slide *ngFor="let post of posts">
               <ion-card class="card-background-page">
                 <img *ngIf="post.images" class="img-fit" [src]="post.images[0].path.substr(8) | imgServerUrly" [srcset]="post.images[0].path.substr(8) | imgServerSrcsettify"/>
