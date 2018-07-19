@@ -12,7 +12,7 @@ import { ContactsProvider } from '@providers/contacts/';
 })
 export class ContactsPage {
 
-  contacts: Array<Contact>;
+  contacts: Array<any>;
   rootNavCtrl: NavController;
 
   constructor(
