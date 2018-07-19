@@ -4,6 +4,10 @@ import { Auth } from '@models/auth.interface';
 
 @Injectable()
 export class AuthDataPersistenceService {
+
+  constructor() {
+    console.log('Hello AuthDataPersistenceService');
+  }  
   
   isLoggedSubject = new BehaviorSubject<boolean>(this.hasToken());
   

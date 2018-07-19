@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   
   constructor() {
-    console.log('Hello AuthProvider Provider');
+    console.log('Hello AuthService Mock');
   }  
 
   signIn(email: string, password: string): Promise<any> {

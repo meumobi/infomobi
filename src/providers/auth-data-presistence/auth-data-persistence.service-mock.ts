@@ -5,6 +5,10 @@ import { Auth } from '@models/auth.interface';
 @Injectable()
 export class AuthDataPersistenceService {
   
+  constructor() {
+    console.log('Hello AuthDataPersistenceService Mock');
+  }  
+
   authData = {  
     "success":true,
     "token":"14cff39e74468e78494ab0778776d12f3aedca53",

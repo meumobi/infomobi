@@ -12,7 +12,7 @@ export class AuthService {
     public apiService: ApiService,
     public authDataPresistenceService: AuthDataPersistenceService
   ) {
-    console.log('Hello AuthProvider Provider');
+    console.log('Hello AuthService');
   }
 
   signIn(email: string, password: string): Promise<Auth | AuthError> {
