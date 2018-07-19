@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Contact } from '@models/contact.interface';
-import { ContactsProvider } from '@providers/contacts/';
+import { ContactsService } from '@providers/contacts/';
+import { ContactProfile } from '@models/contact-profile';
 
 @IonicPage({
   segment: 'contacts'
@@ -12,22 +12,30 @@ import { ContactsProvider } from '@providers/contacts/';
 })
 export class ContactsPage {
 
-  contacts: Array<Contact>;
+  contacts: Array<ContactProfile>;
   rootNavCtrl: NavController;
 
   constructor(
-    private data: ContactsProvider,
+    private contactsService: ContactsService,
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
+  }
+
+  ngOnInit() {
     this.findAll();
   }
 
   findAll() {
-    this.data.findAll()
-      .then(data => this.contacts = data)
-      .catch(error => alert(error));
+    this.contactsService.search().subscribe(
+      data => {
+        this.contacts = data;   
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   pushDetailsPage(page: string, id: string) {

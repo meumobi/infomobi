@@ -4,7 +4,7 @@ import contacts from './mock-contacts';
 import Utils from '@shared/utils';
 
 @Injectable()
-export class ContactsProvider {
+export class ContactsService {
 
   findAll() {
     return Promise.resolve(contacts);
