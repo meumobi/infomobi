@@ -1,15 +1,10 @@
-<div>
-  <h2>{{"Happy Birthday"| translate}}!</h2>
-  <ion-row wrap>
-    <ion-col *ngFor="let contact of data.contacts" col-12 col-md-4>
-      <ion-card (click)="pushDetailsPage('ContactDetailsPage', contact.id)">
-        <img [src]="contact.picture"/>
-        <ion-card-content>
-          <h2>
-            {{contact.displayName}}
-          </h2>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-</div>
+<h2>{{data.title}}</h2>
+<img [src]="data.picture" imageViewer/>
+<ion-list>
+  <ion-item *ngFor="let contact of data.contacts">
+    <ion-avatar item-start>
+        <img [src]="contact.picture" (click)="pushDetailsPage('ContactDetailsPage', contact.id)"/>
+      </ion-avatar> 
+      <h2>{{contact.firstName}} {{contact.lastName}}</h2>
+  </ion-item>
+</ion-list>
