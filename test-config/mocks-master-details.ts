@@ -12,7 +12,7 @@ export class AnalyticsMock extends AnalyticsProvider {
       resolve();
     });
   }
-
+  
   public trackEvent(): any {
     return new Promise(function(resolve: Function): void {
       resolve();
@@ -20,3 +20,9 @@ export class AnalyticsMock extends AnalyticsProvider {
   }
   
 }
+
+import { AuthService } from '../src/providers/auth/auth.service-mock';
+export class AuthMock extends AuthService {}
+
+import { AuthDataPersistenceService } from '../src/providers/auth-data-presistence/auth-data-persistence.service-mock';
+export class AuthDataPersistenceMock extends AuthDataPersistenceService {}
