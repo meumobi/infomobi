@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 
 import comments from './mock-comments';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Injectable()
 export class CommentsProvider {
 
-  search(searchTerms, loadMore) {
-    return comments;
+  search(filters, lastItem = null) {    
+    return comments.map(
+      comments => {
+        return comments.filter(
+          comment => comment.channel == filters.channel
+        ) 
+      }
+    );
   }
 
   update(id, changes) {

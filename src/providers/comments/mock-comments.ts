@@ -26,6 +26,30 @@ let comments = Observable.of([
     isPublished: true
   },
   {
+    channel: 'post_599ec8389a645d465c8b456d',
+    created: 1530873217112,
+    data: {
+      author: {
+        displayName: "Luiza Bittencourt", 
+        email: "luiza@infomobi.app", 
+        firstName: "Luiza", 
+        id: "1", 
+        lastName: "Bittencourt", 
+        picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
+      },
+      postDetails: {
+        id: "599ec8389a645d465c8b456d",
+        title: "Incentive suas equipes para compartilhar promoções em suas próprias contas de mídia social"
+      }, 
+      description: "Funcionalidade bem interessante"
+    },
+    type: 'message',
+    id: "SCoq7mZjAlCRzDqueV3C",
+    modified: 1530873217112,
+    published: 1530873217112,
+    isPublished: true
+  },
+  {
     channel: 'live',
     created: 1530873217111,
     data: {
