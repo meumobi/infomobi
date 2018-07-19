@@ -6,7 +6,15 @@ export const ENV = {
     apiUrl: 'https://meumobi.com'
   },
   imgServer: {
-    url: "https://imageflow.meumobi.com/meumobi/"
+    url: "https://imageflow.meumobi.com/",
+    sources: {
+      firebase: {
+        prefix: "https://infomobi.page.link"
+      },
+      meumobi: {
+        prefix: "/uploads"
+      }
+    }
   } , 
   dynamicLinks: {
     url: "https://firebasedynamiclinks.googleapis.com/v1/shortLinks",
