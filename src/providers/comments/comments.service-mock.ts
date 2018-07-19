@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
-
 import comments from './mock-comments';
-import { Observable } from '../../../node_modules/rxjs';
 
 @Injectable()
 export class CommentsProvider {
 
   search(filters, lastItem = null) {    
-    return comments.map(
+    return comments
+    .map(
       comments => {
-        return comments.filter(
+        comments.sort(
+          (a, b) => {
+            return a.published > b.published ? -1 : 1;
+          }
+        )
+        comments.filter(
           comment => comment.channel == filters.channel
-        ) 
+        )
+        let start = 0;
+        if (lastItem) {
+          start = comments.indexOf(lastItem) + 1;
+        }
+        return comments.slice(start, start + 3);
       }
     );
   }
