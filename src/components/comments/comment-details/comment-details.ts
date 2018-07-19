@@ -1,11 +1,23 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { 
+  Component, 
+  Input, 
+  Output, 
+  EventEmitter,
+  OnInit, 
+  ViewChild, 
+  ViewContainerRef,
+  ComponentFactoryResolver, 
+  OnDestroy
+ } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { CommentDescription } from '@models/comment-description.interface';
+import * as description from '../comment-description/.';
 
 @Component({
   selector: 'comment-details',
   templateUrl: 'comment-details.html'
 })
-export class CommentDetailsComponent {
+export class CommentDetailsComponent implements OnInit, OnDestroy  {
   
   @Input('comment') comment;
   @Output() update = new EventEmitter(false);
@@ -13,13 +25,44 @@ export class CommentDetailsComponent {
   @Output() open = new EventEmitter(false);
   @Output() promote = new EventEmitter(false);
 
+  @ViewChild('description', { read: ViewContainerRef }) entry: ViewContainerRef;
+
   rootNavCtrl: NavController;
+  componentRef: any;
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private componentFactoryResolver: ComponentFactoryResolver
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
+  }
+
+  ngOnInit() {
+    this.loadComponent();
+  }
+
+  ngOnDestroy() {
+    this.componentRef.destroy(); 
+  }
+
+  getComponentName(name: string) {
+    return name.charAt(0).toUpperCase() + name.substr(1) + 'Component';
+  }
+
+  loadComponent() {
+    this.entry.clear();
+    if (!this.comment.type) {
+      this.comment["type"] = "Message";
+    }
+    let projectableNode = document.createElement('p');
+    projectableNode.innerHTML = this.comment.description;
+
+    const className = this.getComponentName(this.comment.type);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(description[className]);
+    this.componentRef = this.entry.createComponent(componentFactory, this.entry.length, null, [[projectableNode]]);
+    (<CommentDescription>this.componentRef.instance).data = this.comment.data;
+    (<CommentDescription>this.componentRef.instance).channel = this.comment.channel;
   }
 
   openPost() {
@@ -56,5 +99,4 @@ export class CommentDetailsComponent {
       console.log("missing id of author");
     }
   }
-
 }

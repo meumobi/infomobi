@@ -1,0 +1,15 @@
+<div>
+  <h2>{{"Happy Birthday"| translate}}!</h2>
+  <ion-row wrap>
+    <ion-col *ngFor="let contact of data.contacts" col-12 col-md-4>
+      <ion-card (click)="pushDetailsPage('ContactDetailsPage', contact.id)">
+        <img [src]="contact.picture"/>
+        <ion-card-content>
+          <h2>
+            {{contact.displayName}}
+          </h2>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</div>
