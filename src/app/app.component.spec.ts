@@ -5,9 +5,11 @@ import {HttpClient} from "@angular/common/http";
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AnalyticsProvider } from '../shared/analytics.service';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 
+import { AnalyticsProvider } from '../shared/analytics.service';
+import { AuthService } from '../providers/auth';
+import { AuthDataPersistenceService } from '../providers/auth-data-presistence/auth-data-persistence.service-mock';
 import { MyApp } from './app.component';
 import { createTranslateLoader } from "./app.module";
 
@@ -18,7 +20,9 @@ import {
   SplashScreenMock
 } from '../../test-config/mocks-ionic';
 import {
-  AnalyticsMock
+  AnalyticsMock,
+  AuthMock,
+  AuthDataPersistenceMock
 } from '../../test-config/mocks-master-details';
 
 describe('MyApp Component', () => {
@@ -44,7 +48,9 @@ describe('MyApp Component', () => {
         { provide: StatusBar, useClass: StatusBarMock },
         { provide: SplashScreen, useClass: SplashScreenMock },
         { provide: Platform, useClass: PlatformMock },
-        { provide: AnalyticsProvider, useClass: AnalyticsMock }
+        { provide: AnalyticsProvider, useClass: AnalyticsMock },
+        { provide: AuthService, useClass: AuthMock },
+        { provide: AuthDataPersistenceService, useClass: AuthDataPersistenceMock },
       ]
     }).compileComponents();
   }));
