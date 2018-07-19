@@ -9,6 +9,7 @@
     <div class=img-comment>&nbsp;</div>
   </div>
 </ion-list>
-<ion-infinite-scroll (ionInfinite)="loadMore($event)">
-  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+<ion-infinite-scroll *ngIf="!finished" (ionInfinite)="loadMore($event)">
+  <ion-infinite-scroll-content>
+  </ion-infinite-scroll-content>
 </ion-infinite-scroll>
