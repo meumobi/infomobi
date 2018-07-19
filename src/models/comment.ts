@@ -7,7 +7,7 @@ export class Comment {
   published: number;
   modified: number;
   isPublished: boolean;
-  site_id: number;
+  //site_id: number;
 
   constructor(type: string) {
     this.type = type;

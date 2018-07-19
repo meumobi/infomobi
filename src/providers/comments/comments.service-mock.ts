@@ -5,7 +5,7 @@ import comments from './mock-comments';
 @Injectable()
 export class CommentsProvider {
 
-  findAll(searchTerms, loadMore) {
+  search(searchTerms, loadMore) {
     return comments;
   }
 
@@ -18,6 +18,10 @@ export class CommentsProvider {
   }
 
   save(comment) {
+    return new Promise((resolve) => resolve(true));
+  }
+
+  promote(comment) {
     return new Promise((resolve) => resolve(true));
   }
 }
