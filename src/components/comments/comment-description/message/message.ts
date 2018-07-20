@@ -7,8 +7,7 @@ import { CommentDescription } from '@models/comment-description.interface';
   selector: 'message'
 })
 export class MessageComponent implements CommentDescription {
-  @Input() data: any;
-  @Input() channel: string;
+  @Input() comment: any;
   rootNavCtrl: NavController;
 
   constructor(

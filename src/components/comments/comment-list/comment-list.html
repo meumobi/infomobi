@@ -1,12 +1,3 @@
-<!--ion-segment (ionChange)="filter.emit({published: $event.value == 'true'})" >
-	<ion-segment-button value="true" checked>
-		{{ 'Published' | translate }}
-	</ion-segment-button>
-	<ion-segment-button value="false">
-		{{ 'Not Published' | translate }}		
-	</ion-segment-button>
-</ion-segment-->
-
 <ion-list>
 	<comment-details *ngFor="let comment of comments" [comment]="comment" (open)="open.emit({id: comment.link})" (promote)="promote.emit(comment)" (delete)="delete.emit({id:comment.id})" (update)="update.emit({id: comment.id, changes: $event})"></comment-details>	
 </ion-list>

@@ -6,8 +6,7 @@ import { CommentDescription } from '@models/comment-description.interface';
   templateUrl: 'anniversaries.html'
 })
 export class AnniversariesComponent implements CommentDescription {
-  @Input() data: any;
-  @Input() channel: string;
+  @Input() comment: any;
   rootNavCtrl: NavController;
 
   constructor(

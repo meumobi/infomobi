@@ -25,7 +25,7 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
   @Output() open = new EventEmitter(false);
   @Output() promote = new EventEmitter(false);
 
-  @ViewChild('description', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('details', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   rootNavCtrl: NavController;
   componentRef: any;
@@ -61,8 +61,7 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
     const className = this.getComponentName(this.comment.type);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(description[className]);
     this.componentRef = this.entry.createComponent(componentFactory, this.entry.length, null, [[projectableNode]]);
-    (<CommentDescription>this.componentRef.instance).data = this.comment.data;
-    (<CommentDescription>this.componentRef.instance).channel = this.comment.channel;
+    (<CommentDescription>this.componentRef.instance).comment = this.comment;
   }
 
   openPost() {

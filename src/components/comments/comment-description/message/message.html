@@ -1,9 +1,23 @@
-<ion-avatar item-start *ngIf="data.author.picture; else anonymous">
-  <img [src]="data.author.picture" (click)="pushDetailsPage('ContactDetailsPage', data.author.id)"/>
-</ion-avatar> 
-<h2>{{data.author.displayName}}</h2>
-<p>{{data.description}}</p>
-<div class="img-wrap" *ngIf="data.media">
-  <img class="image-fit" [src]="data.media[0].url" imageViewer/>           
-</div>
-<a *ngIf="data.postDetails && !channel.startsWith('post')" href="#" (click)="pushDetailsPage('PostDetailsPage', data.postDetails.id)">{{data.postDetails.title}}</a>
+<ion-item-sliding>
+  <ion-item>    
+    <ion-avatar item-start *ngIf="comment.data.author.picture; else anonymous">
+      <img [src]="comment.data.author.picture" (click)="pushDetailsPage('ContactDetailsPage', comment.data.author.id)"/>
+    </ion-avatar> 
+    <h2>{{comment.data.author.displayName}}</h2>
+    <p>{{comment.data.description}}</p>
+    <div class="img-wrap" *ngIf="comment.data.media">
+      <img class="image-fit" [src]="comment.data.media[0].url" imageViewer/>           
+    </div>
+    <a *ngIf="comment.data.postDetails && !comment.channel.startsWith('post')" href="#" (click)="pushDetailsPage('PostDetailsPage', comment.data.postDetails.id)">{{comment.data.postDetails.title}}</a>    
+  </ion-item>
+  <ion-item-options side="left" *ngIf="comment">    
+    <button ion-button *ngIf="comment.channel.startsWith('post')" (click)="promoteComment()">
+      <ion-icon name="checkmark"></ion-icon>
+      {{'Promote' | translate }}
+    </button>
+    <button ion-button (click)="deleteComment()">
+      <ion-icon name="trash"></ion-icon>
+      {{'Delete' | translate }}
+    </button>
+  </ion-item-options>
+</ion-item-sliding>
