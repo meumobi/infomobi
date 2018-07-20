@@ -9,7 +9,7 @@ import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-transla
 
 import { AnalyticsProvider } from '../shared/analytics.service';
 import { AuthService } from '../providers/auth';
-import { AuthDataPersistenceService } from '../providers/auth-data-presistence/auth-data-persistence.service-mock';
+import { AuthDataPersistenceService } from '../providers/auth-data-presistence';
 import { MyApp } from './app.component';
 import { createTranslateLoader } from "./app.module";
 
