@@ -8,13 +8,17 @@ export class CommentsProvider {
     return comments
     .map(
       comments => {
-        comments.sort(
-          (a, b) => {
-            return a.published > b.published ? -1 : 1;
-          }
-        )
         return comments.filter(
           comment => comment.channel == filters.channel
+        )
+      }
+    )
+    .map(
+      comments => {
+        return comments.sort(
+          (a, b) => {
+            return a.published < b.published ? 1 : -1;
+          }
         )
       }
     )
