@@ -13,9 +13,13 @@ export class CommentsProvider {
             return a.published > b.published ? -1 : 1;
           }
         )
-        comments.filter(
+        return comments.filter(
           comment => comment.channel == filters.channel
         )
+      }
+    )
+    .map(
+      comments => {
         let start = 0;
         if (lastItem) {
           start = comments.indexOf(lastItem) + 1;
