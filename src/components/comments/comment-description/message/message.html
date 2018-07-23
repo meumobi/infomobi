@@ -1,6 +1,11 @@
 <ion-avatar item-start *ngIf="data.author.picture; else anonymous">
   <img [src]="data.author.picture" (click)="pushDetailsPage('ContactDetailsPage', data.author.id)"/>
 </ion-avatar> 
+<ng-template #anonymous>
+  <ion-avatar item-start>
+    ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+  </ion-avatar>
+</ng-template>   
 <h2>{{data.author.displayName}}</h2>
 <p>{{data.description}}</p>
 <div class="img-wrap" *ngIf="data.media">
