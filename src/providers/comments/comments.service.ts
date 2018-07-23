@@ -39,6 +39,7 @@ export class CommentsProvider {
   }
 
   delete(id: string) {
+    console.log(id);
     return this.itemsCollection.doc(id).delete();
   }  
 

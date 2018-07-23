@@ -10,8 +10,8 @@ import {
   OnDestroy
  } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CommentDescription } from '@models/comment-description.interface';
-import * as description from '../comment-description/.';
+import { Comment } from '@models/comment.interface';
+import * as description from '../comment/.';
 
 @Component({
   selector: 'comment-details',
@@ -61,7 +61,7 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
     const className = this.getComponentName(this.comment.type);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(description[className]);
     this.componentRef = this.entry.createComponent(componentFactory, this.entry.length, null, [[projectableNode]]);
-    (<CommentDescription>this.componentRef.instance).comment = this.comment;
+    (<Comment>this.componentRef.instance).comment = this.comment;
   }
 
   openPost() {
