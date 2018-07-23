@@ -1,8 +1,6 @@
 import { 
   Component, 
   Input, 
-  Output, 
-  EventEmitter,
   OnInit, 
   ViewChild, 
   ViewContainerRef,
@@ -20,11 +18,6 @@ import * as description from '../comment/.';
 export class CommentDetailsComponent implements OnInit, OnDestroy  {
   
   @Input('comment') comment;
-  @Output() update = new EventEmitter(false);
-  @Output() delete = new EventEmitter(false);
-  @Output() open = new EventEmitter(false);
-  @Output() promote = new EventEmitter(false);
-
   @ViewChild('details', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   rootNavCtrl: NavController;
@@ -62,40 +55,5 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(description[className]);
     this.componentRef = this.entry.createComponent(componentFactory, this.entry.length, null, [[projectableNode]]);
     (<Comment>this.componentRef.instance).comment = this.comment;
-  }
-
-  openPost() {
-    this.open.emit({});
-  }
-
-  togglePublished() {
-    this.update.emit({
-      published: !this.comment.published
-    })
-  }
-
-  toggleAnswered() {
-    this.update.emit({
-      answered: !this.comment.answered
-    })
-  }
-
-  promoteComment() {
-    this.promote.emit({});
-  }
-
-  deleteComment() {
-    this.delete.emit({});
-  }
-
-  pushDetailsPage(page: string, id: string) {
-    if (id) {
-      this.rootNavCtrl.push(page, {
-        id: id,
-        rootNavCtrl: this.rootNavCtrl
-      });
-    } else {
-      console.log("missing id of author");
-    }
-  }
+  }  
 }

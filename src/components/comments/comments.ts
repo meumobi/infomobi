@@ -10,7 +10,6 @@ import {
 import { MeuToastProvider } from '@shared/meu-toast.service';
 import { AnalyticsProvider } from '@shared/analytics.service';
 import { Post } from '@models/post.interface';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'comments',
@@ -33,8 +32,7 @@ export class CommentsComponent {
     private commentsProvider: CommentsProvider,
     public alertCtrl: AlertController,
     public toast: MeuToastProvider,
-    public analytics: AnalyticsProvider,
-    private translateService: TranslateService,
+    public analytics: AnalyticsProvider
   ) {}
   
   setFilters(data){
@@ -86,38 +84,6 @@ export class CommentsComponent {
     );
   }
   
-  updateComment(id: string, changes: any) {
-    this.analytics.trackEvent('Comments', 'Update Comment', id);
-    this.commentsProvider.update(id, changes).then(
-      data => {
-        this.toast.present(this.translateService.instant("Comment updated"));
-      }
-    );
-  }
-
-  deleteComment(id: string) {
-    this.commentsProvider.delete(id).then(
-      data => {
-        this.toast.present(this.translateService.instant("Comment deleted"));
-      }
-    );
-  }
-  
-  promoteComment(comment: Comment) {
-    this.commentsProvider.promote(comment).then(
-      data => {
-        this.toast.present(this.translateService.instant("Comment promoted"));
-      }
-    );
-  }
-
-  openPost(id: string) {
-    this.rootNavCtrl.push('PostDetailsPage', {
-      id: id,
-      rootNavCtrl: this.rootNavCtrl
-    });  
-  }
-
   addComment() {
     this.analytics.trackEvent('Comments', 'Add Comment', this.post);
     this.author = true;
