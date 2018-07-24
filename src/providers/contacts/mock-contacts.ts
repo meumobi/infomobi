@@ -1,4 +1,6 @@
-let contacts = [
+import { Observable } from 'rxjs/Observable';
+
+let contacts = Observable.of([
     {
         id: "1",
         type: "user",
@@ -193,6 +195,6 @@ let contacts = [
         },
         picture: "https://media.istockphoto.com/vectors/-vector-id479391700?k=6&m=479391700&s=612x612&w=0&h=tn49_mMKaZmu1dqTNE3-9K0Ejire4jg39qdxIllxyOg="
     }
-];
+]);
 
 export default contacts;

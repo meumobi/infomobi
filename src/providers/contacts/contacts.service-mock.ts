@@ -6,8 +6,8 @@ import Utils from '@shared/utils';
 @Injectable()
 export class ContactsService {
 
-  findAll() {
-    return Promise.resolve(contacts);
+  search() {
+    return contacts;
   }
 
   findById(id) {
@@ -16,3 +16,5 @@ export class ContactsService {
   }
 
 }
+
+
