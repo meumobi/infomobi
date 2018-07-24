@@ -1,12 +1,36 @@
 import { Injectable } from '@angular/core';
-
 import comments from './mock-comments';
 
 @Injectable()
 export class CommentsProvider {
 
-  search(searchTerms, loadMore) {
-    return comments;
+  search(filters, lastItem = null) {    
+    return comments
+    .map(
+      comments => {
+        return comments.filter(
+          comment => comment.channel == filters.channel
+        )
+      }
+    )
+    .map(
+      comments => {
+        return comments.sort(
+          (a, b) => {
+            return a.published < b.published ? 1 : -1;
+          }
+        )
+      }
+    )
+    .map(
+      comments => {
+        let start = 0;
+        if (lastItem) {
+          start = comments.indexOf(lastItem) + 1;
+        }
+        return comments.slice(start, start + 3);
+      }
+    );
   }
 
   update(id, changes) {
