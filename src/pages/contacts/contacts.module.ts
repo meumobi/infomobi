@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ContactsPage } from './contacts';
-import { ContactsProvider } from '@providers/contacts';
+import { ContactsService } from '@providers/contacts';
+import { ContactsModule } from '@components/contacts/contacts.module';
 import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
@@ -11,9 +12,10 @@ import { SharedModule } from '@shared/shared.module';
   imports: [
     SharedModule,
     IonicPageModule.forChild(ContactsPage),
+    ContactsModule
   ],
   providers: [
-    ContactsProvider
+    ContactsService
   ],
   entryComponents: [
   	ContactsPage
