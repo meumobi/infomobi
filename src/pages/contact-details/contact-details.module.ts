@@ -3,8 +3,8 @@ import { IonicPageModule } from 'ionic-angular';
 import { ContactDetailsPage } from './contact-details';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared/shared.module';
-import { ContactsProvider } from '@providers/contacts';
-
+import { ContactsModule } from '@components/contacts/contacts.module';
+import { ContactsService } from '@providers/contacts';
 
 @NgModule({
   declarations: [
@@ -13,10 +13,11 @@ import { ContactsProvider } from '@providers/contacts';
   imports: [
     SharedModule,
     IonicPageModule.forChild(ContactDetailsPage),
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    ContactsModule,
   ],
   providers: [
-    ContactsProvider
+    ContactsService
   ]
 })
 export class ContactDetailsPageModule {}
