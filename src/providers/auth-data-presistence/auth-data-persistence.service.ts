@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Subject } from "rxjs";
 import { Auth } from '@models/auth.interface';
 import { Storage } from '@ionic/storage';
@@ -19,7 +19,6 @@ export class AuthDataPersistenceService {
   * @returns {boolean}
   */
   private hasToken(): Promise<boolean> {
-    console.log('toke');
     return this.storage.get("authData")
     .then(
       data => !!JSON.parse(data)
@@ -27,19 +26,19 @@ export class AuthDataPersistenceService {
   }
   
   get(): Promise<Auth> {
-    console.log("get");
+    console.log("get authData on ionicStorage");
     return this.storage.get("authData")
     .then(data => JSON.parse(data))
   }
   
   set(auth): void {
-    console.log('set authData on localStorage');
+    console.log('set authData on ionicStorage');
     this.storage.set('authData', JSON.stringify(auth))
     .then(data => this.isLoggedSubject.next(true));
   }
   
   clear(): void {
-    console.log("clear");
+    console.log("clear authData on ionicStorage");
     this.storage.remove('authData')
     .then(data => this.isLoggedSubject.next(false));
   }
