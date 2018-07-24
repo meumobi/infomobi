@@ -4,12 +4,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared/shared.module';
 import { ContactListComponent } from './contact-list/contact-list';
 import { ContactHeadlineComponent } from './contact-headline/contact-headline';
-// import { DeskProfileComponent, UserProfileComponent } from '@components/contact-details';
+import { DeskComponent } from './contact/desk/desk';
+import { UserComponent } from './contact/user/user';
 
 @NgModule({
 	declarations: [
 		ContactListComponent,
-		ContactHeadlineComponent
+		ContactHeadlineComponent,
+		DeskComponent,
+		UserComponent,
 	],
 	imports: [
 		IonicModule,
@@ -19,9 +22,11 @@ import { ContactHeadlineComponent } from './contact-headline/contact-headline';
 	exports: [
 		ContactListComponent,
 		ContactHeadlineComponent,
-		IonicModule
+		IonicModule,
 	],
 	entryComponents: [
+		DeskComponent,
+		UserComponent,
 	]
 })
 export class ContactsModule {}
