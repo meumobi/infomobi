@@ -197,4 +197,4 @@ let contacts = Observable.of([
     }
 ]);
 
-export default contacts;
+export default contacts.delay(500); 
