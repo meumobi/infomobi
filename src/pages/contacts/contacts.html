@@ -1,5 +1,5 @@
 <ion-content>
-  <ion-searchbar [(ngModel)]="search" [placeholder]="'Search'">
+  <ion-searchbar #search [placeholder]="'Search' | translate" (keyup)="filter(search.value)">
   </ion-searchbar>
   <contact-list [contacts]="contacts"></contact-list>
 </ion-content>

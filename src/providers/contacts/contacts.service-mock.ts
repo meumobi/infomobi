@@ -4,8 +4,14 @@ import contacts from './mock-contacts';
 @Injectable()
 export class ContactsService {
 
-  search() {
-    return contacts;
+  search(term) {
+    console.log(term);
+    return contacts.map(
+      contacts => {
+        return contacts
+        .filter(contact => contact.displayName.toLowerCase().indexOf(term.toLowerCase()) > -1)
+      }
+    )
   }
 
   findById(id) {

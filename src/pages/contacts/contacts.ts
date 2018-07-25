@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ContactsService } from '@providers/contacts/';
 import { ContactProfile } from '@models/contact-profile';
+import { BehaviorSubject } from 'rxjs';
 
 @IonicPage({
   segment: 'contacts'
@@ -14,6 +15,7 @@ export class ContactsPage {
 
   contacts: Array<ContactProfile>;
   rootNavCtrl: NavController;
+  private searchTerm =new BehaviorSubject<string>('');
 
   constructor(
     private contactsService: ContactsService,
@@ -23,12 +25,20 @@ export class ContactsPage {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
   }
 
-  ngOnInit() {
-    this.findAll();
+  filter(term) {
+    this.searchTerm.next(term);
   }
 
-  findAll() {
-    this.contactsService.search().subscribe(
+  ngOnInit() {
+    this.search();
+    this.searchTerm
+    .debounceTime(300)
+    .distinctUntilChanged()
+    .subscribe(term => this.search(term))
+  }
+
+  search(term:string = '') {
+    this.contactsService.search(term).subscribe(
       data => {
         this.contacts = data;   
       },
