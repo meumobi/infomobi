@@ -18,6 +18,10 @@ export class AuthDataPersistenceService {
   
   isLoggedSubject = new BehaviorSubject<boolean>(this.hasToken());
   
+  constructor() {
+    console.log('Hello AuthDataPersistence Mock');
+  }
+
   /**
   * if we have token the user is loggedIn
   * @returns {boolean}

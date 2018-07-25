@@ -1,6 +1,7 @@
 <ion-item-sliding>
   <ion-item>    
-    <h2>{{"Happy Birthday"| translate}}!</h2>
+    <h2>{{comment.data.title}}</h2>
+    <img [src]="comment.data.picture" imageViewer/>
     <ion-row wrap>
       <ion-col *ngFor="let contact of comment.data.contacts" col-12 col-md-4>
         <ion-card (click)="pushDetailsPage('ContactDetailsPage', contact.id)">
