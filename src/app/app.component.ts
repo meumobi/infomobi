@@ -58,9 +58,11 @@ export class MyApp implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.authDataPersistenceService.isLoggedSubject.subscribe( isLogged => {
+      console.log(isLogged);
       if (isLogged) {
         this.rootPage = 'HomePage';
-      } else {
+      } 
+      if (!isLogged){
         this.rootPage = 'LoginPage';
       }
     })
