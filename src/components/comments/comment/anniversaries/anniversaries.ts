@@ -1,21 +1,25 @@
 import { Component, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CommentDescription } from '@models/comment-description.interface';
+import { Comment } from '@models/comment.interface';
+import { CommentsProvider } from '@providers/comments';
 
 @Component({
-  templateUrl: 'message.html',
-  selector: 'message'
+  templateUrl: 'anniversaries.html'
 })
-export class MessageComponent implements CommentDescription {
-  @Input() data: any;
-  @Input() channel: string;
+export class AnniversariesComponent implements Comment {
+  @Input() comment: any;
   rootNavCtrl: NavController;
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private commentsService : CommentsProvider,
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
+  }
+
+  deleteComment() {
+    this.commentsService.delete(this.comment.id);
   }
 
   pushDetailsPage(page: string, id: string) {

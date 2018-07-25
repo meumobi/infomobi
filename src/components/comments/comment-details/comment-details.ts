@@ -1,8 +1,6 @@
 import { 
   Component, 
   Input, 
-  Output, 
-  EventEmitter,
   OnInit, 
   ViewChild, 
   ViewContainerRef,
@@ -10,8 +8,8 @@ import {
   OnDestroy
  } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CommentDescription } from '@models/comment-description.interface';
-import * as description from '../comment-description/.';
+import { Comment } from '@models/comment.interface';
+import * as description from '../comment/.';
 
 @Component({
   selector: 'comment-details',
@@ -20,12 +18,7 @@ import * as description from '../comment-description/.';
 export class CommentDetailsComponent implements OnInit, OnDestroy  {
   
   @Input('comment') comment;
-  @Output() update = new EventEmitter(false);
-  @Output() delete = new EventEmitter(false);
-  @Output() open = new EventEmitter(false);
-  @Output() promote = new EventEmitter(false);
-
-  @ViewChild('description', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('details', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   rootNavCtrl: NavController;
   componentRef: any;
@@ -61,42 +54,6 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
     const className = this.getComponentName(this.comment.type);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(description[className]);
     this.componentRef = this.entry.createComponent(componentFactory, this.entry.length, null, [[projectableNode]]);
-    (<CommentDescription>this.componentRef.instance).data = this.comment.data;
-    (<CommentDescription>this.componentRef.instance).channel = this.comment.channel;
-  }
-
-  openPost() {
-    this.open.emit({});
-  }
-
-  togglePublished() {
-    this.update.emit({
-      published: !this.comment.published
-    })
-  }
-
-  toggleAnswered() {
-    this.update.emit({
-      answered: !this.comment.answered
-    })
-  }
-
-  promoteComment() {
-    this.promote.emit({});
-  }
-
-  deleteComment() {
-    this.delete.emit({});
-  }
-
-  pushDetailsPage(page: string, id: string) {
-    if (id) {
-      this.rootNavCtrl.push(page, {
-        id: id,
-        rootNavCtrl: this.rootNavCtrl
-      });
-    } else {
-      console.log("missing id of author");
-    }
-  }
+    (<Comment>this.componentRef.instance).comment = this.comment;
+  }  
 }

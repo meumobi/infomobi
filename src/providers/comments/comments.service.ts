@@ -23,7 +23,7 @@ export class CommentsProvider {
         if (lastItem) {
           query = query.startAfter(lastItem.doc);
         }
-        query = query.limit(4);
+        query = query.limit(20);
         return query;
       }
     );   
@@ -39,6 +39,7 @@ export class CommentsProvider {
   }
 
   delete(id: string) {
+    console.log(id);
     return this.itemsCollection.doc(id).delete();
   }  
 
