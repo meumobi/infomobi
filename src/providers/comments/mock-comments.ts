@@ -62,7 +62,7 @@ let comments = Observable.of([
       },
       description: "#VaitercopanaKatrium, Os colaboradores do turno administrativo serão dispensados às 13h30 nas partidas que acontecerem às 15h.",
       media: [{
-        url: "https://firebasestorage.googleapis.com/v0/b/ion-employee.appspot.com/o/3dc205af-acb5-61bd-f646-66dacc798275?alt=media&token=572f4153-6330-4125-8142-bec6984cedc8" 
+        url: "https://firebasestorage.googleapis.com/v0/b/ion-employee.appspot.com/o/7006315.jpg?alt=media&token=6cc57476-7bf7-4111-98d9-a0c01804a6a6" 
       }]
     },
     type: 'message',
@@ -104,6 +104,14 @@ let comments = Observable.of([
         id: "1", 
         lastName: "Bittencourt", 
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
+      }, {
+        birdthday: "07/17",
+        displayName: "Jennifer Wu", 
+        email: "jennifer@infomobi.app", 
+        firstName: "Jennifer", 
+        id: "1", 
+        lastName: "Wu", 
+        picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jennifer_wu.jpg"
       }],
       picture: "http://assets.kraftfoods.com/recipe_images/opendeploy/%20138280-49fdab4f7bf207b3cc31f72186c86b0a642f0802_642x428.jpg",
       title: "Parabéns aos envolvidos",
