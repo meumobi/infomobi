@@ -1,35 +1,4 @@
 <ion-header><ion-navbar></ion-navbar></ion-header>
 <ion-content class="contact">
   <ng-template #details></ng-template>   
-  <ion-card *ngIf="contact">
-    <ion-card-content>
-      <img src="{{contact.picture}}" />
-      <h2>{{contact.displayName}}</h2>
-      <h3>{{contact.title}}</h3>
-      <h1>aaa</h1>
-    </ion-card-content>
-    <ion-list>
-      <a href="tel:{{contact.landlinePhone}}" ion-item>
-        <ion-icon name="call" item-left></ion-icon>
-        <p>{{'Call Office' | translate}}</p>
-        <h2>{{contact.landlinePhone}}</h2>
-      </a>
-      <a href="tel:{{contact.mobilePhone}}" ion-item>
-        <ion-icon name="call" item-left></ion-icon>
-        <p>{{'Call Mobile' |translate}}</p>
-        <h2>{{contact.mobilePhone}}</h2>
-      </a>
-      <a [href]="'sms:' + contact.mobilePhone | safeUrl" ion-item>
-        <ion-icon name="text" item-left></ion-icon>
-        <p>{{'Text' | translate}}</p>
-        <h2>{{contact.mobilePhone}}</h2>
-      </a>
-      <a href="mailto:{{contact.email}}" ion-item>
-        <ion-icon name="mail" item-left></ion-icon>
-        <p>Email</p>
-        <h2>{{contact.email}}</h2>
-      </a>
-    </ion-list>
-   
-  </ion-card>
 </ion-content>
