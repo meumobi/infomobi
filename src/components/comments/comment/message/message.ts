@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ItemSliding } from 'ionic-angular';
 import { Comment } from '@models/comment.interface';
 import { CommentsProvider } from '@providers/comments';
 
@@ -10,6 +10,7 @@ import { CommentsProvider } from '@providers/comments';
 export class MessageComponent implements Comment {
   @Input() comment: any;
   rootNavCtrl: NavController;
+  promoteEnabled: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -23,8 +24,13 @@ export class MessageComponent implements Comment {
     this.commentsService.delete(this.comment.id);
   }
 
-  promoteComment() {
-    this.commentsService.promote(this.comment);
+  promoteComment(item: ItemSliding) {
+    if (this.promoteEnabled) {      
+      this.promoteEnabled = false;
+      this.commentsService.promote(this.comment)
+      .then(data => this.promoteEnabled = true);
+    }
+    item.close();
   }
 
   pushDetailsPage(page: string, id: string) {
