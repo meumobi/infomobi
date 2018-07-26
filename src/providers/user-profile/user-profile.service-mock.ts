@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { UserProfile } from '@models/contact-profile'; 
 import userProfile from './mock-user-profile';
 import { AuthUser } from '@models/auth.interface';
+//import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserProfileService {
@@ -29,6 +29,7 @@ export class UserProfileService {
   public update() {}
   
   public fetchByEmail(email: string) {
+    //return Observable.throw(null);
     return userProfile;
   }
 

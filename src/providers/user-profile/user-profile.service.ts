@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { UserProfile } from '@models/contact-profile'; 
+import { UserProfile } from '@models/contact-profile';
+import { AuthUser } from '@models/auth.interface';
 
 @Injectable()
 export class UserProfileService {
@@ -20,10 +21,13 @@ export class UserProfileService {
     this.current = profile;
   }
 
-  public create() {}
-
+  public create(user: AuthUser) {
+    return Promise.resolve();
+  }
   public update() {}
   
-  public fetchByEmail() {}
+  public fetchByEmail(email: string) {
+    
+  }
 
 }
