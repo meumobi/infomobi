@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from "rxjs";
 
 import { UserProfile } from '@models/contact-profile';
 import { AuthUser } from '@models/auth.interface';
@@ -7,27 +8,22 @@ import { AuthUser } from '@models/auth.interface';
 @Injectable()
 export class UserProfileService {
 
-  private current: UserProfile;
+  public current$ = new Subject<UserProfile>();
 
   constructor(public http: HttpClient) {
     console.log('Hello UserProfileProvider Provider');
   }
 
-  public getCurrent() {
-    return this.current;
-  }
-
-  public setCurrent(profile: UserProfile) {
-    this.current = profile;
-  }
-
   public create(user: AuthUser) {
     return Promise.resolve();
   }
-  public update() {}
+  public update(user: AuthUser) {
+
+    return Promise.resolve();
+  }
   
   public fetchByEmail(email: string) {
-    
+    return Promise.resolve();
   }
 
 }

@@ -8,6 +8,8 @@ import { AuthService } from '@providers/auth';
 import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 import { UserProfileService } from '@providers/user-profile';
 import { ENV } from '@env';
+import { MeuToastProvider } from '@shared/meu-toast.service';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -27,6 +29,7 @@ export class MyApp implements OnInit, OnDestroy {
     private authService: AuthService,
     private authDataPersistenceService: AuthDataPersistenceService,
     private userProfileService: UserProfileService,
+    public meuToastService: MeuToastProvider,
   ) {
     this.initializeApp();
     
@@ -59,19 +62,14 @@ export class MyApp implements OnInit, OnDestroy {
   
   ngOnInit() {
     this.authDataPersistenceService.isLoggedSubject.subscribe( isLogged => {
-      console.log(isLogged);
       if (isLogged) {
         this.authDataPersistenceService.get().then( authData => {
           this.userProfileService.fetchByEmail(authData.visitor.email)
-          .subscribe(
+          .then(
             userProfile => {
               if (userProfile.preferredLanguage){
                 this.translateService.use(userProfile.preferredLanguage); 
               }
-              console.log("user profile");
-              console.log(userProfile);
-              this.userProfileService.setCurrent(userProfile);
-              //this.rootPage = 'HomePage';
               this.nav.setRoot('HomePage');
             },
              /*
@@ -90,6 +88,12 @@ export class MyApp implements OnInit, OnDestroy {
         this.nav.setRoot('LoginPage');
       } 
     })
+
+    this.userProfileService.current$.subscribe(
+      user => {
+        this.meuToastService.present('Hello ' + user.displayName);
+      }
+    )
   }
   
   ngOnDestroy() {

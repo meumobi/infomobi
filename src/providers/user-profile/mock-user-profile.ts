@@ -1,6 +1,4 @@
-import { Observable } from 'rxjs/Observable';
-
-let userProfile = Observable.of({
+let userProfile = {
   _id: "1",
   type: "user",
   picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg",
@@ -20,6 +18,6 @@ let userProfile = Observable.of({
   preferredLanguage: "pt",
   lastLogin: 1530873217115,
   options: {landlineNumber: "23435679"}
-})
+}
 
-export default userProfile.delay(2000);
+export default userProfile;
