@@ -1,5 +1,5 @@
-import { Component, Input} from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, Input } from '@angular/core';
+import { NavController, NavParams, AlertController, ItemSliding } from 'ionic-angular';
 import { Comment } from '@models/comment.interface';
 import { TranslateService } from '@ngx-translate/core';
 import { CommentsProvider } from '@providers/comments';
@@ -22,7 +22,7 @@ export class MessageComponent implements Comment {
     this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
   }
 
-  deleteComment() {
+  deleteComment(item: ItemSliding) {
     const alert = this.alertCtrl.create({
       title:  this.translateService.instant('Delete'),
       message: this.translateService.instant('Do you want to delete this comment?'),
@@ -39,7 +39,8 @@ export class MessageComponent implements Comment {
         }
       ]
     });
-    alert.present();    
+    alert.present();   
+    item.close();
   }
 
   promoteComment() {

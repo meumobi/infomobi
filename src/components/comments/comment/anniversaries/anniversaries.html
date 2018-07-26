@@ -1,4 +1,4 @@
-<ion-item-sliding>
+<ion-item-sliding #item>
   <ion-item>    
     <h2>{{comment.data.title}}</h2>
     <img [src]="comment.data.picture" imageViewer/>
@@ -16,7 +16,7 @@
     </ion-row>
   </ion-item>
   <ion-item-options side="left" *ngIf="comment">    
-    <button ion-button (click)="deleteComment()">
+    <button ion-button (click)="deleteComment(item)">
       <ion-icon name="trash"></ion-icon>
       {{'Delete' | translate }}
     </button>

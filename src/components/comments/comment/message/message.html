@@ -1,4 +1,4 @@
-<ion-item-sliding>
+<ion-item-sliding #item>
   <ion-item>    
     <ion-avatar item-start *ngIf="comment.data.author.picture; else anonymous">
       <img [src]="comment.data.author.picture" (click)="pushDetailsPage('ContactDetailsPage', comment.data.author.id)"/>
@@ -15,7 +15,7 @@
       <ion-icon name="checkmark"></ion-icon>
       {{'Promote' | translate }}
     </button>
-    <button ion-button (click)="deleteComment()">
+    <button ion-button (click)="deleteComment(item)">
       <ion-icon name="trash"></ion-icon>
       {{'Delete' | translate }}
     </button>
