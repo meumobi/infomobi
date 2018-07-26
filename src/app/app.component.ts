@@ -6,7 +6,7 @@ import { AnalyticsProvider } from '@shared/analytics.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '@providers/auth';
 import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
-
+import { UserProfileService } from '@providers/user-profile';
 import { ENV } from '@env';
 
 @Component({
@@ -25,7 +25,8 @@ export class MyApp implements OnInit, OnDestroy {
     public analyticsProvider: AnalyticsProvider,
     private translateService: TranslateService,
     private authService: AuthService,
-    private authDataPersistenceService: AuthDataPersistenceService
+    private authDataPersistenceService: AuthDataPersistenceService,
+    private userProfileService: UserProfileService,
   ) {
     this.initializeApp();
 
@@ -42,7 +43,7 @@ export class MyApp implements OnInit, OnDestroy {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.translateService.setDefaultLang('en');
-      this.translateService.use('pt'); 
+      //this.translateService.use('pt'); 
 
       this.analyticsProvider.startTrackerWithId(ENV.analyticsTrackingId);
       this.nav.viewDidEnter.subscribe(
@@ -61,10 +62,18 @@ export class MyApp implements OnInit, OnDestroy {
       console.log(isLogged);
       if (isLogged) {
         this.rootPage = 'HomePage';
+        this.authDataPersistenceService.get().then( authData => {
+          this.userProfileService.fetchByEmail(authData.visitor.email).subscribe((userProfile) => {
+            if (userProfile.preferredLanguage){
+              this.translateService.use(userProfile.preferredLanguage); 
+            }
+            this.userProfileService.setCurrent(userProfile);
+            this.rootPage = 'HomePage';
+          })
+        })
+      } else {
+            this.rootPage = 'LoginPage';
       } 
-      if (!isLogged){
-        this.rootPage = 'LoginPage';
-      }
     })
   }
 
