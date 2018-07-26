@@ -18,6 +18,7 @@ let userProfile = Observable.of({
   birthday: "07/17",
   role: "admin",
   preferredLanguage: "pt",
+  lastLogin: 1530873217115,
   options: {landlineNumber: "23435679"}
 })
 

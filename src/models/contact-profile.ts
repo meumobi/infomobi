@@ -32,6 +32,7 @@ export class UserProfile extends ContactProfile {
   birthday: string;
   role: string;
   preferredLanguage: string;
+  lastLogin: number;
   options: Object // options: {landlinePhone: "", mobilePhone: "", skype: ""}
 
   constructor() {
