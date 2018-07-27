@@ -30,6 +30,9 @@ export class MessageComponent implements Comment {
         {
           text: this.translateService.instant('Cancel'),
           role: 'cancel',
+          handler: () => {
+            item.close();
+          }
         },
         {
           text: this.translateService.instant('Delete'),
@@ -40,7 +43,6 @@ export class MessageComponent implements Comment {
       ]
     });
     alert.present();   
-    item.close();
   }
 
   promoteComment() {

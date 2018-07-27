@@ -29,6 +29,9 @@ export class AnniversariesComponent implements Comment {
         {
           text: this.translateService.instant('Cancel'),
           role: 'cancel',
+          handler: () => {
+            item.close();
+          }
         },
         {
           text: this.translateService.instant('Delete'),
@@ -39,7 +42,6 @@ export class AnniversariesComponent implements Comment {
       ]
     });
     alert.present();  
-    item.close();
   }
 
   pushDetailsPage(page: string, id: string) {
