@@ -53,8 +53,7 @@ export class MyApp implements OnInit, OnDestroy {
         (view) => {
           this.analyticsProvider.trackView(view.instance.constructor.name);
         }
-      );
-      
+      );      
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
@@ -64,23 +63,25 @@ export class MyApp implements OnInit, OnDestroy {
     this.authDataPersistenceService.isLoggedSubject.subscribe( isLogged => {
       if (isLogged) {
         this.authDataPersistenceService.get().then( authData => {
-          this.userProfileService.fetchByEmail(authData.visitor.email)
-          .then(
+          this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
             userProfile => {
-              if (userProfile.preferredLanguage){
-                this.translateService.use(userProfile.preferredLanguage); 
-              }
-              this.nav.setRoot('HomePage');
-            },
-             /*
-               If userProfile not exists create it
-             */
-            err => {
-              this.userProfileService.create(authData.visitor)
+              if (userProfile) {
+                console.log(userProfile);        
+                if (userProfile.preferredLanguage){
+                  this.translateService.use(userProfile.preferredLanguage); 
+                }
+                this.meuToastService.present('Hello ' + userProfile.displayName);
+                this.nav.setRoot('HomePage');
+              } else {
+                /*
+                If userProfile not exists create it
+                */
+                this.userProfileService.create(authData.visitor)
                 .then( userProfile => {
                   console.log('user profile successfully created');
                   console.log(userProfile);
                 })
+              }
             }
           )
         })
@@ -88,12 +89,8 @@ export class MyApp implements OnInit, OnDestroy {
         this.nav.setRoot('LoginPage');
       } 
     })
-
-    this.userProfileService.current$.subscribe(
-      user => {
-        this.meuToastService.present('Hello ' + user.displayName);
-      }
-    )
+    
+    
   }
   
   ngOnDestroy() {

@@ -16,20 +16,17 @@ export class UserProfileService {
 
   public create(user: AuthUser) {
     this.current$.next(userProfile);
-
     return Promise.resolve(userProfile);
   }
 
-  public update(user: AuthUser) {
+  public update(user: UserProfile) {
     this.current$.next(userProfile);
-
     return Promise.resolve(userProfile);
   }
   
   public fetchByEmail(email: string) {
     this.current$.next(userProfile);
-
-    return Promise.resolve(userProfile);
+    return this.current$;
   }
 
 }
