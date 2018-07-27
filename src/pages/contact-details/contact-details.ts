@@ -8,7 +8,7 @@ import {
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ContactsService } from '@providers/contacts/';
 import { ContactProfile} from '@models/contact-profile';
-import * as contacts from '@components/contacts/contact';
+import * as contacts from '@components/contacts/types';
 
 @IonicPage({
   segment: 'contact/details/:id',
