@@ -9,12 +9,12 @@ describe('App', () => {
 
   describe('default screen', () => {
     beforeEach(() => {
-      page.navigateTo('/#/settings');
+      page.navigateTo('/#/');
     });
 
-    it('should have a title saying live', () => {
-      page.getSettinsPageTitleText().then(title => {
-        expect(title).toEqual('Configuração');
+    it('should have a button saying login', () => {
+      page.getLoginPageButtonText().then(title => {
+        expect(title).toEqual('LOGIN');
       });
     });
   })

@@ -3,13 +3,13 @@ import auth from './mock-auth';
 import { Auth } from '@models/auth.interface';
 
 @Injectable()
-export class AuthProvider {
+export class AuthService {
   
   constructor() {
-    console.log('Hello AuthProvider Provider');
+    console.log('Hello AuthService Mock');
   }
   
-  loginUser(email: string, password: string): Promise<Auth> {
+  signIn(email: string, password: string): Promise<Auth> {
     
     /* Dummy authentication for testing, uses $timeout to simulate api call
     ----------------------------------------------*/
@@ -31,20 +31,14 @@ export class AuthProvider {
     return Promise.resolve();
   }
   
-  logoutUser(): Promise<any> {
-    return Promise.resolve();
-  }
-  
-  clearCredentials(): Promise<any> {
-    return Promise.resolve();
-  }
-  
-  setCredentials(): Promise<any> {
+  signOut(): Promise<any> {
     return Promise.resolve();
   }
   
   isAuthenticated(): Promise<any> {
     return Promise.resolve();
   }
-  
+
 }
+
+//export { AuthProvider as AuthService };

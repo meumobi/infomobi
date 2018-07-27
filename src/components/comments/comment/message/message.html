@@ -1,0 +1,23 @@
+<ion-item-sliding #item>
+  <ion-item>    
+    <ion-avatar item-start *ngIf="comment.data.author.picture; else anonymous">
+      <img [src]="comment.data.author.picture" (click)="pushDetailsPage('ContactDetailsPage', comment.data.author.id)"/>
+    </ion-avatar> 
+    <h2>{{comment.data.author.displayName}}</h2>
+    <p>{{comment.data.description}}</p>
+    <div class="img-wrap" *ngIf="comment.data.media">
+      <img class="image-fit" [src]="comment.data.media[0].url | imgServerUrly" [srcset]="comment.data.media[0].url | imgServerSrcsettify" imageViewer/>   
+    </div>
+    <a *ngIf="comment.data.postDetails && !comment.channel.startsWith('post')" href="#" (click)="pushDetailsPage('PostDetailsPage', comment.data.postDetails.id)">{{comment.data.postDetails.title}}</a>    
+  </ion-item>
+  <ion-item-options side="left" *ngIf="comment">    
+    <button ion-button *ngIf="comment.channel.startsWith('post')" (click)="promoteComment(item)">
+      <ion-icon name="checkmark"></ion-icon>
+      {{'Promote' | translate }}
+    </button>
+    <button ion-button (click)="deleteComment(item)">
+      <ion-icon name="trash"></ion-icon>
+      {{'Delete' | translate }}
+    </button>
+  </ion-item-options>
+</ion-item-sliding>

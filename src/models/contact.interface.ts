@@ -4,6 +4,7 @@ export interface Contact {
   firstName: string,
   lastName: string,
   displayName?: string,
+  birthDate?: Date,
   title?: string,
   landlinePhone?: string,
   mobilePhone?: string,

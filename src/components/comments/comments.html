@@ -1,4 +1,4 @@
-<comment-list *ngIf="comments" [comments]="comments" (filter)="setFilters($event)" (open)="openPost($event.id)" (delete)="deleteComment($event.id)" (promote)="promoteComment($event)" (update)="updateComment($event.id, $event.changes)"></comment-list>
+<comment-list *ngIf="comments" [comments]="comments"></comment-list>
 <ion-list *ngIf="!comments">
   <div ion-item *ngFor="let comment of fakeComments" class="fakeComment">
     <ion-avatar item-start>
@@ -9,6 +9,7 @@
     <div class=img-comment>&nbsp;</div>
   </div>
 </ion-list>
-<ion-infinite-scroll (ionInfinite)="loadMore($event)">
-  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+<ion-infinite-scroll *ngIf="!finished && comments" (ionInfinite)="loadMore($event)">
+  <ion-infinite-scroll-content>
+  </ion-infinite-scroll-content>
 </ion-infinite-scroll>

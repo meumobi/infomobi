@@ -11,7 +11,9 @@
     "Latest News": "Notícias",
     "Birthday": "Aniversário",
     "Contacts": "Contatos",
+    "Cancel": "Cancelar",
     "Demote": "Rebaixar",
+    "Do you want to delete this comment?": "Você deseja remover esse comentário?",
     "Promote": "Promover",
     "Show": "Publicar",
     "Search": "Busca",
@@ -31,5 +33,9 @@
     "Logout": "Sair",
     "invalid email or password": "Email ou senha inválido",
     "landlinePhone": "Fixo",
-    "mobilePhone": "Celular"
+    "mobilePhone": "Celular",
+    "Email": "Email",
+    "LIVE_FEED": {
+        "ANNIVERSARIES_TITLE": "Aniversariantes do dia!"
+    }
 }
