@@ -16,8 +16,8 @@
         <h2>{{contact.birthdate}}</h2>
       </a> 
     <a *ngFor="let option of contact.options | keys" ion-item>
-      <p>{{option.key}}</p>
-      <h2>{{option.value}}</h2>
+      <p>{{ option.key | translate }}</p>
+      <h2>{{ option.value }}</h2>
     </a>  
   </ion-list>   
 </ion-card>

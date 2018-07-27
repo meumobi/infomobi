@@ -6,8 +6,8 @@
   </ion-card-content>
   <ion-list>
     <a *ngFor="let option of contact.options | keys" ion-item>
-      <p>{{option.key}}</p>
-      <h2>{{option.value}}</h2>
+      <p>{{ option.key | translate }}</p>
+      <h2>{{ option.value }}</h2>
     </a>  
   </ion-list>   
 </ion-card>
