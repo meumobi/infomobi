@@ -1,0 +1,12 @@
+<ion-list *ngIf="contacts">
+  <contact-headline *ngFor="let contact of contacts" [contact]="contact"></contact-headline>
+</ion-list>
+<ion-list *ngIf="!contacts" >
+  <div ion-item *ngFor="let contact of fakeContacts" class="fakeContact">
+    <ion-avatar item-left>
+      <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
+    </ion-avatar>    
+    <h2></h2>
+    <p></p>
+  </div>
+</ion-list>

@@ -1,0 +1,13 @@
+<ion-card>
+  <ion-card-content>
+    <img src="{{contact.picture}}" />
+    <h2>{{contact.displayName}}</h2>
+    <h3>{{contact.title}}</h3>
+  </ion-card-content>
+  <ion-list>
+    <a *ngFor="let option of contact.options | keys" ion-item>
+      <p>{{ option.key | translate }}</p>
+      <h2>{{ option.value }}</h2>
+    </a>  
+  </ion-list>   
+</ion-card>
