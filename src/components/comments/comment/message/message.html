@@ -6,7 +6,7 @@
     <h2>{{comment.data.author.displayName}}</h2>
     <p>{{comment.data.description}}</p>
     <div class="img-wrap" *ngIf="comment.data.media">
-      <img class="image-fit" [src]="comment.data.media[0].url | imgServerUrly" imageViewer/>           
+      <img class="image-fit" [src]="comment.data.media[0].url | imgServerUrly" [srcset]="comment.data.media[0].url | imgServerSrcsettify" imageViewer/>   
     </div>
     <a *ngIf="comment.data.postDetails && !comment.channel.startsWith('post')" href="#" (click)="pushDetailsPage('PostDetailsPage', comment.data.postDetails.id)">{{comment.data.postDetails.title}}</a>    
   </ion-item>
