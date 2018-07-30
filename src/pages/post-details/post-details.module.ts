@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
 import { PostDetailsPage } from './post-details';
-import { PostsProvider } from '@providers/posts';
+import { PostsService } from '@providers/posts';
 import { SharedModule } from '@shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -26,7 +26,7 @@ import { CommentsModule } from '@components/comments/comments.module';
     TranslateModule.forChild()
   ],
   providers: [
-    PostsProvider,
+    PostsService,
     NgMathPipesModule
   ]
 })

@@ -19,6 +19,7 @@
       </ion-slides>
     </ion-col>
   </ion-row>
+  <div [innerHTML]="post.description"></div>
   <media-list [media]="post.medias"></media-list>
   <comments #comments [post]="post" [rootNavCtrl]="rootNavCtrl"></comments>
 </ion-content>

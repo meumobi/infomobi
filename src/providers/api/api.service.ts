@@ -11,6 +11,38 @@ export class ApiService {
     console.log('Hello ApiProvider Provider');
   }
 
+  fetchLatestItems(): Promise<any[]> {
+    const httpOptions = {
+      headers: {
+        'Accept':  'application/json',
+        'X-Visitor-Token': '94086d89cce67659fe83eb72a548cd5707e6a800'
+      }
+    };
+    
+    const url = ENV.meumobi.apiUrl + "/api/katrium.meumobi.com/items/latest";
+    
+    return this.http.get(url, httpOptions).toPromise()
+    .then(
+      (res: any) => {
+        return res.items;
+      }
+    );
+  }
+
+  fetchItemById(id: string): Promise<any> {
+    const httpOptions = {
+      headers: {
+        'Accept':  'application/json',
+        'X-Visitor-Token': '94086d89cce67659fe83eb72a548cd5707e6a800'
+      }
+    };
+    
+    const url = ENV.meumobi.apiUrl + `/api/katrium.meumobi.com/items/${id}`;
+    
+    return this.http.get(url, httpOptions).toPromise();
+  }
+
+
   login(email: string, password: string): Promise<Auth | AuthError> {
     const httpOptions = {
       headers: {

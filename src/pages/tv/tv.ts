@@ -4,7 +4,7 @@ import { IonicPage } from 'ionic-angular';
 import { Post } from '@models/post.interface';
 import { Comment } from '@models/comment';
 
-import { PostsProvider } from '@providers/posts';
+import { PostsService } from '@providers/posts';
 
 @IonicPage()
 @Component({
@@ -16,7 +16,7 @@ export class TvPage {
   comments:Comment[];
 
   constructor(
-    private postsProvider: PostsProvider
+    private postsService: PostsService
   ) {
     this.fetchPosts();
   }
@@ -26,7 +26,7 @@ export class TvPage {
   }
 
   fetchPosts() {
-    this.postsProvider.findAll()
+    this.postsService.findAll()
     .then(
       data => {
         this.posts = data;

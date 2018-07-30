@@ -5,7 +5,7 @@ import Utils from '@shared/utils';
 import { Post } from '@models/post.interface';
 
 @Injectable()
-export class PostsProvider {
+export class PostsService {
 
   findAll():Promise<Post[]> {
     return Promise.resolve(posts.items);

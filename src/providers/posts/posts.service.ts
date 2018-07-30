@@ -1,41 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-import { ENV } from '@env';
+import { Injectable } from '@angular/core';
 import { Post } from '@models/post.interface';
-import posts from './mock-posts';
-import Utils from '@shared/utils';
+import { ApiService } from '@providers/api';
 
 @Injectable()
-export class PostsProvider implements OnInit {
+export class PostsService  {
   
-  constructor(public http: HttpClient) {
+  constructor(
+    public http: HttpClient,
+    public apiService: ApiService,
+  ) {
     console.log('Hello PostsProvider Provider');
   }
-  
-  ngOnInit(): void {
-    
-  }
-  
-  findById(id):Promise<Post> {
-    let data = Utils.lookup(posts);
-    return Promise.resolve(data[id]);
+
+  findById(id: string):Promise<Post> {
+    return this.apiService.fetchItemById(id);
   }
   
   findAll():Promise<Post[]> {
-    const httpOptions = {
-      headers: {
-        'Accept':  'application/json',
-        'X-Visitor-Token': '94086d89cce67659fe83eb72a548cd5707e6a800'
-      }
-    };
-    
-    const url = ENV.meumobi.apiUrl + "/api/katrium.meumobi.com/items/latest";
-    
-    return this.http.get(url, httpOptions).toPromise()
-    .then(
-      (res: any) => {
-        return res.items;
-      }
-    );
+    return this.apiService.fetchLatestItems();
   }
 }
