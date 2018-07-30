@@ -13,7 +13,7 @@
     <a ion-item>
         <ion-icon name="calendar" item-left></ion-icon>
         <p>{{'Birthday' | translate}}</p>
-        <h2>{{contact.birthdate}}</h2>
+        <h2>{{contact.birthdate | amParse: 'MM-DD' | amDateFormat:'LL'}}</h2>
       </a> 
     <a *ngFor="let option of contact.options | keys" ion-item>
       <p>{{ option.key | translate }}</p>

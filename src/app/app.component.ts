@@ -6,6 +6,7 @@ import { AnalyticsProvider } from '@shared/analytics.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '@providers/auth';
 import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
+import * as moment from 'moment';
 
 import { ENV } from '@env';
 
@@ -43,7 +44,7 @@ export class MyApp implements OnInit, OnDestroy {
       // Here you can do any higher level native things you might need.
       this.translateService.setDefaultLang('en');
       this.translateService.use('pt'); 
-
+      moment.locale('pt');
       this.analyticsProvider.startTrackerWithId(ENV.analyticsTrackingId);
       this.nav.viewDidEnter.subscribe(
         (view) => {
