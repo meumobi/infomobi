@@ -9,10 +9,14 @@
     "Language": "Idioma",
     "Live": "Ao vivo",
     "Latest News": "Notícias",
+    "Birthday": "Aniversário",
     "Contacts": "Contatos",
+    "Cancel": "Cancelar",
     "Demote": "Rebaixar",
+    "Do you want to delete this comment?": "Você deseja remover esse comentário?",
     "Promote": "Promover",
     "Show": "Publicar",
+    "Search": "Busca",
     "Hide": "Ocultar",
     "Published": "Visíveis",
     "Not Published": "Ocultos",
@@ -27,5 +31,11 @@
         "USER_WELCOME": "Olá {{displayName}}"
     },
     "Logout": "Sair",
-    "invalid email or password": "Email ou senha inválido"
+    "invalid email or password": "Email ou senha inválido",
+    "landlinePhone": "Fixo",
+    "mobilePhone": "Celular",
+    "Email": "Email",
+    "LIVE_FEED": {
+        "ANNIVERSARIES_TITLE": "Aniversariantes do dia!"
+    }
 }

@@ -1,19 +1,21 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AnalyticsProvider } from '@shared/analytics.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '@providers/auth';
+import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 
 import { ENV } from '@env';
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class MyApp implements OnInit, OnDestroy {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "LoginPage";
+  rootPage: string;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -21,7 +23,9 @@ export class MyApp {
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
     public analyticsProvider: AnalyticsProvider,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private authService: AuthService,
+    private authDataPersistenceService: AuthDataPersistenceService
   ) {
     this.initializeApp();
 
@@ -47,14 +51,29 @@ export class MyApp {
         }
       );
 
-
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
 
+  ngOnInit() {
+    this.authDataPersistenceService.isLoggedSubject.subscribe( isLogged => {
+      console.log(isLogged);
+      if (isLogged) {
+        this.rootPage = 'HomePage';
+      } 
+      if (!isLogged){
+        this.rootPage = 'LoginPage';
+      }
+    })
+  }
+
+  ngOnDestroy() {
+    this.authDataPersistenceService.isLoggedSubject.unsubscribe();
+  }
+
   logout() {
-    this.nav.setRoot('LoginPage');
+    this.authService.signOut();
   }
 
   openPage(pageComponent, push = true) {

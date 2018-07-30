@@ -1,18 +1,31 @@
 import { Injectable } from '@angular/core';
-
 import contacts from './mock-contacts';
-import Utils from '@shared/utils';
 
 @Injectable()
-export class ContactsProvider {
+export class ContactsService {
 
-  findAll() {
-    return Promise.resolve(contacts);
+  search(term) {
+    console.log(term);
+    return contacts.map(
+      contacts => {
+        return contacts
+        .filter(contact => contact.displayName.toLowerCase().indexOf(term.toLowerCase()) > -1)
+      }
+    )
   }
 
   findById(id) {
-    let data = Utils.lookup(contacts);
-    return Promise.resolve(data[id]);
+    return contacts.map(
+      contacts => {
+        return contacts
+        .filter(contact => contact.id == id)
+      }
+    ).map(
+      data => {
+        return data[0];
+      }
+    )
   }
-
 }
+
+

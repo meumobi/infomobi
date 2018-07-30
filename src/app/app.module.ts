@@ -19,11 +19,14 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { CommentsProvider } from '@providers/comments';
 import { UploadProvider } from '@providers/upload';
-import { AuthProvider } from '@providers/auth';
+import { DynamicLinksProvider } from '@providers/dynamic-links';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ENV } from '@env';
+import { AuthService } from '@providers/auth';
+import { ApiService } from '@providers/api';
+import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -69,7 +72,10 @@ export function createTranslateLoader(http: HttpClient) {
     CommentsProvider,
     AngularFirestoreModule,
     UploadProvider,
-    AuthProvider
+    AuthService,
+    DynamicLinksProvider,
+    ApiService,
+    AuthDataPersistenceService
   ]
 })
 export class AppModule {}

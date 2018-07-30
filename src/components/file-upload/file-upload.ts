@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { UploadProvider } from '@providers/upload/upload.service';
+import { DynamicLinksProvider } from '@providers/dynamic-links';
 
 @Component({
   selector: 'file-upload',
@@ -12,7 +13,10 @@ export class FileUploadComponent {
   images = [];
 
 
-  constructor(private uploadProvider:UploadProvider) {
+  constructor(
+    private uploadProvider:UploadProvider,
+    private dynamicsLinkProvider:DynamicLinksProvider,
+  ) {
   }
 
   detectFiles(event) {
@@ -22,11 +26,9 @@ export class FileUploadComponent {
       this.fileUploadStarted.emit();
       this.images = [reader.result];
       this.files = Array.from(event.target.files);
-      this.uploadProvider.create(this.files[0]).then(
-        data => {
-          this.fileUploadFinished.emit(data);
-        }
-      );
+      this.uploadProvider.create(this.files[0])
+      .then(data => this.dynamicsLinkProvider.shortLink(data))
+      .then(data => this.fileUploadFinished.emit(data));
     }
     reader.readAsDataURL(fileList.item(0));  
   }
