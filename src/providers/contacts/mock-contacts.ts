@@ -194,7 +194,26 @@ let contacts = Observable.of([
             email: "sos@infomobi.org"
         },
         picture: "https://media.istockphoto.com/vectors/-vector-id479391700?k=6&m=479391700&s=612x612&w=0&h=tn49_mMKaZmu1dqTNE3-9K0Ejire4jg39qdxIllxyOg="
-    }
+    },
+    {
+        id: "11",
+        type: "user",
+        displayName: "Anna Carolina Pacheco",
+        created: 1503578168,
+        published: 1503578168,
+        modified: 1503578168,
+        isPublished: true,
+        domain: "infomobi.com",
+        firstName: "Anna Carolina",
+        lastName: "Pacheco",
+        title: "Assistente de Comunicação",
+        options: {
+            mobilePhone: "(21) 96452-0821",
+        },
+        birthdate: "09-09",
+        email: "accarvalho@katrium.com.br",
+        picture: "https://firebasestorage.googleapis.com/v0/b/ion-employee.appspot.com/o/carol.png?alt=media&token=d8ae50b2-9d27-4f90-bfe1-256b99a59ae2"
+    },
 ]);
 
 export default contacts.delay(500); 

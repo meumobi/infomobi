@@ -24,16 +24,15 @@ export class CommentFormComponent {
   ) {}
 
   ngOnInit() {
+
+
+    
     this.author = {
-      id: "4",
-      firstName: "Jennifer",
-      displayName: "Jennifer Wu",
-      lastName: "Wu",
-      title: "Senior Broker",
-      landlinePhone: "617-244-3672",
-      mobilePhone: "617-244-3672",
-      email: "jen@ionicrealty.com",
-      picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jennifer_wu.jpg"
+      id: "11",
+      firstName: "Anna Carolina",
+      displayName: "Anna Carolina Pacheco",
+      lastName: "Pacheco",
+      picture: "https://firebasestorage.googleapis.com/v0/b/ion-employee.appspot.com/o/carol.png?alt=media&token=d8ae50b2-9d27-4f90-bfe1-256b99a59ae2"
     }
     this.comment = new Comment("Message");
     this.comment.data["author"] = this.author;
