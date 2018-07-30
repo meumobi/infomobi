@@ -6,20 +6,25 @@
 <ion-fab bottom right>
     <button ion-fab mini (click)="comments.addComment()"><ion-icon name="create"></ion-icon></button>
 </ion-fab>
-<ion-content padding *ngIf="post">
-  <h2>{{post.title}}</h2>
-  <h3>{{post.published | amFromUnix | amDateFormat:'LL'}}</h3>
-  <ion-row>
-    <ion-col>
-      <ion-slides *ngIf="post.images" loop="{{post.images.length > 1 ? true:false}}" autoplay="3500" pager="{{post.images.length > 1 ? true:false}}">
-        <ion-slide *ngFor="let image of post.images">
-          <img [src]="image.path | imgServerUrly" [srcset]="image.path | imgServerSrcsettify" imageViewer/>
-          <div class="img-title">{{image.title}}</div>
-        </ion-slide>
-      </ion-slides>
-    </ion-col>
-  </ion-row>
-  <div [innerHTML]="post.description"></div>
-  <media-list [media]="post.medias"></media-list>
-  <comments #comments [post]="post" [rootNavCtrl]="rootNavCtrl"></comments>
+<ion-content>
+  <div padding *ngIf="post">
+    <h2>{{post.title}}</h2>
+    <h3>{{post.published | amFromUnix | amDateFormat:'LL'}}</h3>
+    <ion-row>
+      <ion-col>
+        <ion-slides *ngIf="post.images" loop="{{post.images.length > 1 ? true:false}}" autoplay="3500" pager="{{post.images.length > 1 ? true:false}}">
+          <ion-slide *ngFor="let image of post.images">
+            <img [src]="image.path | imgServerUrly" [srcset]="image.path | imgServerSrcsettify" imageViewer/>
+            <div class="img-title">{{image.title}}</div>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <div [innerHTML]="post.description"></div>
+    <media-list [media]="post.medias"></media-list>
+    <comments #comments [post]="post" [rootNavCtrl]="rootNavCtrl"></comments>
+  </div>
+  <div *ngIf="!post" padding text-center>
+    <ion-spinner></ion-spinner>
+  </div>
 </ion-content>
