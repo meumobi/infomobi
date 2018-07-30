@@ -1,7 +1,12 @@
 <ion-item>
-  <ion-thumbnail item-start>
+  <ion-thumbnail item-start *ngIf="medium.thumbnails; else generic">
     <img *ngIf="medium.thumbnails.length > 0" [src]="medium.thumbnails[0].url">
   </ion-thumbnail>
+  <ng-template #generic>
+      <ion-thumbnail item-start>
+          <ion-icon style="font-size: 6.0em" name="document"></ion-icon>
+      </ion-thumbnail>
+  </ng-template>    
   <h2>{{medium.title}}</h2>
   <p>
     {{'Size' | translate}}:{{medium.length}}
