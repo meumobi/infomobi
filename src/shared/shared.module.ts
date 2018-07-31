@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MeuToastProvider } from './meu-toast.service';
+import { MeuToastService } from './meu-toast.service';
 import { AnalyticsProvider } from './analytics.service';
 import { ImgServerUrlyPipe } from '@pipes/.';
 import { ImgServerSrcsettifyPipe } from '@pipes/.';
@@ -26,7 +26,7 @@ const sharedModules = [
     KeysPipe
   ],
   providers: [
-    MeuToastProvider,
+    MeuToastService,
     AnalyticsProvider
   ],
   exports: [

@@ -4,7 +4,7 @@ import {
   NavController, 
   NavParams } from 'ionic-angular';
 
-import { MeuToastProvider } from '@shared/meu-toast.service';
+import { MeuToastService } from '@shared/meu-toast.service';
 import { AnalyticsProvider } from '@shared/analytics.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -24,7 +24,7 @@ export class SettingsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public toast: MeuToastProvider,
+    public meuToastService: MeuToastService,
     public analytics: AnalyticsProvider,
     private translateService: TranslateService
   ) { 
@@ -37,7 +37,7 @@ export class SettingsPage {
     this.translateService.get('Language successfully saved: ').subscribe(
       value => {
         // value is our translated string
-        this.toast.present(value + this.language);
+        this.meuToastService.present(value + this.language);
       }
     )
     

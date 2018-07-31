@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Post } from '@models/post.interface';
 import { PostsProvider } from '@providers/posts';
-import { MeuToastProvider } from '@shared/meu-toast.service';
 
 @IonicPage({
   segment: 'post/details/:id',
@@ -23,7 +22,6 @@ export class PostDetailsPage {
     private postsProvider: PostsProvider,
     public rootNavCtrl: NavController, 
     public navParams: NavParams,
-    public toast: MeuToastProvider,
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
     console.log(this.navParams);
