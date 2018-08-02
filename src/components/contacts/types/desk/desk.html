@@ -4,6 +4,9 @@
     <h2>{{contact.displayName}}</h2>
     <h3>{{contact.title}}</h3>
   </ion-card-content>
+  <ion-row no-padding *ngIf="admin">
+      <button item-end ion-button (click)="pushDetailsPage('DeskFormPage', contact.id)">{{'Edit account' | translate}}</button>
+    </ion-row>
   <ion-list>
     <a *ngFor="let option of contact.options | keys" ion-item>
       <p>{{ option.key | translate }}</p>
