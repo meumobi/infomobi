@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'User account' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <p>{{'Name' | translate}}</p>
+      <h2>{{user.displayName}}</h2>
+    </ion-item>
+    <ion-item>
+        <p>{{'Email' | translate}}</p>
+        <h2>{{user.email}}</h2>
+    </ion-item>
+  </ion-list>
+  <form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="user">
+    <ion-thumbnail *ngIf="user.picture" item-end>
+      <img [src]="user.picture">
+    </ion-thumbnail>
+    <file-upload (fileUploadStarted)="fileUploadStarted($event);" (fileUploadFinished)="fileUploadFinished($event);"></file-upload>
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" floating>{{'Title' | translate}}</ion-label>
+        <ion-input type="text" name="title" [(ngModel)]="user.title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>{{'Birthday' | translate}}</ion-label>
+        <ion-input type="text" name="birthdate" placeholder="MM-DD" [(ngModel)]="user.birthdate"></ion-input>
+      </ion-item>    
+      <ion-list-header>
+        {{'Contacts' | translate}}
+        <button type="button" ion-button item-end (click)="addOption()">{{'Add' | translate}}</button>
+      </ion-list-header>
+      <ion-item *ngFor="let option of user.options | keys">
+          <p>{{option.key | translate}}</p>
+          <h2>{{option.value}}</h2>
+          <button type="button" ion-button item-end (click)="removeOption(option.key)">{{'Remove' | translate}}</button>
+      </ion-item>  
+    </ion-list>
+    <ion-row>
+      <ion-col>
+        <button ion-button type="submit" block>{{'Save' | translate}}</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button type="button" (click)="cancel()">{{'Cancel' | translate}}</button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
