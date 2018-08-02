@@ -1,0 +1,45 @@
+<ion-header>
+  
+    <ion-navbar>
+      <ion-title>{{'desk account' | translate}}</ion-title>
+    </ion-navbar>
+    
+  </ion-header>
+  <ion-content padding>
+    <form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="desk">
+      <ion-list>
+        <ion-item>
+          <ion-label color="primary" stacked>{{'Display Name' | translate}}</ion-label>
+          <ion-input type="text" name="displayName" [(ngModel)]="desk.displayName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-thumbnail *ngIf="desk.picture" item-end>
+            <img [src]="desk.picture">
+          </ion-thumbnail>
+          <file-upload (fileUploadStarted)="fileUploadStarted($event);" (fileUploadFinished)="fileUploadFinished($event);"></file-upload>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>{{'Title' | translate}}</ion-label>
+          <ion-input type="text" name="title" [(ngModel)]="desk.title"></ion-input>
+        </ion-item> 
+        <ion-list-header>
+          {{'Contacts' | translate}}
+          <button type="button" ion-button item-end (click)="addOption()"><ion-icon name="add"></ion-icon></button>
+        </ion-list-header>
+        <ion-item *ngFor="let option of options">
+          <ion-label color="primary" stacked>{{option | translate}}</ion-label>
+          <ion-input type="text" [name]="option" [(ngModel)]="desk.options[option]"></ion-input>
+          <button type="button" ion-button item-end (click)="removeOption(option)"><ion-icon name="remove"></ion-icon></button>
+        </ion-item>  
+      </ion-list>
+      <ion-row>
+        <ion-col>
+          <button ion-button type="submit" block>{{'Save' | translate}}</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button type="button" (click)="cancel()">{{'Cancel' | translate}}</button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-content>
+  
