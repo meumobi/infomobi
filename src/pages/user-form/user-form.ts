@@ -9,11 +9,13 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'user-form.html',
 })
 export class UserFormPage {
+  id: string;
   user: UserProfile;
   images = [];
   files: Array<any>;
   uploadFinished = true;
-  options: Array<string>;
+  options: Array<string> = [];
+  newProfile = false;
   
   constructor(
     public navCtrl: NavController, 
@@ -21,37 +23,46 @@ export class UserFormPage {
     public alertCtrl: AlertController,
     public ref: ChangeDetectorRef,
     public translateService: TranslateService
-  ) {}
+  ) {
+    this.id = this.navParams.data.id; 
+    this.newProfile = this.navParams.data.new;
+  }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserFormPage');
   }
   
   ngOnInit(){
-    //fetch user data 
-    this.user = new UserProfile();
-    this.user = {
-      _id: "pRlZLrdlMJqEgByefJcn",
-      options: {
-        landlinePhone: "(21) 4042-0755",
-        mobilePhone: "(21) 96172-3672",
-        // email: "rh@infomobi.org"
-      },
-      created: 1532711442167,
-      displayName: "Daniel Conte",
-      email: "danconte72@gmail.com",
-      firstName: "Daniel",
-      isPublished: true,
-      lastName: "Conte",
-      birthdate: '07-05',
-      modified: 1532711442167,
-      published: 1532711442167,
-      title: "",
-      type: "user",
-      picture: "",
-      domain: "meumobi.com"
-    }
-    this.options = Object.keys(this.user.options);
+    if (this.newProfile) {
+      this.user = new UserProfile();
+    } else {
+      if (!this.id) {
+        // this.id = currentId;
+      }
+      // this.user = service.fetchById
+      this.user = {
+        _id: "pRlZLrdlMJqEgByefJcn",
+        options: {
+          landlinePhone: "(21) 4042-0755",
+          mobilePhone: "(21) 96172-3672",
+          email: "rh@infomobi.org"
+        },
+        created: 1532711442167,
+        displayName: "Daniel Conte",
+        email: "danconte72@gmail.com",
+        firstName: "Daniel",
+        isPublished: true,
+        lastName: "Conte",
+        birthdate: '07-05',
+        modified: 1532711442167,
+        published: 1532711442167,
+        title: "",
+        type: "user",
+        picture: "",
+        domain: "meumobi.com"
+      }
+      this.options = Object.keys(this.user.options);
+    }   
   }
   
   addOption() {
@@ -88,14 +99,17 @@ export class UserFormPage {
   }
   
   onSubmit() {
-    //update
+    if (this.newProfile) {
+      //service.insert
+    } else {
+      //service.update
+    }
     console.log(this.user);
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
   cancel() {
-    console.log(this.user);
-    // this.navCtrl.pop();
+    this.navCtrl.pop();
   }
 
   fileUploadFinished(data) {
@@ -110,6 +124,3 @@ export class UserFormPage {
   }
   
 }
-
-
-
