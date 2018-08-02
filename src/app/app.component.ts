@@ -17,7 +17,7 @@ import { MeuToastProvider } from '@shared/meu-toast.service';
 export class MyApp implements OnInit, OnDestroy {
   @ViewChild(Nav) nav: Nav;
   
-  rootPage: string;
+  rootPage: string = 'HomePage';
   pages: Array<{title: string, component: any}>;
   
   constructor(
@@ -71,7 +71,7 @@ export class MyApp implements OnInit, OnDestroy {
                   this.translateService.use(userProfile.preferredLanguage); 
                 }
                 this.meuToastService.present('Hello ' + userProfile.displayName);
-                this.nav.setRoot('HomePage');
+                //this.nav.setRoot('HomePage');
               } else {
                 /*
                 If userProfile not exists create it
