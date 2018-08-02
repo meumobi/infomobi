@@ -8,12 +8,15 @@ import { NavController, NavParams } from 'ionic-angular';
 export class UserComponent {
   @Input() contact: any;
   rootNavCtrl: NavController;
+  admin: boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
+    // this.admin = currentuser.role == admin || currentid = contact.id;
+    this.admin = true;
   }
 
   pushDetailsPage(page: string, id: string) {
