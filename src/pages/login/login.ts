@@ -9,7 +9,6 @@ import {
 } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@providers/auth';
-import { MeuToastProvider } from '@shared/meu-toast.service';
 import { EmailValidator } from '@validators/email';
 import { TranslateService } from '@ngx-translate/core';
 import { AnalyticsProvider } from '@shared/analytics.service';
@@ -34,7 +33,6 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     public authService: AuthService,
     public menu : MenuController,
-    public toast: MeuToastProvider,
     private translateService: TranslateService,
     public analytics: AnalyticsProvider,
   ) {
@@ -65,7 +63,6 @@ export class LoginPage {
       this.translateService.get('LOGIN.USER_WELCOME', {displayName: response.visitor.first_name}).subscribe(
         value => {
           this.navCtrl.setRoot('HomePage');
-          this.toast.present(value);
         }
       )
     })

@@ -27,6 +27,7 @@ import { ENV } from '@env';
 import { AuthService } from '@providers/auth';
 import { ApiService } from '@providers/api';
 import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
+import { UserProfileService } from '@providers/user-profile';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -75,7 +76,8 @@ export function createTranslateLoader(http: HttpClient) {
     AuthService,
     DynamicLinksProvider,
     ApiService,
-    AuthDataPersistenceService
+    AuthDataPersistenceService,
+    UserProfileService
   ]
 })
 export class AppModule {}
