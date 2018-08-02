@@ -22,9 +22,12 @@ export class UserProfile extends ContactProfile {
   firstName: string;
   lastName: string;
   email: string;
-  birthdate: string;
-  options: Object;
-  
+  birthday: string;
+  role: string;
+  preferredLanguage: string;
+  lastLogin: number;
+  options: Object // options: {landlinePhone: "", mobilePhone: "", skype: ""}
+
   constructor() {
     super('user');
   }
