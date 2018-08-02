@@ -35,7 +35,7 @@ export class ContactsPage {
 
   addContact() {
     const alert = this.alertCtrl.create({
-      title:  this.translateService.instant('Delete'),
+      title:  this.translateService.instant('Create'),
       message: this.translateService.instant('Do you want to create a User or Desk contact?'),
       buttons: [
         {
