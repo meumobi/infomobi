@@ -11,7 +11,7 @@ import { ContactsService } from '@providers/contacts';
 })
 export class UserFormPage {
   id: string;
-  user: UserProfile;
+  user: UserProfile | any; //any for tests
   images = [];
   files: Array<any>;
   uploadFinished = true;
