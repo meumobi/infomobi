@@ -1,7 +1,8 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserProfile } from '@models/contact-profile';
 import { TranslateService } from '@ngx-translate/core';
+import { ContactsService } from '@providers/contacts';
 
 @IonicPage()
 @Component({
@@ -21,8 +22,8 @@ export class UserFormPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public ref: ChangeDetectorRef,
-    public translateService: TranslateService
+    public translateService: TranslateService,
+    private profileService: ContactsService
   ) {
     this.id = this.navParams.data.id; 
     this.newProfile = this.navParams.data.new;
@@ -38,30 +39,15 @@ export class UserFormPage {
     } else {
       if (!this.id) {
         // this.id = currentId;
+        this.id = "1";
       }
       // this.user = service.fetchById
-      this.user = {
-        _id: "pRlZLrdlMJqEgByefJcn",
-        options: {
-          landlinePhone: "(21) 4042-0755",
-          mobilePhone: "(21) 96172-3672",
-          email: "rh@infomobi.org"
-        },
-        created: 1532711442167,
-        displayName: "Daniel Conte",
-        email: "danconte72@gmail.com",
-        firstName: "Daniel",
-        isPublished: true,
-        lastName: "Conte",
-        birthdate: '07-05',
-        modified: 1532711442167,
-        published: 1532711442167,
-        title: "",
-        type: "user",
-        picture: "",
-        domain: "meumobi.com"
-      }
-      this.options = Object.keys(this.user.options);
+      this.profileService.findById(this.id).subscribe(
+        data => {
+          this.user = data;
+          this.options = Object.keys(this.user.options);
+        }
+      )
     }   
   }
   
