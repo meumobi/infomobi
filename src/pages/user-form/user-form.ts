@@ -13,6 +13,7 @@ export class UserFormPage {
   images = [];
   files: Array<any>;
   uploadFinished = true;
+  options: Array<string>;
   
   constructor(
     public navCtrl: NavController, 
@@ -27,6 +28,7 @@ export class UserFormPage {
   }
   
   ngOnInit(){
+    //fetch user data 
     this.user = new UserProfile();
     this.user = {
       _id: "pRlZLrdlMJqEgByefJcn",
@@ -49,6 +51,7 @@ export class UserFormPage {
       picture: "",
       domain: "meumobi.com"
     }
+    this.options = Object.keys(this.user.options);
   }
   
   addOption() {
@@ -59,10 +62,6 @@ export class UserFormPage {
           name: 'key',
           placeholder: this.translateService.instant('Field')
         },
-        {
-          name: 'value',
-          placeholder: this.translateService.instant('Value')
-        },
       ],
       buttons: [
         {
@@ -72,7 +71,7 @@ export class UserFormPage {
           text: this.translateService.instant('Save'),
           handler: (data) => {
             console.log(data);
-            this.user.options[data.key] = data.value;
+            this.options.push(data.key);
           }
         }
       ]
@@ -81,8 +80,11 @@ export class UserFormPage {
   }
 
   removeOption(key) {
-    console.log(key);
     delete this.user.options[key];
+    var index = this.options.indexOf(key);
+    if (index > -1) {
+      this.options.splice(index, 1);
+    }
   }
   
   onSubmit() {
