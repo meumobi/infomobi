@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { UserProfile } from '@models/contact-profile';
 import { TranslateService } from '@ngx-translate/core';
 import { ContactsService } from '@providers/contacts';
+import { UserProfileService } from '@providers/user-profile';
 
 @IonicPage()
 @Component({
@@ -23,7 +24,8 @@ export class UserFormPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public translateService: TranslateService,
-    private profileService: ContactsService
+    private contactsService: ContactsService,
+    private userProfile: UserProfileService
   ) {
     this.id = this.navParams.data.id; 
     this.newProfile = this.navParams.data.new;
@@ -37,14 +39,14 @@ export class UserFormPage {
     if (this.newProfile) {
       this.user = new UserProfile();
     } else {
+      console.log(this.id);
       if (!this.id) {
-        // this.id = currentId;
-        this.id = "1";
+        this.id = this.userProfile.current$.value._id;
       }
-      // this.user = service.fetchById
-      this.profileService.findById(this.id).subscribe(
+      this.contactsService.findById(this.id).subscribe(
         data => {
           this.user = data;
+          console.log(this.user);
           this.options = Object.keys(this.user.options);
         }
       )
@@ -86,9 +88,9 @@ export class UserFormPage {
   
   onSubmit() {
     if (this.newProfile) {
-      //service.insert
+      this.contactsService.create(this.user);
     } else {
-      //service.update
+      this.contactsService.update(this.user);      
     }
     console.log(this.user);
     // this.navCtrl.pop();

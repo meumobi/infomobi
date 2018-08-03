@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { UserProfile } from '@models/contact-profile'; 
 import userProfile from './mock-user-profile';
 import { AuthUser } from '@models/auth.interface';
@@ -8,7 +8,7 @@ import { AuthUser } from '@models/auth.interface';
 @Injectable()
 export class UserProfileService {
 
-  public current$ = new Subject<UserProfile>();
+  public current$ = new BehaviorSubject<UserProfile>(new UserProfile());
 
   constructor(public http: HttpClient) {
     console.log('Hello UserProfile Service');

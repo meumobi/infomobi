@@ -4,6 +4,7 @@ import { ContactsService } from '@providers/contacts/';
 import { ContactProfile } from '@models/contact-profile';
 import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { UserProfileService } from '@providers/user-profile';
 
 @IonicPage({
   segment: 'contacts'
@@ -24,7 +25,8 @@ export class ContactsPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private alertCtrl: AlertController,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private userProfileService: UserProfileService
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
   }
@@ -56,8 +58,7 @@ export class ContactsPage {
   }
 
   ngOnInit() {
-    // this.admin = currentuser.role == admin
-    this.admin = true;
+    this.admin = this.userProfileService.current$.value.role == "admin";
     this.search();
     this.searchTerm
     .debounceTime(300)

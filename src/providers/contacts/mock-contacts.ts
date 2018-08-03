@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Observable';
 
 let contacts = Observable.of([
     {
+        _id: "1",
         id: "1",
         type: "user",
         displayName: "Luiza Bittencourt",
@@ -22,6 +23,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
     },
     {
+        _id: "2",
         id: "2",
         type: "user",
         displayName: "Jaime Pacheco",
@@ -42,6 +44,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/michael_jones.jpg"
     },
     {
+        _id: "3",
         id: "3",
         type: "user",
         displayName: "Jonathan Bradley",
@@ -62,6 +65,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jonathan_bradley.jpg"
     },
     {
+        _id: "4",
         id: "4",
         type: "user",
         displayName: "Jennifer Wu",
@@ -82,6 +86,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jennifer_wu.jpg"
     },
     {
+        _id: "5",
         id: "5",
         type: "user",
         displayName: "Olivia Green",
@@ -102,6 +107,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/olivia_green.jpg"
     },
     {
+        _id: "6",
         id: "6",
         type: "user",
         displayName: "Miriam Aupont",
@@ -122,6 +128,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/miriam_aupont.jpg"
     },
     {
+        _id: "7",
         id: "7",
         type: "user",
         displayName: "Michelle Lambert",
@@ -142,6 +149,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/michelle_lambert.jpg"
     },
     {
+        _id: "8",
         id: "8",
         type: "user",
         displayName: "Victor Ochoa",
@@ -162,6 +170,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/victor_ochoa.jpg"
     },
     {
+        _id: "9",
         id: "9",
         type: "desk",
         displayName: "RH",
@@ -179,6 +188,7 @@ let contacts = Observable.of([
         picture: "http://s2.glbimg.com/5aKjIyo5XWoVDGWvgoJqSLnNGBQ=/620x350/e.glbimg.com/og/ed/f/original/2016/04/13/carreira.jpg"
     },
     {
+        _id: "10",
         id: "10",
         type: "desk",
         displayName: "Enfermaria",
