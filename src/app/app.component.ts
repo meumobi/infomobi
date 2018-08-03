@@ -77,10 +77,14 @@ export class MyApp implements OnInit, OnDestroy {
                 If userProfile not exists create it
                 */
                 this.userProfileService.create(authData.visitor)
-                .then( userProfile => {
+                .then(
+                  () => {
                   console.log('user profile successfully created');
-                  console.log(userProfile);
-                })
+                  },
+                  error => {
+                    console.error(error);
+                  }
+                )
               }
             }
           )

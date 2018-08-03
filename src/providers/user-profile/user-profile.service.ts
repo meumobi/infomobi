@@ -14,13 +14,13 @@ export class UserProfileService {
   
   constructor(private af: AngularFirestore) {}  
   
-  public create(user: AuthUser) {
+  public create(user: AuthUser): Promise<void> {
     const profile = new UserProfile();
+    profile.domain = user.site;
     profile.firstName = user.first_name;
     profile.lastName = user.last_name;
     profile.email = user.email;
     profile.displayName = `${user.first_name} ${user.last_name}`; 
-    profile.role = 'admin';
     const id = this.af.createId();
     profile._id = id;
     const data = JSON.parse(JSON.stringify(profile));
