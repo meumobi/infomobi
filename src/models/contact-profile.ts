@@ -15,6 +15,7 @@ export class ContactProfile {
     this.created = Date.now();
     this.published = Date.now();
     this.modified = Date.now();
+    this.isPublished = true;
   }
 }
 

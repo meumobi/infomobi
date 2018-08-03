@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { UserProfile } from '@models/contact-profile'; 
 import userProfile from './mock-user-profile';
 import { AuthUser } from '@models/auth.interface';
@@ -14,17 +14,17 @@ export class UserProfileService {
     console.log('Hello UserProfile Service');
   }
 
-  public create(user: AuthUser) {
+  public create(user: AuthUser): Promise<void> {
     this.current$.next(userProfile);
-    return Promise.resolve(userProfile);
+    return Promise.resolve();
   }
 
-  public update(user: UserProfile) {
+  public update(auth: AuthUser, profile: UserProfile): Promise<void> {
     this.current$.next(userProfile);
-    return Promise.resolve(userProfile);
+    return Promise.resolve();
   }
   
-  public fetchByEmail(email: string) {
+  public fetchByEmail(email: string): Observable<any> {
     this.current$.next(userProfile);
     return this.current$;
   }

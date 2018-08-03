@@ -28,6 +28,7 @@ import { AuthService } from '@providers/auth';
 import { ApiService } from '@providers/api';
 import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 import { UserProfileService } from '@providers/user-profile';
+import { ContactsService } from '@providers/contacts';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -76,6 +77,7 @@ export function createTranslateLoader(http: HttpClient) {
     AuthService,
     DynamicLinksProvider,
     ApiService,
+    ContactsService,
     AuthDataPersistenceService,
     UserProfileService
   ]

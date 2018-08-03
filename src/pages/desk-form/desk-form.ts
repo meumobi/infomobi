@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { DeskProfile } from '@models/contact-profile';
+import { DeskProfile, ContactProfile } from '@models/contact-profile';
 import { TranslateService } from '@ngx-translate/core';
 import { ContactsService } from '@providers/contacts';
 
@@ -11,7 +11,7 @@ import { ContactsService } from '@providers/contacts';
 })
 export class DeskFormPage {
   id: string;
-  desk: DeskProfile;
+  desk: ContactProfile;
   images = [];
   files: Array<any>;
   uploadFinished = true;

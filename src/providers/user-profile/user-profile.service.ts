@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 
 import { UserProfile } from '@models/contact-profile';
 import { AuthUser } from '@models/auth.interface';
+import { ContactsService } from '@providers/contacts';
 
 @Injectable()
 export class UserProfileService {
@@ -12,24 +13,26 @@ export class UserProfileService {
   private itemsCollection: AngularFirestoreCollection<UserProfile>;
   public current$ = new BehaviorSubject<UserProfile>(new UserProfile());
   
-  constructor(private af: AngularFirestore) {}  
+  constructor(
+    private af: AngularFirestore,
+    private contactsService: ContactsService
+  ) {}  
   
-  public create(user: AuthUser) {
+  public create(user: AuthUser): Promise<void> {
     const profile = new UserProfile();
     profile.firstName = user.first_name;
     profile.lastName = user.last_name;
     profile.email = user.email;
     profile.displayName = `${user.first_name} ${user.last_name}`; 
     profile.role = 'admin';
-    const id = this.af.createId();
-    profile._id = id;
-    const data = JSON.parse(JSON.stringify(profile));
-    return this.itemsCollection.doc(id).set(data);
+    return this.contactsService.create(profile);
   }
 
-  public update(profile: UserProfile) {   
-    const data = JSON.parse(JSON.stringify(profile));
-    return this.itemsCollection.doc(profile._id).set(data);
+  public update(auth: AuthUser, profile: UserProfile): Promise<void> {   
+    profile.firstName = auth.first_name;
+    profile.lastName = auth.last_name;
+    profile.email = auth.email;
+    return this.contactsService.update(profile);
   }
   
   public fetchByEmail(email: string) {
