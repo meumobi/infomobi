@@ -25,19 +25,19 @@ export class AuthDataPersistenceService {
     )
   }
   
-  get(): Promise<Auth> {
+  public get(): Promise<Auth> {
     console.log("get authData on ionicStorage");
     return this.storage.get("authData")
     .then(data => JSON.parse(data))
   }
   
-  set(auth): void {
+  public set(auth): void {
     console.log('set authData on ionicStorage');
     this.storage.set('authData', JSON.stringify(auth))
     .then(data => this.isLoggedSubject.next(true));
   }
   
-  clear(): void {
+  public clear(): void {
     console.log("clear authData on ionicStorage");
     this.storage.remove('authData')
     .then(data => this.isLoggedSubject.next(false));
