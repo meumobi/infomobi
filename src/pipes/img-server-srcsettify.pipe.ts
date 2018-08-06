@@ -22,7 +22,7 @@ import { ENV } from '@env';
 export class ImgServerSrcsettifyPipe implements PipeTransform {
   sizes = [2048, 1024, 800];
 
-  transform(src: string) {
+  transform(src: string, aspect: string = "default") {
     for (let source in ENV.imgServer.sources) {
       const prefix = ENV.imgServer.sources[source].prefix;
       if (src.startsWith(prefix)) {
@@ -30,7 +30,11 @@ export class ImgServerSrcsettifyPipe implements PipeTransform {
       }
     }    
     return this.sizes.map((width) => {
-      return ENV.imgServer.url + src + "?width=" + width + " " + width + "w"
+      let extra = "";
+      if (aspect == "square") {
+        extra = "&height=" + width + "&mode=crop";
+      }
+      return ENV.imgServer.url + src + "?width=" + width + extra;
     }).toString();
   }
 }

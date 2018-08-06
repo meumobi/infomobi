@@ -21,13 +21,17 @@ import { ENV } from '@env';
 })
 export class ImgServerUrlyPipe implements PipeTransform {
   
-  transform(src: string, width = 1024) {
+  transform(src: string, width = 1024, aspect: string = "default") {
     for (let source in ENV.imgServer.sources) {
       const prefix = ENV.imgServer.sources[source].prefix;
       if (src.startsWith(prefix)) {
         src = src.replace(prefix, source);
       } 
-    }    
-    return ENV.imgServer.url + src + "?width=" + width
+    } 
+    let extra = "";
+    if (aspect == "square") {
+      extra = "&height=" + width + "&mode=crop";
+    }   
+    return ENV.imgServer.url + src + "?width=" + width + extra;
   }
 }
