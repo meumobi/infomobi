@@ -80,12 +80,12 @@ export class DeskFormPage {
   
   onSubmit() {
     if (!this.id) {
-      this.contactsService.create(this.desk);
+      this.contactsService.create(this.desk)
+      .then(() => this.navCtrl.pop());
     } else {
-      this.contactsService.update(this.desk);
+      this.contactsService.update(this.desk)      
+      .then(() => this.navCtrl.pop());
     }
-    console.log(this.desk);
-    // this.navCtrl.pop();
   }
   
   cancel() {

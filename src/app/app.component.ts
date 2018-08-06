@@ -71,9 +71,6 @@ export class MyApp implements OnInit, OnDestroy {
                   this.translateService.use(userProfile.preferredLanguage); 
                 }
                 this.meuToastService.present('Hello ' + userProfile.displayName);
-                if (!userProfile.lastLogin) {
-                  this.userProfileService.update(authData.visitor, userProfile);
-                }
                 //this.nav.setRoot('HomePage');
               } else {
                 /*
