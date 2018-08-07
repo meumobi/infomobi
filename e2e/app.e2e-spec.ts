@@ -1,5 +1,5 @@
 import { Page } from './app.po';
-
+browser.waitForAngularEnabled(false);
 describe('App', () => {
   let page: Page;
 
@@ -9,7 +9,7 @@ describe('App', () => {
 
   describe('default screen', () => {
     beforeEach(() => {
-      page.navigateTo('/#/');
+      page.navigateTo('/#/login');
     });
 
     it('should have a button saying login', () => {
