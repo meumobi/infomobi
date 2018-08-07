@@ -1,6 +1,6 @@
 <ion-card>
   <ion-card-content>
-    <img src="{{contact.picture}}" />
+    <img [src]="contact.picture| imgServerUrly: 1024: 'square'"/>
     <h2>{{contact.displayName}}</h2>
     <h3>{{contact.title}}</h3>
   </ion-card-content>

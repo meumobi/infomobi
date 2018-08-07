@@ -8,6 +8,7 @@ export class ContactsService {
     console.log(term);
     return contacts.map(
       contacts => {
+        console.log(contacts);
         return contacts
         .filter(contact => contact.displayName.toLowerCase().indexOf(term.toLowerCase()) > -1)
       }
