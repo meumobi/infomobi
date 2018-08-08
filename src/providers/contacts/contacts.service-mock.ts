@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import contacts from './mock-contacts';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Injectable()
 export class ContactsService {
 
-  search(term) {
+  search(term): Observable<any[]>{
     console.log(term);
     return contacts.map(
       contacts => {
@@ -14,7 +15,7 @@ export class ContactsService {
     )
   }
 
-  findById(id) {
+  findById(id): Observable<any> {
     return contacts.map(
       contacts => {
         return contacts
@@ -26,6 +27,15 @@ export class ContactsService {
       }
     )
   }
+
+  create(contact): Promise<any> {
+    return Promise.resolve(contact);
+  }
+
+  update(contact): Promise<any> {
+    return Promise.resolve(contact);
+  }
+  
 }
 
 

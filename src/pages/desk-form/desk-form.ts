@@ -22,7 +22,7 @@ export class DeskFormPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public translateService: TranslateService,
-    private profileService: ContactsService
+    private contactsService: ContactsService
   ) {
     this.id = this.navParams.data.id; 
   }
@@ -34,11 +34,8 @@ export class DeskFormPage {
   ngOnInit(){
     if (!this.id) {
       this.desk = new DeskProfile();
-      // this.id = currentId;
-      
     } else {
-      // this.user = service.fetchById
-      this.profileService.findById(this.id).subscribe(
+      this.contactsService.findById(this.id).subscribe(
         data => {
           this.desk = data;
           this.options = Object.keys(this.desk.options);
@@ -83,9 +80,9 @@ export class DeskFormPage {
   
   onSubmit() {
     if (!this.id) {
-      //service.insert
+      this.contactsService.create(this.desk);
     } else {
-      //service.update
+      this.contactsService.update(this.desk);
     }
     console.log(this.desk);
     // this.navCtrl.pop();
