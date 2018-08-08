@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Observable';
 
 let contacts = Observable.of([
     {
-        id: "1",
+        _id: "1",
         type: "user",
         displayName: "Luiza Bittencourt",
         created: 1503578164,
@@ -22,7 +22,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
     },
     {
-        id: "2",
+        _id: "2",
         type: "user",
         displayName: "Jaime Pacheco",
         created: 1503578165,
@@ -42,7 +42,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/michael_jones.jpg"
     },
     {
-        id: "3",
+        _id: "3",
         type: "user",
         displayName: "Jonathan Bradley",
         created: 1503578166,
@@ -62,7 +62,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jonathan_bradley.jpg"
     },
     {
-        id: "4",
+        _id: "4",
         type: "user",
         displayName: "Jennifer Wu",
         created: 1503578167,
@@ -82,7 +82,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jennifer_wu.jpg"
     },
     {
-        id: "5",
+        _id: "5",
         type: "user",
         displayName: "Olivia Green",
         created: 1503578168,
@@ -102,7 +102,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/olivia_green.jpg"
     },
     {
-        id: "6",
+        _id: "6",
         type: "user",
         displayName: "Miriam Aupont",
         created: 1503578169,
@@ -122,7 +122,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/miriam_aupont.jpg"
     },
     {
-        id: "7",
+        _id: "7",
         type: "user",
         displayName: "Michelle Lambert",
         created: 1503578170,
@@ -142,7 +142,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/michelle_lambert.jpg"
     },
     {
-        id: "8",
+        _id: "8",
         type: "user",
         displayName: "Victor Ochoa",
         created: 1503578171,
@@ -162,7 +162,7 @@ let contacts = Observable.of([
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/victor_ochoa.jpg"
     },
     {
-        id: "9",
+        _id: "9",
         type: "desk",
         displayName: "RH",
         created: 1503578172,
@@ -179,7 +179,7 @@ let contacts = Observable.of([
         picture: "http://s2.glbimg.com/5aKjIyo5XWoVDGWvgoJqSLnNGBQ=/620x350/e.glbimg.com/og/ed/f/original/2016/04/13/carreira.jpg"
     },
     {
-        id: "10",
+        _id: "10",
         type: "desk",
         displayName: "Enfermaria",
         created: 1503578173,
@@ -193,7 +193,7 @@ let contacts = Observable.of([
             ramal: "555",
             email: "sos@infomobi.org"
         },
-        picture: "https://media.istockphoto.com/vectors/-vector-id479391700?k=6&m=479391700&s=612x612&w=0&h=tn49_mMKaZmu1dqTNE3-9K0Ejire4jg39qdxIllxyOg="
+        picture: "https://media.istockphoto.com/vectors/-vector-_id479391700?k=6&m=479391700&s=612x612&w=0&h=tn49_mMKaZmu1dqTNE3-9K0Ejire4jg39qdxIllxyOg="
     }
 ]);
 

@@ -8,8 +8,8 @@ import { AuthService } from '@providers/auth';
 import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 import { UserProfileService } from '@providers/user-profile';
 import { ENV } from '@env';
-import { MeuToastProvider } from '@shared/meu-toast.service';
-
+import { Observable, Subscription } from "rxjs";
+import { Auth } from '@models/auth.interface';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,6 +19,8 @@ export class MyApp implements OnInit, OnDestroy {
   
   rootPage: string = 'HomePage';
   pages: Array<{title: string, component: any}>;
+  authData$ : Observable<Auth>;
+  userProfileSubscription: Subscription;
   
   constructor(
     public platform: Platform, 
@@ -29,7 +31,6 @@ export class MyApp implements OnInit, OnDestroy {
     private authService: AuthService,
     private authDataPersistenceService: AuthDataPersistenceService,
     private userProfileService: UserProfileService,
-    public meuToastService: MeuToastProvider,
   ) {
     this.initializeApp();
     
@@ -39,6 +40,8 @@ export class MyApp implements OnInit, OnDestroy {
       { title: 'List', component: 'PostsPage' },
     ];
     console.log("Env is production ? " + ENV.production);
+
+    this.authData$ = this.authDataPersistenceService.get();
   }
   
   initializeApp() {
@@ -46,7 +49,6 @@ export class MyApp implements OnInit, OnDestroy {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.translateService.setDefaultLang('en');
-      //this.translateService.use('pt'); 
       
       this.analyticsProvider.startTrackerWithId(ENV.analyticsTrackingId);
       this.nav.viewDidEnter.subscribe(
@@ -60,45 +62,45 @@ export class MyApp implements OnInit, OnDestroy {
   }
   
   ngOnInit() {
-    this.authDataPersistenceService.isLoggedSubject.subscribe( isLogged => {
-      if (isLogged) {
-        this.authDataPersistenceService.get().then( authData => {
-          this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
-            userProfile => {
-              if (userProfile) {
-                console.log(userProfile);        
-                if (userProfile.preferredLanguage){
-                  this.translateService.use(userProfile.preferredLanguage); 
-                }
-                this.meuToastService.present('Hello ' + userProfile.displayName);
-                //this.nav.setRoot('HomePage');
-              } else {
-                /*
-                If userProfile not exists create it
-                */
-                this.userProfileService.create(authData.visitor)
-                .then( userProfile => {
-                  console.log('user profile successfully created');
-                  console.log(userProfile);
-                })
+    this.authData$.subscribe( authData => {
+      if (authData) {
+        this.userProfileSubscription = this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
+          userProfile => {
+            if (userProfile) { 
+              if (userProfile.preferredLanguage) {
+                this.translateService.use(userProfile.preferredLanguage);
               }
+            } else {
+              /*
+              If userProfile not exists create it
+              */
+              this.userProfileService.create(authData.visitor)
+              .then(
+                () => {
+                console.log('user profile successfully created');
+                },
+                error => {
+                  console.error(error);
+                }
+              )
             }
-          )
-        })
+          }
+        )
       } else {
         this.nav.setRoot('LoginPage');
-      } 
+      }
     })
-    
-    
   }
   
   ngOnDestroy() {
-    this.authDataPersistenceService.isLoggedSubject.unsubscribe();
+    if (this.userProfileSubscription) {
+      this.userProfileSubscription.unsubscribe();
+    }
   }
   
   logout() {
     this.authService.signOut();
+    this.userProfileSubscription.unsubscribe();
   }
   
   openPage(pageComponent, push = true) {

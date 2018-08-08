@@ -12,33 +12,27 @@ export class ContactsService {
   
   constructor(private af: AngularFirestore) {}
   
-  search(): Observable<ContactProfile[]> {
+  search(term): Observable<ContactProfile[]> {
     this.itemsCollection = this.af.collection<ContactProfile>('contacts',
     ref => {
       let query : firebase.firestore.Query = ref;
-      query = query.where('isPublished', '==', 'true');
+      query = query.where('isPublished', '==', true);
       query = query.orderBy('displayName', 'asc');
       return query;
-    }
-  );   
-  this.items = this.itemsCollection.snapshotChanges().map(actions => {
-    return actions.map(a => {       
-      const data = a.payload.doc.data() as ContactProfile;
-      const id = a.payload.doc.id;
-      return { id, ...data};
-    });
-  });    
-  return this.items;
-}
+    });   
+    this.items = this.itemsCollection.snapshotChanges().map(actions => {
+      console.log(actions);
+      return actions.map(a => {       
+        const data = a.payload.doc.data() as ContactProfile;
+        return data;
+      }).filter(contact => contact.displayName.toLowerCase().indexOf(term.toLowerCase()) > -1);
+    });    
+    return this.items;
+  }
 
-update(id: string, changes: any) {
-  return this.itemsCollection.doc(id).update(changes);
-}
-
-save(contact: ContactProfile) {
-  const data = JSON.parse(JSON.stringify(contact));
-  console.log(data);
-  return this.itemsCollection.add(data);
-}
+  findById(id) {
+    const itemDoc = this.af.doc<ContactProfile>(`contacts/${id}`);
+    return itemDoc.valueChanges();
+  }
 
 }

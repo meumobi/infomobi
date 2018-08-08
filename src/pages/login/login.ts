@@ -13,6 +13,7 @@ import { EmailValidator } from '@validators/email';
 import { TranslateService } from '@ngx-translate/core';
 import { AnalyticsProvider } from '@shared/analytics.service';
 import { Auth, AuthError } from '@models/auth.interface';
+import { MeuToastProvider } from '@shared/meu-toast.service';
 
 @IonicPage({
   segment: 'login'
@@ -35,6 +36,7 @@ export class LoginPage {
     public menu : MenuController,
     private translateService: TranslateService,
     public analytics: AnalyticsProvider,
+    public meuToastService: MeuToastProvider
   ) {
     this.user = this.fb.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -62,6 +64,7 @@ export class LoginPage {
       this.analytics.trackEvent('Login', 'Submit', 'Success');
       this.translateService.get('LOGIN.USER_WELCOME', {displayName: response.visitor.first_name}).subscribe(
         value => {
+          this.meuToastService.present(value);
           this.navCtrl.setRoot('HomePage');
         }
       )
