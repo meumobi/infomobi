@@ -2,7 +2,7 @@ import { ToastController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class MeuToastProvider {
+export class MeuToastService {
 
   constructor(public toastCtrl: ToastController) {
       console.log('thumbImage pipe');

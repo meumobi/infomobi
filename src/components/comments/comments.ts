@@ -7,7 +7,6 @@ import {
   AlertController
 } from 'ionic-angular';
 
-import { MeuToastProvider } from '@shared/meu-toast.service';
 import { AnalyticsProvider } from '@shared/analytics.service';
 import { Post } from '@models/post.interface';
 
@@ -31,7 +30,6 @@ export class CommentsComponent {
   constructor(
     private commentsProvider: CommentsProvider,
     public alertCtrl: AlertController,
-    public toast: MeuToastProvider,
     public analytics: AnalyticsProvider
   ) {}
   

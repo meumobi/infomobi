@@ -1,6 +1,9 @@
 <ion-card>
   <ion-card-content>
-    <img src="{{contact.picture}}" />
+    <img src="{{ contact.picture }}" *ngIf="contact.picture; else anonymous" />
+    <ng-template #anonymous>
+      <img src="{{ contact.type | iconPathForContactType }}"/>
+    </ng-template>
     <h2>{{contact.firstName}} {{contact.lastName}}</h2>
     <h3>{{contact.title}}</h3>
   </ion-card-content>
@@ -13,11 +16,11 @@
       <p>Email</p>
       <h2>{{contact.email}}</h2>
     </a> 
-    <a ion-item>
+    <ion-item *ngIf="contact.birthdate">
       <ion-icon name="calendar" item-left></ion-icon>
       <p>{{'Birthday' | translate}}</p>
       <h2>{{contact.birthdate}}</h2>
-    </a> 
+    </ion-item> 
     <a *ngFor="let option of contact.options | keys" ion-item>
       <p>{{ option.key | translate }}</p>
       <h2>{{ option.value }}</h2>

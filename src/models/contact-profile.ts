@@ -7,7 +7,7 @@ export class ContactProfile {
   created: number;
   published: number;
   modified: number;
-  isPublished: boolean;
+  isPublished: boolean = true;
   domain: string;
   
   constructor(type: string) {
@@ -22,9 +22,12 @@ export class UserProfile extends ContactProfile {
   firstName: string;
   lastName: string;
   email: string;
-  birthdate: string;
-  options: Object;
-  
+  birthday: string;
+  role: string = 'user';
+  preferredLanguage: string = 'pt';
+  lastLogin: number;
+  options: Object // options: {landlinePhone: "", mobilePhone: "", skype: ""}
+
   constructor() {
     super('user');
     this.options = {};

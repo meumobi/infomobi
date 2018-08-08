@@ -6,10 +6,13 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AnalyticsProvider } from '../shared/analytics.service';
+import { MeuToastProvider } from '../shared/meu-toast.service';
 import { AuthService } from '../providers/auth/auth.service';
 import { AuthService as AuthMock } from '../providers/auth/auth.service-mock';
 import { AuthDataPersistenceService } from '../providers/auth-data-presistence/auth-data-persistence.service';
 import { AuthDataPersistenceService as AuthDataPersistenceMock} from '../providers/auth-data-presistence/auth-data-persistence.service-mock';
+import { UserProfileService } from '../providers/user-profile/user-profile.service';
+import { UserProfileService as UserProfileMock } from '../providers/user-profile/user-profile.service-mock';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 
 import { MyApp } from './app.component';
@@ -21,7 +24,9 @@ import {
   StatusBarMock,
   SplashScreenMock
 } from '../../test-config/mocks-ionic';
-import { AnalyticsMock } from '../../test-config/mocks-master-details';
+import { 
+  AnalyticsMock,
+  MeuToastMock } from '../../test-config/mocks-master-details';
 
 describe('MyApp Component', () => {
   let fixture;
@@ -47,8 +52,10 @@ describe('MyApp Component', () => {
         { provide: SplashScreen, useClass: SplashScreenMock },
         { provide: Platform, useClass: PlatformMock },
         { provide: AnalyticsProvider, useClass: AnalyticsMock },
+        { provide: MeuToastProvider, useClass: MeuToastMock },
         { provide: AuthService, useClass: AuthMock },
-        { provide: AuthDataPersistenceService, useClass: AuthDataPersistenceMock }
+        { provide: AuthDataPersistenceService, useClass: AuthDataPersistenceMock },
+        { provide: UserProfileService, useClass: UserProfileMock },
       ]
     }).compileComponents();
   }));
