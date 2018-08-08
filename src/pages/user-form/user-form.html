@@ -37,7 +37,9 @@
       <ion-item>
         <ion-label color="primary" stacked>{{'Birthday' | translate}}</ion-label>
         <ion-input type="text" name="birthdate" placeholder="MM-DD" [(ngModel)]="user.birthdate"></ion-input>
-      </ion-item>    
+      </ion-item>
+    </ion-list>
+    <ion-list>
       <ion-list-header>
         {{'Contacts' | translate}}
         <button type="button" ion-button item-end (click)="addOption()"><ion-icon name="add"></ion-icon></button>

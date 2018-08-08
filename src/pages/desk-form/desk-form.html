@@ -22,6 +22,8 @@
           <ion-label color="primary" stacked>{{'Title' | translate}}</ion-label>
           <ion-input type="text" name="title" [(ngModel)]="desk.title"></ion-input>
         </ion-item> 
+      </ion-list>
+      <ion-list>
         <ion-list-header>
           {{'Contacts' | translate}}
           <button type="button" ion-button item-end (click)="addOption()"><ion-icon name="add"></ion-icon></button>
