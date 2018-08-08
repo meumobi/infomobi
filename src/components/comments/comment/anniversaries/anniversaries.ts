@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController, ItemSliding } from 'ionic-an
 import { Comment } from '@models/comment.interface';
 import { TranslateService } from '@ngx-translate/core';
 import { CommentsProvider } from '@providers/comments';
+import { MeuToastService } from '@shared/meu-toast.service';
 
 @Component({
   templateUrl: 'anniversaries.html'
@@ -17,6 +18,7 @@ export class AnniversariesComponent implements Comment {
     private commentsService : CommentsProvider,
     private translateService: TranslateService,
     private alertCtrl: AlertController,
+    private meutToastService: MeuToastService
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
   }
@@ -36,7 +38,8 @@ export class AnniversariesComponent implements Comment {
         {
           text: this.translateService.instant('Delete'),
           handler: () => {
-            this.commentsService.delete(this.comment.id);
+            this.commentsService.delete(this.comment.id)
+            .then(data => this.meutToastService.present(this.translateService.instant("Comment deleted")));
           }
         }
       ]

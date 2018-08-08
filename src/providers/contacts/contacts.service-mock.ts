@@ -19,7 +19,7 @@ export class ContactsService {
     return contacts.map(
       contacts => {
         return contacts
-        .filter(contact => contact.id == id)
+        .filter(contact => contact._id == id)
       }
     ).map(
       data => {

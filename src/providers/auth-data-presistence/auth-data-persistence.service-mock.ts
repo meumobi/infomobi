@@ -1,46 +1,28 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
+import { Subject, Observable } from "rxjs";
 import { Auth } from '@models/auth.interface';
+import authData from '@providers/auth/mock-auth.ts';
 
 @Injectable()
 export class AuthDataPersistenceService {
   
-  authData = {  
-    "success":true,
-    "token":"14cff39e74468e78494ab0778776d12f3aedca53",
-    "visitor":{  
-      "first_name":"Victor",
-      "last_name":"Dias",
-      "email":"victor.dias+employee@meumobi.com",
-      "site":"meumobibox.meumobi.com"
-    }
-  }
-  
-  isLoggedSubject = new BehaviorSubject<boolean>(this.hasToken());
+  private authData$ = new Subject<Auth>();
   
   constructor() {
-    console.log('Hello AuthDataPersistence Mock');
+    this.authData$.next(authData);
+  }
+  
+  public set(auth): Promise<void> {
+    console.log('set authData on ionicStorage');
+    return Promise.resolve().then( () => this.authData$.next(auth));
   }
 
-  /**
-  * if we have token the user is loggedIn
-  * @returns {boolean}
-  */
-  private hasToken() : boolean {
-    console.log('authData: ' + !!this.authData );
-    console.log(this.authData);
-    return !!this.authData;
+  public get(): Observable<Auth> {
+    return this.authData$.asObservable().share();
   }
   
-  get(): Auth {
-    return this.authData;
-  }
-  
-  set(auth): void {
-    
-  }
-  
-  clear(): void {
-    
+  public clear(): Promise<void> {
+    console.log("clear authData on ionicStorage");
+    return Promise.resolve().then( () => this.authData$.next(null));
   }
 }

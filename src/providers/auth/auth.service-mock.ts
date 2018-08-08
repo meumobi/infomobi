@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
-import auth from './mock-auth';
+import authData from './mock-auth';
 import { Auth } from '@models/auth.interface';
+import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
   
-  constructor() {
+  authData$: Observable<Auth> = Observable.of(authData).delay(2000);
+
+  constructor(
+    public authDataPresistenceService: AuthDataPersistenceService
+  ) {
     console.log('Hello AuthService Mock');
   }
   
@@ -13,18 +19,13 @@ export class AuthService {
     
     /* Dummy authentication for testing, uses $timeout to simulate api call
     ----------------------------------------------*/
-    
-    return new Promise(resolve =>
-      setTimeout(() => {
-        let response = auth;
-  
-        if(!response.success) {
-          response['message'] = 'Username or password is incorrect';
-        }
-  
-        resolve(response);
-      }, 1000)
-    );    
+    return this.authData$.toPromise()
+    .then((response: Auth) => {
+      console.log('AuthService, signIn succeed');
+
+      this.authDataPresistenceService.set(response);
+      return response;
+    })  
   }
   
   resetPassword(email: string): Promise<any> {
@@ -40,5 +41,3 @@ export class AuthService {
   }
 
 }
-
-//export { AuthProvider as AuthService };

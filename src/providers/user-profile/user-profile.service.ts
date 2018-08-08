@@ -20,6 +20,7 @@ export class UserProfileService {
   
   public create(user: AuthUser): Promise<void> {
     const profile = new UserProfile();
+    profile.domain = user.site;
     profile.firstName = user.first_name;
     profile.lastName = user.last_name;
     profile.email = user.email;

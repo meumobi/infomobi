@@ -28,7 +28,4 @@ export class AuthService {
   signOut(): void {
     this.authDataPresistenceService.clear();
   }
-
-  isAuthenticated() {}
-
 }
