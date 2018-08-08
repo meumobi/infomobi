@@ -1,11 +1,11 @@
   <button ion-item (click)="pushDetailsPage('ContactDetailsPage', contact._id)">
     <ion-avatar item-left *ngIf="contact.picture; else anonymous">
-        <img src="{{contact.picture}}"/>
+      <img src="{{ contact.picture }}"/>
     </ion-avatar>
     <ng-template #anonymous>
-        <ion-avatar item-left>
-            <ion-icon style="font-size: 3.0em" name="contact"></ion-icon>
-        </ion-avatar>
+      <ion-avatar item-left>
+        <img src="{{ contact.type | iconPathForContactType }}"/>
+      </ion-avatar>
     </ng-template>    
     <h2>{{contact.displayName}}</h2>
     <p>{{contact.title}}</p>

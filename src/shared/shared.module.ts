@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { MeuToastProvider } from './meu-toast.service';
 import { AnalyticsProvider } from './analytics.service';
-import { ImgServerUrlyPipe } from '@pipes/.';
-import { ImgServerSrcsettifyPipe } from '@pipes/.';
-import { SafeUrlPipe } from '@pipes/.';
-import { SearchPipe } from '@pipes/.';
-import { KeysPipe } from '@pipes/.';
+import { 
+  SafeUrlPipe,
+  SearchPipe,
+  KeysPipe,
+  IconPathForContactTypePipe,
+  ImgServerUrlyPipe,
+  ImgServerSrcsettifyPipe
+ } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 
@@ -23,7 +26,8 @@ const sharedModules = [
     ImgServerSrcsettifyPipe,
     SafeUrlPipe,
     SearchPipe,
-    KeysPipe
+    KeysPipe,
+    IconPathForContactTypePipe,
   ],
   providers: [
     MeuToastProvider,
@@ -35,6 +39,7 @@ const sharedModules = [
     SafeUrlPipe,
     SearchPipe,
     KeysPipe,
+    IconPathForContactTypePipe,
     sharedModules
   ]
 })
