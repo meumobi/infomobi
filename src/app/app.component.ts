@@ -49,7 +49,6 @@ export class MyApp implements OnInit, OnDestroy {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.translateService.setDefaultLang('en');
-      //this.translateService.use('pt'); 
       
       this.analyticsProvider.startTrackerWithId(ENV.analyticsTrackingId);
       this.nav.viewDidEnter.subscribe(
@@ -94,7 +93,9 @@ export class MyApp implements OnInit, OnDestroy {
   }
   
   ngOnDestroy() {
-    this.userProfileSubscription.unsubscribe();
+    if (this.userProfileSubscription) {
+      this.userProfileSubscription.unsubscribe();
+    }
   }
   
   logout() {
