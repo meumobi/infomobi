@@ -2,10 +2,10 @@ export interface Auth {
   success: boolean,
   token: string,
   message?: string,
-  visitor: User
+  visitor: AuthUser
 }
 
-export interface User {
+export interface AuthUser {
   first_name: string,
   last_name: string,
   email: string,

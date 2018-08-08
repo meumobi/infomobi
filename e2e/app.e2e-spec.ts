@@ -9,7 +9,7 @@ describe('App', () => {
 
   describe('default screen', () => {
     beforeEach(() => {
-      page.navigateTo('/#/');
+      page.navigateTo('/#/login');
     });
 
     it('should have a button saying login', () => {

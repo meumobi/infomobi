@@ -64,8 +64,8 @@ export class LoginPage {
       this.analytics.trackEvent('Login', 'Submit', 'Success');
       this.translateService.get('LOGIN.USER_WELCOME', {displayName: response.visitor.first_name}).subscribe(
         value => {
-          this.navCtrl.setRoot('HomePage');
           this.meuToastService.present(value);
+          this.navCtrl.setRoot('HomePage');
         }
       )
     })
