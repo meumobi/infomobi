@@ -6,7 +6,7 @@
     </ng-template>
   </ion-card-content>
   <ion-row no-padding *ngIf="admin">
-      <button item-end ion-button (click)="pushDetailsPage('DeskFormPage', contact._id)">{{'Edit account' | translate}}</button>
+      <button item-end ion-button (click)="pushDetailsPage('DeskFormPage', contact._id)">{{'Edit Account' | translate}}</button>
     </ion-row>
   <ion-list>
     <a *ngFor="let option of contact.options | keys" ion-item>

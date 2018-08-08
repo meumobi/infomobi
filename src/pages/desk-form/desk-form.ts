@@ -47,7 +47,7 @@ export class DeskFormPage {
   
   addOption() {
     let alert = this.alertCtrl.create({
-      title: this.translateService.instant('New contact'),
+      title: this.translateService.instant('New Field'),
       inputs: [
         {
           name: 'key',
