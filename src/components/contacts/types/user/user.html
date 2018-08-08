@@ -8,7 +8,7 @@
     <h3>{{contact.title}}</h3>
   </ion-card-content>
   <ion-row no-padding *ngIf="admin">
-    <button item-end ion-button (click)="pushDetailsPage('UserFormPage', contact.id)">{{'Edit account' | translate}}</button>
+    <button item-end ion-button (click)="pushDetailsPage('UserFormPage', contact._id)">{{'Edit account' | translate}}</button>
   </ion-row>
   <ion-list>
     <a href="mailto:{{contact.email}}" ion-item>
