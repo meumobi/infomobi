@@ -56,14 +56,14 @@ export class DeskFormPage {
       ],
       buttons: [
         {
-          text: this.translateService.instant('Cancel'),
-        },
-        {
           text: this.translateService.instant('Save'),
           handler: (data) => {
             console.log(data);
             this.options.push(data.key);
           }
+        },
+        {
+          text: this.translateService.instant('Cancel'),
         }
       ]
     });
