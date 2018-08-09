@@ -1,5 +1,5 @@
 import { Page } from './app.po';
-browser.waitForAngularEnabled(false);
+
 describe('App', () => {
   let page: Page;
 
