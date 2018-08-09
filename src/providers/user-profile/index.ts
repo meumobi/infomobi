@@ -1,2 +1,2 @@
-// export * from './user-profile.service';
-export * from './user-profile.service-mock';
+export * from './user-profile.service';
+// export * from './user-profile.service-mock';
