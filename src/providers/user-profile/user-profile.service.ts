@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import * as firebase from 'firebase';
 
 import { UserProfile } from '@models/contact-profile';
@@ -10,7 +10,7 @@ import { AuthUser } from '@models/auth.interface';
 export class UserProfileService {
   
   private itemsCollection: AngularFirestoreCollection<UserProfile>;
-  public current$ = new Subject<UserProfile>();
+  public current$ = new BehaviorSubject<UserProfile>(new UserProfile());
   
   constructor(private af: AngularFirestore) {}  
   

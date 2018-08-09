@@ -30,6 +30,7 @@ export class UserProfile extends ContactProfile {
 
   constructor() {
     super('user');
+    this.options = {};
   }
 }
 
@@ -38,5 +39,6 @@ export class DeskProfile extends ContactProfile {
   
   constructor() {
     super('desk');
+    this.options = {};
   }
 }
