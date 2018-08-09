@@ -34,8 +34,5 @@ export class ContactsService {
 
   update(contact): Promise<any> {
     return Promise.resolve(contact);
-  }
-  
+  } 
 }
-
-

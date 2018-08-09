@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { UserProfile, ContactProfile } from '@models/contact-profile';
+import { UserProfile } from '@models/contact-profile';
 import { TranslateService } from '@ngx-translate/core';
 import { ContactsService } from '@providers/contacts';
 import { UserProfileService } from '@providers/user-profile';
@@ -12,7 +12,7 @@ import { UserProfileService } from '@providers/user-profile';
 })
 export class UserFormPage {
   id: string;
-  user: ContactProfile;
+  user: UserProfile | any; //any for tests
   images = [];
   files: Array<any>;
   uploadFinished = true;
