@@ -23,6 +23,7 @@ import { DynamicLinksProvider } from '@providers/dynamic-links';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { ENV } from '@env';
 import { AuthService } from '@providers/auth';
 import { ApiService } from '@providers/api';
@@ -42,6 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     AngularFireModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
       name: 'storage_db',
@@ -82,4 +84,5 @@ export function createTranslateLoader(http: HttpClient) {
     UserProfileService
   ]
 })
+
 export class AppModule {}

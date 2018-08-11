@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase';
+import { Query } from '@firebase/firestore-types';
 import { ContactProfile } from '@models/contact-profile';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class ContactsService {
   search(term): Observable<ContactProfile[]> {
     this.itemsCollection = this.af.collection<ContactProfile>('contacts',
     ref => {
-      let query : firebase.firestore.Query = ref;
+      let query : Query = ref;
       query = query.where('isPublished', '==', true);
       query = query.orderBy('displayName', 'asc');
       return query;

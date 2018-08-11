@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import * as firebase from 'firebase/app';
-import 'firebase/storage'
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Injectable()
 export class UploadProvider {
 
-  constructor() {}
+  constructor(
+    private storage: AngularFireStorage
+  ) {}
 
   private guid() {
     let s4 = () => {
@@ -20,13 +21,12 @@ export class UploadProvider {
 
   create(file) {
     let fileName = this.guid();
-    let storageRef = firebase.storage().ref();      
+    let storageRef = this.storage.ref('');
     let uploadTask = storageRef.child(`${fileName}`).put(file);
     return uploadTask.then(
-      (snapshot) => {     
-        return snapshot.downloadURL; 
+      (snapshot) => {
+        return snapshot.downloadURL;
       }
-    );       
-  }  
-
+    );
+  }
 }

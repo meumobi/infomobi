@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { BehaviorSubject } from "rxjs";
-import * as firebase from 'firebase';
+import { Query } from '@firebase/firestore-types';
 
 import { UserProfile } from '@models/contact-profile';
 import { AuthUser } from '@models/auth.interface';
@@ -39,7 +39,7 @@ export class UserProfileService {
   public fetchByEmail(email: string) {
     this.itemsCollection = this.af.collection<UserProfile>('contacts',
       ref => {
-        let query : firebase.firestore.Query = ref;
+        let query : Query = ref;
         query = query.where('email', '==', email);
         return query;
       }
