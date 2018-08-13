@@ -1,5 +1,6 @@
 import { Page } from './app.po';
-
+import { browser} from 'protractor';
+browser.waitForAngularEnabled(false);
 describe('App', () => {
   let page: Page;
 
@@ -8,7 +9,7 @@ describe('App', () => {
   });
 
   describe('default screen', () => {
-    beforeEach(() => {
+    beforeEach(() => {      
       page.navigateTo('/#/login');
     });
 
