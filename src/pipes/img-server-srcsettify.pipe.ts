@@ -23,14 +23,16 @@ export class ImgServerSrcsettifyPipe implements PipeTransform {
   sizes = [2048, 1024, 800];
 
   transform(src: string) {
+    let onServer = false;
     for (let source in ENV.imgServer.sources) {
       const prefix = ENV.imgServer.sources[source].prefix;
       if (src.startsWith(prefix)) {
         src = src.replace(prefix, source);
+        onServer = true;
       }
     }    
     return this.sizes.map((width) => {
-      return ENV.imgServer.url + src + "?width=" + width + " " + width + "w"
+      return (onServer) ? ENV.imgServer.url + src + "?width=" + width + " " + width + "w" : src;
     }).toString();
   }
 }
