@@ -4,6 +4,7 @@ import { Comment } from '@models/comment';
 import { Post } from '@models/post.interface';
 import { NavController } from 'ionic-angular';
 import { Contact } from '@models/contact.interface';
+import { UserProfileService } from '@providers/user-profile';
 
 @Component({
   selector: 'comment-form',
@@ -20,21 +21,12 @@ export class CommentFormComponent {
 
   constructor(
     private commentsProvider: CommentsProvider,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private userProfile: UserProfileService
   ) {}
 
   ngOnInit() {
-    this.author = {
-      id: "4",
-      firstName: "Jennifer",
-      displayName: "Jennifer Wu",
-      lastName: "Wu",
-      title: "Senior Broker",
-      landlinePhone: "617-244-3672",
-      mobilePhone: "617-244-3672",
-      email: "jen@ionicrealty.com",
-      picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jennifer_wu.jpg"
-    }
+    this.author = this.userProfile.current$.value;
     this.comment = new Comment("Message");
     this.comment.data["author"] = this.author;
     

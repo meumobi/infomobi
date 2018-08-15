@@ -88,12 +88,12 @@ export class UserFormPage {
   
   onSubmit() {
     if (this.newProfile) {
-      this.contactsService.create(this.user);
+      this.contactsService.create(this.user)
+      .then(() => this.navCtrl.pop());
     } else {
-      this.contactsService.update(this.user);      
+      this.contactsService.update(this.user)
+      .then(() => this.navCtrl.pop());
     }
-    console.log(this.user);
-    // this.navCtrl.pop();
   }
 
   cancel() {

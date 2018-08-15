@@ -3,7 +3,7 @@ import 'rxjs/add/operator/map';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Comment } from '@models/comment';
-import * as firebase from 'firebase';
+import { Query } from '@firebase/firestore-types';
 
 @Injectable()
 export class CommentsProvider {
@@ -16,7 +16,7 @@ export class CommentsProvider {
   search(filters, lastItem = null): Observable<Comment[]> {
     this.itemsCollection = this.af.collection<Comment>('comments',
       ref => {
-        let query : firebase.firestore.Query = ref;
+        let query : Query = ref;
         query = query.where('isPublished', '==', filters.isPublished);
         query = query.where('channel', '==', filters.channel);
         query = query.orderBy('published', 'desc');

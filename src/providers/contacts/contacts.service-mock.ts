@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import contacts from './mock-contacts';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ContactsService {
@@ -34,8 +34,5 @@ export class ContactsService {
 
   update(contact): Promise<any> {
     return Promise.resolve(contact);
-  }
-  
+  } 
 }
-
-

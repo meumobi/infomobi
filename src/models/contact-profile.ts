@@ -9,12 +9,14 @@ export class ContactProfile {
   modified: number;
   isPublished: boolean = true;
   domain: string;
+  options: Object;
   
   constructor(type: string) {
     this.type = type;
     this.created = Date.now();
     this.published = Date.now();
     this.modified = Date.now();
+    this.isPublished = true;
   }
 }
 
@@ -26,7 +28,6 @@ export class UserProfile extends ContactProfile {
   role: string = 'user';
   preferredLanguage: string = 'pt';
   lastLogin: number;
-  options: Object // options: {landlinePhone: "", mobilePhone: "", skype: ""}
 
   constructor() {
     super('user');
@@ -35,7 +36,6 @@ export class UserProfile extends ContactProfile {
 }
 
 export class DeskProfile extends ContactProfile {
-  options: Object;
   
   constructor() {
     super('desk');

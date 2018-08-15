@@ -22,12 +22,14 @@ import { ENV } from '@env';
 export class ImgServerUrlyPipe implements PipeTransform {
   
   transform(src: string, width = 1024) {
+    let onServer = false;
     for (let source in ENV.imgServer.sources) {
       const prefix = ENV.imgServer.sources[source].prefix;
       if (src.startsWith(prefix)) {
         src = src.replace(prefix, source);
+        onServer = true;
       } 
     }    
-    return ENV.imgServer.url + src + "?width=" + width
+    return (onServer) ? ENV.imgServer.url + src + "?width=" + width : src;
   }
 }
