@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Post } from '@models/post.interface';
-import { PostsProvider } from '@providers/posts';
+import { PostsService } from '@providers/posts';
 
 /**
  * Generated class for the PostsPage page.
@@ -26,7 +26,7 @@ export class PostsPage {
   fakePosts: Array<any> = new Array(5);
 
   constructor(
-    private postsProvider: PostsProvider,
+    private postsService: PostsService,
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
@@ -36,7 +36,7 @@ export class PostsPage {
   }
 
   listArticles(refresher = null) {
-    this.postsProvider.findAll()
+    this.postsService.findAll()
     .then(
       data => {
         this.posts = data;

@@ -1,28 +1,28 @@
 export interface Post {
 
   _id: string,
-  title: string,
-  description: string,
-  pubdate?: number,
-  link: string,
-  parent_id: number,
-  images?: Array<any>,
-  thumbnails?: Array<any>,
-  medias: Array<any>,
-  type: string,
   author: string,
+  description: string,
+  images?: Array<any>,
+  link: string,
+  medias: Array<any>,
+  parent_id: number,
+  pubdate?: number,
+  thumbnails?: Array<any>,
+  title: string,
+  type: string,
 
   /*
     TODO: check if following fields could be removed
   */
-  order: number,
   created: number,
-  modified: number,
-  published: number,
-  is_published?: boolean,
-  groups: Array<any>,
-  notification_id: string,
-  guid: string,
   format?: string,
+  groups: Array<any>,
+  guid: string,
+  is_published?: boolean,
+  modified: number,
+  notification_id: string,
+  order: number,
+  published: number,
   site_id: number
 }
