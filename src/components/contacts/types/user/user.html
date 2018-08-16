@@ -1,20 +1,26 @@
 <ion-card>
   <ion-card-content>
-    <img src="{{contact.picture}}" />
+    <img src="{{ contact.picture }}" *ngIf="contact.picture; else anonymous" />
+    <ng-template #anonymous>
+      <img src="{{ contact.type | iconPathForContactType }}"/>
+    </ng-template>
     <h2>{{contact.firstName}} {{contact.lastName}}</h2>
     <h3>{{contact.title}}</h3>
   </ion-card-content>
+  <ion-row no-padding *ngIf="admin">
+    <button item-end ion-button (click)="pushDetailsPage('UserFormPage', contact._id)">{{'Edit Account' | translate}}</button>
+  </ion-row>
   <ion-list>
     <a href="mailto:{{contact.email}}" ion-item>
       <ion-icon name="mail" item-left></ion-icon>
       <p>Email</p>
       <h2>{{contact.email}}</h2>
     </a> 
-    <a ion-item>
-        <ion-icon name="calendar" item-left></ion-icon>
-        <p>{{'Birthday' | translate}}</p>
-        <h2>{{contact.birthdate}}</h2>
-      </a> 
+    <ion-item *ngIf="contact.birthdate">
+      <ion-icon name="calendar" item-left></ion-icon>
+      <p>{{'Birthday' | translate}}</p>
+      <h2>{{contact.birthdate}}</h2>
+    </ion-item> 
     <a *ngFor="let option of contact.options | keys" ion-item>
       <p>{{ option.key | translate }}</p>
       <h2>{{ option.value }}</h2>

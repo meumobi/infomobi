@@ -33,11 +33,13 @@ export class ContactDetailsPage implements OnInit {
     public navParams: NavParams,
     private componentFactoryResolver: ComponentFactoryResolver
   ) {
-    this.id = this.navParams.data.id;    
+    this.id = this.navParams.data.id;   
+    console.log(this.id); 
+    this.findById(this.id);
   }
 
   ngOnInit(){
-    this.findById(this.id);
+  
   }
 
   ionViewDidLoad() {

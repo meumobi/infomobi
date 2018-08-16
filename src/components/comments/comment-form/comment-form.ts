@@ -4,6 +4,7 @@ import { Comment } from '@models/comment';
 import { Post } from '@models/post.interface';
 import { NavController } from 'ionic-angular';
 import { Contact } from '@models/contact.interface';
+import { UserProfileService } from '@providers/user-profile';
 
 @Component({
   selector: 'comment-form',
@@ -20,20 +21,12 @@ export class CommentFormComponent {
 
   constructor(
     private commentsProvider: CommentsProvider,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private userProfile: UserProfileService
   ) {}
 
   ngOnInit() {
-
-
-    
-    this.author = {
-      id: "11",
-      firstName: "Anna Carolina",
-      displayName: "Anna Carolina Pacheco",
-      lastName: "Pacheco",
-      picture: "https://firebasestorage.googleapis.com/v0/b/ion-employee.appspot.com/o/carol.png?alt=media&token=d8ae50b2-9d27-4f90-bfe1-256b99a59ae2"
-    }
+    this.author = this.userProfile.current$.value;
     this.comment = new Comment("Message");
     this.comment.data["author"] = this.author;
     
