@@ -10,6 +10,8 @@ import { UserProfileService } from '@providers/user-profile';
 import { ENV } from '@env';
 import { Observable, Subscription } from "rxjs";
 import { Auth } from '@models/auth.interface';
+import { Category } from '@models/categories.interface';
+import { CategoriesService } from '@providers/categories';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,6 +21,7 @@ export class MyApp implements OnInit, OnDestroy {
   
   rootPage: string = 'HomePage';
   pages: Array<{title: string, component: any}>;
+  categories: Array<Category>;
   authData$ : Observable<Auth>;
   userProfileSubscription: Subscription;
   
@@ -31,13 +34,13 @@ export class MyApp implements OnInit, OnDestroy {
     private authService: AuthService,
     private authDataPersistenceService: AuthDataPersistenceService,
     private userProfileService: UserProfileService,
+    private categoriesService: CategoriesService
   ) {
     this.initializeApp();
     
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: 'HomePage' },
-      { title: 'List', component: 'PostsPage' },
     ];
     console.log("Env is production ? " + ENV.production);
 
@@ -62,6 +65,12 @@ export class MyApp implements OnInit, OnDestroy {
   }
   
   ngOnInit() {
+    this.categoriesService.findAll()
+    .then(
+      data => {
+        this.categories = data;
+      }
+    )
     this.authData$.subscribe( authData => {
       if (authData) {
         this.userProfileSubscription = this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
@@ -101,6 +110,17 @@ export class MyApp implements OnInit, OnDestroy {
   logout() {
     this.authService.signOut();
     this.userProfileSubscription.unsubscribe();
+  }
+
+  pushDetailsPage(page: string, id: string) {
+    if (id) {
+      this.nav.push(page, {
+        id: id,
+        rootNavCtrl: this.nav
+      });
+    } else {
+      console.log("missing id of author");
+    }
   }
   
   openPage(pageComponent, push = true) {

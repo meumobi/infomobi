@@ -4,7 +4,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>posts</ion-title>
+    <ion-title *ngIf="category">{{'Posts' | translate}}>{{category.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>

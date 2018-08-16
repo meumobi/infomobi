@@ -1,5 +1,5 @@
 export interface Category {
-  id: string,
+  id: number,
   site_id: string,
   type: string,
   title: string,
