@@ -6,7 +6,7 @@ import { Category } from '@models/categories.interface';
 @Injectable()
 export class CategoriesService {
 
-  findAll(): Promise<any[]>  {
+  findAll(): Promise<Category[]>  {
     let data = categories.filter(
       category => category.visibility == 1
     )
@@ -22,5 +22,4 @@ export class CategoriesService {
     let data = Utils.lookup(categories);
     return Promise.resolve(data[id].title);
   }
-
 }
