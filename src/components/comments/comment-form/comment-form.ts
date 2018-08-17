@@ -13,8 +13,6 @@ import { UserProfileService } from '@providers/user-profile';
 export class CommentFormComponent {
   @Input('post') post: Post; 
   comment: Comment;
-
-  images = [];
   files:Array<any>;
   uploadFinished = true;
   author: Contact;

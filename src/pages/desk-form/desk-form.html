@@ -36,7 +36,7 @@
     </ion-list>
     <ion-row>
       <ion-col>
-        <button ion-button type="submit" block>{{'Save' | translate}}</button>
+        <button ion-button type="submit" [disabled]="!uploadFinished" block>{{'Save' | translate}}</button>
       </ion-col>
       <ion-col>
         <button ion-button type="button" (click)="cancel()">{{'Cancel' | translate}}</button>

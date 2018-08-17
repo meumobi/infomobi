@@ -13,7 +13,6 @@ import { UserProfileService } from '@providers/user-profile';
 export class UserFormPage {
   id: string;
   user: UserProfile | any; //any for tests
-  images = [];
   files: Array<any>;
   uploadFinished = true;
   options: Array<string> = [];

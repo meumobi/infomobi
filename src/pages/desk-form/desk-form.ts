@@ -12,7 +12,6 @@ import { ContactsService } from '@providers/contacts';
 export class DeskFormPage {
   id: string;
   desk: DeskProfile;
-  images = [];
   files: Array<any>;
   uploadFinished = true;
   options: Array<string> = [];
