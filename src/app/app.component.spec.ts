@@ -8,6 +8,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AnalyticsProvider } from '../shared/analytics.service';
 import { AuthService } from '../providers/auth/auth.service';
 import { AuthService as AuthMock } from '../providers/auth/auth.service-mock';
+
+import { CategoriesService } from '../providers/categories/categories.service-mock';
+import { CategoriesService as CategoriesMock } from '../providers/categories/categories.service-mock';
+
 import { AuthDataPersistenceService } from '../providers/auth-data-presistence/auth-data-persistence.service';
 import { AuthDataPersistenceService as AuthDataPersistenceMock} from '../providers/auth-data-presistence/auth-data-persistence.service-mock';
 import { UserProfileService } from '../providers/user-profile/user-profile.service';
@@ -49,6 +53,7 @@ describe('MyApp Component', () => {
         { provide: StatusBar, useClass: StatusBarMock },
         { provide: SplashScreen, useClass: SplashScreenMock },
         { provide: Platform, useClass: PlatformMock },
+        { provide: CategoriesService, useClass: CategoriesMock },
         { provide: AnalyticsProvider, useClass: AnalyticsMock },
         { provide: AuthService, useClass: AuthMock },
         { provide: UserProfileService, useClass: UserProfileMock },
@@ -66,7 +71,7 @@ describe('MyApp Component', () => {
     expect(component instanceof MyApp).toBe(true);
   });
 
-  it('should have two pages', () => {
-    expect(component.pages.length).toBe(2);
+  it('should have one page', () => {
+    expect(component.pages.length).toBe(1);
   });
 });

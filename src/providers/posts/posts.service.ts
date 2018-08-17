@@ -20,4 +20,8 @@ export class PostsService  {
   findAll():Promise<Post[]> {
     return this.apiService.fetchLatestItems();
   }
+
+  findByCategory(id: number): Promise<Post[]> {
+    return this.apiService.fetchItemsByCategory(id);
+  }
 }

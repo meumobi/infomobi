@@ -30,6 +30,7 @@ import { ApiService } from '@providers/api';
 import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 import { UserProfileService } from '@providers/user-profile';
 import { ContactsService } from '@providers/contacts';
+import { CategoriesService } from '@providers/categories/';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -81,7 +82,8 @@ export function createTranslateLoader(http: HttpClient) {
     ApiService,
     ContactsService,
     AuthDataPersistenceService,
-    UserProfileService
+    UserProfileService,
+    CategoriesService
   ]
 })
 
