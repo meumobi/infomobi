@@ -29,7 +29,7 @@ export class ApiService {
     );
   }
 
-  fetchItemsByCategory(id: string): Promise<any[]> {
+  fetchItemsByCategory(id: number): Promise<any[]> {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
