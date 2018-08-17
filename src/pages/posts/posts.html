@@ -1,12 +1,12 @@
 <ion-header *ngIf="categoryId">
-
+  
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>posts</ion-title>
+    <ion-title *ngIf="category">{{'Posts' | translate}}>{{category.title}}</ion-title>
   </ion-navbar>
-
+  
 </ion-header>
 
 <ion-content>
@@ -15,11 +15,23 @@
   </ion-refresher>
   <ion-row wrap *ngIf="posts">
     <ion-col *ngFor="let post of posts" col-12 col-md-4>
-      <ion-card (click)="pushDetailsPage('PostDetailsPage', post._id)">
-        <img *ngIf="post.thumbnails" [src]="post.thumbnails[post.thumbnails.length-1].url"  />          
-        <ion-card-content>
-          <h1>{{post.title}}</h1>
-        </ion-card-content>
+      <ion-card>
+        <div (click)="pushDetailsPage('PostDetailsPage', post._id)">
+          <img *ngIf="post.thumbnails" [src]="post.thumbnails[post.thumbnails.length-1].url"  />          
+          <ion-card-content>
+            <h1>{{post.title}}</h1>
+          </ion-card-content>
+        </div>
+        <ion-row>
+          <ion-col>
+            <category-label [id]="post.parent_id"></category-label>
+          </ion-col>
+          <ion-col center text-center>
+            <ion-note>
+              {{post.published | amFromUnix | amTimeAgo}}
+            </ion-note>
+          </ion-col>
+        </ion-row>
       </ion-card>
     </ion-col>
   </ion-row>
