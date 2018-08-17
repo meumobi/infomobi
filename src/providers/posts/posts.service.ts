@@ -21,7 +21,7 @@ export class PostsService  {
     return this.apiService.fetchLatestItems();
   }
 
-  findByCategory(id): Promise<Post[]> {
-    return this.apiService.fetchLatestItems();
+  findByCategory(id: string): Promise<Post[]> {
+    return this.apiService.fetchItemsByCategory(id);
   }
 }
