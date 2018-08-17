@@ -1,11 +1,11 @@
 <ion-item-sliding #item>
   <ion-item>    
     <h2>{{comment.data.title}}</h2>
-    <img [src]="comment.data.picture" imageViewer/>
+    <img [src]="comment.data.picture | imgServerUrly" imageViewer/>
     <ion-row wrap>
       <ion-col *ngFor="let contact of comment.data.contacts" col-12 col-md-4>
         <ion-card (click)="pushDetailsPage('ContactDetailsPage', contact.id)">
-          <img [src]="contact.picture"/>
+          <img [src]="contact.picture | imgServerUrly"/>
           <ion-card-content>
             <h2>
               {{contact.displayName}}

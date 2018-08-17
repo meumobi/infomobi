@@ -16,7 +16,7 @@
   <ion-row wrap *ngIf="posts">
     <ion-col *ngFor="let post of posts" col-12 col-md-4>
       <ion-card (click)="pushDetailsPage('PostDetailsPage', post._id)">
-        <img *ngIf="post.thumbnails" [src]="post.thumbnails[post.thumbnails.length-1].url"  />          
+        <img *ngIf="post.thumbnails" [src]="post.thumbnails[post.thumbnails.length-1].url | imgServerUrly"  />          
         <ion-card-content>
           <h1>{{post.title}}</h1>
         </ion-card-content>
