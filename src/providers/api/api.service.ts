@@ -29,6 +29,25 @@ export class ApiService {
     );
   }
 
+  fetchItemsByCategory(id: number): Promise<any[]> {
+    const httpOptions = {
+      headers: {
+        'Accept':  'application/json',
+        'X-Visitor-Token': '94086d89cce67659fe83eb72a548cd5707e6a800'
+      }
+    };
+    
+    const url = ENV.meumobi.apiUrl + `/api/katrium.meumobi.com/categories/${id}/items`;
+    
+    return this.http.get(url, httpOptions).toPromise()
+    .then(
+      (res: any) => {
+        return res.items;
+      }
+    );
+  }
+
+
   fetchItemById(id: string): Promise<any> {
     const httpOptions = {
       headers: {

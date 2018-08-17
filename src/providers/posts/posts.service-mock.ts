@@ -16,4 +16,11 @@ export class PostsService {
     return Promise.resolve(data[id]);
   }
 
+  findByCategory(id): Promise<Post[]> {
+    const data = posts.items.filter(
+      post => post.parent_id == id
+    )
+    return Promise.resolve(data);
+  }
+
 }

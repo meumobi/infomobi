@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SharedModule } from '@shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 import { PostsPage } from './posts';
+import { CategoryLabelModule } from '@components/category-label/category-label.module';
+import { SharedModule } from '@shared/shared.module';
 import { PostsService } from '@providers/posts';
 
 @NgModule({
@@ -10,6 +12,8 @@ import { PostsService } from '@providers/posts';
   ],
   imports: [
     IonicPageModule.forChild(PostsPage),
+    TranslateModule.forChild(),
+    CategoryLabelModule,
     SharedModule
   ],
   providers: [
