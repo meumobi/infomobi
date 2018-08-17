@@ -5,19 +5,19 @@ import Utils from '@shared/utils';
 import { Post } from '@models/post.interface';
 
 @Injectable()
-export class PostsProvider {
+export class PostsService {
 
-  findAll() {
-    return Promise.resolve(posts);
+  findAll():Promise<Post[]> {
+    return Promise.resolve(posts.items);
   }
 
-  findById(id) {
-    const data = Utils.lookup(posts);
+  findById(id):Promise<Post> {
+    let data = Utils.lookup(posts.items);
     return Promise.resolve(data[id]);
   }
 
   findByCategory(id): Promise<Post[]> {
-    const data = posts.filter(
+    const data = posts.items.filter(
       post => post.parent_id == id
     )
     return Promise.resolve(data);

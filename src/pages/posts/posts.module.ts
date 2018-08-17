@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { PostsPage } from './posts';
-import { PostsProvider } from '@providers/posts';
 import { CategoryLabelModule } from '@components/category-label/category-label.module';
 import { SharedModule } from '@shared/shared.module';
+import { PostsService } from '@providers/posts';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { SharedModule } from '@shared/shared.module';
     SharedModule
   ],
   providers: [
-    PostsProvider
+    PostsService
   ],
   entryComponents: [
   	PostsPage

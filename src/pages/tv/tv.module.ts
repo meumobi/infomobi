@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { TvPage } from './tv';
 import { SharedModule } from '@shared/shared.module';
-import { PostsProvider } from '@providers/posts';
+import { PostsService } from '@providers/posts';
 import { CommentsModule } from '@components/comments/comments.module';
 
 
@@ -16,7 +16,7 @@ import { CommentsModule } from '@components/comments/comments.module';
     CommentsModule
   ],
   providers: [
-    PostsProvider
+    PostsService
   ]
 })
 export class TvPageModule {}

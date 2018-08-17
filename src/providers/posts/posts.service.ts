@@ -1,17 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Post } from '@models/post.interface';
+import { ApiService } from '@providers/api';
 
-/*
-  Generated class for the PostsProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
-export class PostsProvider {
-
-  constructor(public http: HttpClient) {
+export class PostsService  {
+  
+  constructor(
+    public http: HttpClient,
+    public apiService: ApiService,
+  ) {
     console.log('Hello PostsProvider Provider');
   }
 
+  findById(id: string):Promise<Post> {
+    return this.apiService.fetchItemById(id);
+  }
+  
+  findAll():Promise<Post[]> {
+    return this.apiService.fetchLatestItems();
+  }
+
+  findByCategory(id): Promise<Post[]> {
+    return this.apiService.fetchLatestItems();
+  }
 }

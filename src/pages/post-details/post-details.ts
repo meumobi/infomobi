@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Post } from '@models/post.interface';
-import { PostsProvider } from '@providers/posts';
+import { PostsService } from '@providers/posts';
 
 @IonicPage({
   segment: 'post/details/:id',
@@ -19,7 +19,7 @@ export class PostDetailsPage {
   post: Post;
 
   constructor(
-    private postsProvider: PostsProvider,
+    private postsService: PostsService,
     public rootNavCtrl: NavController, 
     public navParams: NavParams,
   ) {
@@ -30,8 +30,10 @@ export class PostDetailsPage {
   }
   
   findById(id) {
-    this.postsProvider.findById(id)
+    console.log(id);
+    this.postsService.findById(id)
       .then(data => {
+        console.log(data);
         this.post = data;
       })
   }
