@@ -119,7 +119,7 @@ export class MyApp implements OnInit, OnDestroy {
         rootNavCtrl: this.nav
       });
     } else {
-      console.log("missing id of author");
+      console.log("missing id");
     }
   }
   
