@@ -11,6 +11,7 @@ import { MediumDetailsComponent } from '@components/medium-details/medium-detail
 import { MediumControlsComponent } from '@components/medium-controls/medium-controls';
 import { NgMathPipesModule } from 'angular-pipes';
 import { CommentsModule } from '@components/comments/comments.module';
+import { CategoryLabelModule } from '@components/category-label/category-label.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CommentsModule } from '@components/comments/comments.module';
     IonicPageModule.forChild(PostDetailsPage),
     SharedModule,
     CommentsModule,
+    CategoryLabelModule,
     TranslateModule.forChild()
   ],
   providers: [

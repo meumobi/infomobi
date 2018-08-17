@@ -4,7 +4,7 @@
 </ion-header>
 
 <ion-fab bottom right>
-    <button ion-fab mini (click)="comments.addComment()"><ion-icon name="create"></ion-icon></button>
+  <button ion-fab mini (click)="comments.addComment()"><ion-icon name="create"></ion-icon></button>
 </ion-fab>
 <ion-content padding *ngIf="post">
   <h2>{{post.title}}</h2>
@@ -17,6 +17,16 @@
           <div class="img-title">{{image.title}}</div>
         </ion-slide>
       </ion-slides>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <category-label [id]="post.parent_id"></category-label> 
+    </ion-col>
+    <ion-col center text-center>
+      <ion-note>
+          {{post.published | amFromUnix | amTimeAgo}}
+      </ion-note>
     </ion-col>
   </ion-row>
   <media-list [media]="post.medias"></media-list>
