@@ -8,6 +8,7 @@
   <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p.component, false)">
+        <ion-icon item-start *ngIf="p.icon" name="{{p.icon}}"></ion-icon>
         {{p.title}}
       </button>
     </ion-list>
@@ -18,12 +19,15 @@
     </ion-list>
     <ion-list>
       <button menuClose ion-item (click)="openPage('SettingsPage')">
+        <ion-icon item-start name="settings"></ion-icon>
         {{'Settings' | translate}}
       </button>
       <button menuClose ion-item (click)="openPage('UserFormPage')">
+        <ion-icon item-start name="contact"></ion-icon>
         {{'My account' | translate}}
       </button>
       <button menuClose ion-item (click)="logout()">
+        <ion-icon item-start name="log-out"></ion-icon>
         {{'Logout' | translate}}
       </button>
     </ion-list>
