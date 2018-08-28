@@ -49,7 +49,10 @@ export class CommentsComponent {
   }
 
   loadMore(infinite) {
-    if (this.finished) return;
+    if (this.finished || this.comments.length == 0) {
+      infinite.complete();
+      return;
+    }
     this.analytics.trackEvent('Comments', 'Load More', this.filters);
     const lastItem = this.comments[this.comments.length-1];
     this.commentsProvider.search(this.filters, lastItem).subscribe(
