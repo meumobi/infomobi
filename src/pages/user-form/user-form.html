@@ -10,15 +10,15 @@
     <ion-list>
       <ion-item>
         <ion-label color="primary" stacked>{{'First Name' | translate}}</ion-label>
-        <ion-input type="text" name="firstName" [(ngModel)]="user.firstName" [readonly]="!newProfile"></ion-input>
+        <ion-input type="text" name="firstName" [(ngModel)]="user.firstName" [disabled]="!newProfile"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked>{{'Last Name' | translate}}</ion-label>
-        <ion-input type="text" name="lastName" [(ngModel)]="user.lastName" [readonly]="!newProfile"></ion-input>
+        <ion-input type="text" name="lastName" [(ngModel)]="user.lastName" [disabled]="!newProfile"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked>{{'Email' | translate}}</ion-label>
-        <ion-input type="text" name="email" [(ngModel)]="user.email" [readonly]="!newProfile"></ion-input>
+        <ion-input type="text" name="email" [(ngModel)]="user.email" [disabled]="!newProfile"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked>{{'Display Name' | translate}}</ion-label>
