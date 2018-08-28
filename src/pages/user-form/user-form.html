@@ -36,7 +36,7 @@
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked>{{'Birthday' | translate}}</ion-label>
-        <ion-input type="text" name="birthdate" placeholder="MM-DD" [(ngModel)]="user.birthdate"></ion-input>
+        <ion-datetime displayFormat="MMM DD YYYY" [monthShortNames]="monthShortNames"  name="birthdate" pickerFormat="D MMM YYYY" [(ngModel)]="user.birthdate"></ion-datetime>
       </ion-item>
     </ion-list>
     <ion-list>

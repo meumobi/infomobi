@@ -4,6 +4,7 @@ import { UserProfile } from '@models/contact-profile';
 import { TranslateService } from '@ngx-translate/core';
 import { ContactsService } from '@providers/contacts';
 import { UserProfileService } from '@providers/user-profile';
+import moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -17,6 +18,7 @@ export class UserFormPage {
   uploadFinished = true;
   options: Array<string> = [];
   newProfile = false;
+  monthShortNames: string;
   
   constructor(
     public navCtrl: NavController, 
@@ -35,6 +37,7 @@ export class UserFormPage {
   }
   
   ngOnInit(){
+    this.monthShortNames = moment.monthsShort().join(",");
     if (this.newProfile) {
       this.user = new UserProfile();
     } else {

@@ -12,13 +12,13 @@ import { Observable, Subscription } from "rxjs";
 import { Auth } from '@models/auth.interface';
 import { Category } from '@models/categories.interface';
 import { CategoriesService } from '@providers/categories';
+import  moment from 'moment';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp implements OnInit, OnDestroy {
   @ViewChild(Nav) nav: Nav;
-  
   rootPage: string = 'HomePage';
   pages: Array<{title: string, component: any, icon: string}>;
   categories: Array<Category>;
@@ -77,7 +77,8 @@ export class MyApp implements OnInit, OnDestroy {
           userProfile => {
             if (userProfile) { 
               if (userProfile.preferredLanguage) {
-                this.translateService.use(userProfile.preferredLanguage);
+                this.translateService.use(userProfile.preferredLanguage);  
+                moment.locale(userProfile.preferredLanguage);
               }
             } else {
               /*
