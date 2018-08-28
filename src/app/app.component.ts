@@ -20,7 +20,7 @@ export class MyApp implements OnInit, OnDestroy {
   @ViewChild(Nav) nav: Nav;
   
   rootPage: string = 'HomePage';
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
   categories: Array<Category>;
   authData$ : Observable<Auth>;
   userProfileSubscription: Subscription;
@@ -40,7 +40,7 @@ export class MyApp implements OnInit, OnDestroy {
     
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: 'HomePage' },
+      { title: 'Home', component: 'HomePage', icon: "home" },
     ];
     console.log("Env is production ? " + ENV.production);
 
