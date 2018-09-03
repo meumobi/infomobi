@@ -1,22 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the ArticlesComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'articles',
   templateUrl: 'articles.html'
 })
 export class ArticlesComponent {
-
-  text: string;
-
-  constructor() {
-    console.log('Hello ArticlesComponent Component');
-    this.text = 'Hello World';
+  @Input ("item") item;
+  rootNavCtrl: NavController;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+  ) {
+    this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
   }
 
+  pushDetailsPage(page: string, id: string) {
+    if (id) {
+      this.rootNavCtrl.push(page, {
+        id: id,
+        rootNavCtrl: this.rootNavCtrl
+      });
+    } else {
+      console.log("missing id of author");
+    }
+  }
 }

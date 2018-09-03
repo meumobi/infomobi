@@ -1,4 +1,18 @@
-<!-- Generated template for the ArticlesComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-card>
+  <div (click)="pushDetailsPage('PostDetailsPage', item._id)">
+    <img *ngIf="item.thumbnails" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly"  />          
+    <ion-card-content>
+      <h1>{{item.title}}</h1>
+    </ion-card-content>
+  </div>
+  <ion-row>
+    <ion-col>
+      <!-- <category-label [id]="post.parent_id"></category-label> -->
+    </ion-col>
+    <ion-col center text-center>
+      <ion-note>
+        {{item.published | amFromUnix | amTimeAgo}}
+      </ion-note>
+    </ion-col>
+  </ion-row>
+</ion-card>

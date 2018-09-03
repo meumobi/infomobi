@@ -1,4 +1,13 @@
-<!-- Generated template for the ItemsListComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-row wrap *ngIf="items">
+  <item-headline *ngFor="let item of items" [item]="item"></item-headline>
+</ion-row>
+<ion-row wrap *ngIf="!items">
+  <ion-col *ngFor="let item of fakeItems" col-12 col-md-4 class="fakeItems">
+    <ion-card>   
+      <div class="img-post"></div>    
+      <ion-card-content>
+        <h1></h1>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
