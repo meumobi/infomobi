@@ -20,7 +20,9 @@
 <ion-content no-bounce>
     <super-tabs [config]="{ sideMenu: 'left' }">
       <super-tab [root]="live" title="Ao Vivo"></super-tab>
-      <super-tab [root]="posts" title="Notícias"></super-tab>
+      <!-- TODO remove -->
+      <super-tab [root]="posts" title="Notícias"></super-tab> 
+      <super-tab [root]="items" title="Items"></super-tab>
       <super-tab [root]="contacts" title="Contatos"></super-tab>
     </super-tabs>
   </ion-content>

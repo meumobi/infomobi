@@ -1,18 +1,17 @@
-<!--
-  Generated template for the ItemsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
+<ion-header *ngIf="categoryId">  
   <ion-navbar>
-    <ion-title>items</ion-title>
-  </ion-navbar>
-
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="category">{{'Posts' | translate}}>{{category.title}}</ion-title>
+  </ion-navbar>  
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+  <ion-refresher (ionRefresh)="fetchItems($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-row>
+    <items-list [items]="items"></items-list>
+  </ion-row>
 </ion-content>
