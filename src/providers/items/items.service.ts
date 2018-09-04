@@ -1,27 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Post } from '@models/post.interface';
+import { Item } from '@models/item.interface';
 import { ApiService } from '@providers/api';
 
 @Injectable()
-export class PostsService  {
+export class ItemsService  {
   
   constructor(
     public http: HttpClient,
     public apiService: ApiService,
-  ) {
-    console.log('Hello PostsProvider Provider');
-  }
+  ) {}
 
-  findById(id: string):Promise<Post> {
+  fetchById(id: string):Promise<Item> {
     return this.apiService.fetchItemById(id);
   }
   
-  findAll():Promise<Post[]> {
+  fetchAll():Promise<Item[]> {
     return this.apiService.fetchLatestItems();
   }
 
-  findByCategory(id: number): Promise<Post[]> {
+  fetchByCategory(id: number): Promise<Item[]> {
     return this.apiService.fetchItemsByCategory(id);
   }
 }

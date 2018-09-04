@@ -11,10 +11,13 @@ import {
  } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { CategoryLabelModule } from '@components/category-label/category-label.module';
+
 
 const sharedModules = [
   MomentModule,
-  IonicImageViewerModule
+  IonicImageViewerModule,
+  CategoryLabelModule
 ];
 
 @NgModule({

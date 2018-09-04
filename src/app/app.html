@@ -13,7 +13,7 @@
       </button>
     </ion-list>
     <ion-list *ngIf="categories">
-        <button menuClose ion-item *ngFor="let category of categories" (click)="pushDetailsPage('PostsPage', category.id)">
+        <button menuClose ion-item *ngFor="let category of categories" (click)="pushDetailsPage('ItemsPage', category.id)">
           {{category.title}}
         </button>
     </ion-list>

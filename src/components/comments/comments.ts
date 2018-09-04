@@ -8,7 +8,7 @@ import {
 } from 'ionic-angular';
 
 import { AnalyticsProvider } from '@shared/analytics.service';
-import { Post } from '@models/post.interface';
+import { Item } from '@models/item.interface';
 
 @Component({
   selector: 'comments',
@@ -16,7 +16,7 @@ import { Post } from '@models/post.interface';
 })
 export class CommentsComponent {
   @Input('rootNavCtrl') rootNavCtrl: NavController;
-  @Input('post') post: Post;
+  @Input('item') item: Item;
   @ViewChild(Content) content: Content;
   comments: Comment[];
   fakeComments: Array<any> = new Array(5);
@@ -42,8 +42,8 @@ export class CommentsComponent {
   }
   
   ngOnInit() {
-    if (this.post) {
-      this.filters.channel = `post_${this.post._id}`;
+    if (this.item) {
+      this.filters.channel = `item_${this.item._id}`;
     } 
     this.getComments();
   }
@@ -86,11 +86,11 @@ export class CommentsComponent {
   }
   
   addComment() {
-    this.analytics.trackEvent('Comments', 'Add Comment', this.post);
+    this.analytics.trackEvent('Comments', 'Add Comment', this.item);
     this.author = true;
     this.rootNavCtrl.push(
       'comment-edit', {
-        post: this.post
+        post: this.item
       }
     );
   }

@@ -1,5 +1,5 @@
 <ion-row wrap *ngIf="items">
-  <item-headline *ngFor="let item of items" [item]="item"></item-headline>
+  <item-headline col-12 col-md-4 *ngFor="let item of items" [item]="item"></item-headline>
 </ion-row>
 <ion-row wrap *ngIf="!items">
   <ion-col *ngFor="let item of fakeItems" col-12 col-md-4 class="fakeItems">

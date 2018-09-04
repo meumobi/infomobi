@@ -3,7 +3,6 @@ import { IonicPageModule } from 'ionic-angular';
 import { ItemsPage } from './items';
 import { ItemsModule } from '@components/items/items.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { CategoryLabelModule } from '@components/category-label/category-label.module';
 import { SharedModule } from '@shared/shared.module';
 import { ItemsService } from '@providers/items';
 
@@ -16,10 +15,12 @@ import { ItemsService } from '@providers/items';
     ItemsModule,
     TranslateModule,
     SharedModule,
-    CategoryLabelModule,
   ],
   providers: [
     ItemsService,
+  ],
+  entryComponents: [
+    ItemsPage
   ]
 })
 export class ItemsPageModule {}
