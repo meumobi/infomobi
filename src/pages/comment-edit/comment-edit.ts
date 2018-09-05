@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Post } from '@models/post.interface';
+import { Item } from '@models/item.interface';
 
 @IonicPage({
 	name: 'comment-edit'
@@ -11,13 +11,13 @@ import { Post } from '@models/post.interface';
 })
 export class CommentEditPage {
 
-  post: Post;
+  item: Item;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
   ) {  
-    this.post = this.navParams.data.post;
+    this.item = this.navParams.data.item;
   }
 
   ionViewDidLoad() {

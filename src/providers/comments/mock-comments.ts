@@ -26,7 +26,7 @@ let comments = Observable.of([
     isPublished: true
   },
   {
-    channel: 'post_599ec8389a645d465c8b456d',
+    channel: 'item_599ec8389a645d465c8b456d',
     created: 1530873217112,
     data: {
       author: {
@@ -37,7 +37,7 @@ let comments = Observable.of([
         lastName: "Bittencourt", 
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
       },
-      postDetails: {
+      itemDetails: {
         id: "599ec8389a645d465c8b456d",
         title: "Incentive suas equipes para compartilhar promoções em suas próprias contas de mídia social"
       }, 

@@ -18,7 +18,7 @@ export class ItemsService {
 
   fetchByCategory(id): Promise<Item[]> {
     const data = items.items.filter(
-      post => post.parent_id == id
+      item => item.parent_id == id
     )
     return Promise.resolve(data);
   }

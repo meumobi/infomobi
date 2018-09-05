@@ -90,7 +90,7 @@ export class CommentsComponent {
     this.author = true;
     this.rootNavCtrl.push(
       'comment-edit', {
-        post: this.item
+        item: this.item
       }
     );
   }
