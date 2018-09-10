@@ -5,6 +5,7 @@ import { PollsComponent } from './types/polls/polls';
 import { ItemsListComponent } from './items-list/items-list';
 import { SharedModule } from '@shared/shared.module';
 import { IonicModule } from 'ionic-angular';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
     ItemHeadlineComponent,
@@ -14,6 +15,7 @@ import { IonicModule } from 'ionic-angular';
   ],
   imports: [
     IonicModule,
+    TranslateModule.forChild(),
     SharedModule
   ],
   exports: [

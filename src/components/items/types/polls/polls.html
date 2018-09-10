@@ -1,4 +1,48 @@
-<!-- Generated template for the PollsComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-card *ngIf="item">
+  <div>
+    <img *ngIf="item.thumbnails" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly" />          
+    <ion-card-content>
+      <h1>{{item.title}}</h1>
+    </ion-card-content>
+  </div>
+  <ion-row>
+    <ion-col>
+      <category-label [id]="item.parent_id"></category-label>
+    </ion-col>
+    <ion-col center text-center>
+      <ion-note>
+        {{item.published | amFromUnix | amTimeAgo}}
+      </ion-note>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="item.status == 'open'">
+    <ion-list radio-group>    
+      <ion-item *ngFor="let option of item.options">
+        <ion-label>{{option}}</ion-label>
+        <ion-radio></ion-radio>
+      </ion-item>
+    </ion-list>
+    <button ion-button block>{{'Vote' | translate}}</button>
+  </div>  
+  <div *ngIf="item.status == 'voted'">
+    <ion-list>    
+      <ion-item *ngFor="let option of result">  
+        <ion-label>  
+          <div class="bar" [ngStyle]="{'width':option.ratio}">
+            &nbsp;
+          </div>        
+          {{option.label}}
+          <ion-icon *ngIf="option.myVote" item-content name="checkmark-circle-outline"></ion-icon>
+        </ion-label>
+        <ion-note item-end>{{option.ratio}}</ion-note>
+      </ion-item>
+    </ion-list>
+  </div>  
+  <ion-row>
+    <ion-col center text-center>
+      <ion-note>
+        {{item.total}} {{'Votes' | translate}} | {{'End date'}} {{item.end_date | amFromUnix | amDateFormat:'LL'}}
+      </ion-note>
+    </ion-col>
+  </ion-row>
+</ion-card>
