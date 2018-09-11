@@ -7,13 +7,16 @@ export class AnniversariesService {
   }
 
   private getCurrentDate():string {
-    return new Date().toISOString().slice(5,10);   
+    const today = new Date().toISOString().slice(5,10);
+    console.log("Current date: " + today);
+    
+    return today;
   }
 
   private getAnniversaries(currentDate) {
     const contacts: Array<Object> = [];
     return this.admin.firestore().collection('contacts')
-    .where('birthday', '==', currentDate)
+    .where('birthdate', '==', currentDate)
     .get()
     .then(
       data => {
@@ -21,7 +24,6 @@ export class AnniversariesService {
           doc => {
             console.log(doc.data());
             const contact = doc.data();
-            //contact["id"] = doc.id;
             contacts.push(contact);
           }
         );
@@ -32,8 +34,11 @@ export class AnniversariesService {
 
   private publishAnniversaries(contacts) {
     const anniversaries = {
-      title: "Parabéns aos envolvidos",
-      picture: "http://assets.kraftfoods.com/recipe_images/opendeploy/%20138280-49fdab4f7bf207b3cc31f72186c86b0a642f0802_642x428.jpg",
+      title: "Aniversariante(s) do dia!",
+      picture: "https://infomobi.page.link/uGeF",
+      media: [{
+        url: "https://infomobi.page.link/sqMF" 
+      }],
       contacts: contacts
     }
     const comment = {
