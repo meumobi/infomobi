@@ -6,7 +6,8 @@ import { CommentsProvider } from '@providers/comments';
 import { MeuToastService } from '@shared/meu-toast.service';
 
 @Component({
-  templateUrl: 'anniversaries.html'
+  templateUrl: 'anniversaries.html',
+  selector: 'anniversaries'
 })
 export class AnniversariesComponent implements Comment {
   @Input() comment: any;

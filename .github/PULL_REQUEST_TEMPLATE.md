@@ -8,3 +8,4 @@
 - [ ] I've updated wiki doc when necessary.
 - [ ] All actions are tracked on analytics
 - [ ] All expressions are translated 
+- [ ] All commits Close related issue, using `Closes #ISSUE_ID`

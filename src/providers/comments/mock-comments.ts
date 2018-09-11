@@ -94,33 +94,38 @@ let comments = Observable.of([
   },
   {
     channel: 'live',
-    created: 1530873217115,
+    created: 1536594183928,
     data: {
+      media: [{
+        url: "https://infomobi.page.link/sqMF" 
+      }],
       contacts: [{
         birdthday: "07/17",
         displayName: "Luiza Bittencourt", 
         email: "luiza@infomobi.app", 
         firstName: "Luiza", 
-        id: "1", 
+        _id: "1", 
         lastName: "Bittencourt", 
+        title: "Analista de Planejamento e Controle de Custos Jr.",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
       }, {
         birdthday: "07/17",
         displayName: "Jennifer Wu", 
         email: "jennifer@infomobi.app", 
         firstName: "Jennifer", 
-        id: "1", 
-        lastName: "Wu", 
+        _id: "1", 
+        lastName: "Wu",
+        title: "Aux de Contabilidade",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jennifer_wu.jpg"
       }],
-      picture: "http://assets.kraftfoods.com/recipe_images/opendeploy/%20138280-49fdab4f7bf207b3cc31f72186c86b0a642f0802_642x428.jpg",
-      title: "Parabéns aos envolvidos",
+      picture: "https://infomobi.page.link/uGeF",
+      title: "Aniversariante(s) do dia!",
     },
 
     type: 'anniversaries',
     id: "SCoq0mZjAlCRzDqueV3C",
-    modified: 1530873217115,
-    published: 1530873217115,
+    modified: 1536594183928,
+    published: 1536594183928,
     isPublished: true
   }
 ]);
