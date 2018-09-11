@@ -16,9 +16,13 @@
             </ion-avatar>
           </ng-template>    
           <h2>{{contact.displayName}}</h2>
+          <p *ngIf="contact.title">{{ contact.title }}</p>
         </ion-item>
       </ion-list>
     </ion-row>
+    <div class="img-wrap" *ngIf="comment.data.media">
+      <img class="image-fit" [src]="comment.data.media[0].url | imgServerUrly" [srcset]="comment.data.media[0].url | imgServerSrcsettify" imageViewer/>
+    </div>
   </ion-item>
   <ion-item-options side="left" *ngIf="comment">    
     <button ion-button (click)="deleteComment(item)">
