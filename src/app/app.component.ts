@@ -13,6 +13,12 @@ import { Auth } from '@models/auth.interface';
 import { Category } from '@models/categories.interface';
 import { CategoriesService } from '@providers/categories';
 import  moment from 'moment';
+import 'moment/min/locales';
+/**
+ * TODO: load only required locales
+ * Need a refactoring to normalize preferredLanguages with locales names (pt vs pt-br, en vs en-gb, etc.)
+ */
+//import 'moment/locale/pt-br';
 
 @Component({
   templateUrl: 'app.html'
