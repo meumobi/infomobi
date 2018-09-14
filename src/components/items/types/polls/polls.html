@@ -22,11 +22,11 @@
         <ion-radio></ion-radio>
       </ion-item>
     </ion-list>
-    <button ion-button block>{{'Vote' | translate}}</button>
+    <button ion-button (click)="vote()" block>{{'Vote' | translate}}</button>
   </div>  
   <div *ngIf="item.status == 'voted'">
     <ion-list>    
-      <ion-item *ngFor="let option of result">  
+      <ion-item *ngFor="let option of item.result">  
         <ion-label>  
           <div class="bar" [ngStyle]="{'width':option.ratio}">
             &nbsp;

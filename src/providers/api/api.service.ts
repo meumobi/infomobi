@@ -47,6 +47,10 @@ export class ApiService {
     );
   }
 
+  vote(poll): Promise<any> {
+    return Promise.resolve(poll);
+  }
+
 
   fetchItemById(id: string): Promise<any> {
     const httpOptions = {
