@@ -26,7 +26,21 @@
   </div>  
   <div *ngIf="item.status == 'voted'">
     <ion-list>    
-      <ion-item *ngFor="let option of item.result">  
+      <ion-item *ngFor="let option of item.results">  
+        <ion-label>  
+          <div class="bar" [ngStyle]="{'width':option.ratio}">
+            &nbsp;
+          </div>        
+          {{option.label}}
+          <ion-icon *ngIf="option.myVote" item-content name="checkmark-circle-outline"></ion-icon>
+        </ion-label>
+        <ion-note item-end>{{option.ratio}}</ion-note>
+      </ion-item>
+    </ion-list>
+  </div>  
+  <div *ngIf="item.status == 'closed'">
+    <ion-list>    
+      <ion-item *ngFor="let option of item.results">  
         <ion-label>  
           <div class="bar" [ngStyle]="{'width':option.ratio}">
             &nbsp;

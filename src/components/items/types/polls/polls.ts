@@ -52,7 +52,9 @@ export class PollsComponent implements OnInit {
     return this.storage.get("polls")
     .then(
       (data) => {
-        this.polls = data;
+        if (data) {
+          this.polls = data;
+        }
       }
     )
   }
@@ -67,14 +69,15 @@ export class PollsComponent implements OnInit {
     const date = this.item.end_date;
     const now = Date.now();
     const end_date = date * 1000; // convert sec. to ms
+    console.log(now + " " + end_date);
     const hasExpired = (now - end_date) > 0;
     return hasExpired;   
   }
   
   hasVoted() {
-    let hasVoted = this.item.voted !== null || !!this.polls[this.item._id];
-    console.log('Poll is voted [Object]' + (this.item.voted !== null));
-    console.log('Poll is voted [locaStorage]' + !!this.polls[this.item._id]);
+    let hasVoted = this.item.voted !== undefined || !!this.polls[this.item._id];
+    console.log('Poll is voted [Object]: ' + (this.item.voted !== undefined));
+    console.log('Poll is voted [locaStorage]: ' + !!this.polls[this.item._id]);
     console.log('Has voted ? ' + hasVoted);
     return hasVoted;
   }
@@ -87,7 +90,7 @@ export class PollsComponent implements OnInit {
     for (var x in this.item.results) {
       if (!isNaN(this.item.results[x].value)) {
         result = this.item.results[x];
-        result["myVote"] = (this.item.voted !== null) ? this.item.voted.values.hasOwnProperty(x) : false;
+        // result["myVote"] = (this.item.voted !== null) ? this.item.voted.values.hasOwnProperty(x) : false;
         result["label"] = this.item.options[result["value"]];
         result["ratio"] = (total !== 0) ? (parseInt(this.item.results[x].votes) / total) * 100 + '%' : '0%';
         results.push(result);
@@ -100,7 +103,7 @@ export class PollsComponent implements OnInit {
     let total = 0;
     for (var x in this.item.results) {
       console.log(x);
-      total += this.item.results[x].values;
+      total += this.item.results[x].votes;
     }
     return total;
   }

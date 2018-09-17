@@ -3,8 +3,9 @@ let items = {
     {
       "_id" : "5b915ebc9a645d933f7b23c6",
       "created" : 1536951997,
-      "end_date" : 1536998997,
+      "end_date" : 1536951997,
       "groups" : [ ],
+      "guid" : "aaa",
       "is_published" : true,
       "medias" : [ ],
       "modified" : 1536951997,
@@ -17,16 +18,16 @@ let items = {
       "order" : 2,
       "parent_id" : 7392,
       "published" : 1536951997,
-      "results" : [
+      "results": [
         {
-          "user_id" : "5a5ca3309a645dae127b23c6",
-          "values" : {
-            "0" : 1,
-            "_" : 0
-          },
-          "timestamp" : 1536951997
+            "value": 0,
+            "votes": 4
+        },
+        {
+            "value": 1,
+            "votes": 1
         }
-      ],
+    ],
       "site_id" : 256,
       "thumbnails": [
         {
