@@ -12,13 +12,19 @@ import { Observable, Subscription } from "rxjs";
 import { Auth } from '@models/auth.interface';
 import { Category } from '@models/categories.interface';
 import { CategoriesService } from '@providers/categories';
+import  moment from 'moment';
+import 'moment/min/locales';
+/**
+ * TODO: load only required locales
+ * Need a refactoring to normalize preferredLanguages with locales names (pt vs pt-br, en vs en-gb, etc.)
+ */
+//import 'moment/locale/pt-br';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp implements OnInit, OnDestroy {
   @ViewChild(Nav) nav: Nav;
-  
   rootPage: string = 'HomePage';
   pages: Array<{title: string, component: any, icon: string}>;
   categories: Array<Category>;
@@ -77,7 +83,8 @@ export class MyApp implements OnInit, OnDestroy {
           userProfile => {
             if (userProfile) { 
               if (userProfile.preferredLanguage) {
-                this.translateService.use(userProfile.preferredLanguage);
+                this.translateService.use(userProfile.preferredLanguage);  
+                moment.locale(userProfile.preferredLanguage);
               }
             } else {
               /*
