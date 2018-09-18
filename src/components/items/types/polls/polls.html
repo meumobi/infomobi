@@ -1,6 +1,6 @@
 <ion-card *ngIf="item">
   <div>
-    <img *ngIf="item.thumbnails" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly" />          
+    <img *ngIf="item.thumbnails.length" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly" />          
     <ion-card-content>
       <h1>{{item.title}}</h1>
     </ion-card-content>
@@ -16,10 +16,10 @@
     </ion-col>
   </ion-row>
   <div *ngIf="item.status == 'open'">
-    <ion-list radio-group>    
-      <ion-item *ngFor="let option of item.options">
+    <ion-list radio-group [(ngModel)]="myVote">    
+      <ion-item *ngFor="let option of item.options;let i = index">
         <ion-label>{{option}}</ion-label>
-        <ion-radio></ion-radio>
+        <ion-radio [value]="i"></ion-radio>
       </ion-item>
     </ion-list>
     <button ion-button (click)="vote()" block>{{'Vote' | translate}}</button>

@@ -3,7 +3,7 @@ let items = {
     {
       "_id" : "5b915ebc9a645d933f7b23c6",
       "created" : 1536951997,
-      "end_date" : 1536951997,
+      "end_date" : 1936951997,
       "groups" : [ ],
       "guid" : "aaa",
       "is_published" : true,
@@ -15,6 +15,7 @@ let items = {
         "Não",
         "Sim",
       ],
+      "voted": null,
       "order" : 2,
       "parent_id" : 7392,
       "published" : 1536951997,

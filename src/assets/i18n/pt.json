@@ -42,6 +42,7 @@
     "LOGIN": {
         "USER_WELCOME": "Olá {{displayName}}"
     },
+    "Successfully voted" : "Voto registrado com sucesso",
     "Logout": "Sair",
     "invalid email or password": "Email ou senha inválido",
     "landlinePhone": "Fixo",

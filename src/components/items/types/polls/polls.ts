@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ApiService } from '@providers/api';
 import { MeuToastService } from '@shared/meu-toast.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'polls',
@@ -15,11 +16,13 @@ export class PollsComponent implements OnInit {
     closed: 'closed',
     voted: 'voted'
   }
+  myVote: string;
   
   constructor(
     private storage: Storage,
     private apiService: ApiService,
-    public meutToastService: MeuToastService
+    public meutToastService: MeuToastService,
+    private translateService: TranslateService,
   ) {
     console.log('Hello PollsComponent Component');
   }
@@ -32,18 +35,18 @@ export class PollsComponent implements OnInit {
           let status = this.getStatus();
           if (status == this.statuses.voted && !!this.polls[this.item._id]) {
             this.item = this.polls[this.item._id];
+
+            this.item = this.polls[this.item._id];
             console.log('Poll loaded from localStorage');
           } else {
             this.item.status = status;
-            this.item.total = this.totalVotes();
+            this.item.total = this.totalVotes(this.item);
           }
           if (this.item.status !== this.statuses.open) {
-            this.item.results = this.computeResults();
+            this.item.results = this.computeResults(this.item);
           }
         }
       )
-      this.item["total"] = 5;
-      this.item["status"] = "voted";
       console.log(this.item);
     }
   }
@@ -75,35 +78,36 @@ export class PollsComponent implements OnInit {
   }
   
   hasVoted() {
-    let hasVoted = this.item.voted !== undefined || !!this.polls[this.item._id];
-    console.log('Poll is voted [Object]: ' + (this.item.voted !== undefined));
+    console.log(this.item);
+    let hasVoted = this.item.voted !== null || !!this.polls[this.item._id];
+    console.log('Poll is voted [Object]: ' + (this.item.voted !== null));
     console.log('Poll is voted [locaStorage]: ' + !!this.polls[this.item._id]);
     console.log('Has voted ? ' + hasVoted);
     return hasVoted;
   }
   
-  computeResults() {
+  computeResults(item) {
     const results = [];
     let result = {};
-    const total = this.totalVotes();
+    const total = this.totalVotes(item);
     console.log('Total votes: ' + total);
-    for (var x in this.item.results) {
-      if (!isNaN(this.item.results[x].value)) {
-        result = this.item.results[x];
-        // result["myVote"] = (this.item.voted !== null) ? this.item.voted.values.hasOwnProperty(x) : false;
-        result["label"] = this.item.options[result["value"]];
-        result["ratio"] = (total !== 0) ? (parseInt(this.item.results[x].votes) / total) * 100 + '%' : '0%';
+    for (var x in item.results) {
+      if (!isNaN(item.results[x].value)) {
+        result = item.results[x];
+        result["myVote"] = (item.voted !== null) ? item.voted.values.hasOwnProperty(x) : false;
+        result["label"] = item.options[result["value"]];
+        result["ratio"] = (total !== 0) ? (parseInt(item.results[x].votes) / total) * 100 + '%' : '0%';
         results.push(result);
       }
     }
     return results;
   }
   
-  totalVotes() {
+  totalVotes(item) {
     let total = 0;
-    for (var x in this.item.results) {
+    for (var x in item.results) {
       console.log(x);
-      total += this.item.results[x].votes;
+      total += item.results[x].votes;
     }
     return total;
   }
@@ -115,21 +119,33 @@ export class PollsComponent implements OnInit {
       status = statuses.closed;
     } else if (this.hasVoted()) {
       status = statuses.voted;
+      //TODO clear ionicstorage
     }    
     console.log('Get Status: ' + status);
     return status;
   }
+
+  paramify() {
+    const value = {};
+    value[this.myVote] = 1;
+    let obj = {
+      id: this.item._id,
+      params: {
+        value: value
+      }
+    }
+    return obj;
+  }
   
   vote() {
-    this.apiService.vote(this.item)
+    this.apiService.vote(this.paramify())
     .then(
       (data) => {
-        console.log(data);
-        this.meutToastService.present(data);
+        this.meutToastService.present(this.translateService.instant('Successfully voted'));
         this.item.status = this.statuses.voted;
-        this.item.total = this.totalVotes();
-        this.item.results = this.computeResults();
-        this.item.voted = data.data.voted;
+        this.item.total = this.totalVotes(data);
+        this.item.results = this.computeResults(data);
+        this.item.voted = data.voted;
         this.item.status = this.statuses.voted;
         this.addPoll();
       }
