@@ -29,21 +29,22 @@ export class ItemsPage implements OnInit {
   }
   
   ngOnInit() {
-    console.log("at");
-    this.fetchItems();
-  }
-  
-  fetchItems(refresher = null) {
-    if (this.categoryId) {   
+    if (this.categoryId) {
       this.categoriesService.findById(this.categoryId)
       .then(
         data => this.category = data
       )
+    } 
+    
+    this.fetchItems();
+  }
+  
+  fetchItems(refresher = null) {
+    if (this.categoryId) {
       this.itemsService.fetchByCategory(this.categoryId)
       .then(
         data => {
           this.items = data;
-          console.log(data);
           if (refresher) {
             refresher.complete();
           }
