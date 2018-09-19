@@ -19,7 +19,7 @@
     <ion-item *ngIf="contact.birthdate">
       <ion-icon name="calendar" item-left></ion-icon>
       <p>{{'Birthday' | translate}}</p>
-      <h2>{{contact.birthdate}}</h2>
+      <h2>{{contact.birthdate | amDateFormat:'MMM DD'}}</h2>
     </ion-item> 
     <a *ngFor="let option of contact.options | keys" ion-item>
       <p>{{ option.key | translate }}</p>
