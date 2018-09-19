@@ -1,29 +1,28 @@
 export interface Item {  
   _id: string,
-
   images?: Array<any>,
-  link: string,
   medias: Array<any>,
   parent_id: number,
   pubdate?: number,
   thumbnails?: Array<any>,
   title: string,
   type: string,
-  created: number,
-  format?: string,
   groups: Array<any>,
-  guid: string,
   is_published?: boolean,
+  created: number,
   modified: number,
+  published: number,
   notification_id: string,
   order: number,
-  published: number,
-  site_id: number  
+  site_id: number
 }
 
 export interface Articles extends Item {
   author: string,
   description: string,
+  guid?: string,
+  link?: string,
+  format?: string,
 }
 
 export interface Polls extends Item {
