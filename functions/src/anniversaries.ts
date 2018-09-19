@@ -13,10 +13,9 @@ export class AnniversariesService {
     return today;
   }
 
-  private getAnniversaries(currentDate) {
+  private getContacts() {
     const contacts: Array<Object> = [];
     return this.admin.firestore().collection('contacts')
-    .where('birthdate', '==', currentDate)
     .get()
     .then(
       data => {
@@ -59,13 +58,26 @@ export class AnniversariesService {
     );
   }
 
+  public filterAnniversaries(contacts, currentDate) {
+    return contacts.filter(
+      (contact) => {
+        if (contact.birthdate) {
+          return (contact.birthdate.slice(5,10) === currentDate);
+        } else {
+          return false;
+        }
+      }
+    )
+  }
+
   public perform() {
     const currentDate = this.getCurrentDate();
-    return this.getAnniversaries(currentDate)
+    return this.getContacts()
     .then(
       data => {
-        if (data.length > 0) {
-          return this.publishAnniversaries(data);
+        const anniversaries = this.filterAnniversaries(data, currentDate);
+        if (anniversaries.length > 0) {
+          return this.publishAnniversaries(anniversaries);
         } else {
           return {};
         }
