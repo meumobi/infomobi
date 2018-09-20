@@ -1,39 +1,45 @@
 export interface Item {  
   _id: string,
-  images?: Array<any>,
-  medias: Array<any>,
-  parent_id: number,
-  pubdate?: number,
-  thumbnails?: Array<any>,
-  title: string,
-  type: string,
-  groups: Array<any>,
-  is_published?: boolean,
+  order: number,
   created: number,
   modified: number,
   published: number,
+  is_published?: boolean,
+  thumbnails: Array<any>,
+  groups: Array<string>,
   notification_id: string,
-  order: number,
-  site_id: number
+  medias: Array<any>,
+  title: string,
+  type: string,
+  site_id: number,
+  parent_id: number,
+  pubdate: number,
+  images: Array<any>,
 }
 
 export interface Articles extends Item {
   author: string,
   description: string,
-  guid?: string,
-  link?: string,
-  format?: string,
+  guid: string,
+  link: string,
+  format: string,
 }
 
 export interface Polls extends Item {
   end_date: number,
   multiple_choices: boolean,
   options: Array<string>,
-  results: Array<Vote>
+  voted: Vote | null,
+  results: Array<Result>
 }
 
 interface Vote {
   user_id: string,
   values: Object,
   timestamp: number
+}
+
+interface Result {
+  value: number,
+  votes: number
 }
