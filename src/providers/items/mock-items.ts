@@ -2,34 +2,11 @@ let items = {
   "items": [
     {
       "_id" : "5b915ebc9a645d933f7b23c6",
-      "created" : 1536951997,
-      "end_date" : 1936951997,
-      "groups" : [ ],
-      "guid" : "aaa",
-      "is_published" : true,
-      "medias" : [ ],
-      "modified" : 1536951997,
-      "multiple_choices" : true,
-      "notification_id" : "",
-      "options" : [
-        "Não",
-        "Sim",
-      ],
-      "voted": null,
       "order" : 2,
-      "parent_id" : 7392,
+      "created" : 1536951997,
+      "modified" : 1536951997,
       "published" : 1536951997,
-      "results": [
-        {
-            "value": 0,
-            "votes": 4
-        },
-        {
-            "value": 1,
-            "votes": 1
-        }
-    ],
-      "site_id" : 256,
+      "is_published" : true,
       "thumbnails": [
         {
           "width": "80",
@@ -52,8 +29,32 @@ let items = {
           "url": "https://meumobi.com/uploads/items/314x220_6981756.png"
         }
       ],
+      "groups" : [ ],
+      "notification_id" : "",
+      "medias" : [ ],
       "title" : "Você vai votar na primeira opção?",
-      "type" : "polls"
+      "type" : "polls",
+      "site_id" : 256,
+      "parent_id" : 7392,
+      "pubdate": 1521567420,
+      "images": [],
+      "end_date" : 1936951997,
+      "multiple_choices" : true,
+      "options" : [
+        "Não",
+        "Sim",
+      ],
+      "voted": null,
+      "results": [
+        {
+            "value": 0,
+            "votes": 4
+        },
+        {
+            "value": 1,
+            "votes": 1
+        }
+      ]
     },  
     {
       "order": 5,
@@ -395,12 +396,7 @@ let items = {
       "created": 1503578163,
       "modified": 1503578234,
       "published": 1462185780,
-      "groups": [],
       "is_published": true,
-      "medias": [],
-      "guid": "aaa",
-      "link": "aaa",
-      "notification_id": "",
       "thumbnails": [
         {
           "width": "80",
@@ -423,16 +419,13 @@ let items = {
           "url": "https://meumobi.com/uploads/items/314x220_6981756.png"
         }
       ],
-      "_id": "599ec8349a645d465c8b4567",
-      "parent_id": 7392,
-      "site_id": 516,
-      "end_date": 1462185780,
+      "groups": ["meumobi"],
+      "notification_id": "",
+      "medias": [],
       "title": "Você vai votar na primeira?",
       "type": "polls",
-      "options": [
-        "Não",
-        "Sim"
-      ],
+      "site_id": 516,
+      "parent_id": 7392,
       "pubdate": 1462185780,
       "images": [
         {
@@ -452,7 +445,25 @@ let items = {
           "modified": "2017-08-24 14:36:05"
         }
       ],
-    },
+      "_id": "599ec8349a645d465c8b4567",
+      "end_date": 1462185780,
+      "multiple_choices" : true,
+      "options": [
+        "Não",
+        "Sim"
+      ],
+      "voted": null,
+      "results": [
+        {
+            "value": 0,
+            "votes": 0
+        },
+        {
+            "value": 1,
+            "votes": 0
+        }
+      ] 
+    }
   ]
 };
 
