@@ -446,21 +446,28 @@ let items = {
         }
       ],
       "_id": "599ec8349a645d465c8b4567",
-      "end_date": 1462185780,
+      "end_date": 1462185780, //1936951997,
       "multiple_choices" : true,
       "options": [
         "Não",
         "Sim"
       ],
-      "voted": null,
+      "voted": {
+        "user_id": "57d728219a645d691d4a7b7d",
+        "values": {
+            "0": 1,
+            "_": 0
+        },
+        "timestamp": 1490897253
+      },
       "results": [
         {
             "value": 0,
-            "votes": 0
+            "votes": 2
         },
         {
             "value": 1,
-            "votes": 0
+            "votes": 4
         }
       ] 
     }
