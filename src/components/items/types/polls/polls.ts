@@ -96,7 +96,7 @@ export class PollsComponent implements OnInit {
         result = item.results[x];
         result["myVote"] = (item.voted !== null) ? item.voted.values.hasOwnProperty(x) : false;
         result["label"] = item.options[result["value"]];
-        result["ratio"] = (total !== 0) ? (parseInt(item.results[x].votes) / total) * 100 + '%' : '0%';
+        result["ratio"] = (total !== 0) ? ((item.results[x].votes / total) * 100).toFixed(2) + '%' : '0%';
         results.push(result);
       }
     }
