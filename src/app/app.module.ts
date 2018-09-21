@@ -83,7 +83,7 @@ export function createTranslateLoader(http: HttpClient) {
     ContactsService,
     AuthDataPersistenceService,
     UserProfileService,
-    CategoriesService
+    CategoriesService,
   ]
 })
 

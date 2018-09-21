@@ -1,0 +1,13 @@
+<ion-row wrap *ngIf="items">
+  <item-headline col-12 col-md-4 *ngFor="let item of items" [item]="item"></item-headline>
+</ion-row>
+<ion-row wrap *ngIf="!items">
+  <ion-col *ngFor="let item of fakeItems" col-12 col-md-4 class="fakeItems">
+    <ion-card>   
+      <div class="img-item"></div>    
+      <ion-card-content>
+        <h1></h1>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>

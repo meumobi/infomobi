@@ -1,0 +1,18 @@
+<ion-card>
+  <div (click)="pushDetailsPage('ArticlesDetailsPage', item._id)">
+    <img *ngIf="item.thumbnails.length" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly"  />          
+    <ion-card-content>
+      <h1>{{item.title}}</h1>
+    </ion-card-content>
+  </div>
+  <ion-row>
+    <ion-col>
+      <category-label [id]="item.parent_id"></category-label>
+    </ion-col>
+    <ion-col center text-center>
+      <ion-note>
+        {{item.published | amFromUnix | amTimeAgo}}
+      </ion-note>
+    </ion-col>
+  </ion-row>
+</ion-card>

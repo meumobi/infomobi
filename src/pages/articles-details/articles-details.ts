@@ -1,25 +1,22 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { Post } from '@models/post.interface';
-import { PostsService } from '@providers/posts';
+import { Item } from '@models/item.interface';
+import { ItemsService } from '@providers/items'; 
 
 @IonicPage({
-  segment: 'post/details/:id',
+  segment: 'article/details/:id',
   defaultHistory: ['HomePage'],
 })
 @Component({
-  selector: 'page-post-details',
-  templateUrl: 'post-details.html',
+  selector: 'page-articles-details',
+  templateUrl: 'articles-details.html',
 })
-export class PostDetailsPage {
+export class ArticlesDetailsPage {
   @ViewChild('comments') comments; //this is necessary to allow FAB interact with comments component
-
   id: string;
-  post: Post;
-
+  articles: Item;
   constructor(
-    private postsService: PostsService,
+    private itemsService: ItemsService,
     public rootNavCtrl: NavController, 
     public navParams: NavParams,
   ) {
@@ -31,10 +28,10 @@ export class PostDetailsPage {
   
   findById(id) {
     console.log(id);
-    this.postsService.findById(id)
+    this.itemsService.fetchById(id)
       .then(data => {
         console.log(data);
-        this.post = data;
+        this.articles = data;
       })
   }
 }

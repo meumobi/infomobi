@@ -8,13 +8,13 @@
       </ion-col>
       <ion-col col-8>
         <div class="news">
-          <ion-slides pager="true" loop="true" centeredSlides="true"  autoplay="10000" *ngIf="posts">
-            <ion-slide *ngFor="let post of posts">
+          <ion-slides pager="true" loop="true" centeredSlides="true"  autoplay="10000" *ngIf="items">
+            <ion-slide *ngFor="let item of items">
               <ion-card class="card-background-page">
-                <img *ngIf="post.images" class="img-fit" [src]="post.images[0].path | imgServerUrly" [srcset]="post.images[0].path | imgServerSrcsettify"/>
+                <img *ngIf="item.images" class="img-fit" [src]="item.images[0].path | imgServerUrly" [srcset]="item.images[0].path | imgServerSrcsettify"/>
                 <ion-card-content>
                   <ion-card-title class="font-headline">
-                    {{post.title}}
+                    {{item.title}}
                   </ion-card-title>
                 </ion-card-content>
               </ion-card>

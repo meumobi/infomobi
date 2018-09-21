@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+import { ArticlesDetailsPage } from './articles-details';
 
-import { PostDetailsPage } from './post-details';
-import { PostsService } from '@providers/posts';
+import { ItemsService } from '@providers/items';
 import { SharedModule } from '@shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -11,25 +11,25 @@ import { MediumDetailsComponent } from '@components/medium-details/medium-detail
 import { MediumControlsComponent } from '@components/medium-controls/medium-controls';
 import { NgMathPipesModule } from 'angular-pipes';
 import { CommentsModule } from '@components/comments/comments.module';
-import { CategoryLabelModule } from '@components/category-label/category-label.module';
+import { ItemsModule } from '@components/items/items.module';
 
 @NgModule({
   declarations: [
-    PostDetailsPage,
+    ArticlesDetailsPage,
     MediaListComponent,
     MediumDetailsComponent,
     MediumControlsComponent
   ],
   imports: [
-    IonicPageModule.forChild(PostDetailsPage),
+    IonicPageModule.forChild(ArticlesDetailsPage),
     SharedModule,
     CommentsModule,
-    CategoryLabelModule,
-    TranslateModule.forChild()
+    ItemsModule,
+    TranslateModule.forChild(),
   ],
   providers: [
-    PostsService,
+    ItemsService,
     NgMathPipesModule
   ]
 })
-export class PostDetailsPageModule {}
+export class ArticlesDetailsPageModule {}

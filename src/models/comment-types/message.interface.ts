@@ -3,7 +3,7 @@ import { Contact } from "@models/contact.interface";
 export interface Message {
   author: Contact,
   description: string,
-  postDetails: {
+  itemDetails: {
     title: string,
     id: string
   }
