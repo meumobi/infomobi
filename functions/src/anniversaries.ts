@@ -31,6 +31,39 @@ export class AnniversariesService {
     );
   }
 
+  private checkAnniversaries(currentDate) {
+    const birthdate = currentDate.split("-");
+    const year = new Date().getFullYear();
+    const startDate = new Date(year, parseInt(birthdate[0]) - 1, parseInt(birthdate[1]));
+    const endDate = new Date(year, parseInt(birthdate[0]) - 1, parseInt(birthdate[1]) + 1);
+    const comments: Array<Object> = [];
+    return this.admin.firestore().collection('comments')
+    .where('type', '==', "anniversaries")
+    .where('published', '>=', startDate.getTime())
+    .where('published', '<=', endDate.getTime())
+    .get()
+    .then(
+      data => {
+        data.forEach(
+          doc => {
+            comments.push(doc.id);
+          }
+        );
+        return comments;
+      }
+    );
+  }
+
+  private deleteAnniversaries(anniversaries) {
+    anniversaries.forEach(
+      data => {
+        console.log(data);
+        this.admin.firestore().collection('comments').doc(data).delete();
+      }
+    )
+  }
+
+
   private publishAnniversaries(contacts) {
     const anniversaries = {
       title: "Aniversariante(s) do dia!",
@@ -74,9 +107,14 @@ export class AnniversariesService {
     const currentDate = this.getCurrentDate();
     return this.getContacts()
     .then(
-      data => {
+      data => {        
         const anniversaries = this.filterAnniversaries(data, currentDate);
         if (anniversaries.length > 0) {
+          this.checkAnniversaries(currentDate).then(
+            (ids) => {
+              this.deleteAnniversaries(ids);
+            }
+          )
           return this.publishAnniversaries(anniversaries);
         } else {
           return {};
