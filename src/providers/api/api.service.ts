@@ -15,11 +15,11 @@ export class ApiService {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        'X-Visitor-Token': '11a5838302ee384c482b2fc4bd6b56fdaa8ef3c4'
+        'X-Visitor-Token': '94086d89cce67659fe83eb72a548cd5707e6a800'
       }
     };
     
-    const url = ENV.meumobi.apiUrl + "/api/meumobi.meumobi.com/items/latest";
+    const url = ENV.meumobi.apiUrl + "/api/katrium.meumobi.com//items/latest";
     
     return this.http.get(url, httpOptions).toPromise()
     .then(
@@ -33,11 +33,11 @@ export class ApiService {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        'X-Visitor-Token': '11a5838302ee384c482b2fc4bd6b56fdaa8ef3c4'
+        'X-Visitor-Token': '94086d89cce67659fe83eb72a548cd5707e6a800'
       }
     };
     
-    const url = ENV.meumobi.apiUrl + `/api/meumobi.meumobi.com/categories/${id}/items`;
+    const url = ENV.meumobi.apiUrl + `/api/katrium.meumobi.com//categories/${id}/items`;
     
     return this.http.get(url, httpOptions).toPromise()
     .then(
@@ -51,10 +51,10 @@ export class ApiService {
         const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        'X-Visitor-Token': '11a5838302ee384c482b2fc4bd6b56fdaa8ef3c4'
+        'X-Visitor-Token': '94086d89cce67659fe83eb72a548cd5707e6a800'
       }
     };    
-    const url = ENV.meumobi.apiUrl + `/api/meumobi.meumobi.com/items/${poll.id}/poll`;
+    const url = ENV.meumobi.apiUrl + `/api/katrium.meumobi.com//items/${poll.id}/poll`;
     return this.http.post(url, poll.params, httpOptions).toPromise();    
   }
 
@@ -63,11 +63,11 @@ export class ApiService {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        'X-Visitor-Token': '11a5838302ee384c482b2fc4bd6b56fdaa8ef3c4'
+        'X-Visitor-Token': '94086d89cce67659fe83eb72a548cd5707e6a800'
       }
     };
     
-    const url = ENV.meumobi.apiUrl + `/api/meumobi.meumobi.com/items/${id}`;
+    const url = ENV.meumobi.apiUrl + `/api/katrium.meumobi.com//items/${id}`;
     
     return this.http.get(url, httpOptions).toPromise();
   }
