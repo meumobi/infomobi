@@ -1,5 +1,7 @@
+<ion-searchbar [placeholder]="'search' | translate" [(ngModel)]="search">
+</ion-searchbar>
 <ion-list *ngIf="contacts">
-  <contact-headline *ngFor="let contact of contacts" [contact]="contact"></contact-headline>
+  <contact-headline *ngFor="let contact of contacts| search:search:'displayName'" [contact]="contact"></contact-headline>
 </ion-list>
 <ion-list *ngIf="!contacts" >
   <div ion-item *ngFor="let contact of fakeContacts" class="fakeContact">

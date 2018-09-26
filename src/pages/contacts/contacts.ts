@@ -17,7 +17,6 @@ export class ContactsPage {
 
   contacts: Array<ContactProfile>;
   rootNavCtrl: NavController;
-  private searchTerm =new BehaviorSubject<string>('');
   admin: boolean = false;
 
   constructor(
@@ -29,10 +28,6 @@ export class ContactsPage {
     private userProfileService: UserProfileService
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
-  }
-
-  filter(term) {
-    this.searchTerm.next(term);
   }
 
   addContact() {
@@ -60,14 +55,10 @@ export class ContactsPage {
   ngOnInit() {
     this.admin = this.userProfileService.current$.value.role == "admin";
     this.search();
-    this.searchTerm
-    .debounceTime(300)
-    .distinctUntilChanged()
-    .subscribe(term => this.search(term))
   }
 
-  search(term:string = '') {
-    this.contactsService.search(term).subscribe(
+  search() {
+    this.contactsService.search().subscribe(
       data => {
         this.contacts = data;   
       },
