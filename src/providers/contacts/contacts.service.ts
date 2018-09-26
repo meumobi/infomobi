@@ -14,7 +14,7 @@ export class ContactsService {
     this.itemsCollection = this.af.collection<ContactProfile>('contacts');
   }
   
-  search(term): Observable<ContactProfile[]> {
+  search(): Observable<ContactProfile[]> {
     this.itemsCollection = this.af.collection<ContactProfile>('contacts',
     ref => {
       let query : Query = ref;
@@ -27,7 +27,7 @@ export class ContactsService {
       return actions.map(a => {       
         const data = a.payload.doc.data() as ContactProfile;
         return data;
-      }).filter(contact => contact.displayName.toLowerCase().indexOf(term.toLowerCase()) > -1);
+      });
     });    
     return this.items;
   }

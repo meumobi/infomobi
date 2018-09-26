@@ -2,7 +2,5 @@
     <button ion-fab mini (click)="addContact()"><ion-icon name="create"></ion-icon></button>
 </ion-fab>
 <ion-content>
-  <ion-searchbar #search [placeholder]="'Search' | translate" (keyup)="filter(search.value)">
-  </ion-searchbar>
   <contact-list [contacts]="contacts"></contact-list>
 </ion-content>

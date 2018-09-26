@@ -5,12 +5,10 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ContactsService {
 
-  search(term): Observable<any[]>{
-    console.log(term);
+  search(): Observable<any[]>{
     return contacts.map(
       contacts => {
         return contacts
-        .filter(contact => contact.displayName.toLowerCase().indexOf(term.toLowerCase()) > -1)
       }
     )
   }
