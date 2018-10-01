@@ -3,8 +3,8 @@ import { CommentsProvider } from '@providers/comments';
 import { Comment } from '@models/comment';
 import { Item } from '@models/item.interface';
 import { NavController } from 'ionic-angular';
-import { Contact } from '@models/contact.interface';
 import { UserProfileService } from '@providers/user-profile';
+import { ContactProfile } from '@models/contact-profile';
 
 @Component({
   selector: 'comment-form',
@@ -15,7 +15,7 @@ export class CommentFormComponent {
   comment: Comment;
   files:Array<any>;
   uploadFinished = true;
-  author: Contact;
+  author: ContactProfile;
 
   constructor(
     private commentsProvider: CommentsProvider,
@@ -26,7 +26,8 @@ export class CommentFormComponent {
   ngOnInit() {
     this.author = this.userProfile.current$.value;
     this.comment = new Comment("Message");
-    this.comment.data["author"] = this.author;
+    this.comment.data["authorRef"] = this.author._id;
+    console.log(this.author);
     
     if (this.item) {
       this.comment.data["itemDetails"] = {
