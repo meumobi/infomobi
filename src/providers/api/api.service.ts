@@ -87,7 +87,7 @@ export class ApiService {
         'X-Visitor-Token': this.token
       }
     };
-    const url = this.buildUrl('/items'); + `${poll.id}/poll`;
+    const url = this.buildUrl('/items') + `${poll.id}/poll`;
     
     return this.http.post(url, poll.params, httpOptions).toPromise();    
   }
