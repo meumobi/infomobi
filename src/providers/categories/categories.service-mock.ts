@@ -20,6 +20,8 @@ export class CategoriesService {
 
   getCategoryName(id): Promise<string> {
     let data = Utils.lookup(categories);
-    return Promise.resolve(data[id].title);
+    const title = data[id] ? data[id].title : null;
+    
+    return Promise.resolve(title);
   }
 }

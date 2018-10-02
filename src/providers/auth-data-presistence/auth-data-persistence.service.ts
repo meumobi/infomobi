@@ -1,32 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from "rxjs";
+import { ReplaySubject, Observable } from "rxjs";
 import { Auth } from '@models/auth.interface';
 import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class AuthDataPersistenceService {
 
-  private authData$ = new Subject<Auth>();
+  private authData$ = new ReplaySubject<Auth|null>(1);
 
   constructor(
     private storage: Storage
   ) {
     this.storage.get("authData")
     .then(
-      data => this.authData$.next(JSON.parse(data))
-    )
+      data => {
+        this.authData$.next(JSON.parse(data));
+      });
   }
   
-  public set(auth): Promise<void> {
+  public set(data): Promise<void> {
     console.log('set authData on ionicStorage');
-    
-    return this.storage.set('authData', JSON.stringify(auth))
-    .then( () => this.authData$.next(auth));
+
+    return this.storage.set('authData', JSON.stringify(data))
+    .then( 
+      () =>{
+        this.authData$.next(data);
+      });
   }
 
-  public get() : Observable<Auth> {
+  public getAuthDataObserver(): Observable<Auth|null> {
+
     return this.authData$.asObservable().share();
-   }
+  }
   
   public clear(): Promise<void> {
     console.log("clear authData on ionicStorage");

@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
+import { last } from 'rxjs/operators';
+import authData from '@providers/auth/mock-auth';
+import items from '@providers/items/mock-items';
+import Utils from '@shared/utils';
 
 import { Auth, AuthError } from '@models/auth.interface';
 import { ENV } from '@env';
-import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 
 @Injectable()
 export class ApiService {
@@ -15,9 +18,8 @@ export class ApiService {
   
   constructor(
     public http: HttpClient,
-    public authDataPersistenceService: AuthDataPersistenceService
   ) {
-    this.authData$ = authDataPersistenceService.getAuthDataObserver();
+    this.authData$ = Observable.of(authData).pipe(last()).delay(2000);
 
     this.authData$.subscribe( authData => {
       try {
@@ -46,40 +48,23 @@ export class ApiService {
     }
   }
 
-  private sendRequest(url, options) {
-    
-    return this.http.get(url, options).toPromise()
-    .then(
-      (res: any) => {
-        return res.items;
-      }
-    );
-  }
-
   fetchLatestItems(): Promise<any[]> {
-    const httpOptions = {
-      headers: {
-        'Accept':  'application/json',
-        'X-Visitor-Token': this.token
-      }
-    };
-    const url = this.buildUrl('/items/latest');
     
-    return this.sendRequest(url, httpOptions);
+    return Promise.resolve(items.items);
   }
 
   fetchItemsByCategory(id: number): Promise<any[]> {
-    const httpOptions = {
-      headers: {
-        'Accept':  'application/json',
-        'X-Visitor-Token': this.token
-      }
-    };
-    const url = this.buildUrl('/categories') + `${id}/items`;
-    
-    return this.sendRequest(url, httpOptions);
+    const data = items.items.filter(
+      item => item.parent_id == id
+    )
+
+    return Promise.resolve(data);
   }
 
+  /**
+   * Need a refactor of poll to use a Service and mockups in order to allow Unit tests
+   * @param poll 
+   */
   vote(poll): Promise<any> {
     const httpOptions = {
       headers: {
@@ -92,37 +77,15 @@ export class ApiService {
     return this.http.post(url, poll.params, httpOptions).toPromise();    
   }
 
-
   fetchItemById(id: string): Promise<any> {
-    const httpOptions = {
-      headers: {
-        'Accept':  'application/json',
-        'X-Visitor-Token': this.token
-      }
-    };
-    const url = this.buildUrl('/items') + `${id}`;
-    
-    return this.http.get(url, httpOptions).toPromise();
+    let data = Utils.lookup(items.items);
+
+    return Promise.resolve(data[id]);
   }
 
   login(email: string, password: string): Promise<Auth | AuthError> {
-    const httpOptions = {
-      headers: {
-        'Accept':  'application/json',
-      }
-    };
-
-    const url = this.buildUrl('/visitors/login');
-
-    const data = {
-      email: email,
-      password: password
-    };
-
-    return this.http
-      .post<Auth>(url, data, httpOptions)
-      .toPromise()
-      .then((response) => {
+    return this.authData$.toPromise()
+    .then((response: Auth) => {
         return response
         // return response.json().data as Hero[];
       })

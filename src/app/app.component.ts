@@ -50,7 +50,7 @@ export class MyApp implements OnInit, OnDestroy {
     ];
     console.log("Env is production ? " + ENV.production);
 
-    this.authData$ = this.authDataPersistenceService.get();
+    this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
   }
   
   initializeApp() {
