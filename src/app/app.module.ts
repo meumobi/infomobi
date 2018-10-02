@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, APP_INITIALIZER } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -34,6 +34,21 @@ import { CategoriesService } from '@providers/categories/';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function initConfig(
+  authDataPersistenceService: AuthDataPersistenceService
+  ): () => Promise<any> {
+  return (): Promise<any> => {
+
+    return new Promise((resolve, reject) => {
+      authDataPersistenceService.getAuthDataObserver().subscribe(authData => {
+        console.log("initConfig: get authData");
+        console.log(authData);
+        resolve();
+      })
+    });
+  }
 }
 
 @NgModule({
@@ -84,6 +99,12 @@ export function createTranslateLoader(http: HttpClient) {
     AuthDataPersistenceService,
     UserProfileService,
     CategoriesService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initConfig,
+      multi: true,
+      deps: [AuthDataPersistenceService]
+    }
   ]
 })
 

@@ -1,60 +1,94 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from "rxjs";
 
 import { Auth, AuthError } from '@models/auth.interface';
 import { ENV } from '@env';
+import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
 
 @Injectable()
 export class ApiService {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello ApiProvider Provider');
+  private token: string = null;
+  private domain: string = null;
+  private authData$: Observable<Auth>;
+  
+  constructor(
+    public http: HttpClient,
+    public authDataPersistenceService: AuthDataPersistenceService
+  ) {
+    this.authData$ = authDataPersistenceService.getAuthDataObserver();
+
+    this.authData$.subscribe( authData => {
+      try {
+        console.log("ApiService: set authData");
+        this.domain = authData.visitor.site;
+        this.token = authData.token;
+      } catch (err) {
+/**
+ * TODO: use error native method of Observable
+ */
+      }
+    })
+  }
+
+  private buildUrl(endp) {
+    try {
+      /*
+        If this.domain is null then use domain empty
+      */
+     console.log("ApiService: buildUrl");
+      const domain = (this.domain) ? this.domain : '';
+      const url = `${ENV.meumobi.apiUrl}/api/${domain}${endp}/`;
+
+      return url;
+    } catch (err) {
+    }
+  }
+
+  private sendRequest(url, options) {
+    
+    return this.http.get(url, options).toPromise()
+    .then(
+      (res: any) => {
+        return res.items;
+      }
+    );
   }
 
   fetchLatestItems(): Promise<any[]> {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        'X-Visitor-Token': '11a5838302ee384c482b2fc4bd6b56fdaa8ef3c4'
+        'X-Visitor-Token': this.token
       }
     };
+    const url = this.buildUrl('/items/latest');
     
-    const url = ENV.meumobi.apiUrl + "/api/meumobi.meumobi.com/items/latest";
-    
-    return this.http.get(url, httpOptions).toPromise()
-    .then(
-      (res: any) => {
-        return res.items;
-      }
-    );
+    return this.sendRequest(url, httpOptions);
   }
 
   fetchItemsByCategory(id: number): Promise<any[]> {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        'X-Visitor-Token': '11a5838302ee384c482b2fc4bd6b56fdaa8ef3c4'
+        'X-Visitor-Token': this.token
       }
     };
+    const url = this.buildUrl('/categories') + `${id}/items`;
     
-    const url = ENV.meumobi.apiUrl + `/api/meumobi.meumobi.com/categories/${id}/items`;
-    
-    return this.http.get(url, httpOptions).toPromise()
-    .then(
-      (res: any) => {
-        return res.items;
-      }
-    );
+    return this.sendRequest(url, httpOptions);
   }
 
   vote(poll): Promise<any> {
-        const httpOptions = {
+    const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        'X-Visitor-Token': '11a5838302ee384c482b2fc4bd6b56fdaa8ef3c4'
+        'X-Visitor-Token': this.token
       }
-    };    
-    const url = ENV.meumobi.apiUrl + `/api/meumobi.meumobi.com/items/${poll.id}/poll`;
+    };
+    const url = this.buildUrl('/items'); + `${poll.id}/poll`;
+    
     return this.http.post(url, poll.params, httpOptions).toPromise();    
   }
 
@@ -63,15 +97,13 @@ export class ApiService {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        'X-Visitor-Token': '11a5838302ee384c482b2fc4bd6b56fdaa8ef3c4'
+        'X-Visitor-Token': this.token
       }
     };
-    
-    const url = ENV.meumobi.apiUrl + `/api/meumobi.meumobi.com/items/${id}`;
+    const url = this.buildUrl('/items') + `${id}`;
     
     return this.http.get(url, httpOptions).toPromise();
   }
-
 
   login(email: string, password: string): Promise<Auth | AuthError> {
     const httpOptions = {
@@ -80,7 +112,7 @@ export class ApiService {
       }
     };
 
-    const url = ENV.meumobi.apiUrl + "/api/visitors/login";
+    const url = this.buildUrl('/visitors/login');
 
     const data = {
       email: email,
