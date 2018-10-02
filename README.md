@@ -77,6 +77,7 @@ Full app for commnunication within restricted access.
 - Theming App
   - [meumobi: Theming your Ionic App](http://meumobi.github.io/ionic/2017/08/17/theming-ionic-app.html)
 - CRUD with Firestore
+  - AngularFire, the library built between Firebase and Angular that acts as a wrapper of the Firebase SDK giving you real-time bindings and all the `rxjs` magic
   - [Jave Bratt: Building a CRUD Ionic application with Firestore](https://javebratt.com/crud-ionic-firestore/)
 - [] [User authentication and restricted access](#user-athentication-and-restricted-access)
   - [Devdactic: Ionic Auth Guards](https://devdactic.com/ionic-auth-guards/)
