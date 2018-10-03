@@ -5,7 +5,7 @@
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
-5. Create new Pull Request
+5. Create new Pull Request ([more details](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-submitting-a-pull-request-pr))
 
 ## Commit msg
 ### `<type>(<scope>): <subject>`
@@ -25,6 +25,9 @@ Each commit message consists of a header, a body and a footer. The header has a 
 - The subject is mandatory and the scope of the header is optional.
 - A scope is a phrase describing a section of the codebase enclosed in parenthesis, e.g., `fix(parser):`
 
+#### Scope
+Examples of scope on infomobi project: items, articles, polls, style, api, profiles
+
 #### Subject
 The subject contains a succinct description of the change:
 
@@ -42,7 +45,29 @@ The footer should contain any information about **Breaking Changes** and is also
 
 ### Examples
 
-See [examples](https://conventionalcommits.org/#examples)
+```
+fix(profiles): move preferedLanguage on user profile
+
+Closes #183
+```
+
+```
+fix(api): set User x-visitor-token and site.url on meumobi API requests
+
+add APP_INITIALIZER to load authData from Ionic.storage when exists
+
+Closes #194
+```
+
+```
+feat(polls): add polls on items feed
+
+BREAKING CHANGE: on messages already published field `postDetails` must be replaced by `itemDetails`
+
+Closes #171
+```
+
+See [more examples](https://conventionalcommits.org/#examples)
 
 ## Branch naming
 ### `<type>/<name>`
