@@ -98,10 +98,6 @@ export class UserFormPage {
     }
   }
 
-  cancel() {
-    this.navCtrl.pop();
-  }
-
   fileUploadFinished(data) {
     this.user.picture = data;
     console.log(data);
