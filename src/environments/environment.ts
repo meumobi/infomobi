@@ -21,11 +21,11 @@ export const ENV = {
     prefix: "https://infomobi.page.link"
   },
   firebase: {
-    apiKey: "AIzaSyBnCsnH9XAtG73lIwRuYj4dbXLyPBv0E5I",
-    authDomain: "ion-employee.firebaseapp.com",
-    databaseURL: "https://ion-employee.firebaseio.com",
-    projectId: "ion-employee",
-    storageBucket: "ion-employee.appspot.com",
-    messagingSenderId: "961286969528"
+    apiKey: "AIzaSyBemLnl_Wz4U50lD3gXirvjDk5jLUbyA_M",
+    authDomain: "ion-employee-int.firebaseapp.com",
+    databaseURL: "https://ion-employee-int.firebaseio.com",
+    projectId: "ion-employee-int",
+    storageBucket: "ion-employee-int.appspot.com",
+    messagingSenderId: "236514035211"
   }  
 };

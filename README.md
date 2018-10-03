@@ -7,6 +7,26 @@
 
 Full app for commnunication within restricted access.
 
+## Build project
+
+### Build with env argument
+
+Repository has a default env config `src/environments/environment.ts`, you should create an own to your target env, for example for prod `src/environments/environment.prod.ts` and run:
+
+```
+$ ionic build --env=prod
+
+// "Using PROD environment variables for DEV build." ("DEV build" is defined by Ionic and means not optimized for production).
+
+
+
+$ npm ionic:build --prod --env=prod
+
+// "Using PROD environment variables for PROD build."
+
+
+```
+
 ## Coding best practices
 
 - [x] Shared module
