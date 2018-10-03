@@ -13,7 +13,7 @@
     <div class="img-wrap" *ngIf="comment.data.media">
       <img class="image-fit" [src]="comment.data.media[0].url | imgServerUrly" [srcset]="comment.data.media[0].url | imgServerSrcsettify" imageViewer/>   
     </div>
-    <a *ngIf="comment.data.postDetails && !comment.channel.startsWith('post')" href="#" (click)="!!pushDetailsPage('PostDetailsPage', comment.data.postDetails.id)">{{comment.data.postDetails.title}}</a>
+    <a *ngIf="comment.data.itemDetails && !comment.channel.startsWith('item')" href="#" (click)="!!pushDetailsPage('ArticlesDetailsPage', comment.data.itemDetails.id)">{{comment.data.itemDetails.title}}</a>
     <ion-row>
       <ion-col col-6></ion-col>
       <ion-col col-6 center text-center>
@@ -24,7 +24,7 @@
     </ion-row>   
   </ion-item>
   <ion-item-options side="left" *ngIf="comment">    
-    <button ion-button *ngIf="comment.channel.startsWith('post')" (click)="promoteComment(item)">
+    <button ion-button *ngIf="comment.channel.startsWith('item')" (click)="promoteComment(item)">
       <ion-icon name="checkmark"></ion-icon>
       {{'Promote' | translate }}
     </button>

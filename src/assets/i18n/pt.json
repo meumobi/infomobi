@@ -42,6 +42,7 @@
     "LOGIN": {
         "USER_WELCOME": "Olá {{displayName}}"
     },
+    "Successfully voted" : "Voto registrado com sucesso",
     "Logout": "Sair",
     "invalid email or password": "Email ou senha inválido",
     "landlinePhone": "Fixo",
@@ -52,5 +53,7 @@
     },
     "Display Name": "Nome completo",
     "First Name": "Nome",
-    "Last Name": "Sobrenome"
+    "Last Name": "Sobrenome",
+    "Poll closed at": "Votação encerrada em",
+    "End voting at": "Fim da votação em"
 }

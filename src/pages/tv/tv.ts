@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 
-import { Post } from '@models/post.interface';
 import { Comment } from '@models/comment';
 
-import { PostsService } from '@providers/posts';
+import { ItemsService } from '@providers/items';
+import { Item } from '@models/item.interface';
 
 @IonicPage()
 @Component({
@@ -12,24 +12,24 @@ import { PostsService } from '@providers/posts';
   templateUrl: 'tv.html',
 })
 export class TvPage {
-  posts:Post[];
+  items:Item[];
   comments:Comment[];
 
   constructor(
-    private postsService: PostsService
+    private itemsService: ItemsService
   ) {
-    this.fetchPosts();
+    this.fetchItems();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TvPage');
   }
 
-  fetchPosts() {
-    this.postsService.findAll()
+  fetchItems() {
+    this.itemsService.fetchAll()
     .then(
       data => {
-        this.posts = data;
+        this.items = data;
       })
     .catch(
       err => {

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { CategoryLabelComponent } from '@components/category-label/category-label';
 import { IonicModule } from 'ionic-angular';
 
@@ -12,6 +11,9 @@ import { IonicModule } from 'ionic-angular';
 	],
 	exports: [
 		IonicModule,
+		CategoryLabelComponent
+	],
+	entryComponents: [
 		CategoryLabelComponent
 	]
 })

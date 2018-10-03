@@ -9,8 +9,8 @@ import { IonicPage, NavController } from 'ionic-angular';
 export class HomePage {
 
   live: any = 'LivePage';
-  posts: any = 'PostsPage';
   contacts: any = 'ContactsPage';
+  items: any = 'ItemsPage';
 
   constructor(public navCtrl: NavController) {
 

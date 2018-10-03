@@ -159,7 +159,7 @@ let categories = [
     "type": 'articles',
     "title": 'Agenda',
     "visibility": 1
-  }
+  }  
 ];
 
 export default categories;

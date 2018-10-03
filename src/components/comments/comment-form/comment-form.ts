@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommentsProvider } from '@providers/comments';
 import { Comment } from '@models/comment';
-import { Post } from '@models/post.interface';
+import { Item } from '@models/item.interface';
 import { NavController } from 'ionic-angular';
 import { Contact } from '@models/contact.interface';
 import { UserProfileService } from '@providers/user-profile';
@@ -11,7 +11,7 @@ import { UserProfileService } from '@providers/user-profile';
   templateUrl: 'comment-form.html'
 })
 export class CommentFormComponent {
-  @Input('post') post: Post; 
+  @Input('item') item: Item; 
   comment: Comment;
   files:Array<any>;
   uploadFinished = true;
@@ -28,12 +28,12 @@ export class CommentFormComponent {
     this.comment = new Comment("Message");
     this.comment.data["author"] = this.author;
     
-    if (this.post) {
-      this.comment.data["postDetails"] = {
-        title: this.post.title,
-        id: this.post._id,
+    if (this.item) {
+      this.comment.data["itemDetails"] = {
+        title: this.item.title,
+        id: this.item._id,
       }
-      this.comment.channel = `post_${this.post._id}`;
+      this.comment.channel = `item_${this.item._id}`;
     }    
   }
 
