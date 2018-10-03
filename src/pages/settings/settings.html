@@ -14,15 +14,6 @@
           <ion-label>{{ 'Notifications' | translate}}</ion-label>
           <ion-toggle></ion-toggle>
         </ion-item>
-  
-        <ion-item *ngIf="language">
-          <ion-label>{{ 'Language' | translate }}</ion-label>
-          <ion-select [(ngModel)]="language" name="language" (ionChange)="selectLanguage($event)">
-            <ion-option value="en">{{ 'SETTINGS_SELECT.lang_en' | translate }}</ion-option>
-            <ion-option value="pt">{{ 'SETTINGS_SELECT.lang_pt' | translate }}</ion-option>
-          </ion-select>
-        </ion-item>
-
       </ion-list>
     </form>
   

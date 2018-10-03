@@ -50,12 +50,21 @@
         <button type="button" ion-button item-end (click)="removeOption(option)"><ion-icon name="remove"></ion-icon></button>
       </ion-item>  
     </ion-list>
+    <ion-list>
+      <ion-list-header>
+        {{'Settings' | translate}}
+      </ion-list-header>
+      <ion-item>
+        <ion-label color="primary" stacked>{{ 'Language' | translate }}</ion-label>
+        <ion-select [(ngModel)]="user.preferredLanguage" name="language">
+          <ion-option value="en">{{ 'SETTINGS_SELECT.lang_en' | translate }}</ion-option>
+          <ion-option value="pt">{{ 'SETTINGS_SELECT.lang_pt' | translate }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
     <ion-row>
       <ion-col>
         <button ion-button type="submit" [disabled]="!uploadFinished" block>{{'Save' | translate}}</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button type="button" (click)="cancel()">{{'Cancel' | translate}}</button>
       </ion-col>
     </ion-row>
   </form>
