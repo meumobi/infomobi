@@ -17,7 +17,7 @@ let contacts = Observable.of([
             landlinePhone: "(21) 4042-0755",
             mobilePhone: "(21) 96172-3672",
         },
-        birthdate: "08-30",
+        birthdate: "1988-08-30",
         email: "luiza@empresa.com.br",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/caroline_kingsley.jpg"
     },
@@ -37,7 +37,7 @@ let contacts = Observable.of([
             landlinePhone: "(21) 4042-0755",
             mobilePhone: "(21) 96172-3672",
         },
-        birthdate: "05-31",
+        birthdate: "1984-05-31",
         email: "jaime@empresa.com.br",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/michael_jones.jpg"
     },
@@ -57,7 +57,7 @@ let contacts = Observable.of([
             landlinePhone: "(21) 4042-0755",
             mobilePhone: "(21) 96172-3672",
         },
-        birthdate: "05-17",
+        birthdate: "1990-05-17",
         email: "jonathan@ionicrealty.com",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jonathan_bradley.jpg"
     },
@@ -77,7 +77,7 @@ let contacts = Observable.of([
             landlinePhone: "(21) 4042-0755",
             mobilePhone: "(21) 96172-3672",
         },
-        birthdate: "05-14",
+        birthdate: "1990-05-14",
         email: "jen@ionicrealty.com",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/jennifer_wu.jpg"
     },
@@ -97,7 +97,7 @@ let contacts = Observable.of([
             landlinePhone: "(21) 4042-0755",
             mobilePhone: "(21) 96172-3672",
         },
-        birthdate: "05-13",
+        birthdate: "1990-05-13",
         email: "olivia@ionicrealty.com",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/olivia_green.jpg"
     },
@@ -117,7 +117,7 @@ let contacts = Observable.of([
             landlinePhone: "(21) 4042-0755",
             mobilePhone: "(21) 96172-3672",
         },
-        birthdate: "05-12",
+        birthdate: "1990-05-12",
         email: "miriam@ionicrealty.com",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/miriam_aupont.jpg"
     },
@@ -137,7 +137,7 @@ let contacts = Observable.of([
             landlinePhone: "(21) 4042-0755",
             mobilePhone: "(21) 96172-3672",
         },
-        birthdate: "05-11",
+        birthdate: "1990-05-11",
         email: "michelle@ionicrealty.com",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/michelle_lambert.jpg"
     },
@@ -157,7 +157,7 @@ let contacts = Observable.of([
             landlinePhone: "(21) 4042-0755",
             mobilePhone: "(21) 96172-3672",
         },
-        birthdate: "08-10",
+        birthdate: "1990-08-10",
         email: "victor@ionicrealty.com",
         picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/victor_ochoa.jpg"
     },
@@ -210,7 +210,7 @@ let contacts = Observable.of([
         options: {
             mobilePhone: "(21) 96452-0821",
         },
-        birthdate: "09-09",
+        birthdate: "1990-09-09",
         email: "accarvalho@katrium.com.br",
         picture: "https://firebasestorage.googleapis.com/v0/b/ion-employee.appspot.com/o/carol.png?alt=media&token=d8ae50b2-9d27-4f90-bfe1-256b99a59ae2"
     },
