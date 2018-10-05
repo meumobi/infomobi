@@ -1,6 +1,6 @@
 <ion-item-sliding #item>
   <ion-item>    
-    <img-avatar item-start [src]=comment.data.author.picture></img-avatar>
+    <img-avatar item-start (click)="pushDetailsPage('ContactDetailsPage', comment.data.author._id)" [src]=comment.data.author.picture></img-avatar>
     <ng-template #anonymous>
       <ion-avatar item-start>
         <img [src]="comment.data.author.type | iconPathForContactType" (click)="pushDetailsPage('ContactDetailsPage', comment.data.author._id)"/>

@@ -1,3 +1,4 @@
+import { ENV } from '@env';
 export default class Utils {
 
   static lookup(array) {
@@ -14,5 +15,17 @@ export default class Utils {
       lookup[array[i][token]] = array[i];
     }
     return lookup;
+  }
+
+  static imgServerPrefix(src: string) {
+    let onServer = false;
+    for (let source in ENV.imgServer.sources) {
+      const prefix = ENV.imgServer.sources[source].prefix;
+      if (src.startsWith(prefix)) {
+        src = src.replace(prefix, source);
+        onServer = true;
+      } 
+    }    
+    return (onServer) ? ENV.imgServer.url + src : src;
   }
 }
