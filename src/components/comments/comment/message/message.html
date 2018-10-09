@@ -1,16 +1,15 @@
 <ion-item-sliding #item>
-  <ion-item>    
-    <img-avatar item-start (click)="pushDetailsPage('ContactDetailsPage', comment.data.author._id)" [src]=comment.data.author.picture></img-avatar>
-    <ng-template #anonymous>
-      <ion-avatar item-start>
-        <img [src]="comment.data.author.type | iconPathForContactType" (click)="pushDetailsPage('ContactDetailsPage', comment.data.author._id)"/>
-      </ion-avatar>
-    </ng-template>  
+  <ion-item> 
+    <div ion-avatar item-start>
+      <img-avatar (click)="pushDetailsPage('ContactDetailsPage', comment.data.author._id)" [src]=comment.data.author.picture></img-avatar>
+    </div>   
+    <!-- </ng-template>   -->
     <h2>{{comment.data.author.displayName}}</h2>
     <p>{{comment.data.description}}</p>
-    <div class="img-wrap" *ngIf="comment.data.media">
+    <img-comment *ngIf="comment.data.media" [src]=comment.data.media[0].url></img-comment>
+    <!-- <div class="img-wrap" *ngIf="comment.data.media">
       <img class="image-fit" [src]="comment.data.media[0].url | imgServerUrly" [srcset]="comment.data.media[0].url | imgServerSrcsettify" imageViewer/>   
-    </div>
+    </div> -->
     <a *ngIf="comment.data.itemDetails && !comment.channel.startsWith('item')" href="#" (click)="!!pushDetailsPage('ArticlesDetailsPage', comment.data.itemDetails.id)">{{comment.data.itemDetails.title}}</a>
     <ion-row>
       <ion-col col-6></ion-col>

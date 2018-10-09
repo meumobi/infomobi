@@ -7,6 +7,7 @@ import Utils from '@shared/utils';
 })
 export class ImgAvatarComponent {
   @Input() src: any;
+  srcRetail: any;
   sufix: string = "width=160&height=160&mode=crop";
 
   constructor() {
@@ -15,7 +16,7 @@ export class ImgAvatarComponent {
 
   transform() {
     const prefix = Utils.imgServerPrefix(this.src);
-    this.src = `${prefix}?${this.sufix}`;
+    this.srcRetail = `${prefix}?${this.sufix}`;
   }
 
   ngOnInit() {

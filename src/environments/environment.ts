@@ -21,7 +21,7 @@ export const ENV = {
     prefix: "https://infomobi.page.link"
   },
   firebase: {
-    apiKey: "AIzaSyBemLnl_Wz4U50lD3gXirvjDk5jLUbyA_M",
+    apiKey: "AIzaSyBnCsnH9XAtG73lIwRuYj4dbXLyPBv0E5I",
     authDomain: "ion-employee-int.firebaseapp.com",
     databaseURL: "https://ion-employee-int.firebaseio.com",
     projectId: "ion-employee-int",
