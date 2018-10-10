@@ -7,22 +7,13 @@
     <ion-row wrap>
       <ion-list>
         <ion-item *ngFor="let contact of comment.data.contacts">  
-          <ion-avatar item-start *ngIf="contact.picture; else anonymous">
-            <img [src]="contact.picture | imgServerUrly" class="avatar-sm"  (click)="pushDetailsPage('ContactDetailsPage', contact._id)"/>
-          </ion-avatar> 
-          <ng-template #anonymous>
-            <ion-avatar item-start>
-              <img src="{{ 'user' | iconPathForContactType }}"/>
-            </ion-avatar>
-          </ng-template>    
+          <img-avatar item-start (click)="pushDetailsPage('ContactDetailsPage', contact._id)" [src]=contact.picture></img-avatar>
           <h2>{{contact.displayName}}</h2>
           <p *ngIf="contact.title">{{ contact.title }}</p>
         </ion-item>
       </ion-list>
     </ion-row>
-    <div class="img-wrap" *ngIf="comment.data.media">
-      <img class="image-fit" [src]="comment.data.media[0].url | imgServerUrly" [srcset]="comment.data.media[0].url | imgServerSrcsettify" imageViewer/>
-    </div>
+    <img-comment *ngIf="comment.data.media" [src]=comment.data.media[0].url></img-comment>
     <ion-row>
       <ion-col col-6></ion-col>
       <ion-col col-6 center text-center>
