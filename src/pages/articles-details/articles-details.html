@@ -14,7 +14,7 @@
         <ion-col>
           <ion-slides loop="{{articles.images.length > 1 ? true:false}}" autoplay="3500" pager="{{articles.images.length > 1 ? true:false}}">
             <ion-slide *ngFor="let image of articles.images">
-              <img [src]="image.path | imgServerUrly" [srcset]="image.path | imgServerSrcsettify" imageViewer/>
+              <img-comment *ngIf="image.path" [src]=image.path></img-comment>
               <div class="img-title">{{image.title}}</div>
             </ion-slide>
           </ion-slides>
