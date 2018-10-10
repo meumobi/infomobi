@@ -31,6 +31,7 @@ export class UserProfile extends ContactProfile {
 
   constructor() {
     super('user');
+    this.picture = "./assets/images/icon-person.png";
     this.options = {};
   }
 }
@@ -39,6 +40,7 @@ export class DeskProfile extends ContactProfile {
   
   constructor() {
     super('desk');
+    this.picture = "./assets/images/icon-people.png"
     this.options = {};
   }
 }
