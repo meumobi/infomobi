@@ -6,6 +6,7 @@ import { ItemsListComponent } from './items-list/items-list';
 import { SharedModule } from '@shared/shared.module';
 import { IonicModule } from 'ionic-angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { ImagesModule } from '@components/images/images.module';
 @NgModule({
   declarations: [
     ItemHeadlineComponent,
@@ -16,6 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     IonicModule,
     TranslateModule.forChild(),
+    ImagesModule,
     SharedModule
   ],
   exports: [
