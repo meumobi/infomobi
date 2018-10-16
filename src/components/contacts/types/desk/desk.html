@@ -1,9 +1,6 @@
 <ion-card>
   <ion-card-content>
-    <img [src]="contact.picture | imgServerUrly" *ngIf="contact.picture; else anonymous" />
-    <ng-template #anonymous>
-      <img [src]="contact.type | iconPathForContactType"/>
-    </ng-template>
+    <img-profile [src]="contact.picture" *ngIf="contact.picture"></img-profile>
     <h2>{{contact.displayName}}</h2>
     <h3>{{contact.title}}</h3>
   </ion-card-content>
