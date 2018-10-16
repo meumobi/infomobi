@@ -21,8 +21,10 @@ export default class Utils {
     let onServer = false;
     for (let source in ENV.imgServer.sources) {
       const prefix = ENV.imgServer.sources[source].prefix;
-      if (src.startsWith(prefix)) {
-        src = src.replace(prefix, source);
+      if (src.includes(prefix)) {
+        const path = src.split(prefix);       
+        src = `${source}${path[1]}`;
+        console.log(src);
         onServer = true;
       } 
     }    
