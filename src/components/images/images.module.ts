@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { ImgAvatarComponent } from './img-avatar/img-avatar';
 import { IonicModule } from 'ionic-angular';
-import { ImgContentComponent } from '@components/images/img-content/img-content';
+import { ImgContentComponent } from './img-content/img-content';
 import { SharedModule } from '@shared/shared.module';
+import { ImgThumbnailComponent } from './img-thumbnail/img-thumbnail';
 @NgModule({
 	declarations: [
 		ImgAvatarComponent,
-		ImgContentComponent
+		ImgContentComponent,
+		ImgThumbnailComponent,
 	],
 	imports: [
 		IonicModule,
-		SharedModule
+		SharedModule,
 	],
 	exports: [
 		IonicModule,
 		ImgAvatarComponent,
-		ImgContentComponent
+		ImgContentComponent,
+		ImgThumbnailComponent,
 	]
 })
 export class ImagesModule {}
