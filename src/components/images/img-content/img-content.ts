@@ -12,8 +12,7 @@ export class ImgContentComponent {
   config = {
     src: {
       width: 600,
-      height: 400,
-      mode: "crop"
+      height: 400
     },
     srcSet: [
       {
@@ -42,9 +41,9 @@ export class ImgContentComponent {
   transform() {
     const prefix = Utils.imgServerPrefix(this.src);
     const size = this.config.src;
-    this.srcRetail = `${prefix}?width=${size.width}&height=${size.height}&mode=${size.mode}`
+    this.srcRetail = `${prefix}?width=${size.width}&height=${size.height}&mode=crop&scale=both&format=jpg`;
     this.srcSet = this.config.srcSet.map((size) => {
-      return `${prefix}?width=${size.width}&height=${size.height}&mode=crop ${size.screen}w`
+      return `${prefix}?width=${size.width}&height=${size.height}&mode=crop&scale=both&format=jpg ${size.screen}w`;
     }).toString();
   }
 
