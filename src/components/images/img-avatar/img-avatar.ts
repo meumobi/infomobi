@@ -8,7 +8,7 @@ import Utils from '@shared/utils';
 export class ImgAvatarComponent {
   @Input() src: any;
   srcRetail: any;
-  sufix: string = "width=160&height=160&mode=crop";
+  sufix: string = "width=160&height=160&mode=crop&scale=both&format=jpg";
 
   constructor() {
     console.log('Hello ImgAvatarComponent Component');
