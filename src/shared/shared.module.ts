@@ -7,6 +7,7 @@ import {
   KeysPipe,
   IconPathForContactTypePipe,
   ImgServerUrlyPipe,
+  ImgServerZoomPipe,
   ImgServerSrcsettifyPipe
  } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
@@ -27,6 +28,7 @@ const sharedModules = [
   declarations: [
     ImgServerUrlyPipe,
     ImgServerSrcsettifyPipe,
+    ImgServerZoomPipe,
     SafeUrlPipe,
     SearchPipe,
     KeysPipe,
@@ -39,6 +41,7 @@ const sharedModules = [
   exports: [
     ImgServerUrlyPipe,
     ImgServerSrcsettifyPipe,
+    ImgServerZoomPipe,
     SafeUrlPipe,
     SearchPipe,
     KeysPipe,
