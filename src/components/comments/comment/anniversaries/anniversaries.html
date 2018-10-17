@@ -1,8 +1,6 @@
 <ion-item-sliding #item>
   <ion-item>    
-    <ion-avatar item-start >
-      <img [src]="comment.data.picture | imgServerUrly" />
-    </ion-avatar> 
+    <img-avatar item-start [src]="comment.data.picture"></img-avatar>
     <h2>{{comment.data.title}}</h2>
     <ion-row wrap>
       <ion-list>
@@ -13,7 +11,7 @@
         </ion-item>
       </ion-list>
     </ion-row>
-    <img-content *ngIf="comment.data.media" [src]=comment.data.media[0].url></img-content>
+    <img-content *ngIf="comment.data.media" [src]=comment.data.media[0].url imageViewer="{{comment.data.media[0].url | imgServerZoom}}"></img-content>
     <ion-row>
       <ion-col col-6></ion-col>
       <ion-col col-6 center text-center>
