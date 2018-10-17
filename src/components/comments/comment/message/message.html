@@ -3,7 +3,7 @@
     <img-avatar item-start (click)="pushDetailsPage('ContactDetailsPage', comment.data.author._id)" [src]=comment.data.author.picture></img-avatar>
     <h2>{{comment.data.author.displayName}}</h2>
     <p>{{comment.data.description}}</p>
-    <img-content *ngIf="comment.data.media" [src]=comment.data.media[0].url></img-content>
+    <img-content *ngIf="comment.data.media" [src]=comment.data.media[0].url imageViewer="{{comment.data.media[0].url | imgServerZoom}}"></img-content>
     <a *ngIf="comment.data.itemDetails && !comment.channel.startsWith('item')" href="#" (click)="!!pushDetailsPage('ArticlesDetailsPage', comment.data.itemDetails.id)">{{comment.data.itemDetails.title}}</a>
     <ion-row>
       <ion-col col-6></ion-col>
