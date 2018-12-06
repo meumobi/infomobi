@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { TvPage } from './tv';
 import { SharedModule } from '@shared/shared.module';
-import { ItemsService } from '@providers/items';
 import { CommentsModule } from '@components/comments/comments.module';
+import { VideosService } from '@providers/videos';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -13,10 +14,11 @@ import { CommentsModule } from '@components/comments/comments.module';
   imports: [
     SharedModule,
     IonicPageModule.forChild(TvPage),
+    TranslateModule,
     CommentsModule
   ],
   providers: [
-    ItemsService
+    VideosService
   ]
 })
 export class TvPageModule {}

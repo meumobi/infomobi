@@ -1,27 +1,25 @@
+<ion-header>  
+  <ion-navbar>
+    <ion-title>{{'Videos' | translate}}</ion-title>
+  </ion-navbar>  
+</ion-header>
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-4> 
-        <div class="live">
-          <comments [rootNavCtrl]="rootNavCtrl"></comments>
-        </div>
-      </ion-col>
-      <ion-col col-8>
-        <div class="news">
-          <ion-slides pager="true" loop="true" centeredSlides="true"  autoplay="10000" *ngIf="items">
-            <ion-slide *ngFor="let item of items">
-              <ion-card class="card-background-page">
-                <img *ngIf="item.images" class="img-fit" [src]="item.images[0].path | imgServerUrly" [srcset]="item.images[0].path | imgServerSrcsettify"/>
-                <ion-card-content>
-                  <ion-card-title class="font-headline">
-                    {{item.title}}
-                  </ion-card-title>
-                </ion-card-content>
-              </ion-card>
-            </ion-slide>
-          </ion-slides>
-        </div>  
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-list>
+    <ion-item>
+      <ion-label>{{'Playlist' | translate}}</ion-label>
+      <ion-select [(ngModel)]="playlist" (ionChange)="listVideos()">
+        <ion-option value="">{{'All Videos' | translate}}</ion-option>
+        <ion-option *ngFor="let playlist of playlists"  value="{{playlist.id}}">{{playlist.snippet.title}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <button ion-item *ngFor="let video of videos" (click)="openVideo(video)" detail-none>
+      <ion-thumbnail item-end>
+        <img [src]="video.snippet.thumbnails.default.url">
+      </ion-thumbnail>
+      <h2>{{ video.snippet.title }}</h2>
+      <p>{{ video.snippet.description}}</p>
+    </button>
+  </ion-list>
 </ion-content>
