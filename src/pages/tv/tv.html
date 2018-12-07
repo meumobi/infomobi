@@ -4,10 +4,10 @@
   </ion-navbar>  
 </ion-header>
 <ion-content padding>
-  <ion-list>
+  <ion-list *ngIf="playlists.length > 0">
     <ion-item>
       <ion-label>{{'Playlist' | translate}}</ion-label>
-      <ion-select [(ngModel)]="playlist" (ionChange)="listVideos()">
+      <ion-select  [(ngModel)]="playlist" (ionChange)="listVideos()">
         <ion-option value="">{{'All Videos' | translate}}</ion-option>
         <ion-option *ngFor="let playlist of playlists"  value="{{playlist.id}}">{{playlist.snippet.title}}</ion-option>
       </ion-select>
@@ -15,11 +15,19 @@
   </ion-list>
   <ion-list>
     <button ion-item *ngFor="let video of videos" (click)="openVideo(video)" detail-none>
-      <ion-thumbnail item-end>
+      <ion-thumbnail item-start>
         <img [src]="video.snippet.thumbnails.default.url">
       </ion-thumbnail>
       <h2>{{ video.snippet.title }}</h2>
       <p>{{ video.snippet.description}}</p>
+      <ion-row>
+        <ion-col col-6></ion-col>
+        <ion-col col-6 center text-center>
+          <ion-note>
+            {{video.snippet.publishedAt | amTimeAgo}}
+          </ion-note>
+        </ion-col>
+      </ion-row>
     </button>
   </ion-list>
 </ion-content>

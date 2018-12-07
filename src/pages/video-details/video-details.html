@@ -5,12 +5,20 @@
 </ion-header>
 <ion-content padding>
   <ion-card>
-    <div text-center [innerHtml]="videoFrame"></div>
+    <div class="video-container" [innerHtml]="videoFrame"></div>
     <ion-card-content>
       <ion-card-title>
-      {{video.snippet.title}}
+        {{video.snippet.title}}
       </ion-card-title>
       <p>{{video.snippet.description}}</p>
     </ion-card-content>
+    <ion-row>
+      <ion-col col-6></ion-col>
+      <ion-col col-6 center text-center>
+        <ion-note>
+          {{video.snippet.publishedAt | amTimeAgo}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
   </ion-card>
 </ion-content>

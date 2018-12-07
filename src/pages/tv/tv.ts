@@ -9,7 +9,7 @@ import { VideosService } from '@providers/videos';
 })
 export class TvPage {
 
-  playlists: Array<any>;
+  playlists: Array<any> = [];
   playlist: string = "";
   videos: Array<any>;
 

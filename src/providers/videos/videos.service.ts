@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ENV } from '@env';
 
 @Injectable()
 export class VideosService {
 
-  apiKey = 'AIzaSyAD49q_weB67bZX8u95G9zrXmBULqdMzas';
-  channel = 'UCBV3x4ANi_UuF3LyuFPa_Pg';
+  apiKey: string;
+  channel = 'UCRGoQtYFZCkbBegdlv8xWew';
 
   constructor(public http: HttpClient) {
     console.log('Hello VideosService Provider');
+    this.apiKey = ENV.youtube.apiKey;
   }
 
   async fetchPlaylists() {
