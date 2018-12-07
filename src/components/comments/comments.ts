@@ -9,6 +9,7 @@ import {
 
 import { AnalyticsProvider } from '@shared/analytics.service';
 import { Item } from '@models/item.interface';
+import { UserProfileService } from '@providers/user-profile';
 
 @Component({
   selector: 'comments',
@@ -23,14 +24,16 @@ export class CommentsComponent {
   author = false;
   filters = {
     isPublished: true,
-    channel: 'live'
+    channel: 'live',
+    domain: ''
   }
   finished = false;
   
   constructor(
     private commentsProvider: CommentsProvider,
     public alertCtrl: AlertController,
-    public analytics: AnalyticsProvider
+    public analytics: AnalyticsProvider,
+    private userProfile: UserProfileService
   ) {}
   
   setFilters(data){
@@ -45,7 +48,15 @@ export class CommentsComponent {
     if (this.item) {
       this.filters.channel = `item_${this.item._id}`;
     } 
-    this.getComments();
+    this.userProfile.current$.subscribe(
+      data => {
+        if (data.domain) {
+          this.filters.domain = data.domain;
+          console.log(this.filters);
+          this.getComments();
+        }
+      }
+    )    
   }
 
   loadMore(infinite) {
