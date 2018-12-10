@@ -75,7 +75,8 @@ export class AnniversariesService {
     }
     const comment = {
       channel: "live",
-      type: "anniversaries",
+      type: "anniversaries",      
+      domain: "katrium.meumobi.com",
       created: Date.now(),
       published: Date.now(),
       modified: Date.now(),
