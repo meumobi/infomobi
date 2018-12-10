@@ -13,7 +13,6 @@ var serviceAccount = {
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ion-employee-int%40appspot.gserviceaccount.com"
 }
 
-
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
@@ -21,8 +20,7 @@ admin.initializeApp({
 var db = admin.firestore();
 
 function update() {
-  var comments = db.collection('comments');
-  comments.where('isPublished', '==', true)
+  db.collection('comments')
   .get()
   .then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
