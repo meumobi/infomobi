@@ -5,6 +5,7 @@ import { SharedModule } from '@shared/shared.module';
 import { CommentsModule } from '@components/comments/comments.module';
 import { VideosService } from '@providers/videos';
 import { TranslateModule } from '@ngx-translate/core';
+import { EmbedVideo } from 'ngx-embed-video';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TranslateModule } from '@ngx-translate/core';
     SharedModule,
     IonicPageModule.forChild(TvPage),
     TranslateModule,
-    CommentsModule
+    CommentsModule,
+    EmbedVideo,
   ],
   providers: [
     VideosService

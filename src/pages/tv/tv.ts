@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { VideosService } from '@providers/videos';
+import { EmbedVideoService } from 'ngx-embed-video';
 
 @IonicPage()
 @Component({
@@ -12,10 +13,12 @@ export class TvPage {
   playlists: Array<any> = [];
   playlist: string = "";
   videos: Array<any>;
+  videoFrame: any;
 
   constructor(
     public navCtrl: NavController,
-    private videosService: VideosService
+    private videosService: VideosService,
+    private embedService: EmbedVideoService
   ) {
   }
 
@@ -41,15 +44,17 @@ export class TvPage {
     .then(
       data => {
         this.videos = data;
+        this.openVideo(this.videos[0]);
         console.log(data);
       }
     );
   }
 
   openVideo(video){
-    this.navCtrl.push('VideoDetailsPage', {
+    this.videoFrame = this.embedService.embed_youtube(video.id.videoId);
+/*     this.navCtrl.push('VideoDetailsPage', {
       video: video
-    });
+    }); */
   }
 
  
