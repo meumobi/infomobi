@@ -1,14 +1,14 @@
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AnalyticsProvider } from '@shared/analytics.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '@providers/auth';
-import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
+import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { UserProfileService } from '@providers/user-profile';
 import { ENV } from '@env';
-import { Observable, Subscription } from "rxjs";
+import { Observable } from "rxjs";
 import { Auth } from '@models/auth.interface';
 import { Category } from '@models/categories.interface';
 import { CategoriesService } from '@providers/categories';
@@ -23,13 +23,12 @@ import 'moment/min/locales';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp implements OnInit, OnDestroy {
+export class MyApp implements OnInit {
   @ViewChild(Nav) nav: Nav;
-  rootPage: string = 'HomePage';
+  rootPage = 'HomePage';
   pages: Array<{title: string, component: any, icon: string}>;
   categories: Array<Category>;
   authData$ : Observable<Auth>;
-  userProfileSubscription: Subscription;
   
   constructor(
     public platform: Platform, 
@@ -42,6 +41,8 @@ export class MyApp implements OnInit, OnDestroy {
     private userProfileService: UserProfileService,
     private categoriesService: CategoriesService
   ) {
+    this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
+
     this.initializeApp();
     
     // used for an example of ngFor and navigation
@@ -49,8 +50,11 @@ export class MyApp implements OnInit, OnDestroy {
       { title: 'Home', component: 'HomePage', icon: "home" },
     ];
     console.log("Env is production ? " + ENV.production);
+  }
 
-    this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
+  ngOnInit() {
+    this.listenAuthData();
+    this.loadMenuCategories();
   }
   
   initializeApp() {
@@ -70,16 +74,19 @@ export class MyApp implements OnInit, OnDestroy {
     });
   }
   
-  ngOnInit() {
+  loadMenuCategories() {
     this.categoriesService.findAll()
     .then(
       data => {
         this.categories = data;
       }
     )
+  }
+
+  listenAuthData() {
     this.authData$.subscribe( authData => {
-      if (authData) {
-        this.userProfileSubscription = this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
+      if (!!authData) {
+        this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
           userProfile => {
             if (userProfile) { 
               if (userProfile.preferredLanguage) {
@@ -108,15 +115,8 @@ export class MyApp implements OnInit, OnDestroy {
     })
   }
   
-  ngOnDestroy() {
-    if (this.userProfileSubscription) {
-      this.userProfileSubscription.unsubscribe();
-    }
-  }
-  
   logout() {
     this.authService.signOut();
-    this.userProfileSubscription.unsubscribe();
   }
 
   pushDetailsPage(page: string, id: string) {

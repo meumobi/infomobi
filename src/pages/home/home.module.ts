@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { HomePage } from './home';
-import { SuperTabsModule } from 'ionic2-super-tabs';
+import { SharedModule } from '@shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 @NgModule({
   declarations: [
@@ -10,8 +11,9 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   imports: [
     IonicPageModule.forChild(HomePage),
-    SuperTabsModule.forRoot(),
-    TranslateModule
+    SharedModule,
+    TranslateModule,
+    SuperTabsModule,
   ],
 })
 export class HomePageModule {}

@@ -12,8 +12,8 @@ import { AuthService as AuthMock } from '../providers/auth/auth.service-mock';
 import { CategoriesService } from '../providers/categories/categories.service-mock';
 import { CategoriesService as CategoriesMock } from '../providers/categories/categories.service-mock';
 
-import { AuthDataPersistenceService } from '../providers/auth-data-presistence/auth-data-persistence.service';
-import { AuthDataPersistenceService as AuthDataPersistenceMock} from '../providers/auth-data-presistence/auth-data-persistence.service-mock';
+import { AuthDataPersistenceService } from '../providers/auth-data-persistence/auth-data-persistence.service';
+import { AuthDataPersistenceService as AuthDataPersistenceMock} from '../providers/auth-data-persistence/auth-data-persistence.service-mock';
 import { UserProfileService } from '../providers/user-profile/user-profile.service';
 import { UserProfileService as UserProfileMock } from '../providers/user-profile/user-profile.service-mock';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';

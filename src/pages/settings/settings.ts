@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { 
-  IonicPage, 
-} from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 
 @IonicPage({
   segment: 'settings',
@@ -11,5 +10,15 @@ import {
   selector: 'page-settings',
   templateUrl: 'settings.html',
 })
-export class SettingsPage {  
+
+export class SettingsPage {
+
+  constructor(
+    private authDataPersistenceService: AuthDataPersistenceService,
+    public navCtrl: NavController
+  ) {}
+
+  ionViewCanEnter(): boolean {
+    return this.authDataPersistenceService.isAuthenticated();
+  }
 }

@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 
 import { Auth, AuthError } from '@models/auth.interface';
 import { ENV } from '@env';
-import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
+import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 
 @Injectable()
 export class ApiService {
@@ -21,10 +21,11 @@ export class ApiService {
 
     this.authData$.subscribe( authData => {
       try {
-        console.log("ApiService: set authData");
+        console.log("ApiService: set authData: ", authData);
         this.domain = authData.visitor.site;
         this.token = authData.token;
       } catch (err) {
+        console.error(err);
 /**
  * TODO: use error native method of Observable
  */

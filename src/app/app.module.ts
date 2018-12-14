@@ -7,7 +7,7 @@ import { SharedModule } from '@shared/shared.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-
+import { SuperTabsModule } from 'ionic2-super-tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FilesProvider } from 'ionic-meumobi-utils';
@@ -27,7 +27,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { ENV } from '@env';
 import { AuthService } from '@providers/auth';
 import { ApiService } from '@providers/api';
-import { AuthDataPersistenceService } from '@providers/auth-data-presistence';
+import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { UserProfileService } from '@providers/user-profile';
 import { ContactsService } from '@providers/contacts';
 import { CategoriesService } from '@providers/categories/';
@@ -40,11 +40,8 @@ export function initConfig(
   authDataPersistenceService: AuthDataPersistenceService
   ): () => Promise<any> {
   return (): Promise<any> => {
-
     return new Promise((resolve, reject) => {
-      authDataPersistenceService.getAuthDataObserver().subscribe(authData => {
-        console.log("initConfig: get authData");
-        console.log(authData);
+      authDataPersistenceService.checkToken().then(authData => {
         resolve();
       })
     });
@@ -53,7 +50,7 @@ export function initConfig(
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     BrowserModule,
@@ -74,10 +71,11 @@ export function initConfig(
       }
     }),
     AngularFireModule.initializeApp(ENV.firebase),
+    SuperTabsModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
   ],
   providers: [
     StatusBar,

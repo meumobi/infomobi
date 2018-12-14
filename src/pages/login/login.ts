@@ -1,3 +1,4 @@
+import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { Component } from '@angular/core';
 import { 
   IonicPage, 
@@ -36,6 +37,7 @@ export class LoginPage {
     public menu : MenuController,
     public meuToastService: MeuToastService,
     private translateService: TranslateService,
+    private authDataPersistenceService: AuthDataPersistenceService,
     public analytics: AnalyticsProvider,
   ) {
     this.user = this.fb.group({
@@ -51,7 +53,21 @@ export class LoginPage {
   ionViewWillEnter(){
     this.menu.enable(false);
   }
-  
+
+  ionViewCanEnter(): boolean {
+    let isAuth = this.authDataPersistenceService.isAuthenticated();
+
+    /**
+     * workaround to redirect on ionViewCanEnter
+     * see https://github.com/ionic-team/ionic/issues/11405#issuecomment-365163495
+     */
+    if (isAuth) {
+      setTimeout(() => this.navCtrl.setRoot('HomePage'), 0);
+    }
+
+    return !isAuth;
+  }
+
   loginUser(user) {
     this.loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
