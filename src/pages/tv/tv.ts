@@ -1,62 +1,39 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
-import { VideosService } from '@providers/videos';
-import { EmbedVideoService } from 'ngx-embed-video';
+import { IonicPage } from 'ionic-angular';
+import { Comment } from '@models/comment';
+import { ItemsService } from '@providers/items';
+import { Item } from '@models/item.interface';
 
 @IonicPage()
 @Component({
-  selector: 'page-tv',
+  selector: 'tv',
   templateUrl: 'tv.html',
 })
 export class TvPage {
-
-  playlists: Array<any> = [];
-  playlist: string = "";
-  videos: Array<any>;
-  videoFrame: any;
+  items:Item[];
+  comments:Comment[];
 
   constructor(
-    public navCtrl: NavController,
-    private videosService: VideosService,
-    private embedService: EmbedVideoService
+    private itemsService: ItemsService
   ) {
+    this.fetchItems();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TvPage');
-    this.listVideos();
-    this.listPlaylists();
   }
 
-  listPlaylists() {
-    this.videosService.fetchPlaylists()
+  fetchItems() {
+    this.itemsService.fetchAll()
     .then(
       data => {
-        this.playlists = data;
-        console.log(data);
+        this.items = data;
+      })
+    .catch(
+      err => {
+        console.log(err);
       }
     );
   }
 
-  listVideos() {
-    console.log("listing videos");
-    this.videosService.fetchVideos(this.playlist)
-    .then(
-      data => {
-        this.videos = data;
-        this.openVideo(this.videos[0]);
-        console.log(data);
-      }
-    );
-  }
-
-  openVideo(video){
-    this.videoFrame = this.embedService.embed_youtube(video.id.videoId);
-/*     this.navCtrl.push('VideoDetailsPage', {
-      video: video
-    }); */
-  }
-
- 
 }
-

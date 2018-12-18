@@ -1,0 +1,45 @@
+page-videos {
+  ion-grid {
+    height: 100%;
+  }
+  .font-body {
+    font-size: 29px;
+  }
+  .font-caption-1 {
+    font-size: 25px;
+  }
+  .font-caption-2 {
+    font-size: 23px;
+  }
+  .font-headline {
+    font-size: 38px;
+  }
+  
+  .image-fit{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .live, .news {
+    height: 100%;
+    overflow: hidden;
+  }
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; 
+    height: 0; 
+    overflow: hidden;
+  }
+  
+  .video-container iframe,
+  .video-container object,
+  .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }    
+}

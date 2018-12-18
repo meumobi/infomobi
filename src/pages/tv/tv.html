@@ -1,35 +1,27 @@
-<ion-header>  
-  <ion-navbar>
-    <ion-title>{{'Videos' | translate}}</ion-title>
-  </ion-navbar>  
-</ion-header>
-<ion-content>
-  <div class="video-container" [innerHtml]="videoFrame"></div>
-
-  <ion-list *ngIf="playlists.length > 0">
-    <ion-item>
-      <ion-label>{{'Playlist' | translate}}</ion-label>
-      <ion-select  [(ngModel)]="playlist" (ionChange)="listVideos()">
-        <ion-option value="">{{'All Videos' | translate}}</ion-option>
-        <ion-option *ngFor="let playlist of playlists"  value="{{playlist.id}}">{{playlist.snippet.title}}</ion-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <button ion-item *ngFor="let video of videos" (click)="openVideo(video)" text-wrap>
-      <ion-thumbnail item-start>
-        <img [src]="video.snippet.thumbnails.default.url">
-      </ion-thumbnail>
-      <h2>{{ video.snippet.title }}</h2>
-      <p>{{ (video.snippet.description | slice:0:80) + (video.snippet.description.length > 80 ? '...' : '')}}</p>
-      <ion-row>
-        <ion-col col-6></ion-col>
-        <ion-col col-6 center text-center>
-          <ion-note>
-            {{video.snippet.publishedAt | amTimeAgo}}
-          </ion-note>
-        </ion-col>
-      </ion-row>
-    </button>
-  </ion-list>
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4> 
+        <div class="live">
+          <comments [rootNavCtrl]="rootNavCtrl"></comments>
+        </div>
+      </ion-col>
+      <ion-col col-8>
+        <div class="news">
+          <ion-slides pager="true" loop="true" centeredSlides="true"  autoplay="10000" *ngIf="items">
+            <ion-slide *ngFor="let item of items">
+              <ion-card class="card-background-page">
+                <img *ngIf="item.thumbnails.length" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly"  />                  <!-- <img *ngIf="item.images" class="img-fit" [src]="item.images[0].path | imgServerUrly" [srcset]="item.images[0].path | imgServerSrcsettify"/> -->
+                <ion-card-content>
+                  <ion-card-title class="font-headline">
+                    {{item.title}}
+                  </ion-card-title>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </div>  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
