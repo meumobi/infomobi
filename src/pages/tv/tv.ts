@@ -6,7 +6,7 @@ import { Item } from '@models/item.interface';
 
 @IonicPage()
 @Component({
-  selector: 'tv',
+  selector: 'page-tv',
   templateUrl: 'tv.html',
 })
 export class TvPage {

@@ -5,7 +5,7 @@ import { EmbedVideoService } from 'ngx-embed-video';
 
 @IonicPage()
 @Component({
-  selector: 'videos',
+  selector: 'page-videos',
   templateUrl: 'videos.html',
 })
 export class VideosPage {
