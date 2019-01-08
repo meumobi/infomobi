@@ -8,6 +8,7 @@ import { IonicModule } from 'ionic-angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared/shared.module';
 import { AnniversariesComponent, MessageComponent } from '../comments/comment';
+import { ImagesModule } from '@components/images/images.module';
 
 @NgModule({
 	declarations: [
@@ -22,6 +23,7 @@ import { AnniversariesComponent, MessageComponent } from '../comments/comment';
 	imports: [
 		IonicModule,
 		TranslateModule.forChild(),
+		ImagesModule,
 		SharedModule
 	],
 	exports: [

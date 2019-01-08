@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CommentsModule } from '@components/comments/comments.module';
 import { SharedModule } from '@shared/shared.module';
 import { ContactsService } from '@providers/contacts';
+import { ImagesModule } from '@components/images/images.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ContactsService } from '@providers/contacts';
     SharedModule,
     IonicPageModule.forChild(UserFormPage),
     CommentsModule,
+    ImagesModule,
     TranslateModule.forChild()
   ],
   providers: [

@@ -12,6 +12,7 @@ import { MediumControlsComponent } from '@components/medium-controls/medium-cont
 import { NgMathPipesModule } from 'angular-pipes';
 import { CommentsModule } from '@components/comments/comments.module';
 import { ItemsModule } from '@components/items/items.module';
+import { ImagesModule } from '@components/images/images.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ItemsModule } from '@components/items/items.module';
     IonicPageModule.forChild(ArticlesDetailsPage),
     SharedModule,
     CommentsModule,
+    ImagesModule,
     ItemsModule,
     TranslateModule.forChild(),
   ],

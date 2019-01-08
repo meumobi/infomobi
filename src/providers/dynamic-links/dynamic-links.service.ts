@@ -8,6 +8,7 @@ export class DynamicLinksProvider {
   constructor(public http: HttpClient) {}
 
   shortLink(link: string): Promise<string> {
+    console.log(link);
     const url = `${ENV.dynamicLinks.url}?key=${ENV.firebase.apiKey}`;
     const httpOptions = {
       headers: {

@@ -1,4 +1,9 @@
 anniversaries {
+  img-avatar[item-start],
+  ion-icon[item-start] {
+    margin: 8px 8px auto 0 !important;
+    width: 40px;
+  }
   .avatar-sm  {     
     width:100% !important;  
     height : 100% !important;  

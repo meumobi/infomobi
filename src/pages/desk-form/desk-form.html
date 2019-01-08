@@ -14,7 +14,7 @@
       </ion-item>
       <ion-item>
         <ion-thumbnail *ngIf="desk.picture" item-end>
-          <img [src]="desk.picture | imgServerUrly">
+            <img-thumbnail [src]="desk.picture" ></img-thumbnail>
         </ion-thumbnail>
         <file-upload (fileUploadStarted)="fileUploadStarted($event);" (fileUploadFinished)="fileUploadFinished($event);"></file-upload>
       </ion-item>

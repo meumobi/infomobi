@@ -1,6 +1,6 @@
 <ion-card>
   <div (click)="pushDetailsPage('ArticlesDetailsPage', item._id)">
-    <img *ngIf="item.thumbnails.length" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly"  />          
+      <img-content *ngIf="item.thumbnails.length" [src]=item.thumbnails[item.thumbnails.length-1].url></img-content>
     <ion-card-content>
       <h1>{{item.title}}</h1>
     </ion-card-content>
