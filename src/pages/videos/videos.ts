@@ -11,7 +11,7 @@ import { EmbedVideoService } from 'ngx-embed-video';
 export class VideosPage {
 
   playlists: Array<any> = [];
-  playlist: string = "";
+  playlist = '';
   videos: Array<any>;
   videoFrame: any;
 
@@ -39,7 +39,7 @@ export class VideosPage {
   }
 
   listVideos() {
-    console.log("listing videos");
+    console.log('listing videos');
     this.videosService.fetchVideos(this.playlist)
     .then(
       data => {
@@ -50,10 +50,7 @@ export class VideosPage {
     );
   }
 
-  openVideo(video){
+  openVideo(video) {
     this.videoFrame = this.embedService.embed_youtube(video.id.videoId);
   }
-
- 
 }
-
