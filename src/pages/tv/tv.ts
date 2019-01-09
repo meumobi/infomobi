@@ -12,8 +12,8 @@ import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
   templateUrl: 'tv.html',
 })
 export class TvPage {
-  items:Item[];
-  comments:Comment[];
+  items: Item[];
+  comments: Comment[];
 
   constructor(
     private authDataPersistenceService: AuthDataPersistenceService,

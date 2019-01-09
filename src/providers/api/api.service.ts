@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 import { Auth, AuthError } from '@models/auth.interface';
 import { ENV } from '@env';
@@ -12,7 +12,7 @@ export class ApiService {
   private token: string = null;
   private domain: string = null;
   private authData$: Observable<Auth>;
-  
+
   constructor(
     public http: HttpClient,
     public authDataPersistenceService: AuthDataPersistenceService
@@ -21,7 +21,7 @@ export class ApiService {
 
     this.authData$.subscribe( authData => {
       try {
-        console.log("ApiService: set authData: ", authData);
+        console.log('ApiService: set authData: ', authData);
         this.domain = authData.visitor.site;
         this.token = authData.token;
       } catch (err) {
@@ -30,7 +30,7 @@ export class ApiService {
  * TODO: use error native method of Observable
  */
       }
-    })
+    });
   }
 
   private buildUrl(endp) {
@@ -38,7 +38,7 @@ export class ApiService {
       /*
         If this.domain is null then use domain empty
       */
-     console.log("ApiService: buildUrl");
+     console.log('ApiService: buildUrl');
       const domain = (this.domain) ? this.domain : '';
       const url = `${ENV.meumobi.apiUrl}/api/${domain}${endp}/`;
 
@@ -48,7 +48,7 @@ export class ApiService {
   }
 
   private sendRequest(url, options) {
-    
+
     return this.http.get(url, options).toPromise()
     .then(
       (res: any) => {
@@ -65,7 +65,7 @@ export class ApiService {
       }
     };
     const url = this.buildUrl('/items/latest');
-    
+
     return this.sendRequest(url, httpOptions);
   }
 
@@ -77,7 +77,7 @@ export class ApiService {
       }
     };
     const url = this.buildUrl('/categories') + `${id}/items`;
-    
+
     return this.sendRequest(url, httpOptions);
   }
 
@@ -89,10 +89,9 @@ export class ApiService {
       }
     };
     const url = this.buildUrl('/items') + `${poll.id}/poll`;
-    
-    return this.http.post(url, poll.params, httpOptions).toPromise();    
-  }
 
+    return this.http.post(url, poll.params, httpOptions).toPromise();
+  }
 
   fetchItemById(id: string): Promise<any> {
     const httpOptions = {
@@ -102,7 +101,7 @@ export class ApiService {
       }
     };
     const url = this.buildUrl('/items') + `${id}`;
-    
+
     return this.http.get(url, httpOptions).toPromise();
   }
 
@@ -124,7 +123,7 @@ export class ApiService {
       .post<Auth>(url, data, httpOptions)
       .toPromise()
       .then((response) => {
-        return response
+        return response;
         // return response.json().data as Hero[];
       })
       .catch(this.handleError);
@@ -132,14 +131,14 @@ export class ApiService {
 
   private handleError(error: any): Promise<AuthError> {
     let errorMessage: string;
-    if(error.error instanceof Error){      
+    if (error.error instanceof Error) {
       errorMessage = `A network or client-side error occured: ${error.error.message}`;
-    } else {        
+    } else {
         errorMessage = `API server returned error code ${error.status}, body of error was: ${error.error}`;
     }
     console.log(errorMessage);
 
-    let authServiceError:AuthError = new AuthError();
+    const authServiceError: AuthError = new AuthError();
     console.error('An error occurred', error);
     authServiceError.message = error.error.error;
 

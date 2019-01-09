@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Auth } from '@models/auth.interface';
 import { Storage } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
 
-const TOKEN_KEY = "X-Auth-Token";
+const TOKEN_KEY = 'X-Auth-Token';
 
 @Injectable()
 export class AuthDataPersistenceService {
@@ -17,7 +17,7 @@ export class AuthDataPersistenceService {
   ) {
     this.platform.ready().then( _ => {
       this.checkToken();
-    })
+    });
   }
 
   public checkToken(): Promise<Auth|null> {
@@ -25,14 +25,14 @@ export class AuthDataPersistenceService {
     return this.storage.get(TOKEN_KEY).then( data => {
       this.authData$.next(JSON.parse(data));
       return data;
-    })
+    });
   }
-  
+
   public set(data): Promise<Auth> {
 
     return this.storage.set(TOKEN_KEY, JSON.stringify(data))
-    .then( 
-      () =>{
+    .then(
+      () => {
         this.authData$.next(data);
 
         return data;
@@ -43,7 +43,7 @@ export class AuthDataPersistenceService {
 
     return this.authData$.asObservable();
   }
-  
+
   public clear(): Promise<void> {
 
     return this.storage.remove(TOKEN_KEY)
