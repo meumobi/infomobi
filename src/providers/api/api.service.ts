@@ -9,8 +9,8 @@ import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 @Injectable()
 export class ApiService {
 
-  private token: string = null;
-  private domain: string = null;
+  private token: string;
+  private domain: string;
   private authData$: Observable<Auth>;
 
   constructor(
@@ -19,18 +19,25 @@ export class ApiService {
   ) {
     this.authData$ = authDataPersistenceService.getAuthDataObserver();
 
+    this.reset();
+
     this.authData$.subscribe( authData => {
       try {
-        console.log('ApiService: set authData: ', authData);
         this.domain = authData.visitor.site;
         this.token = authData.token;
       } catch (err) {
+        this.reset();
         console.error(err);
 /**
  * TODO: use error native method of Observable
  */
       }
     });
+  }
+
+  private reset() {
+    this.domain = null;
+    this.token = null;
   }
 
   private buildUrl(endp) {
