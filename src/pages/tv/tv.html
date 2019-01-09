@@ -11,7 +11,7 @@
           <ion-slides pager="true" loop="true" centeredSlides="true"  autoplay="10000" *ngIf="items">
             <ion-slide *ngFor="let item of items">
               <ion-card class="card-background-page">
-                <img *ngIf="item.images" class="img-fit" [src]="item.images[0].path | imgServerUrly" [srcset]="item.images[0].path | imgServerSrcsettify"/>
+                <img *ngIf="item.thumbnails.length" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly"  />                  <!-- <img *ngIf="item.images" class="img-fit" [src]="item.images[0].path | imgServerUrly" [srcset]="item.images[0].path | imgServerSrcsettify"/> -->
                 <ion-card-content>
                   <ion-card-title class="font-headline">
                     {{item.title}}

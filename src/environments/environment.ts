@@ -20,6 +20,9 @@ export const ENV = {
     url: "https://firebasedynamiclinks.googleapis.com/v1/shortLinks",
     prefix: "https://infomobi.page.link"
   },
+  youtube: {
+    apiKey: 'AIzaSyAD49q_weB67bZX8u95G9zrXmBULqdMzas'
+  },
   firebase: {
     apiKey: "AIzaSyBemLnl_Wz4U50lD3gXirvjDk5jLUbyA_M",
     authDomain: "ion-employee-int.firebaseapp.com",

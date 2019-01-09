@@ -31,6 +31,7 @@ import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { UserProfileService } from '@providers/user-profile';
 import { ContactsService } from '@providers/contacts';
 import { CategoriesService } from '@providers/categories/';
+import { VideosService } from '@providers/videos';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -102,7 +103,8 @@ export function initConfig(
       useFactory: initConfig,
       multi: true,
       deps: [AuthDataPersistenceService]
-    }
+    },
+    VideosService
   ]
 })
 
