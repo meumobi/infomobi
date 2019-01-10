@@ -1,5 +1,7 @@
 const admin = require('firebase-admin');
 
+module.exports = { setCommentsDomain };
+
 var serviceAccount = {
   "type": "service_account",
   "project_id": "ion-employee-int",
@@ -19,17 +21,20 @@ admin.initializeApp({
 
 var db = admin.firestore();
 
-function update() {
+function setCommentsDomain(domain) {
+  if (!domain) {
+    console.log('Please provide a domain as argument (ex: node -e \'require("./index").setCommentsDomain("katrium.meumobi.com")\')');
+    return;
+  }
+
   db.collection('comments')
   .get()
   .then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
-      db.collection("comments").doc(doc.id).update({"domain":'katrium.meumobi.com'});
+      db.collection("comments").doc(doc.id).update({"domain": domain});
     });
   })
   .catch(function(e) {
     console.log(e);
   });
 }
-
-// update();
