@@ -7,6 +7,7 @@ let comments = Observable.of([
   {
     channel: 'live',
     created: 1530873217111,
+    domain: 'katrium.meumobi.com',
     data: {
       author: {
         displayName: "Luiza Bittencourt", 
@@ -28,6 +29,7 @@ let comments = Observable.of([
   {
     channel: 'item_599ec8389a645d465c8b456d',
     created: 1530873217112,
+    domain: 'katrium.meumobi.com',
     data: {
       author: {
         displayName: "Luiza Bittencourt", 
@@ -52,6 +54,7 @@ let comments = Observable.of([
   {
     channel: 'live',
     created: 1530873217113,
+    domain: 'katrium.meumobi.com',
     data: {
       author: {
         displayName: "Luiza Bittencourt", 
@@ -74,6 +77,7 @@ let comments = Observable.of([
   {
     channel: 'live',
     created: 1530873217114,
+    domain: 'katrium.meumobi.com',
     data: {
       author: {
         displayName: "Luiza Bittencourt", 
@@ -95,6 +99,7 @@ let comments = Observable.of([
   {
     channel: 'live',
     created: 1536594183928,
+    domain: 'conte.meumobi.com',
     data: {
       media: [{
         url: "https://infomobi.page.link/sqMF" 
