@@ -8,8 +8,9 @@ export class CommentsProvider {
     return comments
     .map(
       comments => {
+        console.log(filters);
         return comments.filter(
-          comment => comment.channel == filters.channel
+          comment => comment.channel == filters.channel && comment.domain == filters.domain
         )
       }
     )
