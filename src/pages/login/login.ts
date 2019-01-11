@@ -52,6 +52,39 @@ export class LoginPage {
     this.menu.enable(false);
   }
 
+  forgotPassword() {
+    const prompt = this.alertCtrl.create({
+      title:  this.translateService.instant('Forgot my password'),
+      inputs: [
+        {
+          name: 'email',
+          placeholder: this.translateService.instant('Email')
+        },
+      ],
+      buttons: [
+        {
+          text: this.translateService.instant('Cancel'),
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: this.translateService.instant('Recover'),
+          handler: data => {
+            this.authService.forgotPassword(data.email)
+            .then(
+              () => {
+                this.meuToastService.present(this.translateService.instant('Email sent'));
+              }
+            )
+            .catch(err => console.log(err, 'Recover password failed!'));
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
   ionViewCanEnter(): boolean {
     const isAuth = this.authDataPersistenceService.isAuthenticated();
 

@@ -112,6 +112,29 @@ export class ApiService {
     return this.http.get(url, httpOptions).toPromise();
   }
 
+  forgotPassword(email: string): Promise<any> {
+    const httpOptions = {
+      headers: {
+        'Accept':  'application/json',
+      }
+    };
+
+    const url = this.buildUrl('/visitors/forgot_password');
+
+    const data = {
+      email: email
+    };
+
+    return this.http
+      .post<any>(url, data, httpOptions)
+      .toPromise()
+      .then((response) => {
+        return response;
+      })
+      .catch(this.handleError);
+  }
+
+
   login(email: string, password: string): Promise<Auth | AuthError> {
     const httpOptions = {
       headers: {

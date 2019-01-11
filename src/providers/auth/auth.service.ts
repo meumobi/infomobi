@@ -21,10 +21,14 @@ export class AuthService {
       console.log('AuthService, signIn succeed');
 
       return this.authDataPersistenceService.set(response);
-    })
+    });
   }
 
   signOut(): Promise<void> {
     return this.authDataPersistenceService.clear();
+  }
+
+  forgotPassword(email: string): Promise<void> {
+    return this.apiService.forgotPassword(email);
   }
 }

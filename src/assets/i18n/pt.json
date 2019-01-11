@@ -20,6 +20,8 @@
     "Do you want to delete this comment?": "Você deseja remover esse comentário?",
     "Do you want to create a User or Desk contact?": "Você deseja criar um contato de usuário ou grupo ?",
     "Promote": "Promover",
+    "Forgot my password": "Esqueci minha senha",
+    "Recover": "Recuperar",
     "Show": "Publicar",
     "Value": "Valor",
     "Videos": "Vídeos",
@@ -50,6 +52,8 @@
     "landlinePhone": "Fixo",
     "mobilePhone": "Celular",
     "Email": "E-mail",
+    "Email sent": "E-mail enviado",
+    "Password": "Senha",
     "LIVE_FEED": {
         "ANNIVERSARIES_TITLE": "Aniversariantes do dia!"
     },
