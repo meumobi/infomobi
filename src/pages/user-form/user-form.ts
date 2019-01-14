@@ -90,6 +90,7 @@ export class UserFormPage {
   
   onSubmit() {
     if (this.newProfile) {
+      this.user.domain = this.userProfile.current$.value.domain;
       this.contactsService.create(this.user)
       .then(() => this.navCtrl.pop());
     } else {

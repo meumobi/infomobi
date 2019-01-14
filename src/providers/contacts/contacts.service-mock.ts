@@ -5,10 +5,11 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ContactsService {
 
-  search(): Observable<any[]>{
+  search(filters): Observable<any[]>{
     return contacts.map(
       contacts => {
         return contacts
+        .filter(contact => contact.domain == filters.domain)
       }
     )
   }
