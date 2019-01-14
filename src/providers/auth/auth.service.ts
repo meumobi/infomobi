@@ -27,4 +27,9 @@ export class AuthService {
   signOut(): Promise<void> {
     return this.authDataPersistenceService.clear();
   }
+
+  newPassword(email, currentPassword, password): Promise<void> {
+    return this.apiService.updateVisitorPassword(email, currentPassword, password).then();
+  }
+
 }

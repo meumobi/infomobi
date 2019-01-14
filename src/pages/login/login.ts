@@ -79,7 +79,11 @@ export class LoginPage {
       this.translateService.get('LOGIN.USER_WELCOME', {displayName: response.visitor.first_name}).subscribe(
         value => {
           this.meuToastService.present(value);
-          this.navCtrl.setRoot('HomePage');
+          if (response.error === 'password expired') {
+            this.newPassword(user.value.email, user.value.password);
+          } else {
+            this.navCtrl.setRoot('HomePage');
+          }
         }
       );
     })
@@ -102,4 +106,43 @@ export class LoginPage {
       });
     });
   }
+
+  newPassword(email: string, currentPassword: string) {
+    const prompt = this.alertCtrl.create({
+      title: this.translateService.instant('Update password'),
+      message: this.translateService.instant('For your safefy, update your password'),
+      enableBackdropDismiss: false,
+      inputs: [
+        {
+          name: 'newPassword',
+          placeholder: this.translateService.instant(' New password')
+        },
+      ],
+      buttons: [
+        {
+          text: this.translateService.instant('Cancel'),
+          handler: data => {
+            console.log('Cancel clicked');
+            this.loading.dismiss();
+            this.authService.signOut();
+          }
+        },
+        {
+          text: this.translateService.instant('Save'),
+          handler: data => {
+            this.authService.newPassword(email, currentPassword, data.newPassword)
+            .then(
+              () => {
+                this.meuToastService.present(this.translateService.instant('Password updated'));
+                this.navCtrl.setRoot('HomePage');
+              }
+            )
+            .catch(err => console.log(err, 'New password failed!'));
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
 }

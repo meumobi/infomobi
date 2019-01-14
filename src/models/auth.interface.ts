@@ -3,6 +3,7 @@ export interface Auth {
   token: string;
   message?: string;
   visitor: AuthUser;
+  error?: string;
 }
 
 export interface AuthUser {

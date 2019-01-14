@@ -136,6 +136,32 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+
+  updateVisitorPassword(email: string, current_password: string, password: string): Promise<any> {
+    const httpOptions = {
+      headers: {
+        'Accept':  'application/json',
+        'X-Visitor-Token': this.token
+      }
+    };
+
+    const url = this.buildUrl('/visitors');
+
+    const data = {
+      email: email,
+      current_password: current_password,
+      password: password
+    };
+
+    return this.http
+      .put<any>(url, data, httpOptions)
+      .toPromise()
+      .then((response) => {
+        return response;
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<AuthError> {
     let errorMessage: string;
     if (error.error instanceof Error) {
