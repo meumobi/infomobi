@@ -14,11 +14,12 @@ export class ContactsService {
     this.itemsCollection = this.af.collection<ContactProfile>('contacts');
   }
   
-  search(): Observable<ContactProfile[]> {
+  search(filters): Observable<ContactProfile[]> {
     this.itemsCollection = this.af.collection<ContactProfile>('contacts',
     ref => {
       let query : Query = ref;
       query = query.where('isPublished', '==', true);
+      query = query.where('domain', '==', filters.domain);
       query = query.orderBy('displayName', 'asc');
       return query;
     });   
