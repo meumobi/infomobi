@@ -64,6 +64,26 @@ export class AnniversariesService {
   }
 
 
+  private groupByDomain(contacts) {
+    let i = 0;
+    let val: any;
+    let index: number; 
+    const values = []; 
+    const result = [];
+    for (; i < contacts.length; i++) {
+      val = contacts[i]["domain"];
+      index = values.indexOf(val);
+      if (index > -1) {
+        result[index].push(contacts[i]);
+      } else {
+        values.push(val);
+        result.push([contacts[i]]);
+      }
+    }
+    return result;
+  }
+
+
   private publishAnniversaries(contacts) {
     const anniversaries = {
       title: "Aniversariante(s) do dia!",
@@ -75,7 +95,8 @@ export class AnniversariesService {
     }
     const comment = {
       channel: "live",
-      type: "anniversaries",
+      type: "anniversaries",      
+      domain: contacts[0].domain,
       created: Date.now(),
       published: Date.now(),
       modified: Date.now(),
@@ -108,14 +129,19 @@ export class AnniversariesService {
     return this.getContacts()
     .then(
       data => {        
-        const anniversaries = this.filterAnniversaries(data, currentDate);
-        if (anniversaries.length > 0) {
+        let contacts = this.filterAnniversaries(data, currentDate);
+        if (contacts.length > 0) {
           this.checkAnniversaries(currentDate).then(
             (ids) => {
               this.deleteAnniversaries(ids);
             }
           )
-          return this.publishAnniversaries(anniversaries);
+          contacts = this.groupByDomain(contacts);
+          return contacts.forEach(
+            element => {
+              return this.publishAnniversaries(element);
+            }
+          )
         } else {
           return {};
         }

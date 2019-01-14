@@ -19,6 +19,7 @@ export class CommentsProvider {
         let query : Query = ref;
         query = query.where('isPublished', '==', filters.isPublished);
         query = query.where('channel', '==', filters.channel);
+        query = query.where('domain', '==', filters.domain);
         query = query.orderBy('published', 'desc');
         if (lastItem) {
           query = query.startAfter(lastItem.doc);
