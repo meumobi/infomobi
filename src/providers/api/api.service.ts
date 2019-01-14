@@ -137,16 +137,16 @@ export class ApiService {
   }
 
 
-  updateVisitorPassword(email: string, current_password: string, password: string): Promise<any> {
+  updateVisitorPassword(email: string, current_password: string, password: string, token: string, domain: string): Promise<any> {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
-        'X-Visitor-Token': this.token
+        'X-Visitor-Token': token
       }
     };
-
+    this.domain = domain;
     const url = this.buildUrl('/visitors');
-
+    this.reset();
     const data = {
       email: email,
       current_password: current_password,
