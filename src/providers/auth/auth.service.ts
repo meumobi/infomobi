@@ -8,7 +8,7 @@ import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 export class AuthService {
 
   constructor(
-    public http: HttpClient, 
+    public http: HttpClient,
     public apiService: ApiService,
     public authDataPersistenceService: AuthDataPersistenceService
   ) {
@@ -21,7 +21,7 @@ export class AuthService {
       console.log('AuthService, signIn succeed');
 
       return this.authDataPersistenceService.set(response);
-    })
+    });
   }
 
   signOut(): Promise<void> {
