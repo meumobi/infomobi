@@ -1,11 +1,11 @@
 import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { Component } from '@angular/core';
-import { 
-  IonicPage, 
-  NavController, 
+import {
+  IonicPage,
+  NavController,
   MenuController,
-  LoadingController, 
-  Loading, 
+  LoadingController,
+  Loading,
   AlertController
 } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -24,17 +24,15 @@ import { Auth, AuthError } from '@models/auth.interface';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  
   user: FormGroup; // = {} as IUser;
   loading: Loading;
-  
   constructor(
     private fb: FormBuilder,
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public authService: AuthService,
-    public menu : MenuController,
+    public menu: MenuController,
     public meuToastService: MeuToastService,
     private translateService: TranslateService,
     private authDataPersistenceService: AuthDataPersistenceService,
@@ -45,17 +43,17 @@ export class LoginPage {
       password: ['', Validators.compose([Validators.required])]
     });
   }
-  
-  ionViewWillLeave(){
+
+  ionViewWillLeave() {
     this.menu.enable(true);
   }
-  
-  ionViewWillEnter(){
+
+  ionViewWillEnter() {
     this.menu.enable(false);
   }
 
   ionViewCanEnter(): boolean {
-    let isAuth = this.authDataPersistenceService.isAuthenticated();
+    const isAuth = this.authDataPersistenceService.isAuthenticated();
 
     /**
      * workaround to redirect on ionViewCanEnter
@@ -73,7 +71,7 @@ export class LoginPage {
       dismissOnPageChange: true,
     });
     this.loading.present();
-    
+
     this.authService.signIn(user.value.email, user.value.password)
     .then( (response: Auth) => {
       console.log(response);
@@ -83,18 +81,18 @@ export class LoginPage {
           this.meuToastService.present(value);
           this.navCtrl.setRoot('HomePage');
         }
-      )
+      );
     })
     .catch ( (err: AuthError) => {
       console.log(err);
       this.analytics.trackEvent('Login', 'Submit', 'Failed');
       this.loading.dismiss().then( () => {
         if (err) {
-          let alert = this.alertCtrl.create({
+          const alert = this.alertCtrl.create({
             message: this.translateService.instant(err.message),
             buttons: [
               {
-                text: "Ok",
+                text: 'Ok',
                 role: 'cancel'
               }
             ]
@@ -102,6 +100,6 @@ export class LoginPage {
           alert.present();
         }
       });
-    });  
+    });
   }
 }
