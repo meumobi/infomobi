@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SharedModule } from '@shared/shared.module';
 import { VideoDetailsPage } from './video-details';
-import { EmbedVideo } from 'ngx-embed-video';
+import { EmbedVideoService } from '@providers/videos/embed-video.service';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,9 @@ import { EmbedVideo } from 'ngx-embed-video';
   imports: [
     SharedModule,
     IonicPageModule.forChild(VideoDetailsPage),
-    EmbedVideo,
   ],
+  providers: [
+    EmbedVideoService
+  ]
 })
 export class VideoDetailsPageModule {}
