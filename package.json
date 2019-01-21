@@ -21,7 +21,8 @@
     "e2e-update": "webdriver-manager update --standalone false --gecko false",
     "ngsw-config": "node_modules/.bin/ngsw-config www src/ngsw-config.json",
     "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js www/",
-    "ionic:build": "ionic-app-scripts build"
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:build:pwa": "ionic-app-scripts build && npm run ngsw-config && npm run ngsw-copy"
   },
   "config": {
     "ionic_webpack": "./config/webpack.config.js",
