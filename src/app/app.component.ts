@@ -9,7 +9,7 @@ import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { UserProfileService } from '@providers/user-profile';
 import { ENV } from '@env';
 import { Observable } from 'rxjs';
-import { Auth } from '@models/auth.interface';
+import { Auth, AuthUser } from '@models/auth.interface';
 import { Category } from '@models/categories.interface';
 import { CategoriesService } from '@providers/categories';
 import moment from 'moment';
@@ -29,6 +29,7 @@ export class MyApp implements OnInit {
   pages: Array<{title: string, component: any, icon: string}>;
   categories: Array<Category>;
   authData$: Observable<Auth>;
+  authUser: AuthUser = null;
 
   constructor(
     public platform: Platform,
@@ -54,6 +55,15 @@ export class MyApp implements OnInit {
   ngOnInit() {
     this.listenAuthData();
     this.loadMenuCategories();
+    this.authDataPersistenceService.getAuthDataObserver().subscribe(
+      data => {
+        if (data) {
+          this.authUser = data.visitor;
+        } else {
+          this.authUser = null;
+        }
+      }
+    );
   }
 
   initializeApp() {
