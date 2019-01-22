@@ -6,7 +6,7 @@
       <ion-title>
         <img src="./assets/images/header-clean.png" class="logo" alt="infomobi">
       </ion-title>
-      <ion-buttons end>
+      <ion-buttons end *ngIf="authUser && authUser.site=='katrium.meumobi.com'">
         <button ion-button block (click)="openPage('VideosPage')">
           <div>
             <ion-icon name="desktop"></ion-icon>
