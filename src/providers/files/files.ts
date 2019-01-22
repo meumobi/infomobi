@@ -43,13 +43,20 @@ export class FilesProvider {
     },
     'audio/mpeg': {
       label: 'Play',
-      icon: 'play',   
+      icon: 'play',
       extension: 'mp3',
+      download: true
+    },
+    'video/mp4': {
+      label: 'Play',
+      icon: 'play',
+      extension: 'mp4',
       download: true
     },
     'application/vnd.ms-powerpoint': {
       class: 'fa-file-powerpoint-o',
       label: 'View',
+      icon: 'download',
       extension: 'ppt',
       download: true,
     },
@@ -135,6 +142,8 @@ export class FilesProvider {
 
   decorateFile(file) {
     file.behavior = this.getBehavior(file.type);
+    console.log('Files Provider, decorateFile');
+    console.log(file);
     if (file.behavior.download && this.plt.is('cordova')) {
       file.name = file.name || this.getFileName(file);
       file.path = file.path || this.getFilePath(file.name);
