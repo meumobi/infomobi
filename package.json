@@ -21,7 +21,13 @@
     "e2e-update": "webdriver-manager update --standalone false --gecko false",
     "ngsw-config": "node_modules/.bin/ngsw-config www src/ngsw-config.json",
     "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js www/",
-    "ionic:build": "ionic-app-scripts build && npm run ngsw-config && npm run ngsw-copy"
+    "ionic:serve:before": "gulp preprocess",
+    "ionic:build:before": "gulp preprocess",
+    "preionic:build:pwa": "gulp preprocess --mode=pwa",
+    "preionic:build:native": "gulp preprocess --mode=native",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:build:pwa": "ionic-app-scripts build && npm run ngsw-config && npm run ngsw-copy",
+    "ionic:build:native": "ionic-app-scripts build"
   },
   "config": {
     "ionic_webpack": "./config/webpack.config.js",
@@ -68,6 +74,10 @@
     "angular2-template-loader": "^0.6.2",
     "codelyzer": "^4.5.0",
     "connect": "^3.6.6",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-preprocess": "^3.0.1",
+    "gulp-rename": "^1.4.0",
     "html-loader": "^0.5.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine": "^3.1.0",
