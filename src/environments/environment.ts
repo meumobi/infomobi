@@ -21,7 +21,8 @@ export const ENV = {
     prefix: 'https://infomobi.page.link'
   },
   youtube: {
-    apiKey: 'AIzaSyAD49q_weB67bZX8u95G9zrXmBULqdMzas'
+    apiKey: 'AIzaSyAD49q_weB67bZX8u95G9zrXmBULqdMzas',
+    apiURL: 'https://www.googleapis.com/youtube/v3'
   },
   firebase: {
     apiKey: 'AIzaSyBemLnl_Wz4U50lD3gXirvjDk5jLUbyA_M',
