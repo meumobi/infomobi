@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { DeskProfile } from '@models/contact-profile';
 import { TranslateService } from '@ngx-translate/core';
 import { ContactsService } from '@providers/contacts';
+import { UserProfileService } from '@providers/user-profile';
 
 @IonicPage()
 @Component({
@@ -21,7 +22,8 @@ export class DeskFormPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public translateService: TranslateService,
-    private contactsService: ContactsService
+    private contactsService: ContactsService,
+    private userProfile: UserProfileService,
   ) {
     this.id = this.navParams.data.id; 
   }
@@ -79,6 +81,7 @@ export class DeskFormPage {
   
   onSubmit() {
     if (!this.id) {
+      this.desk.domain = this.userProfile.current$.value.domain;
       this.contactsService.create(this.desk)
       .then(() => this.navCtrl.pop());
     } else {

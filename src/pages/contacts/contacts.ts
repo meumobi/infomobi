@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ContactsService } from '@providers/contacts/';
 import { ContactProfile } from '@models/contact-profile';
-import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { UserProfileService } from '@providers/user-profile';
 
@@ -54,11 +53,12 @@ export class ContactsPage {
 
   ngOnInit() {
     this.admin = this.userProfileService.current$.value.role == "admin";
-    this.search();
+    this.search({domain:this.userProfileService.current$.value.domain});
   }
 
-  search() {
-    this.contactsService.search().subscribe(
+  search(filters) {
+    console.log(filters);
+    this.contactsService.search(filters).subscribe(
       data => {
         this.contacts = data;   
       },
