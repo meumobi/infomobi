@@ -15,7 +15,7 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-list>
+  <ion-list *ngIf="videos.length > 0">
     <button ion-item *ngFor="let video of videos" (click)="openVideo(video)" text-wrap>
       <ion-thumbnail item-start>
         <img [src]="video.snippet.thumbnails.default.url">

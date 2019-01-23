@@ -12,7 +12,7 @@ export class VideosPage {
 
   playlists: Array<any> = [];
   playlist = '';
-  videos: Array<any>;
+  videos: Array<any> = [];
   videoFrame: any;
 
   constructor(
@@ -43,8 +43,10 @@ export class VideosPage {
     this.videosService.fetchVideos(this.playlist)
     .then(
       data => {
-        this.videos = data;
-        this.openVideo(this.videos[0]);
+        if (data.length > 0) {
+          this.videos = data;
+          this.openVideo(this.videos[0]);
+        }
         console.log(data);
       }
     );
