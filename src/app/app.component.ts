@@ -14,6 +14,7 @@ import { Category } from '@models/categories.interface';
 import { CategoriesService } from '@providers/categories';
 import moment from 'moment';
 import 'moment/min/locales';
+import { SettingsService } from '@providers/settings';
 /**
  * TODO: load only required locales
  * Need a refactoring to normalize preferredLanguages with locales names (pt vs pt-br, en vs en-gb, etc.)
@@ -40,10 +41,10 @@ export class MyApp implements OnInit {
     private authService: AuthService,
     private authDataPersistenceService: AuthDataPersistenceService,
     private userProfileService: UserProfileService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private settingsService: SettingsService,
   ) {
     this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
-
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
@@ -94,6 +95,8 @@ export class MyApp implements OnInit {
   listenAuthData() {
     this.authData$.subscribe( authData => {
       if (!!authData) {
+        console.log(authData);
+        this.settingsService.loadByDomain(authData.visitor.site);
         this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
           userProfile => {
             if (userProfile) {

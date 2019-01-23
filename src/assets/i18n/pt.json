@@ -1,8 +1,22 @@
 {
-  "Settings": "Configuração",
-  "SETTINGS_SELECT": {
-    "lang_pt": "Português",
-    "lang_en": "Inglês"
+  "Settings": "Configurações",
+  "PREFERENCES": {
+    "LINK": "Preferências",
+    "TITLE": "Preferências de usuário",
+    "LANGUAGE": {
+      "PT": "Português",
+      "EN": "Inglês"
+    },
+    "NOTIFICATION": "Notificações",
+    "SUBMIT": {
+      "SUCCESS": "Configurações salvas",
+      "ERROR": "Ocorreu um erro, por favor tente novamente ou entre em contato connosco."
+    }
+  },
+  "SETTINGS": {
+    "LINK": "Configurações",
+    "TITLE": "Configurações da conta",
+    "YOUTUBE_CHANNEL_ID": "Id do Canal do Youtube"
   },
   "IN_APP": "Internal app translation",
   "Notifications": "Notificações",

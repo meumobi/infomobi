@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
+import { Settings } from '@models/settings';
+import { SettingsService } from '@providers/settings';
+import { MeuToastService } from '@shared/meu-toast.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage({
   segment: 'settings',
@@ -11,14 +14,37 @@ import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
   templateUrl: 'settings.html',
 })
 
-export class SettingsPage {
+export class SettingsPage implements OnInit {
+  settings: Settings;
 
   constructor(
-    private authDataPersistenceService: AuthDataPersistenceService,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private settingsService: SettingsService,
+    private meutToastService: MeuToastService,
+    private translateService: TranslateService,
   ) {}
 
-  ionViewCanEnter(): boolean {
-    return this.authDataPersistenceService.isAuthenticated();
+  ngOnInit() {
+    this.settingsService.getSettings().subscribe(
+      data => {
+        console.log(data);
+        this.settings = data;
+      }
+    );
   }
+
+  onSubmit() {
+    this.settingsService.setSettings(this.settings)
+    .then(
+      () => this.meutToastService.present(this.translateService.instant('SETTINGS.SUBMIT.SUCCESS'))
+    )
+    .catch( _ => {
+
+    });
+  }
+
+  cancel() {
+    this.navCtrl.pop();
+  }
+
 }

@@ -1,7 +1,21 @@
 {
-  "SETTINGS_SELECT": {
-    "lang_pt": "Portuguese",
-    "lang_en": "English"
+  "PREFERENCES": {
+    "LINK": "Preferences",
+    "LANGUAGE": {
+      "PT": "Portuguese",
+      "EN": "English"
+    },
+    "NOTIFICATION": "Notifications",
+    "TITLE": "User Preferences",
+    "SUBMIT": {
+      "SUCCESS": "Settings successfully saved!",
+      "ERROR": "An error occurred, please try again later or contact your admin."
+    }
+  },
+  "SETTINGS": {
+    "LINK": "Settings",
+    "TITLE": "Account Settings",
+    "YOUTUBE_CHANNEL_ID": "Youtube Channel Id",
   },
   "IN_APP": "Internal app translation",
   "LOGIN": {
