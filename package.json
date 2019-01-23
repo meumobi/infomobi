@@ -23,9 +23,11 @@
     "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js www/",
     "ionic:serve:before": "gulp preprocess",
     "ionic:build:before": "gulp preprocess",
+    "preionic:build:pwa": "gulp preprocess --mode=pwa",
+    "preionic:build:native": "gulp preprocess --mode=native",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:build:pwa": "gulp preprocess --mode=pwa && npm run ionic:build && npm run ngsw-config && npm run ngsw-copy",
-    "ionic:build:native": "gulp preprocess --mode=native && npm run ionic:build"
+    "ionic:build:pwa": "ionic-app-scripts build && npm run ngsw-config && npm run ngsw-copy",
+    "ionic:build:native": "ionic-app-scripts build"
   },
   "config": {
     "ionic_webpack": "./config/webpack.config.js",
