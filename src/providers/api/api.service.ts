@@ -22,15 +22,18 @@ export class ApiService {
     this.reset();
 
     this.authData$.subscribe( authData => {
-      try {
-        this.domain = authData.visitor.site;
-        this.token = authData.token;
-      } catch (err) {
-        this.reset();
-        console.error(err);
-/**
- * TODO: use error native method of Observable
- */
+      console.log('AuthData updated', authData);
+      if (authData) {
+        try {
+          this.domain = authData.visitor.site;
+          this.token = authData.token;
+        } catch (err) {
+          this.reset();
+          console.error(err);
+  /**
+   * TODO: use error native method of Observable
+   */
+        }
       }
     });
   }
@@ -132,6 +135,31 @@ export class ApiService {
       .then((response) => {
         return response;
         // return response.json().data as Hero[];
+      })
+      .catch(this.handleError);
+  }
+
+
+  updateVisitorPassword(email: string, current_password: string, password: string): Promise<Auth | AuthError> {
+    const httpOptions = {
+      headers: {
+        'Accept':  'application/json',
+        'X-Visitor-Token': this.token
+      }
+    };
+    const url = this.buildUrl('/visitors');
+
+    const data = {
+      email: email,
+      current_password: current_password,
+      password: password
+    };
+
+    return this.http
+      .put<any>(url, data, httpOptions)
+      .toPromise()
+      .then((response) => {
+        return response;
       })
       .catch(this.handleError);
   }
