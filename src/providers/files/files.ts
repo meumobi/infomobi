@@ -19,50 +19,42 @@ export class FilesProvider {
     'application/pdf': {
       label: 'View',
       icon: 'eye',
-      extension: 'pdf',
       download: true
     },
     'text/html': {
       label: 'Open',
       icon: 'open',
-      extension: 'html',
       download: false
     },
     'application/vnd.youtube.video+html': {
       label: 'Play',
       icon: 'play',
-      extension: 'html',
       download: false
     },
     'application/vnd.ms-excel': {
       label: 'View',
       icon: 'eye',
-      extension: 'xls',
       download: true
     },
     'audio/mpeg': {
       label: 'Play',
       icon: 'play',
-      extension: 'mp3',
       download: true
     },
     'video/mp4': {
       label: 'Play',
       icon: 'play',
-      extension: 'mp4',
       download: true
     },
     'application/vnd.ms-powerpoint': {
       class: 'fa-file-powerpoint-o',
       label: 'View',
       icon: 'download',
-      extension: 'ppt',
       download: true,
     },
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': {
       label: 'View',
       icon: 'eye',
-      extension: 'xlsx',
       download: true
     }
   };
@@ -88,7 +80,12 @@ export class FilesProvider {
   }
 
   getBehavior(fileType) {
-    return this.mimes[fileType];
+    const defaultBehavior = {
+      label: 'View',
+      icon: 'eye',
+      download: true,
+    };
+    return fileType in this.mimes ? this.mimes[fileType] : defaultBehavior;
   }
 
   openFile(file) {
@@ -126,7 +123,7 @@ export class FilesProvider {
   }
 
   getFileName(file) {
-    const ext = this.mimes[file.type].extension;
+    const ext = file.extension;
     const name = Md5.hashStr(file.url);
     return name + '.' + ext;
   }
