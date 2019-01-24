@@ -10,7 +10,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { FilesProvider } from 'ionic-meumobi-utils';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { FileOpener } from '@ionic-native/file-opener';
@@ -32,6 +31,7 @@ import { UserProfileService } from '@providers/user-profile';
 import { ContactsService } from '@providers/contacts';
 import { CategoriesService } from '@providers/categories/';
 import { VideosService } from '@providers/videos';
+import { FilesProvider } from '@providers/files/files';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -104,7 +104,8 @@ export function initConfig(
       multi: true,
       deps: [AuthDataPersistenceService]
     },
-    VideosService
+    VideosService,
+    FilesProvider
   ]
 })
 
