@@ -42,7 +42,8 @@
     "Comment promoted": "Comentário promovido",
     "Delete": "Remover",
     "LOGIN": {
-        "USER_WELCOME": "Olá {{displayName}}"
+        "USER_WELCOME": "Olá {{displayName}}",
+        "OTP_DISCLAIMER": "para sua melhor segurança é preciso alterar a sua senha para continuar."
     },
     "Successfully voted" : "Voto registrado com sucesso",
     "Logout": "Sair",
@@ -57,5 +58,10 @@
     "First Name": "Nome",
     "Last Name": "Sobrenome",
     "Poll closed at": "Votação encerrada em",
-    "End voting at": "Fim da votação em"
+    "End voting at": "Fim da votação em",
+    "Password": "Senha",
+    "Update password": "Atualizar senha",
+    "New password": "Nova senha",
+    "Password updated": "Senha atualizada",
+    "For your safefy, update your password": "Para sua segurança, atualize sua senha"
 }
