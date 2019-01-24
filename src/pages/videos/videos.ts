@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { VideosService } from '@providers/videos';
-import { EmbedVideoService } from '@providers/videos/embed-video.service';
+import { EmbedVideoService } from 'ngx-embed-video';
 
 @IonicPage()
 @Component({
