@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FilesProvider } from 'ionic-meumobi-utils';
+import { FilesProvider } from '@providers/files/files';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
