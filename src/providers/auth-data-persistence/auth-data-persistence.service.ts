@@ -28,12 +28,18 @@ export class AuthDataPersistenceService {
     });
   }
 
-  public set(data): Promise<Auth> {
+  public set(data): void {
+
+    this.authData$.next(data);
+    console.log('set authData persistence');
+  }
+
+  public save(data): Promise<Auth> {
 
     return this.storage.set(TOKEN_KEY, JSON.stringify(data))
     .then(
       () => {
-        this.authData$.next(data);
+        this.set(data);
 
         return data;
       });
@@ -53,6 +59,8 @@ export class AuthDataPersistenceService {
   }
 
   public isAuthenticated(): boolean {
-    return !!this.authData$.value;
+    // return !!this.authData$.value && Object.prototype.hasOwnProperty.call(this.authData$.value, 'error');
+
+    return !!this.authData$.value && !this.authData$.value.error;
   }
 }

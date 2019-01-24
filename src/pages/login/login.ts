@@ -1,11 +1,11 @@
 import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { Component } from '@angular/core';
-import { 
-  IonicPage, 
-  NavController, 
+import {
+  IonicPage,
+  NavController,
   MenuController,
-  LoadingController, 
-  Loading, 
+  LoadingController,
+  Loading,
   AlertController
 } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -24,17 +24,15 @@ import { Auth, AuthError } from '@models/auth.interface';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  
   user: FormGroup; // = {} as IUser;
   loading: Loading;
-  
   constructor(
     private fb: FormBuilder,
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public authService: AuthService,
-    public menu : MenuController,
+    public menu: MenuController,
     public meuToastService: MeuToastService,
     private translateService: TranslateService,
     private authDataPersistenceService: AuthDataPersistenceService,
@@ -45,17 +43,17 @@ export class LoginPage {
       password: ['', Validators.compose([Validators.required])]
     });
   }
-  
-  ionViewWillLeave(){
+
+  ionViewWillLeave() {
     this.menu.enable(true);
   }
-  
-  ionViewWillEnter(){
+
+  ionViewWillEnter() {
     this.menu.enable(false);
   }
 
   ionViewCanEnter(): boolean {
-    let isAuth = this.authDataPersistenceService.isAuthenticated();
+    const isAuth = this.authDataPersistenceService.isAuthenticated();
 
     /**
      * workaround to redirect on ionViewCanEnter
@@ -73,7 +71,7 @@ export class LoginPage {
       dismissOnPageChange: true,
     });
     this.loading.present();
-    
+
     this.authService.signIn(user.value.email, user.value.password)
     .then( (response: Auth) => {
       console.log(response);
@@ -83,18 +81,29 @@ export class LoginPage {
           this.meuToastService.present(value);
           this.navCtrl.setRoot('HomePage');
         }
-      )
+      );
     })
     .catch ( (err: AuthError) => {
       console.log(err);
       this.analytics.trackEvent('Login', 'Submit', 'Failed');
       this.loading.dismiss().then( () => {
         if (err) {
-          let alert = this.alertCtrl.create({
+          if (err.message === 'passwordExpired') {
+            this.updatePassword(user.value.email, user.value.password)
+            .then(() => {
+              console.log('UpdatePassword resolved');
+              this.navCtrl.setRoot('HomePage');
+            })
+            .catch(() => {
+              console.log('UpdatePassword rejected');
+            });
+            return;
+          }
+          const alert = this.alertCtrl.create({
             message: this.translateService.instant(err.message),
             buttons: [
               {
-                text: "Ok",
+                text: 'Ok',
                 role: 'cancel'
               }
             ]
@@ -102,6 +111,52 @@ export class LoginPage {
           alert.present();
         }
       });
-    });  
+    });
+  }
+
+  updatePassword(email: string, currentPassword: string) {
+    return new Promise((resolve, reject) => {
+      const prompt = this.alertCtrl.create({
+        title: this.translateService.instant('Update password'),
+        message: this.translateService.instant('LOGIN.OTP_DISCLAIMER'),
+        enableBackdropDismiss: false,
+        inputs: [
+          {
+            type: 'password',
+            name: 'newPassword',
+            placeholder: this.translateService.instant(' New password')
+          },
+        ],
+        buttons: [
+          {
+            text: this.translateService.instant('Cancel'),
+            handler: data => {
+              console.log('Cancel clicked');
+              this.loading.dismiss();
+              this.authService.signOut();
+              reject();
+            }
+          }, {
+            text: this.translateService.instant('Save'),
+            handler: data => {
+              console.log('OK clicked');
+              this.authService.updatePassword(email, currentPassword, data.newPassword)
+            .then(
+              () => {
+                this.meuToastService.present(this.translateService.instant('Password updated'));
+                resolve();
+              }
+            )
+            .catch(err => {
+              console.log(err, 'New password failed!');
+              reject();
+            });
+            }
+          }
+        ]
+      });
+
+      prompt.present();
+    });
   }
 }

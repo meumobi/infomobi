@@ -5,7 +5,8 @@
     },
     "IN_APP" : "Internal app translation",
     "LOGIN": {
-        "USER_WELCOME": "Hello {{displayName}}"
+        "USER_WELCOME": "Hello {{displayName}}",
+        "OTP_DISCLAIMER": "For security reason you need to type here a new personal password"
     },
     "LIVE_FEED": {
         "ANNIVERSARIES_TITLE": "Today's anniversaries!"

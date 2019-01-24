@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Auth } from '@models/auth.interface';
 import authData from '@providers/auth/mock-auth.ts';
 
 @Injectable()
 export class AuthDataPersistenceService {
-  
+
   private authData$ = new BehaviorSubject<Auth>(null);
-  
+
   constructor() {
     this.authData$.next(authData);
   }
-  
+
   public checkToken(): Promise<Auth|null> {
     return Promise.resolve()
     .then( () => {
@@ -19,11 +19,16 @@ export class AuthDataPersistenceService {
       return authData;
     });
   }
-  
-  public set(auth): Promise<Auth|null> {
+
+  public set(auth): void {
+    console.log('set authData on ionicStorage');
+    this.authData$.next(auth);
+  }
+
+  public save(auth): Promise<Auth|null> {
     console.log('set authData on ionicStorage');
     return Promise.resolve().then( () => {
-      this.authData$.next(auth);
+      this.set(auth);
       return authData;
     });
   }
@@ -31,9 +36,9 @@ export class AuthDataPersistenceService {
   public get(): Observable<Auth> {
     return this.authData$.asObservable().share();
   }
-  
+
   public clear(): Promise<void> {
-    console.log("clear authData on ionicStorage");
+    console.log('clear authData on ionicStorage');
     return Promise.resolve().then( () => this.authData$.next(null));
   }
 
@@ -43,6 +48,6 @@ export class AuthDataPersistenceService {
   }
 
   public isAuthenticated(): boolean {
-    return !!this.authData$.value;
+    return !!this.authData$.value && !this.authData$.value.error;
   }
 }

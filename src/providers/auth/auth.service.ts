@@ -8,7 +8,7 @@ import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 export class AuthService {
 
   constructor(
-    public http: HttpClient, 
+    public http: HttpClient,
     public apiService: ApiService,
     public authDataPersistenceService: AuthDataPersistenceService
   ) {
@@ -19,12 +19,26 @@ export class AuthService {
     return this.apiService.login(email, password)
     .then((response: Auth) => {
       console.log('AuthService, signIn succeed');
-
-      return this.authDataPersistenceService.set(response);
-    })
+      if (response.error === 'password expired') {
+        this.authDataPersistenceService.set(response);
+        return Promise.reject({message: 'passwordExpired'});
+      } else {
+        return this.authDataPersistenceService.save(response);
+      }
+    });
   }
 
   signOut(): Promise<void> {
     return this.authDataPersistenceService.clear();
   }
+
+  updatePassword(email, currentPassword, password): Promise<Auth> {
+
+    return this.apiService.updateVisitorPassword(email, currentPassword, password).then(
+      (authData) => {
+        return this.authDataPersistenceService.save(authData);
+      }
+    );
+  }
+
 }
