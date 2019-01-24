@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Storage } from '@ionic/storage';
 import { FileOpener } from '@ionic-native/file-opener';
 import { Md5 } from 'ts-md5/dist/md5';
-import { cordovaWarn } from '@ionic-native/core';
 import { Platform } from 'ionic-angular/platform/platform';
 
 @Injectable()
@@ -25,13 +24,13 @@ export class FilesProvider {
     },
     'text/html': {
       label: 'Open',
-      icon: 'open',      
+      icon: 'open',
       extension: 'html',
       download: false
     },
     'application/vnd.youtube.video+html': {
       label: 'Play',
-      icon: 'play',         
+      icon: 'play',
       extension: 'html',
       download: false
     },
@@ -66,15 +65,15 @@ export class FilesProvider {
       extension: 'xlsx',
       download: true
     }
-  }
+  };
 
-  constructor(    
+  constructor(
     private fileTransfer: FileTransfer,
     private storage: Storage,
     private file: File,
     private fileOpener: FileOpener,
     public plt: Platform
-  ) {   
+  ) {
   }
 
   getFilesFromStorage() {
@@ -82,7 +81,7 @@ export class FilesProvider {
     .then(
       (data) => {
         if (data) {
-          this.files = data;     
+          this.files = data;
         }
       }
     );
@@ -90,20 +89,20 @@ export class FilesProvider {
 
   getBehavior(fileType) {
     return this.mimes[fileType];
-  }  
-
-  openFile(file) {
-    this.fileOpener.open(file.fullPath,file.type);
   }
 
-  addFile(file) { 
+  openFile(file) {
+    this.fileOpener.open(file.fullPath, file.type);
+  }
+
+  addFile(file) {
     this.files[file.path] = file;
-    this.storage.set('files',this.files);    
+    this.storage.set('files', this.files);
   }
 
   removeFile(file) {
     delete this.files[file.path];
-    this.storage.set('files',this.files);        
+    this.storage.set('files', this.files);
   }
 
   remove(file) {
@@ -111,11 +110,11 @@ export class FilesProvider {
     return this.getFileEntry(file.fullPath)
     .then(
       (data) => {
-        this.file.removeFile(this.file.dataDirectory,file.path);  
+        this.file.removeFile(this.file.dataDirectory, file.path);
         file.status = 'download';
         return file;
       }
-    )     
+    );
   }
 
   getFilePath(fileName) {
@@ -127,13 +126,13 @@ export class FilesProvider {
   }
 
   getFileName(file) {
-    let ext = this.mimes[file.type].extension;            
-    let name = Md5.hashStr(file.url);                      
+    const ext = this.mimes[file.type].extension;
+    const name = Md5.hashStr(file.url);
     return name + '.' + ext;
   }
 
   getFileStatus(filePath) {
-    if (this.files[filePath]) {      
+    if (this.files[filePath]) {
       return 'downloaded';
     } else {
       return 'download';
@@ -151,7 +150,7 @@ export class FilesProvider {
       file.fullPath = this.getFileFullPath(file.path);
     } else {
       file.status = 'open_by_link';
-    }    
+    }
     return file;
   }
 
@@ -159,19 +158,19 @@ export class FilesProvider {
     this.fileTranfers[file.path].abort();
   }
 
-  getFileEntry(fullPath):Promise<any> {
+  getFileEntry(fullPath): Promise<any> {
     return this.file.resolveLocalFilesystemUrl(fullPath);
   }
-  
-  download(file):BehaviorSubject<any> {   
-    this.fileTranfers[file.path] = this.fileTransfer.create();      
-    let result = new BehaviorSubject<any>(file);
+
+  download(file): BehaviorSubject<any> {
+    this.fileTranfers[file.path] = this.fileTransfer.create();
+    const result = new BehaviorSubject<any>(file);
     file.status = 'downloading';
     result.next(file);
-    this.fileTranfers[file.path]     
-    .download(file.url,file.fullPath)
+    this.fileTranfers[file.path]
+    .download(file.url, file.fullPath)
     .then(
-      (data) => {
+      () => {
         this.getFileEntry(file.fullPath)
         .then(
           (data) => {
@@ -181,22 +180,17 @@ export class FilesProvider {
               result.next(file);
             } else {
               file.status = 'download';
-              result.next(file); 
-            }  
+              result.next(file);
+            }
           }
-        )                
+        );
       },
       (error) => {
+        console.log(error);
         file.status = 'download';
-        result.next(file);  
+        result.next(file);
       }
-    ); 
+    );
     return result;
   }
-
-
-
-
-
-
 }
