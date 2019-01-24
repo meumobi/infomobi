@@ -89,7 +89,14 @@ export class LoginPage {
       this.loading.dismiss().then( () => {
         if (err) {
           if (err.message === 'passwordExpired') {
-            this.updatePassword(user.value.email, user.value.password);
+            this.updatePassword(user.value.email, user.value.password)
+            .then(() => {
+              console.log('UpdatePassword resolved');
+              this.navCtrl.setRoot('HomePage');
+            })
+            .catch(() => {
+              console.log('UpdatePassword rejected');
+            });
             return;
           }
           const alert = this.alertCtrl.create({
@@ -108,41 +115,48 @@ export class LoginPage {
   }
 
   updatePassword(email: string, currentPassword: string) {
-    const prompt = this.alertCtrl.create({
-      title: this.translateService.instant('Update password'),
-      message: this.translateService.instant('For your safefy, update your password'),
-      enableBackdropDismiss: false,
-      inputs: [
-        {
-          name: 'newPassword',
-          placeholder: this.translateService.instant(' New password')
-        },
-      ],
-      buttons: [
-        {
-          text: this.translateService.instant('Cancel'),
-          handler: data => {
-            console.log('Cancel clicked');
-            this.loading.dismiss();
-            this.authService.signOut();
-          }
-        },
-        {
-          text: this.translateService.instant('Save'),
-          handler: data => {
-            this.authService.updatePassword(email, currentPassword, data.newPassword)
+    return new Promise((resolve, reject) => {
+      const prompt = this.alertCtrl.create({
+        title: this.translateService.instant('Update password'),
+        message: this.translateService.instant('LOGIN.OTP_DISCLAIMER'),
+        enableBackdropDismiss: false,
+        inputs: [
+          {
+            type: 'password',
+            name: 'newPassword',
+            placeholder: this.translateService.instant(' New password')
+          },
+        ],
+        buttons: [
+          {
+            text: this.translateService.instant('Cancel'),
+            handler: data => {
+              console.log('Cancel clicked');
+              this.loading.dismiss();
+              this.authService.signOut();
+              reject();
+            }
+          }, {
+            text: this.translateService.instant('Save'),
+            handler: data => {
+              console.log('OK clicked');
+              this.authService.updatePassword(email, currentPassword, data.newPassword)
             .then(
               () => {
                 this.meuToastService.present(this.translateService.instant('Password updated'));
-                this.navCtrl.setRoot('HomePage');
+                resolve();
               }
             )
-            .catch(err => console.log(err, 'New password failed!'));
+            .catch(err => {
+              console.log(err, 'New password failed!');
+              reject();
+            });
+            }
           }
-        }
-      ]
-    });
-    prompt.present();
-  }
+        ]
+      });
 
+      prompt.present();
+    });
+  }
 }

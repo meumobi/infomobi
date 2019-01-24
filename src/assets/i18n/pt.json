@@ -42,7 +42,8 @@
     "Comment promoted": "Comentário promovido",
     "Delete": "Remover",
     "LOGIN": {
-        "USER_WELCOME": "Olá {{displayName}}"
+        "USER_WELCOME": "Olá {{displayName}}",
+        "OTP_DISCLAIMER": "para sua melhor segurança é preciso alterar a sua senha para continuar."
     },
     "Successfully voted" : "Voto registrado com sucesso",
     "Logout": "Sair",
