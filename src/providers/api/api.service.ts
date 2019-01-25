@@ -34,6 +34,8 @@ export class ApiService {
    * TODO: use error native method of Observable
    */
         }
+      } else {
+        this.reset();
       }
     });
   }
