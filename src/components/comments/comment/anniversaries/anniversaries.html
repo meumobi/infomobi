@@ -1,14 +1,14 @@
 <ion-item-sliding #item>
   <ion-item>    
     <ion-avatar item-start >
-      <img [src]="comment.data.picture | imgServerUrly" />
+      <img [src]="comment.data.picture | imgServerUrly:'avatar'" />
     </ion-avatar> 
     <h2>{{comment.data.title}}</h2>
     <ion-row wrap>
       <ion-list>
         <ion-item *ngFor="let contact of comment.data.contacts">  
           <ion-avatar item-start *ngIf="contact.picture; else anonymous">
-            <img [src]="contact.picture | imgServerUrly" class="avatar-sm"  (click)="pushDetailsPage('ContactDetailsPage', contact._id)"/>
+            <img [src]="contact.picture | imgServerUrly:'avatar'" (click)="pushDetailsPage('ContactDetailsPage', contact._id)" />
           </ion-avatar> 
           <ng-template #anonymous>
             <ion-avatar item-start>
