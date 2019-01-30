@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/meumobi/ion-employee/compare/v0.1.0...v0.2.0) (2019-01-30)
+
+
+### Bug Fixes
+
+* **auth:** can't login twice on same session ([5dae209](https://github.com/meumobi/ion-employee/commit/5dae209)), closes [#242](https://github.com/meumobi/ion-employee/issues/242)
+* **media:** show missing attributes and add default behavior for unknown mime types ([d812ca7](https://github.com/meumobi/ion-employee/commit/d812ca7)), closes [#236](https://github.com/meumobi/ion-employee/issues/236) [#232](https://github.com/meumobi/ion-employee/issues/232) [#237](https://github.com/meumobi/ion-employee/issues/237)
+* update version from v1.0.0 to v0.1.0 on package.json, package-lock and CHANGELOG ([0f71e49](https://github.com/meumobi/ion-employee/commit/0f71e49))
+
+
+### Features
+
+* **auth:** OTP - add modal window on login to update password if required ([16735e9](https://github.com/meumobi/ion-employee/commit/16735e9)), closes [#221](https://github.com/meumobi/ion-employee/issues/221)
+* **images:** add lazy-load on avatar imgs ([19d8115](https://github.com/meumobi/ion-employee/commit/19d8115)), closes [#244](https://github.com/meumobi/ion-employee/issues/244)
+
+
+
 <a name="0.1.0"></a>
 # 0.1.0 (2019-01-22)
 
