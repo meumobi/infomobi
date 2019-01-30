@@ -16,7 +16,6 @@ export class ItemHeadlineComponent implements OnInit, OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver
   ) {}
   ngOnInit() {
-    console.log(this.item);
     this.loadComponent();
   }
   ngOnDestroy() {

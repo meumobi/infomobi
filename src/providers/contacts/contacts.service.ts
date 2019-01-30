@@ -24,7 +24,6 @@ export class ContactsService {
       return query;
     });   
     this.items = this.itemsCollection.snapshotChanges().map(actions => {
-      console.log(actions);
       return actions.map(a => {       
         const data = a.payload.doc.data() as ContactProfile;
         return data;
@@ -37,7 +36,6 @@ export class ContactsService {
     const id = contact._id;
     contact.modified = Date.now();
     const data = JSON.parse(JSON.stringify(contact));
-    console.log(contact);
     return this.itemsCollection.doc(id).update(data);
   }
   

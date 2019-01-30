@@ -20,7 +20,6 @@ export class CategoryLabelComponent implements OnInit {
   }
   
   ngOnInit () {
-    console.log(this.id);
     if (this.id) {
       this.categoriesService.getCategoryName(this.id)
       .then(
