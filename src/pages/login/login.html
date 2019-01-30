@@ -26,8 +26,8 @@
           Min length Password is 6 characters
         </div>
         <button type="submit" [disabled]="user.invalid" ion-button block round outline color="light">Login</button>
-        <div text-right>
-          <a (click)="!forgotPassword()">{{'Forgot my password' | translate}}</a>
+        <div text-right class="reset_password">
+          <a (click)="!forgotPassword()">{{'RESET_PASSWORD.LINK' | translate}}</a>
         </div>          
       </ion-list>
     </form>

@@ -52,9 +52,13 @@ export class LoginPage {
     this.menu.enable(false);
   }
 
+  isValid(email: string) {
+    return !!email;
+  }
+
   forgotPassword() {
     const prompt = this.alertCtrl.create({
-      title:  this.translateService.instant('Forgot my password'),
+      title:  this.translateService.instant('RESET_PASSWORD.LINK'),
       inputs: [
         {
           name: 'email',
@@ -69,15 +73,24 @@ export class LoginPage {
           }
         },
         {
-          text: this.translateService.instant('Recover'),
+          text: this.translateService.instant('RESET_PASSWORD.SUBMIT'),
           handler: data => {
-            this.authService.forgotPassword(data.email)
-            .then(
-              () => {
-                this.meuToastService.present(this.translateService.instant('Email sent'));
-              }
-            )
-            .catch(err => console.log(err, 'Recover password failed!'));
+            if (this.isValid(data.email)) {
+              this.authService.forgotPassword(data.email)
+              .then(
+                () => {
+                  this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.SUCCESS'));
+                }
+              )
+              .catch(
+                err => {
+                  this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.ERROR'));
+                }
+              );
+            } else {
+              this.meuToastService.present(this.translateService.instant('Invalid Email'));
+              return false;
+            }
           }
         }
       ]
