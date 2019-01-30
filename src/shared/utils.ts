@@ -27,7 +27,6 @@ export default class Utils {
         if (src.includes(prefix)) {
           const path = src.split(prefix);
           src = `${source}${path[1]}`;
-          console.log(src);
           onServer = true;
         }
       }
