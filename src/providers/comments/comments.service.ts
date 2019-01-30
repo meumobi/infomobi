@@ -51,6 +51,7 @@ export class CommentsProvider {
   promote(comment) {
     const newComment = new Comment('Message');
     newComment.data = comment.data;
+    newComment.domain = comment.domain;
     return this.save(newComment);
   }
 
