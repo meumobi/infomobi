@@ -6,6 +6,7 @@ import { ContactListComponent } from './contact-list/contact-list';
 import { ContactHeadlineComponent } from './contact-headline/contact-headline';
 import { DeskComponent } from './types/desk/desk';
 import { UserComponent } from './types/user/user';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
 	declarations: [
@@ -27,6 +28,7 @@ import { UserComponent } from './types/user/user';
 	entryComponents: [
 		DeskComponent,
 		UserComponent,
-	]
+	],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ContactsModule {}

@@ -32,6 +32,7 @@ import { ContactsService } from '@providers/contacts';
 import { CategoriesService } from '@providers/categories/';
 import { VideosService } from '@providers/videos';
 import { FilesProvider } from '@providers/files/files';
+import 'mmb-avatar-img';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
