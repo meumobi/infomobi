@@ -8,6 +8,7 @@ import { IonicModule } from 'ionic-angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared/shared.module';
 import { AnniversariesComponent, MessageComponent } from '../comments/comment';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
 	declarations: [
@@ -35,6 +36,7 @@ import { AnniversariesComponent, MessageComponent } from '../comments/comment';
 	entryComponents: [
 		MessageComponent,
 		AnniversariesComponent
-	]
+	],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CommentsModule {}

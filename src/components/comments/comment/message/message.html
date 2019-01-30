@@ -1,7 +1,7 @@
 <ion-item-sliding #item>
   <ion-item>    
     <ion-avatar item-start *ngIf="comment.data.author.picture; else anonymous">
-      <ion-img [src]="comment.data.author.picture | imgServerUrly:'avatar'" (click)="pushDetailsPage('ContactDetailsPage', comment.data.author._id)"></ion-img>
+      <mmb-avatar-img [src]="comment.data.author.picture | imgServerUrly:'avatar'" (click)="pushDetailsPage('ContactDetailsPage', comment.data.author._id)"></mmb-avatar-img>
     </ion-avatar> 
     <ng-template #anonymous>
       <ion-avatar item-start>

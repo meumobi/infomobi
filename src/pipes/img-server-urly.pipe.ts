@@ -28,7 +28,6 @@ export class ImgServerUrlyPipe implements PipeTransform {
 
   transform(src: string, context = 'default') {
     const prefix = Utils.imgServerPrefix(src);
-    console.log(prefix, context);
 
     return `${prefix}?${this.settings[context]}`;
   }
