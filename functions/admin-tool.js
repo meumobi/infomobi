@@ -1,6 +1,7 @@
 const admin = require('firebase-admin');
 
 module.exports = { setCommentsDomain };
+module.exports = { replaceCommentsType };
 
 var serviceAccount = {
   "type": "service_account",
@@ -32,6 +33,30 @@ function setCommentsDomain(domain) {
   .then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
       db.collection("comments").doc(doc.id).update({"domain": domain});
+    });
+  })
+  .catch(function(e) {
+    console.log(e);
+  });
+}
+
+function replaceCommentsType(from, to) {
+  if (!from) {
+    console.log('Please provide a from type as the first argument (ex: node -e \'require("./index").replaceCommentsType("Message","message")\')');
+    return;
+  }
+
+  if (!to) {
+    console.log('Please provide a to type as the second argument (ex: node -e \'require("./index").replaceCommentsType("Message","message")\')');
+    return;
+  }
+
+  db.collection('comments')
+  .where('type', '==', from)
+  .get()
+  .then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+      db.collection("comments").doc(doc.id).update({"type": to});
     });
   })
   .catch(function(e) {
