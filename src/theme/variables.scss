@@ -22,7 +22,8 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
+$alert-md-button-text-color: #9b7800;
+$alert-ios-button-text-color: #9b7800;
 
 
 // Named Color Variables
@@ -36,7 +37,7 @@ $app-direction: ltr;
 $colors: (
   primary:    #f7ce06,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
 );
 
 

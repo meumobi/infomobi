@@ -1,14 +1,20 @@
 {
-    "SETTINGS_SELECT" : {
-        "lang_pt" : "Portuguese",
-        "lang_en" : "English"
-    },
-    "IN_APP" : "Internal app translation",
-    "LOGIN": {
-        "USER_WELCOME": "Hello {{displayName}}",
-        "OTP_DISCLAIMER": "For security reason you need to type here a new personal password"
-    },
-    "LIVE_FEED": {
-        "ANNIVERSARIES_TITLE": "Today's anniversaries!"
-    }
+  "SETTINGS_SELECT": {
+    "lang_pt": "Portuguese",
+    "lang_en": "English"
+  },
+  "IN_APP": "Internal app translation",
+  "LOGIN": {
+    "USER_WELCOME": "Hello {{displayName}}",
+    "OTP_DISCLAIMER": "For security reason you need to type here a new personal password"
+  },
+  "RESET_PASSWORD": {
+    "LINK": "Forgot password?",
+    "SUBMIT": "Reset",
+    "SUCCESS": "We've emailed your new password",
+    "ERROR": "Unknown Email, please check it and submit again"
+  },
+  "LIVE_FEED": {
+    "ANNIVERSARIES_TITLE": "Today's anniversaries!"
+  }
 }

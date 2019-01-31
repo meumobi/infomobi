@@ -41,4 +41,7 @@ export class AuthService {
     );
   }
 
+  forgotPassword(email: string): Promise<void> {
+    return this.apiService.forgotPassword(email);
+  }
 }

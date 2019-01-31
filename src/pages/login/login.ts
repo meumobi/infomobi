@@ -1,5 +1,5 @@
 import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   IonicPage,
   NavController,
@@ -23,9 +23,10 @@ import { Auth, AuthError } from '@models/auth.interface';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   user: FormGroup; // = {} as IUser;
   loading: Loading;
+
   constructor(
     private fb: FormBuilder,
     public navCtrl: NavController,
@@ -37,7 +38,9 @@ export class LoginPage {
     private translateService: TranslateService,
     private authDataPersistenceService: AuthDataPersistenceService,
     public analytics: AnalyticsProvider,
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.user = this.fb.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
       password: ['', Validators.compose([Validators.required])]
@@ -50,6 +53,60 @@ export class LoginPage {
 
   ionViewWillEnter() {
     this.menu.enable(false);
+  }
+
+  isValid(email: string) {
+    return !!email;
+  }
+
+  forgotPassword() {
+    const prompt = this.alertCtrl.create({
+      title:  this.translateService.instant('RESET_PASSWORD.LINK'),
+      inputs: [
+        {
+          name: 'email',
+          placeholder: this.translateService.instant('Email')
+        },
+      ],
+      buttons: [
+        {
+          text: this.translateService.instant('Cancel'),
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: this.translateService.instant('RESET_PASSWORD.SUBMIT'),
+          handler: data => {
+            this.loading = this.loadingCtrl.create({
+              dismissOnPageChange: true,
+            });
+            if (this.isValid(data.email)) {
+              this.loading.present();
+              this.authService.forgotPassword(data.email)
+              .then(
+                () => {
+                  this.loading.dismiss().then(() => {
+                    this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.SUCCESS'));
+                  });
+                }
+              )
+              .catch(
+                err => {
+                  this.loading.dismiss().then(() => {
+                    this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.ERROR'));
+                  });
+                }
+              );
+            } else {
+              this.meuToastService.present(this.translateService.instant('Invalid Email'));
+              return false;
+            }
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
   ionViewCanEnter(): boolean {
@@ -71,7 +128,6 @@ export class LoginPage {
       dismissOnPageChange: true,
     });
     this.loading.present();
-
     this.authService.signIn(user.value.email, user.value.password)
     .then( (response: Auth) => {
       console.log(response);
