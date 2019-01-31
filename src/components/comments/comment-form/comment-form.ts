@@ -25,7 +25,7 @@ export class CommentFormComponent implements OnInit {
 
   ngOnInit() {
     this.author = this.userProfile.current$.value;
-    this.comment = new Comment('Message');
+    this.comment = new Comment('message');
     this.comment.domain = this.userProfile.current$.value.domain;
     this.comment.data['author'] = this.author;
     if (this.item) {

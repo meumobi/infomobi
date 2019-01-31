@@ -46,7 +46,7 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
   loadComponent() {
     this.entry.clear();
     if (!this.comment.type) {
-      this.comment['type'] = 'Message';
+      this.comment['type'] = 'message';
     }
     const projectableNode = document.createElement('p');
     projectableNode.innerHTML = this.comment.description;
