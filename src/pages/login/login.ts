@@ -1,5 +1,5 @@
 import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   IonicPage,
   NavController,
@@ -23,9 +23,10 @@ import { Auth, AuthError } from '@models/auth.interface';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   user: FormGroup; // = {} as IUser;
   loading: Loading;
+
   constructor(
     private fb: FormBuilder,
     public navCtrl: NavController,
@@ -37,11 +38,13 @@ export class LoginPage {
     private translateService: TranslateService,
     private authDataPersistenceService: AuthDataPersistenceService,
     public analytics: AnalyticsProvider,
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.user = this.fb.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
       password: ['', Validators.compose([Validators.required])]
-    });
+    })
   }
 
   ionViewWillLeave() {
@@ -75,16 +78,24 @@ export class LoginPage {
         {
           text: this.translateService.instant('RESET_PASSWORD.SUBMIT'),
           handler: data => {
+            this.loading = this.loadingCtrl.create({
+              dismissOnPageChange: true,
+            });
             if (this.isValid(data.email)) {
+              this.loading.present();
               this.authService.forgotPassword(data.email)
               .then(
                 () => {
-                  this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.SUCCESS'));
+                  this.loading.dismiss().then(() => {
+                    this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.SUCCESS'));
+                  });
                 }
               )
               .catch(
                 err => {
-                  this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.ERROR'));
+                  this.loading.dismiss().then(() => {
+                    this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.ERROR'));
+                  });
                 }
               );
             } else {
