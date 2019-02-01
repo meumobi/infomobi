@@ -42,9 +42,4 @@ export class SettingsPage implements OnInit {
 
     });
   }
-
-  cancel() {
-    this.navCtrl.pop();
-  }
-
 }

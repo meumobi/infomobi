@@ -6,7 +6,7 @@
   
 </ion-header>
 
-<ion-content>  
+<ion-content padding>  
   <form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="settings">
     <ion-list>
       <ion-item>
@@ -17,9 +17,6 @@
     <ion-row>
       <ion-col>
         <button ion-button type="submit" block>{{'Save' | translate}}</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button type="button" (click)="cancel()">{{'Cancel' | translate}}</button>
       </ion-col>
     </ion-row>
   </form>
