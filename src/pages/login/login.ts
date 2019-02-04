@@ -199,7 +199,7 @@ export class LoginPage implements OnInit {
               this.authService.updatePassword(email, currentPassword, data.newPassword)
             .then(
               () => {
-                this.meuToastService.present(this.translateService.instant('Password updated'));
+                this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.SUCCESS'));
                 resolve();
               }
             )
