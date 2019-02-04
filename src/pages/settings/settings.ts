@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { Settings } from '@models/settings';
 import { SettingsService } from '@providers/settings';
 import { MeuToastService } from '@shared/meu-toast.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @IonicPage({
   segment: 'settings',
@@ -14,8 +15,10 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'settings.html',
 })
 
-export class SettingsPage implements OnInit {
+export class SettingsPage implements OnInit, OnDestroy {
   settings: Settings;
+  settingsSubscription: Subscription;
+
 
   constructor(
     public navCtrl: NavController,
@@ -25,16 +28,24 @@ export class SettingsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.settingsService.getSettings().subscribe(
+    this.settings = new Settings();
+
+    this.settingsSubscription = this.settingsService.getSettingsObserver().subscribe(
       data => {
-        console.log(data);
-        this.settings = data;
+        console.log('Received from Settings Observer: ', data);
+        if (!!data) {
+          this.settings = data;
+        }
       }
     );
   }
 
+  ngOnDestroy() {
+    this.settingsSubscription.unsubscribe();
+  }
+
   onSubmit() {
-    this.settingsService.setSettings(this.settings)
+    this.settingsService.set(this.settings)
     .then(
       () => this.meutToastService.present(this.translateService.instant('SETTINGS.SUBMIT.SUCCESS'))
     )

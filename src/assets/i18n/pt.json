@@ -16,7 +16,12 @@
   "SETTINGS": {
     "LINK": "Configurações",
     "TITLE": "Configurações da conta",
-    "YOUTUBE_CHANNEL_ID": "Id do Canal do Youtube"
+    "YOUTUBE_CHANNEL_ID": "Id do Canal do Youtube",
+    "SUBMIT": {
+      "LABEL": "Salvar",
+      "SUCCESS": "Configurações salvas",
+      "ERROR": "Ocorreu um erro, por favor tente novamente ou entre em contato connosco."
+    }
   },
   "IN_APP": "Internal app translation",
   "Notifications": "Notificações",
