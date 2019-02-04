@@ -40,10 +40,9 @@ export class MyApp implements OnInit {
     private authService: AuthService,
     private authDataPersistenceService: AuthDataPersistenceService,
     private userProfileService: UserProfileService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
   ) {
     this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
-
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
@@ -94,6 +93,7 @@ export class MyApp implements OnInit {
   listenAuthData() {
     this.authData$.subscribe( authData => {
       if (!!authData) {
+        console.log(authData);
         this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
           userProfile => {
             if (userProfile) {

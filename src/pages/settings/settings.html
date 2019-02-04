@@ -1,19 +1,23 @@
 <ion-header>
   
-    <ion-navbar>
-      <ion-title>{{ 'Settings' | translate }}</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title>{{ 'SETTINGS.TITLE' | translate }}</ion-title>
+  </ion-navbar>
   
-  </ion-header>
-  
-  <ion-content>
-  
-    <form>
-      <ion-list>
-        <ion-item>
-          <ion-label>{{ 'Notifications' | translate}}</ion-label>
-          <ion-toggle></ion-toggle>
-        </ion-item>
-      </ion-list>
-    </form>  
-  </ion-content>
+</ion-header>
+
+<ion-content padding>  
+  <form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="settings">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" stacked>{{'SETTINGS.YOUTUBE_CHANNEL_ID' | translate}}</ion-label>
+        <ion-input type="text" name="youtubeChannelId" [(ngModel)]="settings.youtubeChannelId"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-row>
+      <ion-col>
+        <button ion-button type="submit" block>{{'Save' | translate}}</button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

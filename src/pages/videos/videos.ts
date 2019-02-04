@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { VideosService } from '@providers/videos';
 import { EmbedVideoService } from '@providers/videos/embed-video.service';
 
@@ -8,28 +8,30 @@ import { EmbedVideoService } from '@providers/videos/embed-video.service';
   selector: 'page-videos',
   templateUrl: 'videos.html',
 })
-export class VideosPage {
+export class VideosPage implements OnInit {
 
   playlists: Array<any> = [];
   playlist = '';
-  videos: Array<any>;
+  videos: Array<any> = [];
   videoFrame: any;
+  channelId: string;
 
   constructor(
     public navCtrl: NavController,
     private videosService: VideosService,
-    private embedService: EmbedVideoService
-  ) {
-  }
+    private embedService: EmbedVideoService,
+    public navParams: NavParams
+  ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VideosPage');
+  ngOnInit() {
+    this.channelId = this.navParams.data.channelId;
+
     this.listVideos();
     this.listPlaylists();
   }
 
   listPlaylists() {
-    this.videosService.fetchPlaylists()
+    this.videosService.fetchPlaylists(this.channelId)
     .then(
       data => {
         this.playlists = data;
@@ -40,11 +42,13 @@ export class VideosPage {
 
   listVideos() {
     console.log('listing videos');
-    this.videosService.fetchVideos(this.playlist)
+    this.videosService.fetchVideos(this.channelId, this.playlist)
     .then(
       data => {
-        this.videos = data;
-        this.openVideo(this.videos[0]);
+        if (data.length > 0) {
+          this.videos = data;
+          this.openVideo(this.videos[0]);
+        }
         console.log(data);
       }
     );

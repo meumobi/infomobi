@@ -6,8 +6,8 @@
       <ion-title>
         <img src="./assets/images/header-clean.png" class="logo" alt="infomobi">
       </ion-title>
-      <ion-buttons end *ngIf="authUser && authUser.site=='katrium.meumobi.com'">
-        <button ion-button block (click)="openPage('VideosPage')">
+      <ion-buttons end *ngIf="settings && settings.youtubeChannelId">
+        <button ion-button block (click)="pushVideosPage(settings.youtubeChannelId)">
           <div>
             <ion-icon name="desktop"></ion-icon>
             <label>TV</label>
