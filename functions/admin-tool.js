@@ -2,7 +2,7 @@ const admin = require('firebase-admin');
 
 module.exports = { setCommentsDomain };
 module.exports = { replaceCommentsType };
-module.exports = { lowerCaseValues };
+module.exports = { lowerCaseCommentsValues };
 
 /**
  * Cloud Firestore Quicktip — DocumentSnapshot vs. QuerySnapshot: https://medium.com/@scarygami/cloud-firestore-quicktip-documentsnapshot-vs-querysnapshot-70aef6d57ab3 
@@ -29,7 +29,7 @@ var db = admin.firestore();
 
 function setCommentsDomain(domain) {
   if (!domain) {
-    console.log('Please provide a domain as argument (ex: node -e \'require("./index").setCommentsDomain("katrium.meumobi.com")\')');
+    console.log('Please provide a domain as argument (ex: node -e \'require("./admin-tool").setCommentsDomain("katrium.meumobi.com")\')');
     return;
   }
 
@@ -49,9 +49,9 @@ function hasUpperCase(str) {
   return (/[A-Z]/.test(str));
 }
 
-function lowerCaseValues(field) {
+function lowerCaseCommentsValues(field) {
   if (!field) {
-    console.log('Please provide a domain as argument (ex: node -e \'require("./index").lowerCaseValues("type")\')');
+    console.log('Please provide a domain as argument (ex: node -e \'require("./admin-tool").lowerCaseCommentsValues("type")\')');
     return;
   }
 
