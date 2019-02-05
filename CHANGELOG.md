@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/meumobi/ion-employee/compare/v0.3.0...v0.4.0) (2019-02-05)
+
+
+### Bug Fixes
+
+* **config:** udpate widget id to com.meumobi.infomobi2 ([cb4c4b5](https://github.com/meumobi/ion-employee/commit/cb4c4b5))
+
+
+### Features
+
+* **auth:** migrate from v2 to v3 ([b424faa](https://github.com/meumobi/ion-employee/commit/b424faa)), closes [#257](https://github.com/meumobi/ion-employee/issues/257)
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/meumobi/ion-employee/compare/v0.2.0...v0.3.0) (2019-02-05)
 
