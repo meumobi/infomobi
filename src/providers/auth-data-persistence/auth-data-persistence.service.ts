@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Auth } from '@models/auth.interface';
+import { Auth, AuthUser } from '@models/auth.interface';
 import { Storage } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
 
@@ -23,6 +23,9 @@ export class AuthDataPersistenceService {
   public checkToken(): Promise<Auth|null> {
 
     return this.storage.get(TOKEN_KEY).then( data => {
+      if (!data) {
+        data = JSON.stringify(this.checkV2AuthData());
+      }
       this.authData$.next(JSON.parse(data));
       return data;
     });
@@ -63,4 +66,28 @@ export class AuthDataPersistenceService {
 
     return !!this.authData$.value && !this.authData$.value.error;
   }
+
+  private checkV2AuthData(): Auth {
+    const visitor = localStorage.getItem('visitor');
+    const authToken = localStorage.getItem('authToken');
+    let auth = null;
+    if (visitor && authToken) {
+      auth = this.migrateAuthData(JSON.parse(visitor), authToken);
+      this.save(auth);
+      localStorage.removeItem('visitor');
+      localStorage.removeItem('authToken');
+    }
+    return auth;
+  }
+
+  private migrateAuthData(visitor: AuthUser, authToken: string): Auth {
+    const auth: Auth = {
+      success: true,
+      token: authToken,
+      visitor: visitor
+    };
+    return auth;
+  }
+
+
 }
