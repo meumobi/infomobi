@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/meumobi/ion-employee/compare/v0.2.0...v0.3.0) (2019-02-05)
+
+
+### Bug Fixes
+
+* **comments:** add domain on promoted comments ([1132a3d](https://github.com/meumobi/ion-employee/commit/1132a3d)), closes [#248](https://github.com/meumobi/ion-employee/issues/248)
+* **comments:** comment.type misspelled ([8086ab3](https://github.com/meumobi/ion-employee/commit/8086ab3)), closes [#243](https://github.com/meumobi/ion-employee/issues/243)
+* **push:** enable sw when user or browser denied permission ([5c171d4](https://github.com/meumobi/ion-employee/commit/5c171d4)), closes [#251](https://github.com/meumobi/ion-employee/issues/251) [#249](https://github.com/meumobi/ion-employee/issues/249)
+
+
+### Features
+
+* **auth:** add forgot password ([ad26e78](https://github.com/meumobi/ion-employee/commit/ad26e78)), closes [#222](https://github.com/meumobi/ion-employee/issues/222)
+* **settings:** handle app settings on firestore ([3dfe97d](https://github.com/meumobi/ion-employee/commit/3dfe97d)), closes [#231](https://github.com/meumobi/ion-employee/issues/231)
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/meumobi/ion-employee/compare/v0.1.0...v0.2.0) (2019-01-30)
 
