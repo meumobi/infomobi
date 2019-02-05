@@ -1,6 +1,12 @@
 const admin = require('firebase-admin');
 
 module.exports = { setCommentsDomain };
+module.exports = { replaceCommentsType };
+module.exports = { lowerCaseValues };
+
+/**
+ * Cloud Firestore Quicktip — DocumentSnapshot vs. QuerySnapshot: https://medium.com/@scarygami/cloud-firestore-quicktip-documentsnapshot-vs-querysnapshot-70aef6d57ab3 
+ * */
 
 var serviceAccount = {
   "type": "service_account",
@@ -32,6 +38,56 @@ function setCommentsDomain(domain) {
   .then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
       db.collection("comments").doc(doc.id).update({"domain": domain});
+    });
+  })
+  .catch(function(e) {
+    console.log(e);
+  });
+}
+
+function hasUpperCase(str) {
+  return (/[A-Z]/.test(str));
+}
+
+function lowerCaseValues(field) {
+  if (!field) {
+    console.log('Please provide a domain as argument (ex: node -e \'require("./index").lowerCaseValues("type")\')');
+    return;
+  }
+
+  db.collection('comments')
+  .get()
+  .then(function(documentSnapshot) {
+    documentSnapshot.forEach(function(doc) {
+      const comment = doc.data();
+      console.log(doc.id, {"has upper case": hasUpperCase(comment.type), "value": comment.type});
+      if (comment.type) {
+        db.collection("comments").doc(doc.id).update({"type": comment.type.toLowerCase()});
+      }
+    });
+  })
+  .catch(function(e) {
+    console.log(e);
+  });
+}
+
+function replaceCommentsType(from, to) {
+  if (!from) {
+    console.log('Please provide a from type as the first argument (ex: node -e \'require("./index").replaceCommentsType("Message","message")\')');
+    return;
+  }
+
+  if (!to) {
+    console.log('Please provide a to type as the second argument (ex: node -e \'require("./index").replaceCommentsType("Message","message")\')');
+    return;
+  }
+
+  db.collection('comments')
+  .where('type', '==', from)
+  .get()
+  .then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+      db.collection("comments").doc(doc.id).update({"type": to});
     });
   })
   .catch(function(e) {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommentsProvider } from '@providers/comments';
 import { Comment } from '@models/comment';
 import { Item } from '@models/item.interface';
@@ -10,10 +10,10 @@ import { UserProfileService } from '@providers/user-profile';
   selector: 'comment-form',
   templateUrl: 'comment-form.html'
 })
-export class CommentFormComponent {
-  @Input('item') item: Item; 
+export class CommentFormComponent implements OnInit {
+  @Input() item: Item;
   comment: Comment;
-  files:Array<any>;
+  files: Array<any>;
   uploadFinished = true;
   author: Contact;
 
@@ -25,34 +25,33 @@ export class CommentFormComponent {
 
   ngOnInit() {
     this.author = this.userProfile.current$.value;
-    this.comment = new Comment("Message");
+    this.comment = new Comment('message');
     this.comment.domain = this.userProfile.current$.value.domain;
-    this.comment.data["author"] = this.author;
-    
+    this.comment.data['author'] = this.author;
     if (this.item) {
-      this.comment.data["itemDetails"] = {
+      this.comment.data['itemDetails'] = {
         title: this.item.title,
         id: this.item._id,
-      }
+      };
       this.comment.channel = `item_${this.item._id}`;
-    }    
+    }
   }
 
   fileUploadFinished(data) {
-    this.comment.data["media"] = [{url:data}];
+    this.comment.data['media'] = [{url: data}];
     console.log(data);
     this.uploadFinished = true;
   }
 
   fileUploadStarted() {
-    //TODO add spinner
+    // TODO add spinner
     this.uploadFinished = false;
   }
 
   onSubmit() {
     console.log(this.comment);
     this.commentsProvider.save(this.comment);
-    this.navCtrl.pop();   
+    this.navCtrl.pop();
   }
 
 }

@@ -7,7 +7,7 @@ import { Query } from '@firebase/firestore-types';
 
 @Injectable()
 export class CommentsProvider {
-  
+
   private itemsCollection: AngularFirestoreCollection<Comment>;
   items: Observable<Comment[]>;
 
@@ -16,7 +16,7 @@ export class CommentsProvider {
   search(filters, lastItem = null): Observable<Comment[]> {
     this.itemsCollection = this.af.collection<Comment>('comments',
       ref => {
-        let query : Query = ref;
+        let query: Query = ref;
         query = query.where('isPublished', '==', filters.isPublished);
         query = query.where('channel', '==', filters.channel);
         query = query.where('domain', '==', filters.domain);
@@ -27,29 +27,29 @@ export class CommentsProvider {
         query = query.limit(20);
         return query;
       }
-    );   
+    );
     this.items = this.itemsCollection.snapshotChanges().map(actions => {
-      return actions.map(a => {       
+      return actions.map(a => {
         const data = a.payload.doc.data() as Comment;
         const id = a.payload.doc.id;
         const doc = a.payload.doc;
         return { id, ...data, doc};
       });
-    });    
+    });
     return this.items;
   }
 
   delete(id: string) {
     console.log(id);
     return this.itemsCollection.doc(id).delete();
-  }  
+  }
 
   update(id: string, changes: any) {
     return this.itemsCollection.doc(id).update(changes);
   }
 
   promote(comment) {
-    let newComment = new Comment("Message");
+    const newComment = new Comment('message');
     newComment.data = comment.data;
     newComment.domain = comment.domain;
     return this.save(newComment);

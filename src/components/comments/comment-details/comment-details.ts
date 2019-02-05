@@ -1,10 +1,10 @@
-import { 
-  Component, 
-  Input, 
-  OnInit, 
-  ViewChild, 
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
   ViewContainerRef,
-  ComponentFactoryResolver, 
+  ComponentFactoryResolver,
   OnDestroy
  } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -16,8 +16,8 @@ import * as description from '../comment/.';
   templateUrl: 'comment-details.html'
 })
 export class CommentDetailsComponent implements OnInit, OnDestroy  {
-  
-  @Input('comment') comment;
+
+  @Input() comment;
   @ViewChild('details', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   rootNavCtrl: NavController;
@@ -36,7 +36,7 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
   }
 
   ngOnDestroy() {
-    this.componentRef.destroy(); 
+    this.componentRef.destroy();
   }
 
   getComponentName(name: string) {
@@ -46,14 +46,14 @@ export class CommentDetailsComponent implements OnInit, OnDestroy  {
   loadComponent() {
     this.entry.clear();
     if (!this.comment.type) {
-      this.comment["type"] = "Message";
+      this.comment['type'] = 'message';
     }
-    let projectableNode = document.createElement('p');
+    const projectableNode = document.createElement('p');
     projectableNode.innerHTML = this.comment.description;
 
     const className = this.getComponentName(this.comment.type);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(description[className]);
     this.componentRef = this.entry.createComponent(componentFactory, this.entry.length, null, [[projectableNode]]);
     (<Comment>this.componentRef.instance).comment = this.comment;
-  }  
+  }
 }
