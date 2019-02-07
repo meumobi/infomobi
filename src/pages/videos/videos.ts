@@ -11,7 +11,7 @@ import { YoutubeService } from 'mmb-youtube-provider';
 export class VideosPage implements OnInit {
 
   playlists: Array<any> = [];
-  playlist = '';
+  playlistId = '';
   videos: Array<any> = [];
   videoFrame: any;
   channelId: string;
@@ -42,11 +42,11 @@ export class VideosPage implements OnInit {
 
   listVideos() {
     console.log('listing videos');
-    this.youtubeService.fetchVideos(this.channelId, this.playlist)
+    this.youtubeService.fetchVideos(this.channelId, this.playlistId)
     .then(
       data => {
+        this.videos = data;
         if (data.length > 0) {
-          this.videos = data;
           this.openVideo(this.videos[0]);
         }
         console.log(data);

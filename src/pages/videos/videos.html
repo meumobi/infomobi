@@ -9,7 +9,7 @@
   <ion-list *ngIf="playlists.length > 0">
     <ion-item>
       <ion-label>{{'Playlist' | translate}}</ion-label>
-      <ion-select  [(ngModel)]="playlist" (ionChange)="listVideos()">
+      <ion-select  [(ngModel)]="playlistId" (ionChange)="listVideos()">
         <ion-option value="">{{'All Videos' | translate}}</ion-option>
         <ion-option *ngFor="let playlist of playlists"  value="{{playlist.id}}">{{playlist.snippet.title}}</ion-option>
       </ion-select>
