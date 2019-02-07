@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { VideosService } from '@providers/videos';
 import { EmbedVideoService } from '@providers/videos/embed-video.service';
+import { YoutubeService } from 'mmb-youtube-provider';
 
 @IonicPage()
 @Component({
@@ -18,7 +18,7 @@ export class VideosPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
-    private videosService: VideosService,
+    private youtubeService: YoutubeService,
     private embedService: EmbedVideoService,
     public navParams: NavParams
   ) {}
@@ -31,7 +31,7 @@ export class VideosPage implements OnInit {
   }
 
   listPlaylists() {
-    this.videosService.fetchPlaylists(this.channelId)
+    this.youtubeService.fetchPlaylists(this.channelId)
     .then(
       data => {
         this.playlists = data;
@@ -42,7 +42,7 @@ export class VideosPage implements OnInit {
 
   listVideos() {
     console.log('listing videos');
-    this.videosService.fetchVideos(this.channelId, this.playlist)
+    this.youtubeService.fetchVideos(this.channelId, this.playlist)
     .then(
       data => {
         if (data.length > 0) {
