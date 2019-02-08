@@ -33,6 +33,9 @@ import { UploadProvider } from '@providers/upload';
 import { UserProfileService } from '@providers/user-profile';
 import { VideosService } from '@providers/videos';
 import 'mmb-avatar-img';
+import { OneSignal } from '@ionic-native/onesignal';
+import { PushNotificationService } from '../providers/push-notification/push-notification';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -108,6 +111,8 @@ export function initConfig(
     VideosService,
     FilesProvider,
     SettingsService,
+    OneSignal,
+    PushNotificationService,
   ]
 })
 
