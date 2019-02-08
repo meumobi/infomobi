@@ -14,7 +14,7 @@
     </ion-list>
     <button ion-button (click)="vote()" block>{{'Vote' | translate}}</button>
     <ion-item center text-center>
-      <ion-note>{{item.total}} {{'Votes' | translate}} | {{"End voting at" | translate}} {{item.end_date | amFromUnix | amDateFormat:'LL'}}</ion-note>
+      <ion-note>{{item.total}} {{'Votes' | translate}} | {{"End voting at" | translate}} {{item.end_date | amFromUnix | amDateFormat:'ll'}}</ion-note>
     </ion-item>
   </div>  
   <div *ngIf="item.status == 'voted'">
@@ -30,7 +30,7 @@
         <span item-end>{{option.ratio}}</span>
       </ion-item>
       <ion-item center text-center>
-        <ion-note>{{item.total}} {{'Votes' | translate}} | {{"End voting at" | translate}} {{item.end_date | amFromUnix | amDateFormat:'LL'}}</ion-note>
+        <ion-note>{{item.total}} {{'Votes' | translate}} | {{"End voting at" | translate}} {{item.end_date | amFromUnix | amDateFormat:'ll'}}</ion-note>
       </ion-item>
     </ion-list>
   </div>  
@@ -47,7 +47,7 @@
         <span item-end>{{option.ratio}}</span>
       </ion-item>
       <ion-item center text-center>
-        <ion-note>{{item.total}} {{'Votes' | translate}} | {{"Poll closed at" | translate}} {{item.end_date | amFromUnix | amDateFormat:'LL'}}</ion-note>
+        <ion-note>{{item.total}} {{'Votes' | translate}} | {{"Poll closed at" | translate}} {{item.end_date | amFromUnix | amDateFormat:'ll'}}</ion-note>
       </ion-item>
     </ion-list>
   </div>  
