@@ -31,6 +31,7 @@
     "LINK": "Forgot password?",
     "SUBMIT": "Reset",
     "SUCCESS": "We've emailed your new password",
+    "SUBTITLE": "Enter your email address, and we’ll send an email with a new password.",
     "ERROR": "Unknown Email, please check it and submit again"
   },
   "LIVE_FEED": {

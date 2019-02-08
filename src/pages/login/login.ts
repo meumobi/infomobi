@@ -62,6 +62,7 @@ export class LoginPage implements OnInit {
   forgotPassword() {
     const prompt = this.alertCtrl.create({
       title:  this.translateService.instant('RESET_PASSWORD.LINK'),
+      subTitle:  this.translateService.instant('RESET_PASSWORD.SUBTITLE'),
       inputs: [
         {
           name: 'email',
