@@ -1,15 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OneSignal } from '@ionic-native/onesignal';
-import { Subject } from 'rxjs';
+import { OneSignal, OSPermissionSubscriptionState } from '@ionic-native/onesignal';
 
 @Injectable()
 export class PushNotificationService {
 
   private googleProjectNumber: string;
   private appId: string;
-  // private authData$: Subject<PushNotification> = new Subject();
-
 
   constructor(
     public http: HttpClient,
@@ -47,11 +44,12 @@ export class PushNotificationService {
     this.oneSignal.setSubscription(enable);
   }
 
-  getPermission(): Promise<any> {
+  getPermissionSubscriptionState(): Promise<OSPermissionSubscriptionState> {
 
     /**
      * .then(State => {console.log(State.subscriptionStatus)})
      */
+
     return this.oneSignal.getPermissionSubscriptionState();
   }
 
