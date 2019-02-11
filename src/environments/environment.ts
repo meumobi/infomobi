@@ -33,7 +33,7 @@ export const ENV = {
     messagingSenderId: '236514035211'
   },
   onesignal: {
-    appId: 'c3657938-b2f1-44fb-bd53-7a52d7784c30',
-    googleProjectNumber: '138333716576'
+    appId: 'e83fce5e-ebc8-475b-b615-fa5f1e11a129',
+    googleProjectNumber: '236514035211'
   },
 };
