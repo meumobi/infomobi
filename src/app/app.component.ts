@@ -1,4 +1,4 @@
-import { PushNotificationService } from '@providers/push-notification/push-notification';
+import { PushNotificationService } from '@providers/push-notification';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -70,19 +70,6 @@ export class MyApp implements OnInit {
     );
   }
 
-  webPushInit() {
-    OneSignal.push(function() {
-      OneSignal.init({
-        appId: ENV.onesignal.appId,
-        autoRegister: false,
-        allowLocalhostAsSecureOrigin: true,
-        notifyButton: {
-          enable: false,
-        }
-      });
-    });
-  }
-
   initializeApp() {
     this.platform.ready().then((readySource) => {
 
@@ -97,9 +84,6 @@ export class MyApp implements OnInit {
       );
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      if (!this.platform.is('cordova')) {
-        this.webPushInit();
-      }
     });
   }
 
@@ -115,31 +99,9 @@ export class MyApp implements OnInit {
   listenAuthData() {
     this.authData$.subscribe( authData => {
       if (!!authData) {
-        if (this.platform.is('cordova')) {
-          this.pushNotificationService.register(ENV.onesignal.appId, ENV.onesignal.googleProjectNumber);
-          this.pushNotificationService.signInUser(authData);
-        } else {
-          OneSignal.push(function() {
-            OneSignal.isPushNotificationsEnabled().then(function(isEnabled) {
-              if (isEnabled) {
-                console.log('Push notifications are enabled!');
-              } else {
-                console.log('Push notifications are not enabled yet.');
-              }
-            });
-          });
-          OneSignal.push(function() {
-            OneSignal.getUserId().then(function(userId) {
-              console.log('OneSignal User ID:', userId);
-              // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316
-            });
-          });
-
-          OneSignal.getNotificationPermission().then(function(permission) {
-            console.log('Site Notification Permission:', permission);
-          });
-          OneSignal.registerForPushNotifications();
-        }
+        this.pushNotificationService.init(ENV.onesignal);
+        this.pushNotificationService.signInUser(authData);
+        // this.pushNotificationService.register();
 
         this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
           userProfile => {
@@ -171,13 +133,10 @@ export class MyApp implements OnInit {
   }
 
   logout() {
-    if (this.platform.is('cordova')) {
-      this.pushNotificationService.signOutUser().then( _ => {
-        this.authService.signOut();
-      });
-    } else {
+    this.authService.signOut();
+    this.pushNotificationService.signOutUser().then( _ => {
       this.authService.signOut();
-    }
+    });
   }
 
   pushDetailsPage(page: string, id: string) {
