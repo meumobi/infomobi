@@ -1,4 +1,4 @@
-import { PushNotificationService } from '@providers/push-notification/push-notification';
+import { PushNotificationService } from '@providers/push-notification';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,6 +20,8 @@ import 'moment/min/locales';
  * Need a refactoring to normalize preferredLanguages with locales names (pt vs pt-br, en vs en-gb, etc.)
  */
 // import 'moment/locale/pt-br';
+
+declare var OneSignal: any;
 
 @Component({
   templateUrl: 'app.html'
@@ -54,6 +56,7 @@ export class MyApp implements OnInit {
   }
 
   ngOnInit() {
+
     this.listenAuthData();
     this.loadMenuCategories();
     this.authDataPersistenceService.getAuthDataObserver().subscribe(
@@ -96,8 +99,10 @@ export class MyApp implements OnInit {
   listenAuthData() {
     this.authData$.subscribe( authData => {
       if (!!authData) {
-        this.pushNotificationService.register(ENV.onesignal.appId, ENV.onesignal.googleProjectNumber);
+        this.pushNotificationService.init(ENV.onesignal);
         this.pushNotificationService.signInUser(authData);
+        // this.pushNotificationService.register();
+
         this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
           userProfile => {
             if (userProfile) {
@@ -128,6 +133,7 @@ export class MyApp implements OnInit {
   }
 
   logout() {
+    this.authService.signOut();
     this.pushNotificationService.signOutUser().then( _ => {
       this.authService.signOut();
     });

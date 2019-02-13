@@ -1,22 +1,19 @@
-import { HttpClient } from '@angular/common/http';
+import { AuthUser } from './../../models/auth.interface';
 import { Injectable } from '@angular/core';
 import { OneSignal, OSPermissionSubscriptionState } from '@ionic-native/onesignal';
+import { PushNotificationService, EnvOneSignal } from '@providers/push-notification';
 
 @Injectable()
-export class PushNotificationService {
-
-  private googleProjectNumber: string;
-  private appId: string;
+export class PushNativeService implements PushNotificationService {
 
   constructor(
-    public http: HttpClient,
-    public oneSignal: OneSignal
+    public oneSignal: OneSignal,
   ) {
-    console.log('Hello PushNotificationService Provider');
+    console.log('Hello PushNativeService Provider');
   }
 
-  register(appId, googleProjectNumber): void {
-    this.oneSignal.startInit(appId, googleProjectNumber);
+  init(env: EnvOneSignal): void {
+    this.oneSignal.startInit(env.appId, env.googleProjectNumber);
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
 
    // Retrieve the OneSignal user id and the device token
@@ -51,6 +48,16 @@ export class PushNotificationService {
      */
 
     return this.oneSignal.getPermissionSubscriptionState();
+  }
+
+  /**
+   * promptForPushNotificationsWithUserResponse
+   *  - Only iOS
+   *  - Only works if you set kOSSettingsKeyAutoPrompt to false.
+   *  https://documentation.onesignal.com/docs/cordova-sdk#section--promptforpushnotificationswithuserresponse-
+   */
+  register() {
+
   }
 
   signInUser(authData): void {
