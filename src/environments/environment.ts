@@ -31,5 +31,9 @@ export const ENV = {
     projectId: 'ion-employee-int',
     storageBucket: 'ion-employee-int.appspot.com',
     messagingSenderId: '236514035211'
-  }
+  },
+  onesignal: {
+    appId: 'e83fce5e-ebc8-475b-b615-fa5f1e11a129',
+    googleProjectNumber: '236514035211'
+  },
 };

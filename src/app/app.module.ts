@@ -1,3 +1,4 @@
+import { PushNotificationServiceProvider } from '@providers/push-notification';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule, APP_INITIALIZER } from '@angular/core';
 import { File } from '@ionic-native/file';
@@ -33,6 +34,7 @@ import { UploadProvider } from '@providers/upload';
 import { UserProfileService } from '@providers/user-profile';
 import { YoutubeService, YoutubeModule } from 'mmb-youtube-provider';
 import 'mmb-avatar-img';
+import { OneSignal } from '@ionic-native/onesignal';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,6 +51,7 @@ export function initConfig(
     });
   };
 }
+
 
 @NgModule({
   declarations: [
@@ -109,6 +112,8 @@ export function initConfig(
     YoutubeService,
     FilesProvider,
     SettingsService,
+    OneSignal,
+    PushNotificationServiceProvider,
   ]
 })
 

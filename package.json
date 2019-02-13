@@ -1,6 +1,6 @@
 {
   "name": "infomobi",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": "meumobi",
   "homepage": "http://ionicframework.com/",
   "private": true,
@@ -49,6 +49,7 @@
     "@ionic-native/file-opener": "^4.19.0",
     "@ionic-native/file-transfer": "^4.19.0",
     "@ionic-native/in-app-browser": "^4.19.0",
+    "@ionic-native/onesignal": "^4.20.0",
     "@ionic-native/splash-screen": "4.7.0",
     "@ionic-native/status-bar": "4.7.0",
     "@ionic/pro": "1.0.20",
@@ -79,6 +80,7 @@
     "moment": "^2.22.2",
     "ngx-moment": "^3.0.1",
     "ngx-toastr": "^9.1.1",
+    "onesignal-cordova-plugin": "2.4.6",
     "rxjs": "5.5.10",
     "ts-md5": "^1.2.4",
     "zone.js": "0.8.26"
@@ -118,6 +120,7 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
+      "onesignal-cordova-plugin": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
