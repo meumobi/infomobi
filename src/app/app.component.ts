@@ -1,3 +1,4 @@
+import { PushNotificationService } from '@providers/push-notification';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,6 +21,8 @@ import 'moment/min/locales';
  */
 // import 'moment/locale/pt-br';
 
+declare var OneSignal: any;
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -41,6 +44,7 @@ export class MyApp implements OnInit {
     private authDataPersistenceService: AuthDataPersistenceService,
     private userProfileService: UserProfileService,
     private categoriesService: CategoriesService,
+    private pushNotificationService: PushNotificationService
   ) {
     this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
     this.initializeApp();
@@ -52,6 +56,7 @@ export class MyApp implements OnInit {
   }
 
   ngOnInit() {
+
     this.listenAuthData();
     this.loadMenuCategories();
     this.authDataPersistenceService.getAuthDataObserver().subscribe(
@@ -66,7 +71,8 @@ export class MyApp implements OnInit {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    this.platform.ready().then((readySource) => {
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.translateService.setDefaultLang('en');
@@ -93,7 +99,10 @@ export class MyApp implements OnInit {
   listenAuthData() {
     this.authData$.subscribe( authData => {
       if (!!authData) {
-        console.log(authData);
+        this.pushNotificationService.init(ENV.onesignal);
+        this.pushNotificationService.signInUser(authData);
+        // this.pushNotificationService.register();
+
         this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
           userProfile => {
             if (userProfile) {
@@ -125,6 +134,9 @@ export class MyApp implements OnInit {
 
   logout() {
     this.authService.signOut();
+    this.pushNotificationService.signOutUser().then( _ => {
+      this.authService.signOut();
+    });
   }
 
   pushDetailsPage(page: string, id: string) {
