@@ -32,7 +32,7 @@ import { SettingsService } from '@providers/settings';
 import { SharedModule } from '@shared/shared.module';
 import { UploadProvider } from '@providers/upload';
 import { UserProfileService } from '@providers/user-profile';
-import { VideosService } from '@providers/videos';
+import { YoutubeService, YoutubeModule } from 'mmb-youtube-provider';
 import 'mmb-avatar-img';
 import { OneSignal } from '@ionic-native/onesignal';
 
@@ -66,6 +66,7 @@ export function initConfig(
     IonicStorageModule.forRoot({
       name: 'storage_db',
     }),
+    YoutubeModule.forRoot(ENV.youtube),
     SharedModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -108,7 +109,7 @@ export function initConfig(
       multi: true,
       deps: [AuthDataPersistenceService]
     },
-    VideosService,
+    YoutubeService,
     FilesProvider,
     SettingsService,
     OneSignal,

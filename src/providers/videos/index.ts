@@ -1,1 +1,1 @@
-export * from './videos.service';
+export * from './embed-video.service';

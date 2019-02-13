@@ -3,9 +3,9 @@ import { IonicPageModule } from 'ionic-angular';
 import { VideosPage } from './videos';
 import { SharedModule } from '@shared/shared.module';
 import { CommentsModule } from '@components/comments/comments.module';
-import { VideosService } from '@providers/videos';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmbedVideoService } from '@providers/videos/embed-video.service';
+import { YoutubeService } from 'mmb-youtube-provider';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { EmbedVideoService } from '@providers/videos/embed-video.service';
     CommentsModule,
   ],
   providers: [
-    VideosService,
+    YoutubeService,
     EmbedVideoService
   ]
 })
