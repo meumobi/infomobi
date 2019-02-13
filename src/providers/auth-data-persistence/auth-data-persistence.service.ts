@@ -14,11 +14,7 @@ export class AuthDataPersistenceService {
   constructor(
     private storage: Storage,
     private platform: Platform,
-  ) {
-    this.platform.ready().then( _ => {
-      this.checkToken();
-    });
-  }
+  ) {}
 
   public checkToken(): Promise<Auth|null> {
 
@@ -88,6 +84,4 @@ export class AuthDataPersistenceService {
     };
     return auth;
   }
-
-
 }
