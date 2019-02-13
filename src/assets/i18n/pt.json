@@ -69,8 +69,9 @@
   "RESET_PASSWORD": {
     "LINK": "Esqueceu a senha?",
     "SUBMIT": "Gerar nova",
-    "SUCCESS": "Senha resetada com sucesso. Confere sua caixa de email",
-    "ERROR": "E-mail desconhecido, confere por favor e tente novamente"
+    "SUCCESS": "Senha resetada com sucesso. Confira sua caixa de email",
+    "SUBTITLE": "Informe seu e-mail, e uma nova senha será enviada.",
+    "ERROR": "E-mail desconhecido, confira por favor e tente novamente"
   },
   "Successfully voted": "Voto registrado com sucesso",
   "Logout": "Sair",
