@@ -84,6 +84,7 @@ export class MyApp implements OnInit {
       );
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.pushNotificationService.init(ENV.onesignal);
     });
   }
 
@@ -99,9 +100,8 @@ export class MyApp implements OnInit {
   listenAuthData() {
     this.authData$.subscribe( authData => {
       if (!!authData) {
-        this.pushNotificationService.init(ENV.onesignal);
         this.pushNotificationService.signInUser(authData);
-        // this.pushNotificationService.register();
+        this.pushNotificationService.register();
 
         this.userProfileService.fetchByEmail(authData.visitor.email).subscribe(
           userProfile => {

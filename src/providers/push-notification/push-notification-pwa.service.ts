@@ -27,7 +27,6 @@ export class PushPwaService implements PushNotificationService {
           console.log('Push notifications are enabled!');
         } else {
           console.log('Push notifications are not enabled yet.');
-          OneSignal.registerForPushNotifications();
         }
       });
     });

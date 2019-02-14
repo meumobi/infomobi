@@ -16,14 +16,22 @@ export class PushNativeService implements PushNotificationService {
     this.oneSignal.startInit(env.appId, env.googleProjectNumber);
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
 
-   // Retrieve the OneSignal user id and the device token
-   this.oneSignal.getIds()
-   .then((ids) => {
-     /**
+    // Set your iOS Settings
+    const iosSettings = {
+      kOSSettingsKeyAutoPrompt: true,
+      kOSSettingsKeyInAppLaunchURL: false
+    };
+
+    this.oneSignal.iOSSettings(iosSettings);
+
+    // Retrieve the OneSignal user id and the device token
+    this.oneSignal.getIds()
+    .then((ids) => {
+      /**
       * Return userId and pushToken
       */
       console.log('getIds: ' + JSON.stringify(ids));
-   });
+    });
 
     this.oneSignal.handleNotificationReceived().subscribe((OSNotification) => {
       console.log('Notification received', OSNotification);
@@ -57,7 +65,14 @@ export class PushNativeService implements PushNotificationService {
    *  https://documentation.onesignal.com/docs/cordova-sdk#section--promptforpushnotificationswithuserresponse-
    */
   register() {
-
+    this.oneSignal.promptForPushNotificationsWithUserResponse().then(
+      (response: boolean) => {
+        console.log(response);
+      },
+      (reason: any) => {
+        console.log(reason);
+      }
+    );
   }
 
   signInUser(authData): void {
