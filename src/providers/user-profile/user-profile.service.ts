@@ -25,7 +25,7 @@ export class UserProfileService {
     profile.lastName = user.last_name;
     profile.email = user.email;
     profile.displayName = `${user.first_name} ${user.last_name}`; 
-    profile.role = 'admin';
+    profile.role = 'user';
     return this.contactsService.create(profile);
   }
 
