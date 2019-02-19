@@ -1,6 +1,6 @@
 <ion-card *ngIf="item">
   <div>
-    <img *ngIf="item.thumbnails.length" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly" />          
+    <img *ngIf="item.thumbnails.length" [src]="item.thumbnails[item.thumbnails.length-1].url | imgServerUrly" imageViewer="{{item.thumbnails[item.thumbnails.length-1].url | imgServerZoom}}"/>          
     <ion-card-content>
       <h1>{{item.title}}</h1>
     </ion-card-content>
