@@ -17,28 +17,28 @@ export class ItemsPage implements OnInit {
   category: Category;
   rootNavCtrl: NavController;
   items: Array<Item>;
-  
+
   constructor(
     private itemsService: ItemsService,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private categoriesService: CategoriesService
-  ) {      
+  ) {
     this.categoryId = navParams.data.id;
     this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
   }
-  
+
   ngOnInit() {
     if (this.categoryId) {
       this.categoriesService.findById(this.categoryId)
       .then(
         data => this.category = data
-      )
-    } 
-    
+      );
+    }
+
     this.fetchItems();
   }
-  
+
   fetchItems(refresher = null) {
     if (this.categoryId) {
       this.itemsService.fetchByCategory(this.categoryId)
@@ -55,7 +55,7 @@ export class ItemsPage implements OnInit {
           console.log(err);
         }
       );
-    } else {      
+    } else {
       this.itemsService.fetchAll()
       .then(
         data => {
@@ -72,12 +72,11 @@ export class ItemsPage implements OnInit {
       );
     }
   }
-  
+
   pushDetailsPage(page: string, id: string) {
     this.rootNavCtrl.push(page, {
       id: id,
       rootNavCtrl: this.rootNavCtrl
     });
   }
-
 }
