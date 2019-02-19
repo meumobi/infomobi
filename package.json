@@ -74,6 +74,7 @@
     "firebase": "^4.8.2",
     "ionic-angular": "3.9.2",
     "ionic-img-viewer": "^2.9.0",
+    "ionic2-elastic-header": "0.0.10",
     "ionic2-super-tabs": "^5.0.2",
     "ionicons": "3.0.0",
     "mmb-youtube-provider": "0.0.3",

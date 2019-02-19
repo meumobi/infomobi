@@ -1,3 +1,4 @@
+import { ElasticHeaderModule } from 'ionic2-elastic-header/dist';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { HomePage } from './home';
@@ -14,6 +15,7 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
     SharedModule,
     TranslateModule,
     SuperTabsModule,
+    ElasticHeaderModule ,
   ],
 })
 export class HomePageModule {}

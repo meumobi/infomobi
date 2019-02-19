@@ -1,4 +1,4 @@
-<ion-header no-shadow no-border>
+<ion-header no-shadow no-border [elasticHeader]="myContent">
     <ion-navbar>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
@@ -17,7 +17,7 @@
     </ion-navbar>
   </ion-header>
 
-<ion-content no-bounce>
+<ion-content no-bounce fullscreen #myContent>
   <super-tabs [config]="{ sideMenu: 'left' }" *ngIf="!!(authData$ | async)">
     <super-tab [root]="live" title="Ao Vivo"></super-tab>
     <super-tab [root]="items" title="Notícias"></super-tab> 
