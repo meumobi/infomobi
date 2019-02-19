@@ -1,3 +1,4 @@
+import { UserProfileService } from '@providers/user-profile';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { Settings } from '@models/settings';
@@ -25,6 +26,7 @@ export class SettingsPage implements OnInit, OnDestroy {
     private settingsService: SettingsService,
     private meutToastService: MeuToastService,
     private translateService: TranslateService,
+    private userProfileService: UserProfileService
   ) {}
 
   ngOnInit() {
@@ -43,6 +45,11 @@ export class SettingsPage implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.settingsSubscription.unsubscribe();
   }
+
+  ionViewCanEnter(): boolean {
+    return this.userProfileService.isAdmin();
+  }
+
 
   onSubmit() {
     this.settingsService.set(this.settings)

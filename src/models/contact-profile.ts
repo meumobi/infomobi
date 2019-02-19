@@ -1,4 +1,4 @@
-export class ContactProfile {  
+export class ContactProfile {
   _id?: string;
   type: string;
   picture: string;
@@ -7,10 +7,10 @@ export class ContactProfile {
   created: number;
   published: number;
   modified: number;
-  isPublished: boolean = true;
+  isPublished = true;
   domain: string;
   options: Object;
-  
+
   constructor(type: string) {
     this.type = type;
     this.created = Date.now();
@@ -24,9 +24,9 @@ export class UserProfile extends ContactProfile {
   firstName: string;
   lastName: string;
   email: string;
-  birthday: string;
-  role: string = 'user';
-  preferredLanguage: string = 'pt';
+  birthdate: string;
+  role = 'user';
+  preferredLanguage = 'pt';
   lastLogin: number;
 
   constructor() {
@@ -36,7 +36,7 @@ export class UserProfile extends ContactProfile {
 }
 
 export class DeskProfile extends ContactProfile {
-  
+
   constructor() {
     super('desk');
     this.options = {};

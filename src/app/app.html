@@ -22,13 +22,14 @@
         <ion-icon item-start name="list-box"></ion-icon>
         {{'PREFERENCES.LINK' | translate}}
       </button>
-      <button menuClose ion-item (click)="openPage('SettingsPage')">
+      <button menuClose ion-item (click)="openPage('SettingsPage')" *appIsAdmin>
         <ion-icon item-start name="settings"></ion-icon>
         {{'SETTINGS.LINK' | translate}}
       </button>
       <button menuClose ion-item (click)="openPage('UserFormPage')">
         <ion-icon item-start name="contact"></ion-icon>
-        {{'My account' | translate}}
+        {{'My account' | translate}}<br/>
+        <ion-note>{{ (userProfile$ | async)?.email }}</ion-note>
       </button>
       <button menuClose ion-item (click)="logout()">
         <ion-icon item-start name="log-out"></ion-icon>

@@ -1,3 +1,4 @@
+import { UserProfile } from '@models/contact-profile';
 import { PushNotificationService } from '@providers/push-notification';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -10,7 +11,7 @@ import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { UserProfileService } from '@providers/user-profile';
 import { ENV } from '@env';
 import { Observable } from 'rxjs';
-import { Auth, AuthUser } from '@models/auth.interface';
+import { Auth } from '@models/auth.interface';
 import { Category } from '@models/categories.interface';
 import { CategoriesService } from '@providers/categories';
 import moment from 'moment';
@@ -21,8 +22,6 @@ import 'moment/min/locales';
  */
 // import 'moment/locale/pt-br';
 
-declare var OneSignal: any;
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -32,7 +31,7 @@ export class MyApp implements OnInit {
   pages: Array<{title: string, component: any, icon: string}>;
   categories: Array<Category>;
   authData$: Observable<Auth>;
-  authUser: AuthUser = null;
+  userProfile$: Observable<UserProfile>;
 
   constructor(
     public platform: Platform,
@@ -47,6 +46,8 @@ export class MyApp implements OnInit {
     private pushNotificationService: PushNotificationService
   ) {
     this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
+    this.userProfile$ = this.userProfileService.getUserProfileObserver();
+
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
@@ -59,15 +60,6 @@ export class MyApp implements OnInit {
 
     this.listenAuthData();
     this.loadMenuCategories();
-    this.authDataPersistenceService.getAuthDataObserver().subscribe(
-      data => {
-        if (data) {
-          this.authUser = data.visitor;
-        } else {
-          this.authUser = null;
-        }
-      }
-    );
   }
 
   initializeApp() {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Query } from '@firebase/firestore-types';
 
 import { UserProfile } from '@models/contact-profile';
@@ -12,6 +12,7 @@ export class UserProfileService {
 
   private itemsCollection: AngularFirestoreCollection<UserProfile>;
   public current$ = new BehaviorSubject<UserProfile>(new UserProfile());
+
   constructor(
     private af: AngularFirestore,
     private contactsService: ContactsService
@@ -55,5 +56,17 @@ export class UserProfileService {
         );
       }
     ).map(data => data[0]);
+  }
+
+  public getUserProfileObserver(): Observable<UserProfile> {
+    return this.current$.asObservable();
+  }
+
+  public hasRole(role: string): boolean {
+    return this.current$.value.role === role;
+  }
+
+  public isAdmin(): boolean {
+    return this.current$.value.role ? this.current$.value.role === 'admin' : false;
   }
 }

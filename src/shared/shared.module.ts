@@ -1,7 +1,9 @@
+import { IsAdminDirective } from './../directives/is-admin';
+import { HasRoleDirective } from './../directives/has-role';
 import { NgModule } from '@angular/core';
 import { MeuToastService } from './meu-toast.service';
 import { AnalyticsProvider } from './analytics.service';
-import { 
+import {
   SafeUrlPipe,
   SearchPipe,
   KeysPipe,
@@ -31,6 +33,8 @@ const sharedModules = [
     SearchPipe,
     KeysPipe,
     IconPathForContactTypePipe,
+    HasRoleDirective,
+    IsAdminDirective,
   ],
   providers: [
     MeuToastService,
@@ -43,7 +47,9 @@ const sharedModules = [
     SearchPipe,
     KeysPipe,
     IconPathForContactTypePipe,
+    HasRoleDirective,
+    IsAdminDirective,
     sharedModules
   ]
 })
-export class SharedModule { }
+export class SharedModule {}
