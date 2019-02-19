@@ -25,7 +25,7 @@
     "type": "image/png"
   }
 ],
-  "background_color": "#656565",
-  "theme_color": "#656565",
+  "background_color": "#FFD33A",
+  "theme_color": "#FFD33A",
   "gcm_sender_id": "236514035211"
 }
