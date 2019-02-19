@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Category } from '@models/categories.interface';
@@ -22,7 +23,8 @@ export class ItemsPage implements OnInit {
     private itemsService: ItemsService,
     public navCtrl: NavController,
     public navParams: NavParams,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private storage: Storage
   ) {
     this.categoryId = navParams.data.id;
     this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
@@ -45,6 +47,7 @@ export class ItemsPage implements OnInit {
       .then(
         data => {
           this.items = data;
+          this.storage.remove('polls');
           if (refresher) {
             refresher.complete();
           }
@@ -60,6 +63,7 @@ export class ItemsPage implements OnInit {
       .then(
         data => {
           this.items = data;
+          this.storage.remove('polls');
           if (refresher) {
             refresher.complete();
           }
