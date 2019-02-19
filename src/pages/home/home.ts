@@ -21,6 +21,7 @@ export class HomePage implements OnInit, OnDestroy {
   authUser: AuthUser = null;
   settings: Settings;
   settingsSubscription: Subscription;
+  authDataSubscription: Subscription;
 
   constructor(
     private authDataPersistenceService: AuthDataPersistenceService,
@@ -31,7 +32,7 @@ export class HomePage implements OnInit, OnDestroy {
   ngOnInit() {
     console.log('HomePage ngOnInit');
     this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
-    this.authDataPersistenceService.getAuthDataObserver().subscribe(
+    this.authDataSubscription = this.authData$.subscribe(
       data => {
         if (data) {
           this.authUser = data.visitor;
@@ -48,6 +49,7 @@ export class HomePage implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.settingsSubscription.unsubscribe();
+    this.authDataSubscription.unsubscribe();
   }
 
   ionViewCanEnter(): boolean {
