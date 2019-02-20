@@ -20,8 +20,9 @@
           </ion-slides>
         </ion-col>
       </ion-row>
-      <ion-list>
-        <ion-item>
+      <ion-list *appIsNative>
+        <ion-item *ngIf="article.link">
+          <ion-input item-end value="{{article.link}}" disabled></ion-input>
         <button ion-button item-end icon-start (click)="shareItem(article)">
             <ion-icon name="share"></ion-icon>
           {{ 'Share' | translate }}

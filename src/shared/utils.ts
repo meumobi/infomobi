@@ -11,6 +11,14 @@ export default class Utils {
     return this.lookupByToken(array, token);
   }
 
+  static br2nl(text) {
+    return text.replace(/<br\s*[\/]?>/gi, '\n');
+  }
+
+  static striptags(text) {
+    return text.replace(/<.*?>/g, '');
+  }
+
   static lookupByToken(array, token) {
     const lookup = [];
     for (let i = 0, len = array.length; i < len; i++) {

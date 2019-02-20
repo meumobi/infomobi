@@ -1,5 +1,6 @@
 import { IsAdminDirective } from './../directives/is-admin';
 import { HasRoleDirective } from './../directives/has-role';
+import { IsNativeDirective } from './../directives/is-native';
 import { NgModule } from '@angular/core';
 import { MeuToastService } from './meu-toast.service';
 import { AnalyticsProvider } from './analytics.service';
@@ -35,6 +36,7 @@ const sharedModules = [
     IconPathForContactTypePipe,
     HasRoleDirective,
     IsAdminDirective,
+    IsNativeDirective,
   ],
   providers: [
     MeuToastService,
@@ -49,6 +51,7 @@ const sharedModules = [
     IconPathForContactTypePipe,
     HasRoleDirective,
     IsAdminDirective,
+    IsNativeDirective,
     sharedModules
   ]
 })

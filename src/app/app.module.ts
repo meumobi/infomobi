@@ -35,6 +35,8 @@ import { UserProfileService } from '@providers/user-profile';
 import { YoutubeService, YoutubeModule } from 'mmb-youtube-provider';
 import 'mmb-avatar-img';
 import { OneSignal } from '@ionic-native/onesignal';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { SocialSharingService } from '../providers/social-sharing';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -113,7 +115,9 @@ export function initConfig(
     FilesProvider,
     SettingsService,
     OneSignal,
+    SocialSharing,
     PushNotificationServiceProvider,
+    SocialSharingService,
   ]
 })
 
