@@ -9,8 +9,7 @@ import {
   KeysPipe,
   IconPathForContactTypePipe,
   ImgServerUrlyPipe,
-  ImgServerSrcsettifyPipe,
-  ImgServerZoomPipe
+  ImgServerSrcsettifyPipe
  } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
@@ -32,7 +31,6 @@ const sharedModules = [
     ImgServerSrcsettifyPipe,
     SafeUrlPipe,
     SearchPipe,
-    ImgServerZoomPipe,
     KeysPipe,
     IconPathForContactTypePipe,
     HasRoleDirective,
@@ -44,7 +42,6 @@ const sharedModules = [
   ],
   exports: [
     ImgServerUrlyPipe,
-    ImgServerZoomPipe,
     ImgServerSrcsettifyPipe,
     SafeUrlPipe,
     SearchPipe,
