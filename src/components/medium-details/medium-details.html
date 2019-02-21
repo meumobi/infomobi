@@ -1,6 +1,6 @@
 <ion-item>
   <ion-thumbnail item-start *ngIf="medium.thumbnails && medium.thumbnails.length > 0; else generic">
-    <img [src]="medium.thumbnails[0].url | imgServerUrly">
+    <img [src]="medium.thumbnails[0].url | imgServerUrly:'thumbnail'">
   </ion-thumbnail>
   <ng-template #generic>
       <ion-thumbnail item-start>
