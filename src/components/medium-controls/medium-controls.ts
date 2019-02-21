@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FilesProvider } from '@providers/files/files';
-
+import { SocialSharingService } from '@providers/social-sharing';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
@@ -12,6 +12,7 @@ export class MediumControlsComponent implements OnInit {
   progress = 0;
   constructor(
     private filesProvider: FilesProvider,
+    private socialSharingService: SocialSharingService,
     private iab: InAppBrowser
   ) {
   }
@@ -20,7 +21,7 @@ export class MediumControlsComponent implements OnInit {
     this.medium.status = '';
     this.filesProvider.getFilesFromStorage()
     .then(
-      data => {
+      () => {
         this.medium = this.filesProvider.decorateFile(this.medium);
       }
     );
@@ -52,6 +53,10 @@ export class MediumControlsComponent implements OnInit {
 
   abort() {
     this.filesProvider.abort(this.medium);
+  }
+
+  shareMedia(): Promise<any> {
+    return this.socialSharingService.shareMedia(this.medium);
   }
 
 }

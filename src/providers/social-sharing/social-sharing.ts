@@ -26,4 +26,22 @@ export class SocialSharingService {
     return this.socialSharing.shareWithOptions(params);
   }
 
+  shareMedia(media) {
+    console.log(media);
+    const params = {
+      message: media.title,
+      subject: media.title,
+      files: [],
+      url: media.url
+    };
+    if (media.hasOwnProperty('fullPath') && media.status === 'downloaded') {
+      params.files.push(media.fullPath);
+      params.url = null;
+    } else if (media.thumbnails && media.thumbnails.length > 0) {
+      params.files.push(media.thumbnails[0].url);
+    }
+    console.log(params);
+    return this.socialSharing.shareWithOptions(params);
+  }
+
 }
