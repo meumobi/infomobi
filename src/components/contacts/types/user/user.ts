@@ -9,21 +9,15 @@ import { UserProfileService } from '@providers/user-profile';
 export class UserComponent implements OnInit {
   @Input() contact: any;
   rootNavCtrl: NavController;
-  admin: boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private userProfileService: UserProfileService    
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
   }
-  
-  ngOnInit() {
-    console.log(this.contact._id);
-    this.admin = this.userProfileService.current$.value.role == "admin" || this.userProfileService.current$.value._id == this.contact._id;
-    console.log(this.admin);
-  }
+
+  ngOnInit() {}
 
   pushDetailsPage(page: string, id: string) {
     if (id) {
@@ -32,8 +26,7 @@ export class UserComponent implements OnInit {
         rootNavCtrl: this.rootNavCtrl
       });
     } else {
-      console.log("missing id of author");
+      console.log('missing id of author');
     }
   }
 }
-
