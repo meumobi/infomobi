@@ -1,5 +1,3 @@
-import { IsAdminDirective } from './../directives/is-admin';
-import { HasRoleDirective } from './../directives/has-role';
 import { NgModule } from '@angular/core';
 import { MeuToastService } from './meu-toast.service';
 import { AnalyticsProvider } from './analytics.service';
@@ -14,17 +12,19 @@ import {
 import { MomentModule } from 'ngx-moment';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { CategoryLabelModule } from '@components/category-label/category-label.module';
+import { DirectivesModule } from './../directives/directives.module';
 
 
 const sharedModules = [
   MomentModule,
   IonicImageViewerModule,
-  CategoryLabelModule
+  CategoryLabelModule,
+  DirectivesModule,
 ];
 
 @NgModule({
   imports: [
-    sharedModules
+    sharedModules,
   ],
   declarations: [
     ImgServerUrlyPipe,
@@ -33,12 +33,10 @@ const sharedModules = [
     SearchPipe,
     KeysPipe,
     IconPathForContactTypePipe,
-    HasRoleDirective,
-    IsAdminDirective,
   ],
   providers: [
     MeuToastService,
-    AnalyticsProvider
+    AnalyticsProvider,
   ],
   exports: [
     ImgServerUrlyPipe,
@@ -47,9 +45,7 @@ const sharedModules = [
     SearchPipe,
     KeysPipe,
     IconPathForContactTypePipe,
-    HasRoleDirective,
-    IsAdminDirective,
-    sharedModules
+    sharedModules,
   ]
 })
 export class SharedModule {}

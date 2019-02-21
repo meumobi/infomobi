@@ -1,8 +1,8 @@
-export class Comment {  
+export class Comment {
   _id?: string;
   channel: string;
   type: string;
-  data?: Object; 
+  data?: any;
   created: number;
   published: number;
   modified: number;
@@ -11,7 +11,7 @@ export class Comment {
 
   constructor(type: string) {
     this.type = type;
-    this.channel = "live";
+    this.channel = 'live';
     this.created = Date.now();
     this.published = Date.now();
     this.modified = Date.now();
