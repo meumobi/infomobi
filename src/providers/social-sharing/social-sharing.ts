@@ -43,5 +43,4 @@ export class SocialSharingService {
     console.log(params);
     return this.socialSharing.shareWithOptions(params);
   }
-
 }
