@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FilesProvider } from '@providers/files/files';
 import { SocialSharingService } from '@providers/social-sharing';
+import { MeuToastService } from '@shared/meu-toast.service';
+import { TranslateService } from '@ngx-translate/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
@@ -13,7 +15,9 @@ export class MediumControlsComponent implements OnInit {
   constructor(
     private filesProvider: FilesProvider,
     private socialSharingService: SocialSharingService,
-    private iab: InAppBrowser
+    private translateService: TranslateService,
+    private meuToastService: MeuToastService,
+    private iab: InAppBrowser,
   ) {
   }
 
@@ -56,7 +60,14 @@ export class MediumControlsComponent implements OnInit {
   }
 
   shareMedia() {
-    this.socialSharingService.shareMedia(this.medium);
+    this.socialSharingService.shareMedia(this.medium)
+    .then(
+      data => {
+        if (data.hasOwnProperty('message')) {
+          this.meuToastService.present(this.translateService.instant(data.message));
+        }
+      }
+    );
   }
 
 }

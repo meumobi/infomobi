@@ -2,24 +2,21 @@ import { SocialSharingNativeService, SocialSharingPwaService } from '@providers/
 import { Platform } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { MeuToastService } from '@shared/meu-toast.service';
-import { TranslateService } from '@ngx-translate/core';
+
 
 @Injectable()
 export abstract class SocialSharingService {
 
-  abstract shareItem(item): void;
-  abstract shareMedia(media): void;
+  abstract shareItem(item): Promise<any>;
+  abstract shareMedia(media): Promise<any>;
 }
 
 const SocialSharingFactory = (
     platform: Platform,
     socialSharing: SocialSharing,
-    meutToastService: MeuToastService,
-    translateService: TranslateService,
   ) => {
   if (!platform.is('cordova')) {
-    return new SocialSharingPwaService(meutToastService, translateService);
+    return new SocialSharingPwaService();
   } else {
     return new SocialSharingNativeService(socialSharing);
   }
@@ -28,7 +25,7 @@ const SocialSharingFactory = (
 export let SocialSharingServiceProvider = {
   provide: SocialSharingService,
   useFactory: SocialSharingFactory,
-  deps: [Platform, SocialSharing, MeuToastService, TranslateService]
+  deps: [Platform, SocialSharing]
 };
 
 

@@ -14,22 +14,22 @@ export class SocialSharingNativeService implements SocialSharingService {
 
   shareItem(item) {
     const params = {
-      message: Utils.striptags(Utils.br2nl(item.description)),
-      subject: Utils.striptags(Utils.br2nl(item.title)),
+      text: item.hasOwnProperty('description') ? Utils.striptags(Utils.br2nl(item.description)) : null,
+      title: item.hasOwnProperty('title') ? Utils.striptags(Utils.br2nl(item.title)) : null,
       files: [],
       url: item.hasOwnProperty('link') ? item.link : null
     };
     if (item.thumbnails && item.thumbnails.length > 0) {
       params.files.push(item.thumbnails[0].url);
     }
-    this.socialSharing.shareWithOptions(params);
+    return this.socialSharing.shareWithOptions(params);
   }
 
   shareMedia(media) {
     console.log(media);
     const params = {
-      text: Utils.striptags(Utils.br2nl(media.title)),
-      title: Utils.striptags(Utils.br2nl(media.title)),
+      text: media.hasOwnProperty('title') ? Utils.striptags(Utils.br2nl(media.title)) : null,
+      title: media.hasOwnProperty('title') ? Utils.striptags(Utils.br2nl(media.title)) : null,
       files: [],
       url: media.url
     };
@@ -39,7 +39,7 @@ export class SocialSharingNativeService implements SocialSharingService {
     } else if (media.thumbnails && media.thumbnails.length > 0) {
       params.files.push(media.thumbnails[0].url);
     }
-    this.socialSharing.shareWithOptions(params);
+    return this.socialSharing.shareWithOptions(params);
   }
 
 }
