@@ -29,6 +29,9 @@ export class PollsComponent implements OnInit {
   
   ngOnInit() {
     if (this.item) {
+      if (this.item.thumbnails && this.item.thumbnails.length) {
+        this.item.thumbnailUrl = this.item.thumbnails[this.item.thumbnails.length - 1].url;
+      }
       this.getPolls()
       .then(
         () => {

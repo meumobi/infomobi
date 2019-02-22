@@ -12,9 +12,9 @@
       <h3>{{article.published | amFromUnix | amDateFormat:'LL'}}</h3>
       <ion-row *ngIf="article.images && article.images.length">
         <ion-col>
-          <ion-slides loop="{{article.images.length > 1 ? true:false}}" autoplay="3500" pager="{{article.images.length > 1 ? true:false}}">
-            <ion-slide *ngFor="let image of article.images">
-              <img [src]="image.path | imgServerUrly" [srcset]="image.path | imgServerSrcsettify" imageViewer/>
+          <ion-slides loop="{{articles.images.length > 1 ? true:false}}" autoplay="3500" pager="{{articles.images.length > 1 ? true:false}}">
+            <ion-slide *ngFor="let image of articles.images">
+              <img [src]="image.path | imgServerUrly" [srcset]="image.path | imgServerSrcsettify" imageViewer />
               <div class="img-title">{{image.title}}</div>
             </ion-slide>
           </ion-slides>

@@ -23,7 +23,7 @@
       </ion-col>
     </ion-row>   
   </ion-item>
-  <ion-item-options side="left" *ngIf="comment">    
+  <ion-item-options side="left" *appCanEditItem="comment">
     <button ion-button *ngIf="comment.channel.startsWith('item')" (click)="promoteComment(item)">
       <ion-icon name="checkmark"></ion-icon>
       {{'Promote' | translate }}

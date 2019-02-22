@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ENV } from '@env';
+import Utils from '@shared/utils';
 
 /**
  * img.src | imgServerSrcsettify
@@ -23,18 +24,9 @@ export class ImgServerSrcsettifyPipe implements PipeTransform {
   sizes = [2048, 1024, 600];
 
   transform(src: string) {
-    let onServer = false;
-    for (const source in ENV.imgServer.sources) {
-      if (ENV.imgServer.sources.hasOwnProperty(source)) {
-        const prefix = ENV.imgServer.sources[source].prefix;
-        if (src.startsWith(prefix)) {
-          src = src.replace(prefix, source);
-          onServer = true;
-        }
-      }
-    }
+    const prefix = Utils.imgServerPrefix(src);
     return this.sizes.map((width) => {
-      return (onServer) ? ENV.imgServer.url + src + '?width=' + width + ' ' + width + 'w' : src;
+      return `${prefix}?width=${width}&format=jpg ${width}w`;
     }).toString();
   }
 }

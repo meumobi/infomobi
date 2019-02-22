@@ -7,7 +7,7 @@
     <h2>{{contact.displayName}}</h2>
     <h3>{{contact.title}}</h3>
   </ion-card-content>
-  <ion-row no-padding *ngIf="admin">
+  <ion-row no-padding *appCanEditItem="contact">
     <button item-end ion-button (click)="pushDetailsPage('UserFormPage', contact._id)">{{'Edit Account' | translate}}</button>
   </ion-row>
   <ion-list>
