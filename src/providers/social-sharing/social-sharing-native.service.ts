@@ -1,16 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import Utils from '@shared/utils';
+import { SocialSharingService } from '@providers/social-sharing';
 
 @Injectable()
-export class SocialSharingService {
+export class SocialSharingNativeService implements SocialSharingService {
 
   constructor(
-    public http: HttpClient,
-    private socialSharing: SocialSharing
+    public socialSharing: SocialSharing
   ) {
-    console.log('Hello SocialSharingService Provider');
+    console.log('Hello SocialSharingNativeService Provider');
   }
 
   shareItem(item) {
@@ -23,14 +22,14 @@ export class SocialSharingService {
     if (item.thumbnails && item.thumbnails.length > 0) {
       params.files.push(item.thumbnails[0].url);
     }
-    return this.socialSharing.shareWithOptions(params);
+    this.socialSharing.shareWithOptions(params);
   }
 
   shareMedia(media) {
     console.log(media);
     const params = {
-      message: media.title,
-      subject: media.title,
+      text: Utils.striptags(Utils.br2nl(media.title)),
+      title: Utils.striptags(Utils.br2nl(media.title)),
       files: [],
       url: media.url
     };
@@ -40,8 +39,7 @@ export class SocialSharingService {
     } else if (media.thumbnails && media.thumbnails.length > 0) {
       params.files.push(media.thumbnails[0].url);
     }
-    console.log(params);
-    return this.socialSharing.shareWithOptions(params);
+    this.socialSharing.shareWithOptions(params);
   }
 
 }
