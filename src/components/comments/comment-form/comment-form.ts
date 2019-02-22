@@ -3,7 +3,7 @@ import { CommentsProvider } from '@providers/comments';
 import { Comment } from '@models/comment';
 import { Item } from '@models/item.interface';
 import { NavController } from 'ionic-angular';
-import { Contact } from '@models/contact.interface';
+import { UserProfile } from '@models/contact-profile';
 import { UserProfileService } from '@providers/user-profile';
 
 @Component({
@@ -15,7 +15,7 @@ export class CommentFormComponent implements OnInit {
   comment: Comment;
   files: Array<any>;
   uploadFinished = true;
-  author: Contact;
+  author: UserProfile;
 
   constructor(
     private commentsProvider: CommentsProvider,
@@ -39,7 +39,6 @@ export class CommentFormComponent implements OnInit {
 
   fileUploadFinished(data) {
     this.comment.data['media'] = [{url: data}];
-    console.log(data);
     this.uploadFinished = true;
   }
 
@@ -49,11 +48,7 @@ export class CommentFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.comment);
     this.commentsProvider.save(this.comment);
     this.navCtrl.pop();
   }
-
 }
-
-

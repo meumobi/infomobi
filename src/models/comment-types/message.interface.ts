@@ -1,15 +1,15 @@
-import { Contact } from "@models/contact.interface";
+import { UserProfile } from '@models/contact-profile';
 
 export interface Message {
-  author: Contact,
-  description: string,
+  author: UserProfile;
+  description: string;
   itemDetails: {
     title: string,
     id: string
-  }
+  };
   media: [
     {
       url: string
     }
-  ]
+  ];
 }
