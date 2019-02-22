@@ -22,6 +22,9 @@
       "ERROR": "An error occurred, please try again later or contact your admin."
     }
   },
+  "CLIPBOARD_COPY": {
+    "LINK": "Link copied to clipboard"
+  },
   "IN_APP": "Internal app translation",
   "LOGIN": {
     "USER_WELCOME": "Hello {{displayName}}",

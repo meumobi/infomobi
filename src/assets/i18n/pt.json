@@ -73,6 +73,10 @@
     "SUBTITLE": "Informe seu e-mail, e uma nova senha será enviada.",
     "ERROR": "E-mail desconhecido, confira por favor e tente novamente"
   },
+  "CLIPBOARD_COPY": {
+    "LINK": "Link copiado para a área de tranferência"
+  },
+  "Share": "Compartilhar",
   "Successfully voted": "Voto registrado com sucesso",
   "Logout": "Sair",
   "invalid email or password": "Email ou senha inválido",
