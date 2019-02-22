@@ -35,7 +35,7 @@ export class ArticlesDetailsPage {
       });
   }
 
-  shareItem(article: Article): Promise<any> {
-    return this.socialSharingService.shareItem(article);
+  shareItem(article: Article) {
+    this.socialSharingService.shareItem(article);
   }
 }

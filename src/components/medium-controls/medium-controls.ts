@@ -55,8 +55,8 @@ export class MediumControlsComponent implements OnInit {
     this.filesProvider.abort(this.medium);
   }
 
-  shareMedia(): Promise<any> {
-    return this.socialSharingService.shareMedia(this.medium);
+  shareMedia() {
+    this.socialSharingService.shareMedia(this.medium);
   }
 
 }
