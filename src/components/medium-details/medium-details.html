@@ -1,4 +1,4 @@
-<ion-item>
+<ion-item no-padding>
   <ion-thumbnail item-start *ngIf="medium.thumbnails && medium.thumbnails.length > 0; else generic">
     <img [src]="medium.thumbnails[0].url | imgServerUrly:'thumbnail'">
   </ion-thumbnail>
@@ -9,9 +9,8 @@
   </ng-template>    
   <h2>{{medium.title}}</h2>
   <p>
-    {{'Size' | translate}}:{{medium.length}}
-    <br/>
-    {{'Type' | translate}}:{{medium.type}}
+    <span *ngIf="medium.length">{{'Size' | translate}}:{{medium.length}}<br/></span>
+    <span>{{'Type' | translate}}:{{medium.type}}</span><br/>
   </p>
   <medium-controls [medium]="medium" item-end></medium-controls>
 </ion-item>
