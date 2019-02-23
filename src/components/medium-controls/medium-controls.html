@@ -1,6 +1,6 @@
 <div [ngSwitch]="medium.status">
   <div *ngSwitchCase="'download'">
-    <button *appIsNative ion-button icon-only (click)="shareMedia()">
+    <button ion-button icon-only (click)="shareMedia()">
         <ion-icon name="share"></ion-icon>
     </button>
     <button ion-button icon-only (click)="download()">
@@ -16,7 +16,7 @@
     </button>
   </div>
   <div *ngSwitchCase="'downloaded'">
-    <button *appIsNative ion-button icon-only (click)="shareMedia()">
+    <button ion-button icon-only (click)="shareMedia()">
         <ion-icon name="share"></ion-icon>
     </button>
     <button ion-button icon-only (click)="openLocal()">
@@ -27,7 +27,7 @@
     </button>
   </div>
   <div *ngSwitchCase="'open_by_link'">
-      <button *appIsNative ion-button icon-only (click)="shareMedia()">
+      <button ion-button icon-only (click)="shareMedia()">
           <ion-icon name="share"></ion-icon>
       </button>
       <button  ion-button icon-only (click)="link()">

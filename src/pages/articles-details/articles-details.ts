@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Item, Article } from '@models/item.interface';
 import { ItemsService } from '@providers/items';
 import { SocialSharingService } from '@providers/social-sharing';
+import { MeuToastService } from '@shared/meu-toast.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage({
   segment: 'article/details/:id',
@@ -21,7 +23,9 @@ export class ArticlesDetailsPage {
     private itemsService: ItemsService,
     public rootNavCtrl: NavController,
     public navParams: NavParams,
-    private socialSharingService: SocialSharingService
+    private socialSharingService: SocialSharingService,
+    private translateService: TranslateService,
+    private meuToastService: MeuToastService,
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
     this.id = this.navParams.data.id;
@@ -35,7 +39,14 @@ export class ArticlesDetailsPage {
       });
   }
 
-  shareItem(article: Article): Promise<any> {
-    return this.socialSharingService.shareItem(article);
+  shareItem(article: Article) {
+    this.socialSharingService.shareItem(article)
+    .then(
+      data => {
+        if (data.hasOwnProperty('message')) {
+          this.meuToastService.present(this.translateService.instant(data.message));
+        }
+      }
+    );
   }
 }

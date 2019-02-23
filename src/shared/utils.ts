@@ -27,6 +27,20 @@ export default class Utils {
     return lookup;
   }
 
+  static copyToClipBoard(text: string) {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = text;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
+
   static imgServerPrefix(src: string) {
     let onServer = false;
     for (const source in ENV.imgServer.sources) {

@@ -12,7 +12,7 @@ import { MediumControlsComponent } from '@components/medium-controls/medium-cont
 import { NgMathPipesModule } from 'angular-pipes';
 import { CommentsModule } from '@components/comments/comments.module';
 import { ItemsModule } from '@components/items/items.module';
-import { SocialSharingService } from '@providers/social-sharing';
+import { SocialSharingServiceProvider } from '@providers/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 
@@ -33,7 +33,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   providers: [
     ItemsService,
     NgMathPipesModule,
-    SocialSharingService,
+    SocialSharingServiceProvider,
     SocialSharing,
   ]
 })
