@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { HasRoleDirective } from './has-role';
 import { IsAdminDirective } from './is-admin';
+import { IsNativeDirective } from './is-native';
 import { CanEditItemDirective } from './can-edit-item';
 import { CanPromoteMessageDirective } from './can-promote-message';
 @NgModule({
   declarations: [
     HasRoleDirective,
     IsAdminDirective,
+    IsNativeDirective,
     CanEditItemDirective,
     CanPromoteMessageDirective,
   ],
@@ -14,6 +16,7 @@ import { CanPromoteMessageDirective } from './can-promote-message';
   exports: [
     HasRoleDirective,
     IsAdminDirective,
+    IsNativeDirective,
     CanEditItemDirective,
     CanPromoteMessageDirective
   ]

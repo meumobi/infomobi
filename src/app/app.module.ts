@@ -52,7 +52,6 @@ export function initConfig(
   };
 }
 
-
 @NgModule({
   declarations: [
     MyApp,
