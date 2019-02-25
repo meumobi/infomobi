@@ -71,7 +71,9 @@ export class MyApp implements OnInit {
         if (data.hasOwnProperty('primaryColor')) {
           document.documentElement.style.setProperty(`--primary-color`, data.primaryColor);
         }
-        document.documentElement.style.setProperty(`--text-color`, data.textColor);
+        if (data.hasOwnProperty('textColor')) {
+          document.documentElement.style.setProperty(`--text-color`, data.textColor);
+        }
       }
     );
     this.platform.ready().then((readySource) => {
