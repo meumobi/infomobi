@@ -21,7 +21,9 @@
       "LABEL": "Salvar",
       "SUCCESS": "Configurações salvas",
       "ERROR": "Ocorreu um erro, por favor tente novamente ou entre em contato connosco."
-    }
+    },
+    "PRIMARY_COLOR": "Cor principal",
+    "TEXT_COLOR": "Cor do texto"
   },
   "IN_APP": "Internal app translation",
   "Notifications": "Notificações",

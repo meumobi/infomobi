@@ -20,7 +20,9 @@
       "LABEL": "Save",
       "SUCCESS": "Settings successfully saved!",
       "ERROR": "An error occurred, please try again later or contact your admin."
-    }
+    },
+    "PRIMARY_COLOR": "Main color",
+    "TEXT_COLOR": "Text color"
   },
   "CLIPBOARD_COPY": {
     "LINK": "Link copied to clipboard"

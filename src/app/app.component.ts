@@ -16,6 +16,7 @@ import { Category } from '@models/categories.interface';
 import { CategoriesService } from '@providers/categories';
 import moment from 'moment';
 import 'moment/min/locales';
+import { SettingsService } from '@providers/settings';
 /**
  * TODO: load only required locales
  * Need a refactoring to normalize preferredLanguages with locales names (pt vs pt-br, en vs en-gb, etc.)
@@ -43,7 +44,8 @@ export class MyApp implements OnInit {
     private authDataPersistenceService: AuthDataPersistenceService,
     private userProfileService: UserProfileService,
     private categoriesService: CategoriesService,
-    private pushNotificationService: PushNotificationService
+    private pushNotificationService: PushNotificationService,
+    private settingsService: SettingsService,
   ) {
     this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
     this.userProfile$ = this.userProfileService.getUserProfileObserver();
@@ -63,6 +65,15 @@ export class MyApp implements OnInit {
   }
 
   initializeApp() {
+    this.settingsService.getSettingsObserver().subscribe(
+      data => {
+        console.log(data);
+        if (data.hasOwnProperty('primaryColor')) {
+          document.documentElement.style.setProperty(`--primary-color`, data.primaryColor);
+        }
+        document.documentElement.style.setProperty(`--text-color`, data.textColor);
+      }
+    );
     this.platform.ready().then((readySource) => {
 
       // Okay, so the platform is ready and our plugins are available.

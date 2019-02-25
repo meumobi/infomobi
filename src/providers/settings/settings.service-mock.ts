@@ -8,7 +8,9 @@ export class SettingsService {
 
   settings = Observable.of({
     domain: 'meumobibox.meumobi.com',
-    youtubeChannelId: 'UCRGoQtYFZCkbBegdlv8xWew'
+    youtubeChannelId: 'UCRGoQtYFZCkbBegdlv8xWew',
+    primaryColor: '#f7ce06',
+    textColor: '#f4f4f4'
   });
 
 

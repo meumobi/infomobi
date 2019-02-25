@@ -50,7 +50,6 @@ export class SettingsPage implements OnInit, OnDestroy {
     return this.userProfileService.isAdmin();
   }
 
-
   onSubmit() {
     this.settingsService.set(this.settings)
     .then(
