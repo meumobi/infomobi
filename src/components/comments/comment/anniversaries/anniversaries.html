@@ -32,7 +32,7 @@
       </ion-col>
     </ion-row>
   </ion-item>
-  <ion-item-options side="left" *ngIf="comment">    
+  <ion-item-options side="left" *appCanEditItem="comment">    
     <button ion-button (click)="deleteComment(item)">
       <ion-icon name="trash"></ion-icon>
       {{'Delete' | translate }}
