@@ -58,8 +58,8 @@ export function initConfig(
   ],
   imports: [
     BrowserModule,
-    AngularFireModule,
-    AngularFirestoreModule,
+    AngularFireModule.initializeApp(ENV.firebase),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
@@ -75,7 +75,6 @@ export function initConfig(
         deps: [HttpClient]
       }
     }),
-    AngularFireModule.initializeApp(ENV.firebase),
     SuperTabsModule.forRoot(),
   ],
   bootstrap: [IonicApp],
