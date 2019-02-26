@@ -12,7 +12,7 @@
         {{p.title}}
       </button>
     </ion-list>
-    <ion-list *ngIf="authUser && authUser.site=='katrium.meumobi.com' && categories">
+    <ion-list *ngIf="(userProfile$ | async)?.domain=='katrium.meumobi.com' && categories">
         <button menuClose ion-item *ngFor="let category of categories" (click)="pushDetailsPage('ItemsPage', category.id)">
           {{category.title}}
         </button>
@@ -41,4 +41,4 @@
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false" class="custom-theme"></ion-nav>
