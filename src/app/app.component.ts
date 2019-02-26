@@ -138,6 +138,8 @@ export class MyApp implements OnInit {
   }
 
   logout() {
+    document.documentElement.style.setProperty(`--primary-color`, null);
+    document.documentElement.style.setProperty(`--text-color`, null);
     this.authService.signOut();
     this.pushNotificationService.signOutUser().then( _ => {
       this.authService.signOut();

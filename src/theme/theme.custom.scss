@@ -1,9 +1,9 @@
 .custom-theme {
 
-  ion-card-content,
+  user ion-card-content,
   .fab,
   .button-md-primary,
-  .button
+  .button-default
   {
     background-color: #f7ce06 !important;
     background-color: var(--primary-color) !important;
@@ -11,16 +11,17 @@
     color: var(--text-color) !important;
   }
 
-  ion-card h1,
-  ion-card h2 
+  ion-card-content h3,
+  ion-card-content h2 
   {
     color: #222 !important;
     color: var(--text-color) !important;
   }
 
-  a, 
-  ion-label,
-  ion-label h2
+
+  ion-item a, 
+  .button-clear,
+  form ion-item ion-label
   {
     color: #f7ce06 !important;
     color: var(--primary-color) !important;
