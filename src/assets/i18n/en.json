@@ -22,22 +22,30 @@
       "ERROR": "An error occurred, please try again later or contact your admin."
     }
   },
+  "COMMON_ERROR": "An error occurred, please try again later or contact your admin.",
   "CLIPBOARD_COPY": {
     "LINK": "Link copied to clipboard"
   },
   "IN_APP": "Internal app translation",
   "LOGIN": {
-    "USER_WELCOME": "Hello {{displayName}}",
-    "OTP_DISCLAIMER": "For security reason you need to type here a new personal password"
+    "USER_WELCOME": "Hello {{displayName}}"
   },
   "RESET_PASSWORD": {
     "LINK": "Forgot password?",
     "SUBMIT": "Reset",
+    "PLACEHOLDER": "Email",
     "SUCCESS": "We've emailed your new password",
     "SUBTITLE": "Enter your email address, and we’ll send an email with a new password.",
     "ERROR": "Unknown Email, please check it and submit again"
   },
   "LIVE_FEED": {
     "ANNIVERSARIES_TITLE": "Today's anniversaries!"
+  },
+  "CHANGE_PASSWORD": {
+    "LINK": "Create your own password",
+    "SUBMIT": "Update",
+    "PLACEHOLDER": "New password",
+    "SUCCESS": "Password updated successfully",
+    "SUBTITLE": "For security reason you need to type here a new personal password."
   }
 }

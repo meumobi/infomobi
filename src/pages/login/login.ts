@@ -66,7 +66,7 @@ export class LoginPage implements OnInit {
       inputs: [
         {
           name: 'email',
-          placeholder: this.translateService.instant('Email')
+          placeholder: this.translateService.instant('RESET_PASSWORD.PLACEHOLDER')
         },
       ],
       buttons: [
@@ -174,38 +174,36 @@ export class LoginPage implements OnInit {
   updatePassword(email: string, currentPassword: string) {
     return new Promise((resolve, reject) => {
       const prompt = this.alertCtrl.create({
-        title: this.translateService.instant('Update password'),
-        message: this.translateService.instant('LOGIN.OTP_DISCLAIMER'),
+        title: this.translateService.instant('CHANGE_PASSWORD.LINK'),
+        message: this.translateService.instant('CHANGE_PASSWORD.SUBTITLE'),
         enableBackdropDismiss: false,
         inputs: [
           {
             type: 'password',
             name: 'newPassword',
-            placeholder: this.translateService.instant(' New password')
+            placeholder: this.translateService.instant('CHANGE_PASSWORD.PLACEHOLDER')
           },
         ],
         buttons: [
           {
             text: this.translateService.instant('Cancel'),
             handler: data => {
-              console.log('Cancel clicked');
               this.loading.dismiss();
               this.authService.signOut();
               reject();
             }
           }, {
-            text: this.translateService.instant('Save'),
+            text: this.translateService.instant('CHANGE_PASSWORD.SUBMIT'),
             handler: data => {
-              console.log('OK clicked');
               this.authService.updatePassword(email, currentPassword, data.newPassword)
             .then(
               () => {
-                this.meuToastService.present(this.translateService.instant('RESET_PASSWORD.SUCCESS'));
+                this.meuToastService.present(this.translateService.instant('CHANGE_PASSWORD.SUCCESS'));
                 resolve();
               }
             )
             .catch(err => {
-              console.log(err, 'New password failed!');
+              this.meuToastService.present(this.translateService.instant('COMMON_ERROR'));
               reject();
             });
             }
