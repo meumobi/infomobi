@@ -59,25 +59,24 @@ export class MyApp implements OnInit {
   }
 
   ngOnInit() {
-
     this.listenAuthData();
     this.loadMenuCategories();
-  }
-
-  initializeApp() {
     this.settingsService.getSettingsObserver().subscribe(
       data => {
-        console.log(data);
-        if (data.hasOwnProperty('primaryColor')) {
-          document.documentElement.style.setProperty(`--primary-color`, data.primaryColor);
-        }
-        if (data.hasOwnProperty('textColor')) {
-          document.documentElement.style.setProperty(`--text-color`, data.textColor);
+        if (data) {
+          if (data.hasOwnProperty('primaryColor')) {
+            document.documentElement.style.setProperty(`--primary-color`, data.primaryColor);
+          }
+          if (data.hasOwnProperty('textColor')) {
+            document.documentElement.style.setProperty(`--text-color`, data.textColor);
+          }
         }
       }
     );
-    this.platform.ready().then((readySource) => {
+  }
 
+  initializeApp() {
+    this.platform.ready().then((readySource) => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.translateService.setDefaultLang('en');
