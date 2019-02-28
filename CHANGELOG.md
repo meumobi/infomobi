@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/meumobi/ion-employee/compare/v0.6.0...v0.7.0) (2019-02-28)
+
+
+### Bug Fixes
+
+* **auth:** bad wording on change_password.success ([7275b82](https://github.com/meumobi/ion-employee/commit/7275b82)), closes [#296](https://github.com/meumobi/ion-employee/issues/296)
+* **auth:** user profiles duplicated when migrate from V2 ([8d0defe](https://github.com/meumobi/ion-employee/commit/8d0defe)), closes [#166](https://github.com/meumobi/ion-employee/issues/166)
+* **categories:** show katrium categories list ([16fe988](https://github.com/meumobi/ion-employee/commit/16fe988)), closes [#311](https://github.com/meumobi/ion-employee/issues/311)
+* **comments:** add appCanEditItem on anniversaries ([fd428f5](https://github.com/meumobi/ion-employee/commit/fd428f5)), closes [#310](https://github.com/meumobi/ion-employee/issues/310)
+* enable firebase data persistence for offline mode ([7364160](https://github.com/meumobi/ion-employee/commit/7364160)), closes [#307](https://github.com/meumobi/ion-employee/issues/307)
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/meumobi/ion-employee/compare/v0.5.0...v0.6.0) (2019-02-25)
 
