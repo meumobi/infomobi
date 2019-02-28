@@ -5,7 +5,7 @@ import { SharedModule } from '@shared/shared.module';
 import { CommentsModule } from '@components/comments/comments.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmbedVideoService } from '@providers/videos/embed-video.service';
-import { YoutubeService } from 'mmb-youtube-provider';
+import { YoutubeService } from '@meumobi/ngx-youtube-provider';
 
 @NgModule({
   declarations: [
