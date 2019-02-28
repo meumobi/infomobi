@@ -65,4 +65,10 @@ export class HomePage implements OnInit, OnDestroy {
       channelId: channelId
     });
   }
+
+  pushStreamingPage(url: string) {
+    this.navCtrl.push('StreamingPage', {
+      url: url
+    });
+  }
 }

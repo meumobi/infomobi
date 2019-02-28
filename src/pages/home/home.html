@@ -6,13 +6,19 @@
       <ion-title>
         <img src="./assets/images/header-clean.png" class="logo" alt="infomobi">
       </ion-title>
-      <ion-buttons end *ngIf="settings && settings.youtubeChannelId">
-        <button ion-button block (click)="pushVideosPage(settings.youtubeChannelId)">
+      <ion-buttons end>
+        <button ion-button block (click)="pushVideosPage(settings.youtubeChannelId)" *ngIf="settings && settings.youtubeChannelId">
           <div>
-            <ion-icon name="desktop"></ion-icon>
-            <label>TV</label>
+            <ion-icon name="logo-youtube"></ion-icon>
+            <label>Video</label>
           </div>
         </button>
+        <button ion-button block (click)="pushStreamingPage('https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8')">
+            <div>
+              <ion-icon name="desktop"></ion-icon>
+              <label>TV</label>
+            </div>
+          </button>
       </ion-buttons>
     </ion-navbar>
   </ion-header>
