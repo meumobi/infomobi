@@ -21,7 +21,8 @@
       "LABEL": "Salvar",
       "SUCCESS": "Configurações salvas",
       "ERROR": "Ocorreu um erro, por favor tente novamente ou entre em contato connosco."
-    }
+    },
+    "TV_URL": "Url da TV"
   },
   "COMMON_ERROR": "Ocorreu um erro, por favor tente novamente ou entre em contato connosco.",
   "IN_APP": "Internal app translation",

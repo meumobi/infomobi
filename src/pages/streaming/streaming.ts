@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-declare var Hls: any;
+import * as Hls from 'hls.js';
+
 @IonicPage()
 @Component({
   selector: 'page-streaming',
@@ -9,27 +10,18 @@ declare var Hls: any;
 export class StreamingPage implements AfterViewInit {
   url = '';
   hls: any;
-  @ViewChild('myvid') vid: any;
+  @ViewChild('player') player: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams
   ) {}
-
-  play() {
-    this.vid.play();
-  }
 
   ngAfterViewInit() {
     this.url = this.navParams.data.url;
     if (Hls.isSupported()) {
       const hls = new Hls();
       hls.loadSource(this.url);
-      hls.attachMedia(this.vid.nativeElement);
-      hls.on(Hls.Events.MANIFEST_PARSED, function() {
-        console.log('aaa');
-        this.vid.play();
-        console.log('bbb');
-    });
+      hls.attachMedia(this.player.nativeElement);
    }
   }
 

@@ -20,7 +20,8 @@
       "LABEL": "Save",
       "SUCCESS": "Settings successfully saved!",
       "ERROR": "An error occurred, please try again later or contact your admin."
-    }
+    },
+    "TV_URL": "TV url"
   },
   "COMMON_ERROR": "An error occurred, please try again later or contact your admin.",
   "CLIPBOARD_COPY": {
