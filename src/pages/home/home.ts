@@ -59,16 +59,4 @@ export class HomePage implements OnInit, OnDestroy {
   openPage(page, params) {
     this.navCtrl.push(page, params);
   }
-
-  pushVideosPage(channelId: string) {
-    this.navCtrl.push('VideosPage', {
-      channelId: channelId
-    });
-  }
-
-  pushStreamingPage(url: string) {
-    this.navCtrl.push('StreamingPage', {
-      url: url
-    });
-  }
 }

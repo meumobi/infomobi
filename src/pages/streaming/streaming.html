@@ -1,16 +1,19 @@
-<ion-header>
-  
+<ion-header>  
   <ion-navbar>
     <ion-title>TV</ion-title>
-  </ion-navbar>
-  
+  </ion-navbar>  
 </ion-header>
 <ion-content padding>
-  <div class="video-container">
-    <video #player controls width="640" height="360" style="margin: auto;">
+  <div class="video-container" *ngIf="supportVideo; else disclaimer">
+    <video #player controls>
       <source [src]="url" type="video/mp4">
-      <source [src]="url" type='video/webm;codecs="vp8, vorbis"' />
-      <source [src]="url" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />  
     </video>
   </div>
+  <ng-template #disclaimer>
+    <ion-card color="warning">
+      <ion-card-header>
+        {{'TV.NO_SUPPORT_DISCLAIMER' | translate}}
+      </ion-card-header>
+    </ion-card>
+  </ng-template>  
 </ion-content>

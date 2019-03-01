@@ -1,5 +1,5 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 import * as Hls from 'hls.js';
 
 @IonicPage()
@@ -10,9 +10,9 @@ import * as Hls from 'hls.js';
 export class StreamingPage implements AfterViewInit {
   url = '';
   hls: any;
+  supportVideo = true;
   @ViewChild('player') player: any;
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams
   ) {}
 
@@ -22,7 +22,9 @@ export class StreamingPage implements AfterViewInit {
       const hls = new Hls();
       hls.loadSource(this.url);
       hls.attachMedia(this.player.nativeElement);
-   }
+    } else if (!this.player.nativeElement.canPlayType('application/vnd.apple.mpegurl')) {
+      this.supportVideo = false;
+    }
   }
 
   ionViewDidLoad() {

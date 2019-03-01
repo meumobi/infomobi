@@ -24,6 +24,9 @@
     },
     "TV_URL": "Url da TV"
   },
+  "TV" : {
+    "NO_SUPPORT_DISCLAIMER": "O vídeo não pode ser reproduzido."
+  },
   "COMMON_ERROR": "Ocorreu um erro, por favor tente novamente ou entre em contato connosco.",
   "IN_APP": "Internal app translation",
   "Notifications": "Notificações",
