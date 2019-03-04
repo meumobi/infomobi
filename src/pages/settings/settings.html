@@ -14,6 +14,12 @@
         <ion-input type="text" name="youtubeChannelId" [(ngModel)]="settings.youtubeChannelId"></ion-input>
       </ion-item>
     </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" stacked>{{'SETTINGS.TV_URL' | translate}}</ion-label>
+        <ion-input type="text" name="tvUrl" [(ngModel)]="settings.tvUrl"></ion-input>
+      </ion-item>
+    </ion-list>
     <ion-row>
       <ion-col>
         <button ion-button type="submit" block>{{'Save' | translate}}</button>
