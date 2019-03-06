@@ -11,6 +11,9 @@ export const ENV = {
       firebase: {
         prefix: 'https://infomobi.page.link'
       },
+      'int-firebase': {
+        prefix: 'https://intinfomobi.page.link'
+      },
       meumobi: {
         prefix: '/uploads'
       }
@@ -18,7 +21,7 @@ export const ENV = {
   },
   dynamicLinks: {
     url: 'https://firebasedynamiclinks.googleapis.com/v1/shortLinks',
-    prefix: 'https://infomobi.page.link'
+    prefix: 'https://intinfomobi.page.link'
   },
   youtube: {
     apiKey: 'AIzaSyAD49q_weB67bZX8u95G9zrXmBULqdMzas',

@@ -67,8 +67,8 @@ export class MyApp implements OnInit {
           if (data.hasOwnProperty('primaryColor')) {
             document.documentElement.style.setProperty(`--primary-color`, data.primaryColor);
           }
-          if (data.hasOwnProperty('textColor')) {
-            document.documentElement.style.setProperty(`--text-color`, data.textColor);
+          if (data.hasOwnProperty('onPrimaryColor')) {
+            document.documentElement.style.setProperty(`--on-primary-color`, data.onPrimaryColor);
           }
         }
       }
@@ -138,7 +138,7 @@ export class MyApp implements OnInit {
 
   logout() {
     document.documentElement.style.setProperty(`--primary-color`, null);
-    document.documentElement.style.setProperty(`--text-color`, null);
+    document.documentElement.style.setProperty(`--on-primary-color`, null);
     this.authService.signOut();
     this.pushNotificationService.signOutUser().then( _ => {
       this.authService.signOut();

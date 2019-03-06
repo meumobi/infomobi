@@ -9,14 +9,14 @@
     background-color: #f7ce06 !important;
     background-color: var(--primary-color) !important;
     color: #f4f4f4 !important;
-    color: var(--text-color) !important;
+    color: var(--on-primary-color) !important;
   }
 
   ion-card-content h3,
   ion-card-content h2 
   {
     color: #222 !important;
-    color: var(--text-color) !important;
+    color: var(--on-primary-color) !important;
   }
 
 

@@ -12,7 +12,7 @@
         {{p.title}}
       </button>
     </ion-list>
-    <ion-list *ngIf="authUser && authUser.site=='katrium.meumobi.com' && categories">
+    <ion-list *ngIf="(userProfile$ | async)?.domain=='katrium.meumobi.com' && categories">
         <button menuClose ion-item *ngFor="let category of categories" (click)="pushDetailsPage('ItemsPage', category.id)">
           {{category.title}}
         </button>

@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/meumobi/ion-employee/compare/v0.6.0...v0.7.0) (2019-02-28)
+
+
+### Bug Fixes
+
+* **auth:** bad wording on change_password.success ([7275b82](https://github.com/meumobi/ion-employee/commit/7275b82)), closes [#296](https://github.com/meumobi/ion-employee/issues/296)
+* **auth:** user profiles duplicated when migrate from V2 ([8d0defe](https://github.com/meumobi/ion-employee/commit/8d0defe)), closes [#166](https://github.com/meumobi/ion-employee/issues/166)
+* **categories:** show katrium categories list ([16fe988](https://github.com/meumobi/ion-employee/commit/16fe988)), closes [#311](https://github.com/meumobi/ion-employee/issues/311)
+* **comments:** add appCanEditItem on anniversaries ([fd428f5](https://github.com/meumobi/ion-employee/commit/fd428f5)), closes [#310](https://github.com/meumobi/ion-employee/issues/310)
+* enable firebase data persistence for offline mode ([7364160](https://github.com/meumobi/ion-employee/commit/7364160)), closes [#307](https://github.com/meumobi/ion-employee/issues/307)
+
+
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/meumobi/ion-employee/compare/v0.5.0...v0.6.0) (2019-02-25)
+
+
+### Bug Fixes
+
+* **articles:** remove platform check ([c33a6be](https://github.com/meumobi/ion-employee/commit/c33a6be))
+* **articles:** show toast after sharing items ([1960f38](https://github.com/meumobi/ion-employee/commit/1960f38))
+* **auth:** duplicated AuthData update on listenAuthData ([5b2d7a1](https://github.com/meumobi/ion-employee/commit/5b2d7a1)), closes [#238](https://github.com/meumobi/ion-employee/issues/238)
+* **comments:** only admin can promote comments ([fe0d886](https://github.com/meumobi/ion-employee/commit/fe0d886)), closes [#291](https://github.com/meumobi/ion-employee/issues/291)
+* **comments:** prevent edit comment if user not admin or owner ([bf05b54](https://github.com/meumobi/ion-employee/commit/bf05b54)), closes [#286](https://github.com/meumobi/ion-employee/issues/286)
+* **item:** img on item details could not be cropped ([f46d434](https://github.com/meumobi/ion-employee/commit/f46d434)), closes [#261](https://github.com/meumobi/ion-employee/issues/261)
+* **items:** update img src path on details ([0a57e44](https://github.com/meumobi/ion-employee/commit/0a57e44))
+* **login:** add subtitle on forgot password ([1bd90ef](https://github.com/meumobi/ion-employee/commit/1bd90ef)), closes [#264](https://github.com/meumobi/ion-employee/issues/264)
+* **polls:** results out-of-date after user vote ([ec7827f](https://github.com/meumobi/ion-employee/commit/ec7827f)), closes [#281](https://github.com/meumobi/ion-employee/issues/281)
+* **polls:** update dateformat ([9425e5c](https://github.com/meumobi/ion-employee/commit/9425e5c)), closes [#262](https://github.com/meumobi/ion-employee/issues/262)
+* add socialSharingService on lazy loaded page article-details ([8827b95](https://github.com/meumobi/ion-employee/commit/8827b95))
+* **push:** add android notification icons ([9cc2cfb](https://github.com/meumobi/ion-employee/commit/9cc2cfb)), closes [#266](https://github.com/meumobi/ion-employee/issues/266)
+* any new user should have role set to 'user' ([47c18da](https://github.com/meumobi/ion-employee/commit/47c18da)), closes [#280](https://github.com/meumobi/ion-employee/issues/280)
+* hide size if not empty ([51e4455](https://github.com/meumobi/ion-employee/commit/51e4455))
+* wrong typing prevent code to compile ([65949d6](https://github.com/meumobi/ion-employee/commit/65949d6))
+* **push:** OneSignal web SDK can only be initialized once ([ec34e48](https://github.com/meumobi/ion-employee/commit/ec34e48)), closes [#275](https://github.com/meumobi/ion-employee/issues/275)
+* **settings:** avoid access if not admin ([36fd965](https://github.com/meumobi/ion-employee/commit/36fd965)), closes [#285](https://github.com/meumobi/ion-employee/issues/285)
+
+
+### Features
+
+* **articles:** allow share items ([0604565](https://github.com/meumobi/ion-employee/commit/0604565)), closes [#293](https://github.com/meumobi/ion-employee/issues/293)
+* **articles:** allow web/native social share on same src code ([3762233](https://github.com/meumobi/ion-employee/commit/3762233)), closes [#299](https://github.com/meumobi/ion-employee/issues/299)
+* **media:** allow to share media on native mode ([9b8ee75](https://github.com/meumobi/ion-employee/commit/9b8ee75)), closes [#298](https://github.com/meumobi/ion-employee/issues/298)
+* **push:** add android notification icons ([978e706](https://github.com/meumobi/ion-employee/commit/978e706)), closes [#266](https://github.com/meumobi/ion-employee/issues/266)
+* **push:** add web push ([00d1eb2](https://github.com/meumobi/ion-employee/commit/00d1eb2)), closes [#271](https://github.com/meumobi/ion-employee/issues/271)
+* **utils:** add copy 2 clipboard function ([251b379](https://github.com/meumobi/ion-employee/commit/251b379))
+* **videos:** migrate service to mmb-youtube-provider ([976554b](https://github.com/meumobi/ion-employee/commit/976554b)), closes [#258](https://github.com/meumobi/ion-employee/issues/258)
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/meumobi/ion-employee/compare/v0.4.0...v0.5.0) (2019-02-08)
 

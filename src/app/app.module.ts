@@ -32,7 +32,7 @@ import { SettingsService } from '@providers/settings';
 import { SharedModule } from '@shared/shared.module';
 import { UploadProvider } from '@providers/upload';
 import { UserProfileService } from '@providers/user-profile';
-import { YoutubeService, YoutubeModule } from 'mmb-youtube-provider';
+import { YoutubeService, YoutubeModule } from '@meumobi/ngx-youtube-provider';
 import 'mmb-avatar-img';
 import { OneSignal } from '@ionic-native/onesignal';
 
@@ -58,8 +58,8 @@ export function initConfig(
   ],
   imports: [
     BrowserModule,
-    AngularFireModule,
-    AngularFirestoreModule,
+    AngularFireModule.initializeApp(ENV.firebase),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
@@ -75,7 +75,6 @@ export function initConfig(
         deps: [HttpClient]
       }
     }),
-    AngularFireModule.initializeApp(ENV.firebase),
     SuperTabsModule.forRoot(),
   ],
   bootstrap: [IonicApp],

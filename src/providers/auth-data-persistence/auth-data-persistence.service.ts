@@ -13,16 +13,17 @@ export class AuthDataPersistenceService {
 
   constructor(
     private storage: Storage,
-    private platform: Platform,
   ) {}
 
   public checkToken(): Promise<Auth|null> {
 
     return this.storage.get(TOKEN_KEY).then( data => {
       if (!data) {
-        data = JSON.stringify(this.checkV2AuthData());
+        return this.checkV2AuthData();
       }
+
       this.authData$.next(JSON.parse(data));
+
       return data;
     });
   }
@@ -63,17 +64,17 @@ export class AuthDataPersistenceService {
     return !!this.authData$.value && !this.authData$.value.error;
   }
 
-  private checkV2AuthData(): Auth {
+  private checkV2AuthData(): Promise<Auth> {
     const visitor = localStorage.getItem('visitor');
     const authToken = localStorage.getItem('authToken');
     let auth = null;
     if (visitor && authToken) {
       auth = this.migrateAuthData(JSON.parse(visitor), authToken);
-      this.save(auth);
       localStorage.removeItem('visitor');
       localStorage.removeItem('authToken');
     }
-    return auth;
+
+    return this.save(auth);
   }
 
   private migrateAuthData(visitor: AuthUser, authToken: string): Auth {

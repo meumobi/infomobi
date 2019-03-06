@@ -18,8 +18,14 @@
         <ion-input type="text" name="primaryColor" [(ngModel)]="settings.primaryColor"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label color="primary" stacked>{{'SETTINGS.TEXT_COLOR' | translate}}</ion-label>
-        <ion-input type="text" name="textColor" [(ngModel)]="settings.textColor"></ion-input>
+        <ion-label color="primary" stacked>{{'SETTINGS.ON_PRIMARY_COLOR' | translate}}</ion-label>
+        <ion-input type="text" name="onPrimaryColor" [(ngModel)]="settings.onPrimaryColor"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" stacked>{{'SETTINGS.TV_URL' | translate}}</ion-label>
+        <ion-input type="text" name="tvUrl" [(ngModel)]="settings.tvUrl"></ion-input>
       </ion-item>
     </ion-list>
     <ion-row>

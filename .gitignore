@@ -1,3 +1,8 @@
+.firebase
+
+# dist of firebase cloud functions
+functions/lib
+
 # Environment Variables
 src/index.html
 src/environments/*
