@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #f7ce06;
-  --on-primary-color: #f4f4f4;
+  --primary-color: map-get($colors, primary);;
+  --on-primary-color: map-get($colors, light);
 }
 
 .custom-theme {
@@ -11,16 +11,16 @@
   .button-md-primary,
   .button-default
   {
-    background-color: #f7ce06 !important;
+    background-color: map-get($colors, primary) !important;
     background-color: var(--primary-color) !important;
-    color: #f4f4f4 !important;
+    color: map-get($colors, light) !important;
     color: var(--on-primary-color) !important;
   }
 
   ion-card-content h3,
   ion-card-content h2 
   {
-    color: #222 !important;
+    color: map-get($colors, dark) !important;
     color: var(--on-primary-color) !important;
   }
 
@@ -29,7 +29,7 @@
   .button-clear,
   form ion-item ion-label
   {
-    color: #f7ce06 !important;
+    color: map-get($colors, primary) !important;
     color: var(--primary-color) !important;
   }
 
