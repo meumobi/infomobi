@@ -1,6 +1,6 @@
 :root {
   --primary-color: map-get($colors, primary);;
-  --on-primary-color: map-get($colors, light);
+  --on-primary-color: map-get($colors, dark);
 }
 
 .custom-theme {
@@ -13,7 +13,7 @@
   {
     background-color: map-get($colors, primary) !important;
     background-color: var(--primary-color) !important;
-    color: map-get($colors, light) !important;
+    color: map-get($colors, dark) !important;
     color: var(--on-primary-color) !important;
   }
 
