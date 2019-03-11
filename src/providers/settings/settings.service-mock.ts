@@ -9,7 +9,8 @@ export class SettingsService {
   settings = Observable.of({
     domain: 'meumobibox.meumobi.com',
     youtubeChannelId: 'UCRGoQtYFZCkbBegdlv8xWew',
-    tvUrl: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8'
+    tvUrl: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
+    logoUrl: 'https://meumobi.com/uploads/site_logos/200x200_6943664.png'
   });
 
 

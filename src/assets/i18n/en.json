@@ -21,7 +21,8 @@
       "SUCCESS": "Settings successfully saved!",
       "ERROR": "An error occurred, please try again later or contact your admin."
     },
-    "TV_URL": "TV url"
+    "TV_URL": "TV Stream Url",
+    "LOGO_URL": "Custom Logo Url"
   },
   "TV" : {
     "NO_SUPPORT_DISCLAIMER": "The video can't be played."

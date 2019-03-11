@@ -1,27 +1,24 @@
 import { SettingsService } from '@providers/settings';
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
-import { AuthUser } from '@models/auth.interface';
 import { Settings } from '@models/settings';
-import { Subscription } from 'rxjs';
+import { ImageAttribute } from 'ionic-image-loader';
 
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit, OnDestroy {
+export class HomePage implements OnInit {
 
   live: any = 'LivePage';
   contacts: any = 'ContactsPage';
   items: any = 'ItemsPage';
   authData$: Observable<any>;
-  authUser: AuthUser = null;
-  settings: Settings;
-  settingsSubscription: Subscription;
-  authDataSubscription: Subscription;
+  settings: Observable<Settings>;
+  imageAttributes: ImageAttribute[] = [];
 
   constructor(
     private authDataPersistenceService: AuthDataPersistenceService,
@@ -30,26 +27,13 @@ export class HomePage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    console.log('HomePage ngOnInit');
-    this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
-    this.authDataSubscription = this.authData$.subscribe(
-      data => {
-        if (data) {
-          this.authUser = data.visitor;
-        } else {
-          this.authUser = null;
-        }
-      }
-    );
-
-    this.settingsSubscription = this.settingsService.getSettingsObserver().subscribe( data => {
-      this.settings = data;
+    this.imageAttributes.push({
+      element: 'class',
+      value: 'logo'
     });
-  }
 
-  ngOnDestroy() {
-    this.settingsSubscription.unsubscribe();
-    this.authDataSubscription.unsubscribe();
+    this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
+    this.settings = this.settingsService.getSettingsObserver();
   }
 
   ionViewCanEnter(): boolean {
