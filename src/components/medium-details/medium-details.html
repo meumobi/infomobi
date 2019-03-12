@@ -9,8 +9,8 @@
   </ng-template>    
   <h2>{{medium.title}}</h2>
   <p>
-    <span *ngIf="medium.length">{{'Size' | translate}}:{{medium.length}}<br/></span>
-    <span>{{'Type' | translate}}:{{medium.type}}</span><br/>
+    <span *ngIf="medium.length">{{'Size' | translate}}: {{medium.length | fileSize}}<br/></span>
+    <span>{{'Type' | translate}}: {{medium.type}}</span><br/>
   </p>
   <medium-controls [medium]="medium" item-end></medium-controls>
 </ion-item>
