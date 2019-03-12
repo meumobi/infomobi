@@ -21,6 +21,8 @@
       "SUCCESS": "Settings successfully saved!",
       "ERROR": "An error occurred, please try again later or contact your admin."
     },
+    "PRIMARY_COLOR": "Main color (ex: #f7ce06)",
+    "ON_PRIMARY_COLOR": "On main color (ex: #222)",
     "TV_URL": "TV Stream Url",
     "LOGO_URL": "Custom Logo Url"
   },

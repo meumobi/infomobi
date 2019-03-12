@@ -22,6 +22,8 @@
       "SUCCESS": "Configurações salvas",
       "ERROR": "Ocorreu um erro, por favor tente novamente ou entre em contato connosco."
     },
+    "PRIMARY_COLOR": "Cor principal (ex: #f7ce06)",
+    "ON_PRIMARY_COLOR": "Cor sob cor principal (ex: #222)",
     "TV_URL": "TV Streaming (Url)",
     "LOGO_URL": "Logo personalizado (Url)"
   },

@@ -16,6 +16,7 @@ import { Category } from '@models/categories.interface';
 import { CategoriesService } from '@providers/categories';
 import moment from 'moment';
 import 'moment/min/locales';
+import { SettingsService } from '@providers/settings';
 /**
  * TODO: load only required locales
  * Need a refactoring to normalize preferredLanguages with locales names (pt vs pt-br, en vs en-gb, etc.)
@@ -43,7 +44,8 @@ export class MyApp implements OnInit {
     private authDataPersistenceService: AuthDataPersistenceService,
     private userProfileService: UserProfileService,
     private categoriesService: CategoriesService,
-    private pushNotificationService: PushNotificationService
+    private pushNotificationService: PushNotificationService,
+    private settingsService: SettingsService,
   ) {
     this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
     this.userProfile$ = this.userProfileService.getUserProfileObserver();
@@ -57,14 +59,24 @@ export class MyApp implements OnInit {
   }
 
   ngOnInit() {
-
     this.listenAuthData();
     this.loadMenuCategories();
+    this.settingsService.getSettingsObserver().subscribe(
+      data => {
+        if (data) {
+          if (data.hasOwnProperty('primaryColor')) {
+            document.documentElement.style.setProperty(`--primary-color`, data.primaryColor);
+          }
+          if (data.hasOwnProperty('onPrimaryColor')) {
+            document.documentElement.style.setProperty(`--on-primary-color`, data.onPrimaryColor);
+          }
+        }
+      }
+    );
   }
 
   initializeApp() {
     this.platform.ready().then((readySource) => {
-
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.translateService.setDefaultLang('en');
@@ -125,6 +137,8 @@ export class MyApp implements OnInit {
   }
 
   logout() {
+    document.documentElement.style.setProperty(`--primary-color`, null);
+    document.documentElement.style.setProperty(`--on-primary-color`, null);
     this.authService.signOut();
     this.pushNotificationService.signOutUser().then( _ => {
       this.authService.signOut();
