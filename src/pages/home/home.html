@@ -7,13 +7,13 @@
         <img-loader [src]="(settings | async)?.logoUrl" fallbackUrl="./assets/images/header-clean.png" fallbackAsPlaceholder="true" [imgAttributes]="imageAttributes" useImg></img-loader>
       </ion-title>
       <ion-buttons end>
-        <button ion-button block (click)="openPage('VideosPage',{channelId: settings.youtubeChannelId})" *ngIf="(settings | async) as settings">
+        <button ion-button block (click)="openPage('VideosPage', {channelId: youtubeChannelId})" *ngIf="(settings | async)?.youtubeChannelId as youtubeChannelId">
           <div>
             <ion-icon name="logo-youtube"></ion-icon>
             <label>{{'Videos' | translate}}</label>
           </div>
         </button>
-        <button ion-button block (click)="openPage('StreamingPage',{url: settings.tvUrl})" *ngIf="(settings | async) as settings">
+        <button ion-button block (click)="openPage('StreamingPage', {url: tvUrl})" *ngIf="(settings | async)?.tvUrl as tvUrl">
             <div>
               <ion-icon name="desktop"></ion-icon>
               <label>TV</label>
