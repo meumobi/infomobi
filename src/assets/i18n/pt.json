@@ -16,7 +16,7 @@
   "SETTINGS": {
     "LINK": "Configurações",
     "TITLE": "Configurações da conta",
-    "YOUTUBE_CHANNEL_ID": "Id do Canal do Youtube",
+    "YOUTUBE_CHANNEL_ID": "Canal Youtube (Id)",
     "SUBMIT": {
       "LABEL": "Salvar",
       "SUCCESS": "Configurações salvas",
@@ -24,7 +24,8 @@
     },
     "PRIMARY_COLOR": "Cor principal (ex: #f7ce06)",
     "ON_PRIMARY_COLOR": "Cor sob cor principal (ex: #222)",
-    "TV_URL": "Url da TV"
+    "TV_URL": "TV Streaming (Url)",
+    "LOGO_URL": "Logo personalizado (Url)"
   },
   "TV" : {
     "NO_SUPPORT_DISCLAIMER": "O vídeo não pode ser reproduzido."

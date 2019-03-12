@@ -11,21 +11,25 @@
     <ion-list>
       <ion-item>
         <ion-label color="primary" stacked>{{'SETTINGS.YOUTUBE_CHANNEL_ID' | translate}}</ion-label>
-        <ion-input type="text" name="youtubeChannelId" [(ngModel)]="settings.youtubeChannelId"></ion-input>
+        <ion-input type="text" name="youtubeChannelId" [(ngModel)]="settings.youtubeChannelId" clearInput></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked>{{'SETTINGS.PRIMARY_COLOR' | translate}}</ion-label>
-        <ion-input type="text" name="primaryColor" [(ngModel)]="settings.primaryColor"></ion-input>
+        <ion-input type="text" name="primaryColor" [(ngModel)]="settings.primaryColor" clearInput></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked>{{'SETTINGS.ON_PRIMARY_COLOR' | translate}}</ion-label>
-        <ion-input type="text" name="onPrimaryColor" [(ngModel)]="settings.onPrimaryColor"></ion-input>
+        <ion-input type="text" name="onPrimaryColor" [(ngModel)]="settings.onPrimaryColor" clearInput></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
       <ion-item>
         <ion-label color="primary" stacked>{{'SETTINGS.TV_URL' | translate}}</ion-label>
-        <ion-input type="text" name="tvUrl" [(ngModel)]="settings.tvUrl"></ion-input>
+        <ion-input type="text" name="tvUrl" [(ngModel)]="settings.tvUrl" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>{{'SETTINGS.LOGO_URL' | translate}}</ion-label>
+        <ion-input type="text" name="logoUrl" [(ngModel)]="settings.logoUrl" clearInput></ion-input>
       </ion-item>
     </ion-list>
     <ion-row>

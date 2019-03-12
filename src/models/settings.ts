@@ -4,5 +4,6 @@ export class Settings {
   primaryColor: string;
   onPrimaryColor: string;
   tvUrl: string;
+  logoUrl: string;
   _id?: string;
 }

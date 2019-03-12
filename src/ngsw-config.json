@@ -22,5 +22,14 @@
         "/assets/**"
       ]
     }
+  }, {
+    "name": "uploads",
+    "installMode": "lazy",
+    "updateMode": "lazy",
+    "resources": {
+      "urls": [
+        "/uploads/**"
+      ]
+    }
   }]
 }

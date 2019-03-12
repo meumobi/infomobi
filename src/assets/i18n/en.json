@@ -23,7 +23,8 @@
     },
     "PRIMARY_COLOR": "Main color (ex: #f7ce06)",
     "ON_PRIMARY_COLOR": "On main color (ex: #222)",
-    "TV_URL": "TV url"
+    "TV_URL": "TV Stream Url",
+    "LOGO_URL": "Custom Logo Url"
   },
   "TV" : {
     "NO_SUPPORT_DISCLAIMER": "The video can't be played."
