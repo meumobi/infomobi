@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/meumobi/ion-employee/compare/v0.7.0...v0.8.0) (2019-03-13)
+
+
+### Bug Fixes
+
+* **build:** add NSCameraUsageDescription on infoplist ([2d901ac](https://github.com/meumobi/ion-employee/commit/2d901ac)), closes [#323](https://github.com/meumobi/ion-employee/issues/323)
+* **files:** convert file size in bytes to human readable unit ([a96725e](https://github.com/meumobi/ion-employee/commit/a96725e)), closes [#304](https://github.com/meumobi/ion-employee/issues/304)
+* **streaming:** visual changes ([cf074e1](https://github.com/meumobi/ion-employee/commit/cf074e1))
+* **videos:** allow navigation to YouTube urls on iOS ([d0c0520](https://github.com/meumobi/ion-employee/commit/d0c0520)), closes [#295](https://github.com/meumobi/ion-employee/issues/295)
+* hide videos and tv icons if not available ([2ce3250](https://github.com/meumobi/ion-employee/commit/2ce3250))
+
+
+### Features
+
+* **streaming:** add m3u8 supports and page ([92a4290](https://github.com/meumobi/ion-employee/commit/92a4290))
+* **streaming:** add on tv page a m3u8 stream as live stream ([e364a5b](https://github.com/meumobi/ion-employee/commit/e364a5b)), closes [#58](https://github.com/meumobi/ion-employee/issues/58)
+* allow to customize logo on logged area ([ae4da81](https://github.com/meumobi/ion-employee/commit/ae4da81)), closes [#282](https://github.com/meumobi/ion-employee/issues/282)
+* **theme:** add Dynamic Theming ([d3f10a3](https://github.com/meumobi/ion-employee/commit/d3f10a3)), closes [#305](https://github.com/meumobi/ion-employee/issues/305)
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/meumobi/ion-employee/compare/v0.6.0...v0.7.0) (2019-02-28)
 
