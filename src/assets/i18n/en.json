@@ -53,6 +53,7 @@
     "SUBMIT": "Update",
     "PLACEHOLDER": "New password",
     "SUCCESS": "Password updated successfully",
-    "SUBTITLE": "For security reason you need to type here a new personal password."
+    "ERROR": "New password must contains at least six characters",
+    "SUBTITLE": "For security reason you need to type here a new personal password, containing at least six characters."
   }
 }

@@ -86,7 +86,8 @@
     "SUBMIT": "Alterar",
     "PLACEHOLDER": "Nova senha",
     "SUCCESS": "Senha alterada com sucesso",
-    "SUBTITLE": "Para sua melhor segurança é preciso alterar a sua senha para continuar."
+    "ERROR": "A nova senha deve conter pelo menos seis caracteres",
+    "SUBTITLE": "Para sua melhor segurança é preciso alterar a sua senha para continuar, contendo pelo menos seis carateres."
   },
   "CLIPBOARD_COPY": {
     "LINK": "Link copiado para a área de tranferência"
