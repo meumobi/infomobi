@@ -23,10 +23,9 @@ export class IsAdminDirective implements OnInit {
   ngOnInit() {
 
     this.userProfileService.getUserProfileObserver().subscribe(data => {
+      this.viewContainer.clear();
       if (this.userProfileService.isAdmin()) {
         this.viewContainer.createEmbeddedView(this.templateRef);
-      } else {
-        this.viewContainer.clear();
       }
     });
   }
