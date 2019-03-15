@@ -37,6 +37,11 @@
   "LOGIN": {
     "USER_WELCOME": "Hello {{displayName}}"
   },
+  "HOME": {
+    "LIVE": "Live",
+    "ITEMS": "News",
+    "CONTACTS": "Contacts"
+  },
   "RESET_PASSWORD": {
     "LINK": "Forgot password?",
     "SUBMIT": "Reset",
