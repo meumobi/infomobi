@@ -24,6 +24,7 @@ export class IsAdminDirective implements OnInit {
 
     this.userProfileService.getUserProfileObserver().subscribe(data => {
       if (this.userProfileService.isAdmin()) {
+        this.viewContainer.clear();
         this.viewContainer.createEmbeddedView(this.templateRef);
       } else {
         this.viewContainer.clear();
