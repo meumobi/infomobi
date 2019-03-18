@@ -11,6 +11,7 @@ export class SettingsService {
     youtubeChannelId: 'UCRGoQtYFZCkbBegdlv8xWew',
     primaryColor: '#f7ce06',
     onPrimaryColor: '#f4f4f4',
+    analyticsTrackingId: 'UA-113298293-2',
     tvUrl: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
     logoUrl: 'https://meumobi.com/uploads/site_logos/200x200_6943664.png'
   });
