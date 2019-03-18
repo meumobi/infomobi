@@ -61,18 +61,7 @@ export class MyApp implements OnInit {
   ngOnInit() {
     this.listenAuthData();
     this.loadMenuCategories();
-    this.settingsService.getSettingsObserver().subscribe(
-      data => {
-        if (data) {
-          if (data.hasOwnProperty('primaryColor')) {
-            document.documentElement.style.setProperty(`--primary-color`, data.primaryColor);
-          }
-          if (data.hasOwnProperty('onPrimaryColor')) {
-            document.documentElement.style.setProperty(`--on-primary-color`, data.onPrimaryColor);
-          }
-        }
-      }
-    );
+    this.listenSettings();
   }
 
   initializeApp() {
@@ -97,6 +86,21 @@ export class MyApp implements OnInit {
     .then(
       data => {
         this.categories = data;
+      }
+    );
+  }
+
+  listenSettings() {
+    this.settingsService.getSettingsObserver().subscribe(
+      data => {
+        if (data) {
+          if (data.hasOwnProperty('primaryColor')) {
+            this.setThemeColor('--primary-color', data.primaryColor);
+          }
+          if (data.hasOwnProperty('onPrimaryColor')) {
+            this.setThemeColor('--on-primary-color', data.onPrimaryColor);
+          }
+        }
       }
     );
   }
@@ -168,4 +172,9 @@ export class MyApp implements OnInit {
       });
     }
   }
+
+  setThemeColor(property: string, color: string) {
+    document.documentElement.style.setProperty(property, color);
+  }
+
 }
