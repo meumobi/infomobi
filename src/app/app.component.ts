@@ -100,6 +100,9 @@ export class MyApp implements OnInit {
           if (data.hasOwnProperty('onPrimaryColor')) {
             this.setThemeColor('--on-primary-color', data.onPrimaryColor);
           }
+          if (data.hasOwnProperty('analyticsTrackingId')) {
+            this.analyticsProvider.startTrackerWithId(data.analyticsTrackingId);
+          }
         }
       }
     );

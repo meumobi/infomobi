@@ -10,6 +10,10 @@
   <form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="settings">
     <ion-list>
       <ion-item>
+          <ion-label color="primary" stacked>{{'SETTINGS.ANALYTICS_TRACKING_ID' | translate}}</ion-label>
+          <ion-input type="text" name="analyticsTrackinId" [(ngModel)]="settings.analyticsTrackingId" clearInput></ion-input>
+        </ion-item>
+      <ion-item>
         <ion-label color="primary" stacked>{{'SETTINGS.YOUTUBE_CHANNEL_ID' | translate}}</ion-label>
         <ion-input type="text" name="youtubeChannelId" [(ngModel)]="settings.youtubeChannelId" clearInput></ion-input>
       </ion-item>

@@ -8,6 +8,13 @@ export class AnalyticsProvider {
   constructor() {}
 
   startTrackerWithId(id) {
+    ga(function(tracker) {
+      if (tracker.get('trackingId') === id) {
+        return false;
+      } else {
+        ga('remove');
+      }
+    });
     ga('create', {
       storage: 'none',    ​
       trackingId: id,    ​
@@ -17,7 +24,7 @@ export class AnalyticsProvider {
     ga('set', 'transportUrl', 'https://www.google-analytics.com/collect');
     ga(function(tracker) {
       if ( !localStorage.getItem('ga:clientId') ) {
-        localStorage.setItem( 'ga:clientId', tracker.get('clientId') );
+        localStorage.setItem('ga:clientId', tracker.get('clientId'));
       }
     });
   }
@@ -36,5 +43,5 @@ export class AnalyticsProvider {
       eventValue: value
     });
   }
-  
+
 }
