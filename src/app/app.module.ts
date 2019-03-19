@@ -27,7 +27,7 @@ import { CommentsProvider } from '@providers/comments';
 import { ContactsService } from '@providers/contacts';
 import { DynamicLinksProvider } from '@providers/dynamic-links';
 import { ENV } from '@env';
-import { FilesProvider } from '@providers/files/files';
+
 import { SettingsService } from '@providers/settings';
 import { SharedModule } from '@shared/shared.module';
 import { UploadProvider } from '@providers/upload';
@@ -89,7 +89,6 @@ export function initConfig(
     FileOpener,
     InAppBrowser,
     File,
-    FilesProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
     AngularFirestoreModule,
@@ -108,7 +107,6 @@ export function initConfig(
       deps: [AuthDataPersistenceService]
     },
     YoutubeService,
-    FilesProvider,
     SettingsService,
     OneSignal,
     PushNotificationServiceProvider,

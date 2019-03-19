@@ -14,6 +14,7 @@ import { CommentsModule } from '@components/comments/comments.module';
 import { ItemsModule } from '@components/items/items.module';
 import { SocialSharingServiceProvider } from '@providers/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { MediaService, MediaModule } from '@meumobi/mmb-media-provider';
 
 
 @NgModule({
@@ -29,12 +30,14 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     CommentsModule,
     ItemsModule,
     TranslateModule.forChild(),
+    MediaModule,
   ],
   providers: [
     ItemsService,
     NgMathPipesModule,
     SocialSharingServiceProvider,
     SocialSharing,
+    MediaService,
   ]
 })
 export class ArticlesDetailsPageModule {}
