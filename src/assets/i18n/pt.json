@@ -73,6 +73,11 @@
   "LOGIN": {
     "USER_WELCOME": "Olá {{displayName}}"
   },
+  "HOME": {
+    "LIVE": "Ao Vivo",
+    "ITEMS": "Notícias",
+    "CONTACTS": "Contatos"
+  },
   "RESET_PASSWORD": {
     "LINK": "Esqueceu a senha?",
     "SUBMIT": "Gerar nova",
