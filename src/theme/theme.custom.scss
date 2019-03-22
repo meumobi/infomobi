@@ -18,7 +18,7 @@
   }
 
   ion-card-content h3,
-  ion-card-content h2 
+  ion-card-content h2
   {
     color: #{ion-color(primary, contrast)};
     color: var(--on-primary-color) !important;
@@ -27,6 +27,7 @@
 
   ion-item a, 
   .button-clear,
+  .bar-button-ios,
   form ion-item ion-label
   {
     color: color($colors, primary) !important;
