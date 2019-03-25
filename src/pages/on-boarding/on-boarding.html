@@ -1,0 +1,66 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton>
+    <ion-buttons end *ngIf="showSkip">
+      <button ion-button (click)="skip()" color="primary">{{"ON_BOARDING.SKIP" | translate}}</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+    <ion-slide>
+      <img src="../../assets/svgs/mobile_life.svg" class="slide-image"/>
+      <img src="assets/images/header-clean.png" alt="logo">
+      <h2 class="slide-title">
+        {{"ON_BOARDING.WELCOME.TITLE" | translate}}
+      </h2>
+      <p>
+        {{"ON_BOARDING.WELCOME.DESCRIPTION" | translate}}
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/svgs/celebration.svg" class="slide-image"/>
+      <h2 class="slide-title">
+        {{"ON_BOARDING.LIVE.TITLE" | translate}}
+      </h2>
+      <p>
+        {{"ON_BOARDING.LIVE.DESCRIPTION" | translate}}
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/svgs/business_plan.svg" class="slide-image"/>      
+      <h2 class="slide-title">
+        {{"ON_BOARDING.NEWS.TITLE" | translate}}
+      </h2>
+      <p>
+        {{"ON_BOARDING.NEWS.DESCRIPTION" | translate}}
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/svgs/online_friends.svg" class="slide-image"/>
+      <h2 class="slide-title">
+        {{"ON_BOARDING.CONTACTS.TITLE" | translate}}
+      </h2>
+      <p>
+        {{"ON_BOARDING.CONTACTS.DESCRIPTION" | translate}}
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../assets/svgs/profile_pic.svg" class="slide-image"/>
+      <h2 class="slide-title">
+        {{"ON_BOARDING.PROFILE.TITLE" | translate}}
+      </h2>
+      <p>
+        {{"ON_BOARDING.PROFILE.DESCRIPTION" | translate}}
+      </p>
+      <button ion-button icon-end large clear block (click)="startApp()">
+        {{"ON_BOARDING.PROFILE.CONTINUE" | translate}}
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+      <button ion-button clear small (click)="skip()">
+        {{"ON_BOARDING.SKIP" | translate}}
+      </button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -12,6 +12,30 @@
       "ERROR": "An error occurred, please try again later or contact your admin."
     }
   },
+  "ON_BOARDING": {
+    "SKIP": "Skip",
+    "WELCOME": {
+      "TITLE": "Welcome on board!",
+      "DESCRIPTION": "Infomobi provides real-time interaction with your organization to stay connected wherever you are. Find out the top features next."
+    },
+    "LIVE": {
+      "TITLE": "Live",
+      "DESCRIPTION": "Share events in real time"
+    },
+    "NEWS": {
+      "TITLE": "News",
+      "DESCRIPTION": "Be informed with targeted content"
+    },
+    "CONTACTS": {
+      "TITLE": "Contacts",
+      "DESCRIPTION": "Access contacts from your company"
+    },
+    "PROFILE": {
+      "TITLE": "Edit your profile",
+      "DESCRIPTION": "Let's start now by editing your profile",
+      "CONTINUE": "Continue"
+    }
+  },
   "SETTINGS": {
     "LINK": "Settings",
     "TITLE": "Account Settings",

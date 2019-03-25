@@ -5,6 +5,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { Settings } from '@models/settings';
 import { ImageAttribute } from 'ionic-image-loader';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -23,7 +24,8 @@ export class HomePage implements OnInit {
   constructor(
     private authDataPersistenceService: AuthDataPersistenceService,
     public navCtrl: NavController,
-    public settingsService: SettingsService
+    public settingsService: SettingsService,
+    private storage: Storage,
   ) {}
 
   ngOnInit() {
@@ -34,6 +36,21 @@ export class HomePage implements OnInit {
 
     this.authData$ = this.authDataPersistenceService.getAuthDataObserver();
     this.settings = this.settingsService.getSettingsObserver();
+  }
+
+  displayOnBoarding() {
+    this.storage.get('hasSeenOnBoarding')
+    .then(
+      (hasSeenOnBoarding) => {
+      console.log(hasSeenOnBoarding);
+      if (!hasSeenOnBoarding) {
+        this.openPage('OnBoardingPage', {});
+      }
+    });
+  }
+
+  ionViewDidLoad() {
+    this.displayOnBoarding();
   }
 
   ionViewCanEnter(): boolean {
