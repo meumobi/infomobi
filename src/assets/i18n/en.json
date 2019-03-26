@@ -12,6 +12,30 @@
       "ERROR": "An error occurred, please try again later or contact your admin."
     }
   },
+  "ON_BOARDING": {
+    "SKIP": "Skip",
+    "WELCOME": {
+      "TITLE": "Welcome on board!",
+      "DESCRIPTION": "Infomobi provides real-time interaction with your organization to stay connected wherever you are. Find out the top features next."
+    },
+    "LIVE": {
+      "TITLE": "Live",
+      "DESCRIPTION": "Share events in real time"
+    },
+    "NEWS": {
+      "TITLE": "News",
+      "DESCRIPTION": "Be informed with targeted content"
+    },
+    "CONTACTS": {
+      "TITLE": "Contacts",
+      "DESCRIPTION": "Access contacts from your company"
+    },
+    "PROFILE": {
+      "TITLE": "Edit your profile",
+      "DESCRIPTION": "Let's start now by editing your profile",
+      "CONTINUE": "Continue"
+    }
+  },
   "SETTINGS": {
     "LINK": "Settings",
     "TITLE": "Account Settings",
@@ -37,6 +61,11 @@
   "LOGIN": {
     "USER_WELCOME": "Hello {{displayName}}"
   },
+  "HOME": {
+    "LIVE": "Live",
+    "ITEMS": "News",
+    "CONTACTS": "Contacts"
+  },
   "RESET_PASSWORD": {
     "LINK": "Forgot password?",
     "SUBMIT": "Reset",
@@ -53,6 +82,7 @@
     "SUBMIT": "Update",
     "PLACEHOLDER": "New password",
     "SUCCESS": "Password updated successfully",
-    "SUBTITLE": "For security reason you need to type here a new personal password."
+    "ERROR": "New password must contains at least six characters",
+    "SUBTITLE": "For security reason you need to type here a new personal password, containing at least six characters."
   }
 }

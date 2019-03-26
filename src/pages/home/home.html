@@ -25,8 +25,8 @@
 
 <ion-content no-bounce>
   <super-tabs [config]="{ sideMenu: 'left' }" *ngIf="!!(authData$ | async)">
-    <super-tab [root]="live" title="Ao Vivo"></super-tab>
-    <super-tab [root]="items" title="Notícias"></super-tab> 
-    <super-tab [root]="contacts" title="Contatos"></super-tab>
+    <super-tab [root]="live" title="{{'HOME.LIVE' | translate}}"></super-tab>
+    <super-tab [root]="items" title="{{'HOME.ITEMS' | translate}}"></super-tab>
+    <super-tab [root]="contacts" title="{{'HOME.CONTACTS' | translate}}"></super-tab>
   </super-tabs>
 </ion-content>

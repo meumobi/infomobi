@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FilesProvider } from '@providers/files/files';
 import { SocialSharingService } from '@providers/social-sharing';
 import { MeuToastService } from '@shared/meu-toast.service';
 import { TranslateService } from '@ngx-translate/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { MediaService } from '@meumobi/mmb-media-provider';
 
 @Component({
   selector: 'medium-controls',
@@ -13,7 +13,7 @@ export class MediumControlsComponent implements OnInit {
   @Input() medium;
   progress = 0;
   constructor(
-    private filesProvider: FilesProvider,
+    private mediaService: MediaService,
     private socialSharingService: SocialSharingService,
     private translateService: TranslateService,
     private meuToastService: MeuToastService,
@@ -23,10 +23,13 @@ export class MediumControlsComponent implements OnInit {
 
   ngOnInit() {
     this.medium.status = '';
-    this.filesProvider.getFilesFromStorage()
+    this.mediaService.getFilesFromStorage()
     .then(
       () => {
-        this.medium = this.filesProvider.decorateFile(this.medium);
+        this.mediaService.decorateFile(this.medium)
+        .then(
+          (data) => this.medium = data
+        );
       }
     );
   }
@@ -36,11 +39,11 @@ export class MediumControlsComponent implements OnInit {
   }
 
   openLocal() {
-    this.filesProvider.openFile(this.medium);
+    this.mediaService.openFile(this.medium);
   }
 
   delete() {
-    this.filesProvider.remove(this.medium).then(
+    this.mediaService.remove(this.medium).then(
       data => {
         this.medium = data;
       }
@@ -48,7 +51,7 @@ export class MediumControlsComponent implements OnInit {
   }
 
   download() {
-    this.filesProvider.download(this.medium).subscribe(
+    this.mediaService.download(this.medium).subscribe(
       data => {
         this.medium = data;
       }
@@ -56,7 +59,7 @@ export class MediumControlsComponent implements OnInit {
   }
 
   abort() {
-    this.filesProvider.abort(this.medium);
+    this.mediaService.abort(this.medium);
   }
 
   shareMedia() {

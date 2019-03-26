@@ -195,6 +195,10 @@ export class LoginPage implements OnInit {
           }, {
             text: this.translateService.instant('CHANGE_PASSWORD.SUBMIT'),
             handler: data => {
+              if (data.newPassword.length < 6) {
+                this.meuToastService.present(this.translateService.instant('CHANGE_PASSWORD.ERROR'));
+                return false;
+              }
               this.authService.updatePassword(email, currentPassword, data.newPassword)
             .then(
               () => {
