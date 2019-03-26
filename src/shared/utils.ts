@@ -1,7 +1,12 @@
 import { ENV } from '@env';
 export default class Utils {
 
-  static lookup(array) {
+  /**
+   * re-organize an array of items or categories to use id as key, easier to pick target record.
+   * ie. convert [0=>{id: 123, title:'a'}, 1=>{id:231, title:'b'}] to [123=>{id: 123, title:'a'}, 231=>{id:231, title:'b'}]
+   * @param array
+   */
+  public static lookup(array) {
     let token = 'id';
     // Identify if it's an array of items (item._id) or category (category.id)
     if (array[0] && array[0].hasOwnProperty('_id')) {
@@ -15,11 +20,11 @@ export default class Utils {
     return text.replace(/<br\s*[\/]?>/gi, '\n');
   }
 
-  static striptags(text) {
+  static striptags(text: string) {
     return text.replace(/<.*?>/g, '');
   }
 
-  static lookupByToken(array, token) {
+  private static lookupByToken(array, token) {
     const lookup = [];
     for (let i = 0, len = array.length; i < len; i++) {
       lookup[array[i][token]] = array[i];
