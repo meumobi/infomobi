@@ -13,6 +13,30 @@
       "ERROR": "Ocorreu um erro, por favor tente novamente ou entre em contato connosco."
     }
   },
+  "ON_BOARDING": {
+    "SKIP": "Pular",
+    "WELCOME": {
+      "TITLE": "Bem-vindo a bordo!",
+      "DESCRIPTION": "O infomobi permite você interagir com sua organização em tempo real, de forma simples e na palma da mão. Descubra a seguir as principais funcionalidades."
+    },
+    "LIVE": {
+      "TITLE": "Ao vivo",
+      "DESCRIPTION": "Compartilhe acontecimentos em tempo real"
+    },
+    "NEWS": {
+      "TITLE": "Notícias",
+      "DESCRIPTION": "Seja informado com conteúdo direcionado"
+    },
+    "CONTACTS": {
+      "TITLE": "Contatos",
+      "DESCRIPTION": "Acesse os contatos da sua empresa"
+    },
+    "PROFILE": {
+      "TITLE": "Atualize seus dados",
+      "DESCRIPTION": "Vamos começar editando seu perfil",
+      "CONTINUE": "Continuar"
+    }
+  },
   "SETTINGS": {
     "LINK": "Configurações",
     "TITLE": "Configurações da conta",

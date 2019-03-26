@@ -31,6 +31,10 @@
         {{'My account' | translate}}<br/>
         <ion-note>{{ (userProfile$ | async)?.email }}</ion-note>
       </button>
+      <button menuClose ion-item (click)="openPage('OnBoardingPage')">
+        <ion-icon item-start name="information-circle"></ion-icon>
+        {{'ON_BOARDING.WELCOME.TITLE' | translate}}
+      </button>
       <button menuClose ion-item (click)="logout()">
         <ion-icon item-start name="log-out"></ion-icon>
         {{'Logout' | translate}}
