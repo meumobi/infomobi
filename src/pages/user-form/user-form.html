@@ -26,7 +26,7 @@
       </ion-item>
       <ion-item>
         <ion-thumbnail *ngIf="user.picture" item-end>
-          <img [src]="user.picture | imgServerUrly">
+          <img [src]="user.picture | imgServerUrly:'avatar'">
         </ion-thumbnail>
         <file-upload (fileUploadStarted)="fileUploadStarted($event);" (fileUploadFinished)="fileUploadFinished($event);"></file-upload>
       </ion-item>
@@ -63,9 +63,7 @@
       </ion-item>
     </ion-list>
     <ion-row>
-      <ion-col>
-        <button ion-button type="submit" [disabled]="!uploadFinished" block>{{'Save' | translate}}</button>
-      </ion-col>
+      <button ion-button type="submit" [disabled]="!uploadFinished" block>{{'Save' | translate}}</button>
     </ion-row>
   </form>
 </ion-content>

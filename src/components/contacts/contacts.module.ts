@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared/shared.module';
 import { ContactListComponent } from './contact-list/contact-list';
 import { ContactHeadlineComponent } from './contact-headline/contact-headline';
+import { ContactHeaderComponent } from './contact-header/contact-header';
 import { DeskComponent } from './types/desk/desk';
 import { UserComponent } from './types/user/user';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -12,6 +13,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 	declarations: [
 		ContactListComponent,
 		ContactHeadlineComponent,
+		ContactHeaderComponent,
 		DeskComponent,
 		UserComponent,
 	],
@@ -23,6 +25,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 	exports: [
 		ContactListComponent,
 		ContactHeadlineComponent,
+		ContactHeaderComponent,
 		IonicModule,
 	],
 	entryComponents: [
