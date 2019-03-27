@@ -8,12 +8,13 @@
     <h3>{{contact.title}}</h3>
   </ion-card-content>
   <ion-row no-padding *ngIf="admin">
-      <button item-end ion-button (click)="pushDetailsPage('DeskFormPage', contact._id)">{{'Edit Account' | translate}}</button>
-    </ion-row>
+    <button ion-button
+      (click)="pushDetailsPage('DeskFormPage', contact._id)" block>{{'Edit Account' | translate}}</button>
+  </ion-row>
   <ion-list>
     <a *ngFor="let option of contact.options | keys" ion-item>
       <p>{{ option.key | translate }}</p>
       <h2>{{ option.value }}</h2>
-    </a>  
-  </ion-list>   
+    </a>
+  </ion-list>
 </ion-card>
