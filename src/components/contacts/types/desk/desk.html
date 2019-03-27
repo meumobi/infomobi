@@ -1,12 +1,5 @@
 <ion-card>
-  <ion-card-content>
-    <img [src]="contact.picture | imgServerUrly" *ngIf="contact.picture; else anonymous" />
-    <ng-template #anonymous>
-      <img [src]="contact.type | iconPathForContactType"/>
-    </ng-template>
-    <h2>{{contact.displayName}}</h2>
-    <h3>{{contact.title}}</h3>
-  </ion-card-content>
+  <contact-header [contact]="contact"></contact-header>
   <ion-row no-padding *ngIf="admin">
     <button ion-button
       (click)="pushDetailsPage('DeskFormPage', contact._id)" block>{{'Edit Account' | translate}}</button>

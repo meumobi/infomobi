@@ -1,0 +1,8 @@
+<ion-card-content *ngIf="contact">
+  <img [src]="contact.picture | imgServerUrly:'avatar'" *ngIf="contact.picture; else anonymous" />
+  <ng-template #anonymous>
+    <img [src]="contact.type | iconPathForContactType"/>
+  </ng-template>
+  <h2>{{contact.displayName}}</h2>
+  <h3>{{contact.title}}</h3>
+</ion-card-content>
