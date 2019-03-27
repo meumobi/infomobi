@@ -3,6 +3,10 @@
   --on-primary-color: #{ion-color(primary, contrast)};
 }
 
+.alert-button {
+  color: var(--primary-color) !important;
+}
+
 .custom-theme {
 
   desk ion-card-content,
@@ -24,17 +28,15 @@
     color: var(--on-primary-color) !important;
   }
 
-
   ion-item a, 
   .button-clear,
   .bar-button-ios,
   .bar-button-md-primary,
-  form ion-item ion-label
+  .label-ios-primary,
+  .label-md-primary
   {
     color: color($colors, primary) !important;
     color: var(--primary-color) !important;
   }
 
 }
-
-
