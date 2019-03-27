@@ -22,10 +22,6 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-$alert-md-button-text-color: #9b7800;
-$alert-ios-button-text-color: #9b7800;
-
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -41,6 +37,7 @@ $colors: (
 );
 
 @import "theme.custom";
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

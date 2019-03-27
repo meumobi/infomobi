@@ -3,6 +3,10 @@
   --on-primary-color: #{ion-color(primary, contrast)};
 }
 
+.alert-button {
+  color: var(--primary-color) !important;
+}
+
 .custom-theme {
 
   desk ion-card-content,
@@ -36,5 +40,3 @@
   }
 
 }
-
-
