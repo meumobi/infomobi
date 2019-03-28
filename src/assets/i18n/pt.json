@@ -21,15 +21,18 @@
     },
     "LIVE": {
       "TITLE": "Ao vivo",
-      "DESCRIPTION": "Compartilhe acontecimentos em tempo real"
+      "SUBTITLE": "Compartilhe acontecimentos em tempo real",
+      "DESCRIPTION": "Aqui todos podem comemorar realizações, fazer perguntas ou sugestões de forma fácil. Acompanhe o que está acontecendo em sua organização no momento, há sempre alguém de aniversário 😉"
     },
     "NEWS": {
       "TITLE": "Notícias",
-      "DESCRIPTION": "Seja informado com conteúdo direcionado"
+      "SUBTITLE": "Seja informado com conteúdo direcionado",
+      "DESCRIPTION": "Em 'Notícias' publicamos informações relevantes sobre as atividades da empresa. Aqui você também pode comentar."
     },
     "CONTACTS": {
       "TITLE": "Contatos",
-      "DESCRIPTION": "Acesse os contatos da sua empresa"
+      "SUBTITLE": "Agenda de contatos",
+      "DESCRIPTION": "Compartilhe suas informações de contato e acesse aos contatos da sua empresa, seja de colegas ou setores específicos."
     },
     "PROFILE": {
       "TITLE": "Atualize seus dados",
