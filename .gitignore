@@ -5,8 +5,6 @@ functions/lib
 
 # Environment Variables
 src/index.html
-src/environments/*
-!src/environments/environment.ts
 
 # Compodoc directory
 docs/
