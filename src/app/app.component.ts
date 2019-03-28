@@ -104,7 +104,7 @@ export class MyApp implements OnInit {
 
   listenAuthData() {
     this.authData$.subscribe( authData => {
-      if (!!authData) {
+      if (!!authData && !authData.error) {
         this.pushNotificationService.signInUser(authData);
         this.pushNotificationService.register();
 
