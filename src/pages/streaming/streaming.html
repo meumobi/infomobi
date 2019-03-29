@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content padding>
   <div class="video-container" *ngIf="supportVideo; else disclaimer">
-    <video #player controls>
+    <video #player autoplay controls>
       <source [src]="url" type="video/mp4">
     </video>
   </div>
