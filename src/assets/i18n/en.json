@@ -20,15 +20,18 @@
     },
     "LIVE": {
       "TITLE": "Live",
-      "DESCRIPTION": "Share events in real time"
+      "SUBTITLE": "Share events in real time",
+      "DESCRIPTION": "Here everyone can celebrate achievements, ask questions or suggestions in an easy way. Track what is happening in your organization at the moment, there is always someone else's birthday 😉"
     },
     "NEWS": {
       "TITLE": "News",
-      "DESCRIPTION": "Be informed with targeted content"
+      "SUBTITLE": "Be informed with targeted content",
+      "DESCRIPTION": "In -News- we publish relevant information about the company's activities. Here you can also comment."
     },
     "CONTACTS": {
       "TITLE": "Contacts",
-      "DESCRIPTION": "Access contacts from your company"
+      "SUBTITLE": "Company directory",
+      "DESCRIPTION": "Share your own details and browse contact informations from colleagues or company departments."
     },
     "PROFILE": {
       "TITLE": "Edit your profile",
