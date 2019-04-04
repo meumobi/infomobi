@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/meumobi/ion-employee/compare/v0.8.0...v0.10.0) (2019-04-04)
+
+
+### Bug Fixes
+
+* **auth:** check new password length on OTP ([cee026e](https://github.com/meumobi/ion-employee/commit/cee026e)), closes [#324](https://github.com/meumobi/ion-employee/issues/324)
+* **on-boarding:** track events ([1eaad95](https://github.com/meumobi/ion-employee/commit/1eaad95)), closes [#358](https://github.com/meumobi/ion-employee/issues/358)
+* **push:** move push register after OTP success ([3010270](https://github.com/meumobi/ion-employee/commit/3010270)), closes [#284](https://github.com/meumobi/ion-employee/issues/284)
+* **settings:** remove settings link duplicated on sidemenu ([e39c2ba](https://github.com/meumobi/ion-employee/commit/e39c2ba)), closes [#312](https://github.com/meumobi/ion-employee/issues/312)
+* **streaming:** add autoplay ([ad102ae](https://github.com/meumobi/ion-employee/commit/ad102ae)), closes [#356](https://github.com/meumobi/ion-employee/issues/356)
+* **tabs:** missing header on load ([3912a29](https://github.com/meumobi/ion-employee/commit/3912a29)), closes [#116](https://github.com/meumobi/ion-employee/issues/116)
+* **theme:** apply color on camera button ([6ff67c7](https://github.com/meumobi/ion-employee/commit/6ff67c7)), closes [#347](https://github.com/meumobi/ion-employee/issues/347)
+* **theme:** apply custom them on navbar buttons ios ([621ce69](https://github.com/meumobi/ion-employee/commit/621ce69)), closes [#331](https://github.com/meumobi/ion-employee/issues/331)
+* **theme:** prevent profile picture stretched on form page ([c8da5f3](https://github.com/meumobi/ion-employee/commit/c8da5f3))
+* **theme:** profile picture stretched if not squarred ([5152c86](https://github.com/meumobi/ion-employee/commit/5152c86)), closes [#349](https://github.com/meumobi/ion-employee/issues/349)
+* **theme:** reduce tv and videos label on home ([4836ab5](https://github.com/meumobi/ion-employee/commit/4836ab5)), closes [#330](https://github.com/meumobi/ion-employee/issues/330)
+* FIX randomly miss super-tabs on load ([691ccdd](https://github.com/meumobi/ion-employee/commit/691ccdd)), closes [#116](https://github.com/meumobi/ion-employee/issues/116)
+
+
+### Features
+
+* **media:** migrate files.service to npm package mmb-media-provider ([cf41cfd](https://github.com/meumobi/ion-employee/commit/cf41cfd)), closes [#263](https://github.com/meumobi/ion-employee/issues/263)
+* **on-boarding:** add on boarding screens on first access ([e3fbc78](https://github.com/meumobi/ion-employee/commit/e3fbc78)), closes [#289](https://github.com/meumobi/ion-employee/issues/289)
+* **on-boarding:** update screen titles/subtitles/descriptions ([14eb9b2](https://github.com/meumobi/ion-employee/commit/14eb9b2)), closes [#352](https://github.com/meumobi/ion-employee/issues/352)
+* **translation:** get device/language ([ab4b112](https://github.com/meumobi/ion-employee/commit/ab4b112)), closes [#144](https://github.com/meumobi/ion-employee/issues/144)
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/meumobi/ion-employee/compare/v0.8.0...v0.9.0) (2019-03-29)
 
