@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-navbar hideBackButton>
     <ion-buttons end *ngIf="showSkip">
-      <button ion-button (click)="skip()" color="primary">{{"ON_BOARDING.SKIP" | translate}}</button>
+      <button ion-button (click)="skip(slides.getActiveIndex())" color="primary">{{"ON_BOARDING.SKIP" | translate}}</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -60,7 +60,7 @@
         {{"ON_BOARDING.PROFILE.CONTINUE" | translate}}
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
-      <button ion-button clear small (click)="skip()">
+      <button ion-button clear small (click)="skip(slides.getActiveIndex())">
         {{"ON_BOARDING.SKIP" | translate}}
       </button>
     </ion-slide>

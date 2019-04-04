@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Slides, MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AnalyticsProvider } from '@shared/analytics.service';
 
 @IonicPage()
 @Component({
@@ -14,6 +15,7 @@ export class OnBoardingPage {
     public navCtrl: NavController,
     public menu: MenuController,
     public storage: Storage,
+    public analytics: AnalyticsProvider,
   ) {
   }
 
@@ -28,12 +30,14 @@ export class OnBoardingPage {
         this.storage.set('hasSeenOnBoarding', 'true');
       })
     );
+    this.analytics.trackEvent('On Boarding', 'Edit Profile');
   }
 
-  skip() {
+  skip(index: number = null) {
     this.navCtrl.pop( {animate: true, direction: 'forward'}).then(() => {
       this.storage.set('hasSeenOnBoarding', 'true');
     });
+    this.analytics.trackEvent('On Boarding', 'Skip', index);
   }
 
   onSlideChangeStart(slider: Slides) {
