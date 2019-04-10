@@ -102,7 +102,7 @@
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     <plugin name="cordova-sqlite-storage" spec="2.6.0" />
     <plugin name="cordova-plugin-x-socialsharing" spec="5.4.4" />
-    <plugin name="cordova-plugin-ios-permissions" source="git" spec="https://github.com/MBuchalik/cordova-plugin-ios-permissions.git#v1.1.1" />
+    <plugin name="cordova-plugin-ios-permissions" source="git" spec="https://github.com/meumobi/cordova-plugin-ios-permissions.git" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.1.4" />
 </widget>
