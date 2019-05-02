@@ -8,10 +8,10 @@ import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 
 @IonicPage()
 @Component({
-  selector: 'page-tv',
-  templateUrl: 'tv.html',
+  selector: 'page-slides',
+  templateUrl: 'slides.html',
 })
-export class TvPage {
+export class SlidesPage {
   items: Item[];
   comments: Comment[];
 
@@ -23,7 +23,7 @@ export class TvPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TvPage');
+    console.log('ionViewDidLoad SlidesPage');
   }
 
   fetchItems() {
