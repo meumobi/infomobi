@@ -51,9 +51,9 @@ export class PushPwaService implements PushNotificationService {
   }
 
   signInUser(authData): void {
-    OneSignal.push(function() {
+/*     OneSignal.push(function() {
       OneSignal.setEmail(authData.visitor.email);
-    });
+    }); */
 
     OneSignal.push(function() {
       OneSignal.sendTag('domain', authData.visitor.site);
