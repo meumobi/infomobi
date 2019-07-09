@@ -7,21 +7,22 @@ import { Category } from '@models/categories.interface';
 export class CategoriesService {
 
   findAll(): Promise<Category[]>  {
-    let data = categories.filter(
-      category => category.visibility == 1
-    )
+    const data = categories.filter(
+      category => category.visibility === 1
+    );
+
     return Promise.resolve(data);
   }
 
   findById(id): Promise<Category> {
-    let data = Utils.lookup(categories);
+    const data = Utils.lookup(categories);
     return Promise.resolve(data[id]);
   }
 
   getCategoryName(id): Promise<string> {
-    let data = Utils.lookup(categories);
+    const data = Utils.lookup(categories);
     const title = data[id] ? data[id].title : null;
-    
+
     return Promise.resolve(title);
   }
 }
