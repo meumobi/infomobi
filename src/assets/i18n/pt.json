@@ -103,7 +103,8 @@
   "HOME": {
     "LIVE": "Ao Vivo",
     "ITEMS": "Notícias",
-    "CONTACTS": "Contatos"
+    "CONTACTS": "Contatos",
+    "FILES": "Arquivos"
   },
   "RESET_PASSWORD": {
     "LINK": "Esqueceu a senha?",

@@ -7,6 +7,12 @@
         <img-loader [src]="(settings | async)?.logoUrl" fallbackUrl="./assets/images/header-clean.png" fallbackAsPlaceholder="true" [imgAttributes]="imageAttributes" useImg></img-loader>
       </ion-title>
       <ion-buttons end>
+          <button ion-button block (click)="openPage('FilesPage', {})" *ngIf="platform.is('cordova')">
+              <div>
+                <ion-icon name="download"></ion-icon>
+                <label>{{'HOME.FILES' | translate}}</label>
+              </div>
+            </button>
         <button ion-button block (click)="openPage('VideosPage', {channelId: youtubeChannelId})" *ngIf="(settings | async)?.youtubeChannelId as youtubeChannelId">
           <div>
             <ion-icon name="logo-youtube"></ion-icon>
@@ -14,11 +20,11 @@
           </div>
         </button>
         <button ion-button block (click)="openPage('StreamingPage', {url: tvUrl})" *ngIf="(settings | async)?.tvUrl as tvUrl">
-            <div>
-              <ion-icon name="desktop"></ion-icon>
-              <label>TV</label>
-            </div>
-          </button>
+          <div>
+            <ion-icon name="desktop"></ion-icon>
+            <label>TV</label>
+          </div>
+        </button>
       </ion-buttons>
     </ion-navbar>
   </ion-header>

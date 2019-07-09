@@ -1,7 +1,7 @@
 import { SettingsService } from '@providers/settings';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, Platform } from 'ionic-angular';
 import { AuthDataPersistenceService } from '@providers/auth-data-persistence';
 import { Settings } from '@models/settings';
 import { ImageAttribute } from 'ionic-image-loader';
@@ -26,6 +26,7 @@ export class HomePage implements OnInit {
     public navCtrl: NavController,
     public settingsService: SettingsService,
     private storage: Storage,
+    private platform: Platform,
   ) {}
 
   ngOnInit() {

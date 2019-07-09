@@ -67,7 +67,8 @@
   "HOME": {
     "LIVE": "Live",
     "ITEMS": "News",
-    "CONTACTS": "Contacts"
+    "CONTACTS": "Contacts",
+    "FILES": "My Files"
   },
   "RESET_PASSWORD": {
     "LINK": "Forgot password?",
