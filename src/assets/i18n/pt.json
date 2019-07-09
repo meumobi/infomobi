@@ -44,6 +44,7 @@
     "LINK": "Configurações",
     "TITLE": "Configurações da conta",
     "YOUTUBE_CHANNEL_ID": "Canal Youtube (Id)",
+    "ANALYTICS_TRACKING_ID": "Google Analytics ID de acompanhamento (ex: UA-XXXXX-Y)",
     "SUBMIT": {
       "LABEL": "Salvar",
       "SUCCESS": "Configurações salvas",

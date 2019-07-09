@@ -43,6 +43,7 @@
     "LINK": "Settings",
     "TITLE": "Account Settings",
     "YOUTUBE_CHANNEL_ID": "Youtube Channel Id",
+    "ANALYTICS_TRACKING_ID": "Google Analytics Tracking ID (ex: UA-XXXXX-Y)",
     "SUBMIT": {
       "LABEL": "Save",
       "SUCCESS": "Settings successfully saved!",
