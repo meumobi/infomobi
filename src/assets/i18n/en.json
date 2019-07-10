@@ -67,8 +67,11 @@
   "HOME": {
     "LIVE": "Live",
     "ITEMS": "News",
-    "CONTACTS": "Contacts",
-    "FILES": "My Files"
+    "CONTACTS": "Contacts"
+  },
+  "FILES": {
+    "TITLE": "My Files",
+    "NO_FILES": "No files downloaded"
   },
   "RESET_PASSWORD": {
     "LINK": "Forgot password?",

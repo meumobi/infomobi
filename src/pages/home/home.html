@@ -10,7 +10,7 @@
           <button ion-button block (click)="openPage('FilesPage', {})" *ngIf="platform.is('cordova')">
               <div>
                 <ion-icon name="download"></ion-icon>
-                <label>{{'HOME.FILES' | translate}}</label>
+                <label>{{'FILES.TITLE' | translate}}</label>
               </div>
             </button>
         <button ion-button block (click)="openPage('VideosPage', {channelId: youtubeChannelId})" *ngIf="(settings | async)?.youtubeChannelId as youtubeChannelId">

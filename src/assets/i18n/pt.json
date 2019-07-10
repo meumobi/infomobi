@@ -103,8 +103,11 @@
   "HOME": {
     "LIVE": "Ao Vivo",
     "ITEMS": "Notícias",
-    "CONTACTS": "Contatos",
-    "FILES": "Arquivos"
+    "CONTACTS": "Contatos"
+  },
+  "FILES": {
+    "TITLE": "Arquivos",
+    "NO_FILES": "Nenhum arquivo baixado"
   },
   "RESET_PASSWORD": {
     "LINK": "Esqueceu a senha?",
