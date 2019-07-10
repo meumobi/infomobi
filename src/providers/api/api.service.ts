@@ -81,6 +81,18 @@ export class ApiService {
     return this.sendRequest(url, httpOptions);
   }
 
+  performance(): Promise<any[]> {
+    const httpOptions = {
+      headers: {
+        'Accept':  'application/json',
+        'X-Visitor-Token': this.token
+      }
+    };
+    const url = this.buildUrl('/performance');
+
+    return this.sendRequest(url, httpOptions);
+  }
+
   fetchItemsByCategory(id: number): Promise<any[]> {
     const httpOptions = {
       headers: {

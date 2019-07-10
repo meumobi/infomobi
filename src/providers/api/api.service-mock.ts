@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 import { last } from 'rxjs/operators';
 import authData from '@providers/auth/mock-auth';
 import items from '@providers/items/mock-items';
+import performance from '@providers/categories/mock-performance';
 import Utils from '@shared/utils';
 
 import { Auth, AuthError } from '@models/auth.interface';
@@ -49,8 +50,13 @@ export class ApiService {
   }
 
   fetchLatestItems(): Promise<any[]> {
-    
+
     return Promise.resolve(items.items);
+  }
+
+  categories(): Promise<any[]> {
+
+    return Promise.resolve(performance.categories);
   }
 
   fetchItemsByCategory(id: number): Promise<any[]> {
@@ -88,6 +94,52 @@ export class ApiService {
     .then((response: Auth) => {
         return response
         // return response.json().data as Hero[];
+      })
+      .catch(this.handleError);
+  }
+
+  forgotPassword(email: string): Promise<any> {
+    const httpOptions = {
+      headers: {
+        'Accept':  'application/json',
+      }
+    };
+
+    const url = this.buildUrl('/visitors/forgot_password');
+
+    const data = {
+      email: email
+    };
+
+    return this.http
+      .post<any>(url, data, httpOptions)
+      .toPromise()
+      .then((response) => {
+        return response;
+      })
+      .catch(this.handleError);
+  }
+
+  updateVisitorPassword(email: string, current_password: string, password: string): Promise<Auth | AuthError> {
+    const httpOptions = {
+      headers: {
+        'Accept':  'application/json',
+        'X-Visitor-Token': this.token
+      }
+    };
+    const url = this.buildUrl('/visitors');
+
+    const data = {
+      email: email,
+      current_password: current_password,
+      password: password
+    };
+
+    return this.http
+      .put<any>(url, data, httpOptions)
+      .toPromise()
+      .then((response) => {
+        return response;
       })
       .catch(this.handleError);
   }
