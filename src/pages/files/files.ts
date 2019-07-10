@@ -21,11 +21,12 @@ export class FilesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.mediaService.getFilesFromStorage()
-    .then(
-      () => {
-        const files = this.mediaService['files'];
+    this.mediaService.getFilesObserver()
+    .subscribe(
+      (data) => {
+        const files = data;
         this.files = Object.keys(files).map(i => files[i]);
+        console.log(this.files);
       }
     );
   }

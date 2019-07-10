@@ -35,6 +35,7 @@ import { UserProfileService } from '@providers/user-profile';
 import { YoutubeService, YoutubeModule } from '@meumobi/ngx-youtube-provider';
 import 'mmb-avatar-img';
 import { OneSignal } from '@ionic-native/onesignal';
+import { MediaModule, MediaService } from '@meumobi/mmb-media-provider';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -66,6 +67,7 @@ export function initConfig(
       name: 'storage_db',
     }),
     YoutubeModule.forRoot(ENV.youtube),
+    MediaModule,
     SharedModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -91,6 +93,7 @@ export function initConfig(
     File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommentsProvider,
+    MediaService,
     AngularFirestoreModule,
     UploadProvider,
     AuthService,

@@ -10,13 +10,12 @@ import { CommentsModule } from '@components/comments/comments.module';
 import { ItemsModule } from '@components/items/items.module';
 import { SocialSharingServiceProvider } from '@providers/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { MediaService, MediaModule } from '@meumobi/mmb-media-provider';
+import { MediaService } from '@meumobi/mmb-media-provider';
 import { MediaListModule } from '@components/media-list/media-list.module';
 
 @NgModule({
   declarations: [
     ArticlesDetailsPage,
-
   ],
   imports: [
     IonicPageModule.forChild(ArticlesDetailsPage),
@@ -24,7 +23,6 @@ import { MediaListModule } from '@components/media-list/media-list.module';
     CommentsModule,
     ItemsModule,
     TranslateModule.forChild(),
-    MediaModule,
     MediaListModule
   ],
   providers: [

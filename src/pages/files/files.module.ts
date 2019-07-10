@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { FilesPage } from './files';
 import { TranslateModule } from '@ngx-translate/core';
-import { MediaService, MediaModule } from '@meumobi/mmb-media-provider';
+import { MediaService } from '@meumobi/mmb-media-provider';
 import { SocialSharingServiceProvider } from '@providers/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SharedModule } from '@shared/shared.module';
@@ -17,7 +17,6 @@ import { MediaListModule } from '@components/media-list/media-list.module';
     SharedModule,
     IonicPageModule.forChild(FilesPage),
     TranslateModule.forChild(),
-    MediaModule,
     MediaListModule,
   ],
   providers: [
