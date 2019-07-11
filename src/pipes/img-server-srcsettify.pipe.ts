@@ -26,7 +26,7 @@ export class ImgServerSrcsettifyPipe implements PipeTransform {
   transform(src: string) {
     const prefix = Utils.imgServerPrefix(src);
     return this.sizes.map((width) => {
-      return `${prefix}?width=${width}&format=jpg ${width}w`;
+      return `${prefix}?width=${width}&scale=both&format=jpg ${width}w`;
     }).toString();
   }
 }
