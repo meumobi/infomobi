@@ -10,8 +10,10 @@ import { CommentsModule } from '@components/comments/comments.module';
 import { ItemsModule } from '@components/items/items.module';
 import { SocialSharingServiceProvider } from '@providers/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { MediaService } from '@meumobi/mmb-media-provider';
 import { MediaListModule } from '@components/media-list/media-list.module';
+import { MediaService } from '@meumobi/mmb-media-provider';
+import { GetLargerThumbnailUrlPipe } from '@pipes/get-larger-thumbnail-url.pipe';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { MediaListModule } from '@components/media-list/media-list.module';
     NgMathPipesModule,
     SocialSharingServiceProvider,
     SocialSharing,
+    GetLargerThumbnailUrlPipe,
     MediaService,
   ]
 })

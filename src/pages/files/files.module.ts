@@ -8,6 +8,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { SharedModule } from '@shared/shared.module';
 import { NgMathPipesModule } from 'angular-pipes';
 import { MediaListModule } from '@components/media-list/media-list.module';
+import { GetLargerThumbnailUrlPipe } from '@pipes/get-larger-thumbnail-url.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MediaListModule } from '@components/media-list/media-list.module';
     SocialSharingServiceProvider,
     SocialSharing,
     NgMathPipesModule,
+    GetLargerThumbnailUrlPipe,
   ]
 })
 export class FilesPageModule {}

@@ -5,3 +5,4 @@ export * from './search.pipe';
 export * from './keys.pipe';
 export * from './icon-path-for-contact-type.pipe';
 export * from './file-size.pipe';
+export * from './get-larger-thumbnail-url.pipe';
