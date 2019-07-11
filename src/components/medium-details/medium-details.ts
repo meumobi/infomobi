@@ -5,11 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: 'medium-details.html'
 })
 export class MediumDetailsComponent {
-
-  @Input('medium') medium;  
-
-  constructor() {
-
-  }
+  @Input() medium;
+  constructor() {}
 
 }

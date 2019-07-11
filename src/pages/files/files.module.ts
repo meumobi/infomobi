@@ -1,39 +1,31 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ArticlesDetailsPage } from './articles-details';
-
-import { ItemsService } from '@providers/items';
-import { SharedModule } from '@shared/shared.module';
+import { FilesPage } from './files';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgMathPipesModule } from 'angular-pipes';
-import { CommentsModule } from '@components/comments/comments.module';
-import { ItemsModule } from '@components/items/items.module';
+import { MediaService } from '@meumobi/mmb-media-provider';
 import { SocialSharingServiceProvider } from '@providers/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { SharedModule } from '@shared/shared.module';
+import { NgMathPipesModule } from 'angular-pipes';
 import { MediaListModule } from '@components/media-list/media-list.module';
-import { MediaService } from '@meumobi/mmb-media-provider';
 import { GetLargerThumbnailUrlPipe } from '@pipes/get-larger-thumbnail-url.pipe';
-
 
 @NgModule({
   declarations: [
-    ArticlesDetailsPage,
+    FilesPage
   ],
   imports: [
-    IonicPageModule.forChild(ArticlesDetailsPage),
     SharedModule,
-    CommentsModule,
-    ItemsModule,
+    IonicPageModule.forChild(FilesPage),
     TranslateModule.forChild(),
-    MediaListModule
+    MediaListModule,
   ],
   providers: [
-    ItemsService,
-    NgMathPipesModule,
+    MediaService,
     SocialSharingServiceProvider,
     SocialSharing,
+    NgMathPipesModule,
     GetLargerThumbnailUrlPipe,
-    MediaService,
   ]
 })
-export class ArticlesDetailsPageModule {}
+export class FilesPageModule {}

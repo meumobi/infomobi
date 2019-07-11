@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'FILES.TITLE' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>  
+  <media-list [media]="files"></media-list>
+  <ion-note color="dark" *ngIf="files.length == 0">
+    {{'FILES.NO_FILES' | translate}}
+  </ion-note>
+</ion-content>
