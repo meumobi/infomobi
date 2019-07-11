@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import Utils from '@shared/utils';
 import { SocialSharingService } from '@providers/social-sharing';
+import { GetLargerThumbnailUrlPipe } from '@pipes/get-larger-thumbnail-url.pipe';
 
 @Injectable()
 export class SocialSharingNativeService implements SocialSharingService {
 
   constructor(
-    public socialSharing: SocialSharing
+    public socialSharing: SocialSharing,
+    private getLargerThumbnailUrlPipe: GetLargerThumbnailUrlPipe
   ) {
     console.log('Hello SocialSharingNativeService Provider');
   }
@@ -20,13 +22,12 @@ export class SocialSharingNativeService implements SocialSharingService {
       url: item.hasOwnProperty('link') ? item.link : null
     };
     if (item.thumbnails && item.thumbnails.length > 0) {
-      params.files.push(item.thumbnails[item.thumbnails.length - 1].url);
+      params.files.push(this.getLargerThumbnailUrlPipe.transform(item.thumbnails));
     }
     return this.socialSharing.shareWithOptions(params);
   }
 
   shareMedia(media) {
-    console.log(media);
     const params = {
       text: media.hasOwnProperty('title') ? Utils.striptags(Utils.br2nl(media.title)) : null,
       title: media.hasOwnProperty('title') ? Utils.striptags(Utils.br2nl(media.title)) : null,
@@ -37,7 +38,7 @@ export class SocialSharingNativeService implements SocialSharingService {
       params.files.push(media.fullPath);
       params.url = null;
     } else if (media.thumbnails && media.thumbnails.length > 0) {
-      params.files.push(media.thumbnails[0].url);
+      params.files.push(this.getLargerThumbnailUrlPipe.transform(media.thumbnails));
     }
     return this.socialSharing.shareWithOptions(params);
   }
