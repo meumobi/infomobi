@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.1"></a>
+## [0.11.1](https://github.com/meumobi/ion-employee/compare/v0.11.0...v0.11.1) (2019-07-11)
+
+
+### Bug Fixes
+
+* **files:** mediacomponent call getfiles as promise ([c77cc1f](https://github.com/meumobi/ion-employee/commit/c77cc1f))
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/meumobi/ion-employee/compare/v0.10.0...v0.11.0) (2019-07-11)
 
