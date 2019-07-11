@@ -55,7 +55,7 @@
     "@ionic-native/status-bar": "4.7.0",
     "@ionic/pro": "1.0.20",
     "@ionic/storage": "^2.2.0",
-    "@meumobi/mmb-media-provider": "0.0.11",
+    "@meumobi/mmb-media-provider": "^0.1.1",
     "@meumobi/ngx-youtube-provider": "0.0.2",
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^2.0.1",
@@ -71,6 +71,7 @@
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.19",
+    "cordova-plugin-ios-permissions": "https://github.com/meumobi/cordova-plugin-ios-permissions.git",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-plugin-x-socialsharing": "5.4.4",
@@ -138,11 +139,12 @@
       "cordova-plugin-file": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-sqlite-storage": {},
-      "cordova-plugin-x-socialsharing": {}
+      "cordova-plugin-x-socialsharing": {},
+      "cordova-plugin-ios-permissions": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

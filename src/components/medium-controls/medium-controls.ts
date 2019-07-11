@@ -23,8 +23,8 @@ export class MediumControlsComponent implements OnInit {
 
   ngOnInit() {
     this.medium.status = '';
-    this.mediaService.getFilesObserver()
-    .subscribe(
+    this.mediaService.getFilesFromStorage()
+    .then(
       () => {
         this.mediaService.decorateFile(this.medium)
         .then(
