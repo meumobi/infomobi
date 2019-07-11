@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/meumobi/ion-employee/compare/v0.10.0...v0.11.0) (2019-07-11)
+
+
+### Bug Fixes
+
+* **categories:** replace mock by api request ([5e7e6a0](https://github.com/meumobi/ion-employee/commit/5e7e6a0))
+* **items:** get image with higher size to item share ([#366](https://github.com/meumobi/ion-employee/issues/366)) ([55e5b58](https://github.com/meumobi/ion-employee/commit/55e5b58)), closes [#344](https://github.com/meumobi/ion-employee/issues/344)
+* **items:** set correct img width to prevent small imgs on item-detail ([0b99b7d](https://github.com/meumobi/ion-employee/commit/0b99b7d)), closes [#361](https://github.com/meumobi/ion-employee/issues/361)
+* **push:** avoid OneSignal.setEmail on pwa ([e89717e](https://github.com/meumobi/ion-employee/commit/e89717e)), closes [#362](https://github.com/meumobi/ion-employee/issues/362)
+
+
+### Features
+
+* **categories:** list categories on sidemenu and add link to parent category on item headline ([a3566c4](https://github.com/meumobi/ion-employee/commit/a3566c4)), closes [#247](https://github.com/meumobi/ion-employee/issues/247) [#245](https://github.com/meumobi/ion-employee/issues/245)
+* **files:** add list to downloaded files ([1004b16](https://github.com/meumobi/ion-employee/commit/1004b16)), closes [#367](https://github.com/meumobi/ion-employee/issues/367)
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/meumobi/ion-employee/compare/v0.8.0...v0.10.0) (2019-04-04)
 
