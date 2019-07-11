@@ -20,7 +20,7 @@ export class SocialSharingNativeService implements SocialSharingService {
       url: item.hasOwnProperty('link') ? item.link : null
     };
     if (item.thumbnails && item.thumbnails.length > 0) {
-      params.files.push(item.thumbnails[0].url);
+      params.files.push(item.thumbnails[item.thumbnails.length - 1].url);
     }
     return this.socialSharing.shareWithOptions(params);
   }

@@ -60,7 +60,6 @@ export class MyApp implements OnInit {
 
   ngOnInit() {
     this.listenAuthData();
-    this.loadMenuCategories();
     this.settingsService.getSettingsObserver().subscribe(
       data => {
         if (data) {
@@ -105,6 +104,8 @@ export class MyApp implements OnInit {
   listenAuthData() {
     this.authData$.subscribe( authData => {
       if (!!authData && !authData.error) {
+        this.loadMenuCategories();
+
         this.pushNotificationService.signInUser(authData);
         this.pushNotificationService.register();
 

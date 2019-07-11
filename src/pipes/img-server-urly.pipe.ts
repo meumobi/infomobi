@@ -22,7 +22,7 @@ import Utils from '@shared/utils';
 export class ImgServerUrlyPipe implements PipeTransform {
 
   settings = {
-    default: 'width=1028&scale=both&format=jpg',
+    default: 'width=1024&scale=both&format=jpg',
     thumbnail: 'width=80&height=80&format=jpg&scale=both',
     avatar: 'width=160&height=160&mode=crop&scale=both'
   };
