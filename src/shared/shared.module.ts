@@ -9,6 +9,7 @@ import {
   FileSizePipe,
   ImgServerSrcsettifyPipe,
   ImgServerUrlyPipe,
+  GetLargerThumbnailUrlPipe,
  } from '@pipes/.';
 import { MomentModule } from 'ngx-moment';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
@@ -35,6 +36,7 @@ const sharedModules = [
     KeysPipe,
     IconPathForContactTypePipe,
     FileSizePipe,
+    GetLargerThumbnailUrlPipe,
   ],
   providers: [
     MeuToastService,
@@ -48,6 +50,7 @@ const sharedModules = [
     KeysPipe,
     IconPathForContactTypePipe,
     FileSizePipe,
+    GetLargerThumbnailUrlPipe,
     sharedModules,
   ]
 })

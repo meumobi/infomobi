@@ -15,6 +15,7 @@ import { ItemsModule } from '@components/items/items.module';
 import { SocialSharingServiceProvider } from '@providers/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { MediaService, MediaModule } from '@meumobi/mmb-media-provider';
+import { GetLargerThumbnailUrlPipe } from '@pipes/get-larger-thumbnail-url.pipe';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MediaService, MediaModule } from '@meumobi/mmb-media-provider';
     NgMathPipesModule,
     SocialSharingServiceProvider,
     SocialSharing,
+    GetLargerThumbnailUrlPipe,
     MediaService,
   ]
 })

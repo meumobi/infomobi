@@ -2,6 +2,7 @@ import { SocialSharingNativeService, SocialSharingPwaService } from '@providers/
 import { Platform } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { GetLargerThumbnailUrlPipe } from '@pipes/get-larger-thumbnail-url.pipe';
 
 
 @Injectable()
@@ -14,18 +15,19 @@ export abstract class SocialSharingService {
 const SocialSharingFactory = (
     platform: Platform,
     socialSharing: SocialSharing,
+    getLargerThumbnailUrlPipe: GetLargerThumbnailUrlPipe
   ) => {
   if (!platform.is('cordova')) {
     return new SocialSharingPwaService();
   } else {
-    return new SocialSharingNativeService(socialSharing);
+    return new SocialSharingNativeService(socialSharing, getLargerThumbnailUrlPipe);
   }
 };
 
 export let SocialSharingServiceProvider = {
   provide: SocialSharingService,
   useFactory: SocialSharingFactory,
-  deps: [Platform, SocialSharing]
+  deps: [Platform, SocialSharing, GetLargerThumbnailUrlPipe]
 };
 
 

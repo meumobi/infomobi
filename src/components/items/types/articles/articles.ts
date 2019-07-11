@@ -1,12 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import items from '@providers/items/mock-items';
 
 @Component({
   selector: 'articles',
   templateUrl: 'articles.html'
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent {
   @Input () item;
   rootNavCtrl: NavController;
   constructor(
@@ -14,12 +13,6 @@ export class ArticlesComponent implements OnInit {
     public navParams: NavParams,
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl') || this.navCtrl;
-  }
-
-  ngOnInit() {
-    if (this.item.thumbnails && this.item.thumbnails.length) {
-      this.item.thumbnailUrl = this.item.thumbnails[this.item.thumbnails.length - 1].url;
-    }
   }
 
   pushDetailsPage(page: string, id: string) {
