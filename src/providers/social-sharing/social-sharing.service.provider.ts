@@ -27,7 +27,7 @@ const SocialSharingFactory = (
 export let SocialSharingServiceProvider = {
   provide: SocialSharingService,
   useFactory: SocialSharingFactory,
-  deps: [Platform, SocialSharing]
+  deps: [Platform, SocialSharing, GetLargerThumbnailUrlPipe]
 };
 
 
