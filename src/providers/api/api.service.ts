@@ -81,7 +81,7 @@ export class ApiService {
     return this.sendRequest(url, httpOptions);
   }
 
-  performance(): Promise<any[]> {
+  performance(): Promise<any> {
     const httpOptions = {
       headers: {
         'Accept':  'application/json',
@@ -90,7 +90,7 @@ export class ApiService {
     };
     const url = this.buildUrl('/performance');
 
-    return this.sendRequest(url, httpOptions);
+    return this.http.get(url, httpOptions).toPromise()
   }
 
   fetchItemsByCategory(id: number): Promise<any[]> {
