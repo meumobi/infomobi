@@ -11,7 +11,6 @@ import { ItemsModule } from '@components/items/items.module';
 import { SocialSharingServiceProvider } from '@providers/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { MediaListModule } from '@components/media-list/media-list.module';
-import { MediaService } from '@meumobi/mmb-media-provider';
 import { GetLargerThumbnailUrlPipe } from '@pipes/get-larger-thumbnail-url.pipe';
 
 
@@ -33,7 +32,6 @@ import { GetLargerThumbnailUrlPipe } from '@pipes/get-larger-thumbnail-url.pipe'
     SocialSharingServiceProvider,
     SocialSharing,
     GetLargerThumbnailUrlPipe,
-    MediaService,
   ]
 })
 export class ArticlesDetailsPageModule {}
