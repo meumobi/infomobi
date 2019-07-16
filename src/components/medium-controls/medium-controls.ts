@@ -49,6 +49,7 @@ export class MediumControlsComponent implements OnInit {
     this.mediaService.download(this.medium).subscribe(
       data => {
         this.medium = data;
+        this.openLocal();
       }
     );
   }
