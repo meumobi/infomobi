@@ -23,14 +23,9 @@ export class MediumControlsComponent implements OnInit {
 
   ngOnInit() {
     this.medium.status = '';
-    this.mediaService.getFilesFromStorage()
+    this.mediaService.decorateFile(this.medium)
     .then(
-      () => {
-        this.mediaService.decorateFile(this.medium)
-        .then(
-          (data) => this.medium = data
-        );
-      }
+      (data) => this.medium = data
     );
   }
 
@@ -54,6 +49,7 @@ export class MediumControlsComponent implements OnInit {
     this.mediaService.download(this.medium).subscribe(
       data => {
         this.medium = data;
+        this.openLocal();
       }
     );
   }
