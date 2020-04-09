@@ -2,10 +2,10 @@
 ## Workflow
 
 1. Fork it
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create new Pull Request ([more details](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-submitting-a-pull-request-pr))
+1. Create your feature branch (git checkout -b my-new-feature)
+1. Commit your changes (git commit -am 'Add some feature')
+1. Push to the branch (git push origin my-new-feature)
+1. Create new Pull Request ([more details](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-submitting-a-pull-request-pr))
 
 ## Commit msg
 ### `<type>(<scope>): <subject>`
