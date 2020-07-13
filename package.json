@@ -120,7 +120,7 @@
     "mmb-avatar-img": "0.0.3",
     "null-loader": "^0.1.1",
     "protractor": "^5.3.1",
-    "standard-version": "^4.3.0",
+    "standard-version": "^8.0.1",
     "ts-loader": "^3.5.0",
     "ts-node": "^5.0.0",
     "typescript": "^2.6.2"
