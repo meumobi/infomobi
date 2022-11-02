@@ -102,7 +102,7 @@
     "angular2-template-loader": "^0.6.2",
     "codelyzer": "^4.5.0",
     "connect": "^3.6.6",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-load-plugins": "^1.5.0",
     "gulp-preprocess": "^3.0.1",
     "gulp-rename": "^1.4.0",
